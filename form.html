@@ -12,13 +12,13 @@
     }
 
     ul li a {
-        color: black;
-        text-decoration: none;
-      }
+      color: black;
+      text-decoration: none;
+    }
 
-      ul li a:hover {
-        color: rgb(146, 115, 115);
-      }
+    ul li a:hover {
+      color: rgb(146, 115, 115);
+    }
   </style>
   <body>
     <div>
@@ -34,7 +34,7 @@
       <form>
         <table style="margin: 10px">
           <caption>
-            <h1>Sign Up</h1>
+            <h1>Job Offer Form</h1>
           </caption>
           <tr>
             <td><label for="fname"> First name</label></td>
@@ -43,6 +43,10 @@
           <tr>
             <td><label for="lname"> Last name</label></td>
             <td><input type="text" id="lname" name="lastName" placeholder="Last name" /></td>
+          </tr>
+          <tr>
+            <td><label for="nname"> Nick name</label></td>
+            <td><input type="text" id="nname" name="nickName" placeholder="Nick name" /></td>
           </tr>
           <tr>
             <td><label for="email">Email address</label></td>
@@ -74,11 +78,16 @@
             <td><input type="url" id="web" name="web" placeholder="Website" /></td>
           </tr>
           <tr>
-            <td><label for="desc">Description</label></td>
+            <td><label for="desc">Short introduction</label></td>
             <td><textarea id="desc" name="desc"></textarea></td>
           </tr>
           <tr>
-            <td colspan="2"><input type="submit" value="Sumbit" onclick="alert('You have signed up')" /></td>
+            <td><label for="reasons">Reasons of joining us</label></td>
+            <td><textarea id="reasons" name="reasons"></textarea></td>
+          </tr>
+          <tr>
+            <td><input type="reset"></td>
+            <td><input type="submit"value="Sumbit" onclick="alert('You have signed up')"></td>
           </tr>
         </table>
       </form>
