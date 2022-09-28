@@ -2,14 +2,33 @@
 <html lang="en">
   <head>
     <title>myProfile</title>
+    <style>
+      ul li a {
+        color: black;
+        text-decoration: none;
+      }
+
+      ul li a:hover {
+        color: rgb(146, 115, 115);
+      }
+    </style>
   </head>
   <body>
+    <div>
+      <!-- Navbar -->
+      <ul class="navbar" style="list-style-type: none; margin: 0; padding: 0;">
+        <li><a class="hover" href="#" color: black>Home</a></li>
+        <li><a class="hover" href="shopping.html">Shopping</a></li>
+        <li><a class="hover" href="form.html">Form</a></li>
+      </ul> 
+    </div>
+
     <h1>My Profile</h1>
 
     <div>
       <!-- Description -->
       <h2>Description</h2>
-      <p>Seorang mahasiswa akhir, jurusan penyiaran di salah satu kampus di Jogja. Berpengalaman dalam desain grafis, video editingx, dan fotografi. Tertarik pada matematika, logika, dan pemrograman.</p>
+      <p>Seorang mahasiswa akhir, jurusan penyiaran di salah satu kampus di Jogja. Berpengalaman dalam desain grafis, video editing, dan fotografi. Tertarik pada matematika, logika, dan pemrograman.</p>
     </div>
 
     <div>
@@ -30,6 +49,20 @@
             <li>You are the Apple of My Eye by Giddens Ko</li>
         </ul>
       </p>
+    </div>
+    
+    <div>
+      <!-- Multimedia -->
+      <div>
+        <h2>Favorite Audio</h2>
+        <p>Hit the Road Jack by Ray Charles</p>
+        <audio src="assets/media/audio/hittheroadjack.mp3" controls></audio>  
+      </div>
+      <div>
+        <h2>Favorite Video</h2>
+        <p>Extreme Job Trailer by Lee Byeong-heon</p>
+        <video src="assets/media/video/extremejob.mp4" controls width="480px"></video>
+      </div>    
     </div>
 
     <div>
