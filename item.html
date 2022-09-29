@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Item</title>
+    <style>
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .section {
+        margin: 20px 0;
+      }
+      nav {
+        text-align: center;
+      }
+      nav ul li a {
+        text-decoration: none;
+      }
+
+      nav ul li {
+        margin: 0 10px;
+      }
+
+      nav ul li a:hover {
+        color: grey;
+      }
+
+      nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+      }
+
+      table {
+        margin: auto;
+      }
+
+      td {
+        padding: 5px 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Item</a></li>
+          <li><a href="itemlist.html">Item List</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="container">
+      <section class="section">
+        <form onsubmit="return false">
+          <table class="input">
+            <tr>
+              <td><label for="fname">First name</label></td>
+              <td><input type="text" id="fname" placeholder="First Name" /></td>
+            </tr>
+            <tr>
+              <td><label for="lname">Last name</label></td>
+              <td><input type="text" id="lname" placeholder="Last Name" /></td>
+            </tr>
+            <tr>
+              <td><label for="nname"> Nick name</label></td>
+              <td><input type="text" id="nname" placeholder="Nick name" /></td>
+            </tr>
+            <tr>
+              <td><label for="email">Email address</label></td>
+              <td><input type="email" id="email" placeholder="Email address" /></td>
+            </tr>
+            <tr>
+              <td><label for="number">Mobile number</label></td>
+              <td><input type="number" id="number" placeholder="Mobile number" /></td>
+            </tr>
+            <tr>
+              <td><label for="birth">Date of birth</label></td>
+              <td><input type="date" id="birth" placeholder="Birthday" /><br /></td>
+            </tr>
+            <tr>
+              <td><label for="age">Age</label></td>
+              <td><input type="number" id="age" placeholder="Age" /></td>
+            </tr>
+            <tr>
+              <td><label for="gender">Gender</label></td>
+              <td>
+                <input type="radio" id="male" name="gender" value="Male" />
+                <span>Male</span>
+                <input type="radio" id="female" name="gender" value="Female" />
+                <span>Female</span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="url">Social media url</label></td>
+              <td><input type="url" id="url" placeholder="Social media url" /></td>
+            </tr>
+            <tr>
+              <td><label for="img">Upload Image</label></td>
+              <td><input type="file" id="img" accept="image/jpeg, image/png, image/jpg" /></td>
+            </tr>
+            <tr>
+              <td><input type="reset" /></td>
+              <td><input id="submit" type="submit" value="Submit" onclick="displayItem()" /></td>
+            </tr>
+          </table>
+        </form>
+      </section>
+
+      <section class="section">
+        <table>
+          <tr>
+            <td>First name</td>
+            <td>:</td>
+            <td id="rfname"></td>
+          </tr>
+          <tr>
+            <td>Last name</td>
+            <td>:</td>
+            <td id="rlname"></td>
+          </tr>
+          <tr>
+            <td>Nick name</td>
+            <td>:</td>
+            <td id="rnname"></td>
+          </tr>
+          <tr>
+            <td>Email address</td>
+            <td>:</td>
+            <td id="remail"></td>
+          </tr>
+          <tr>
+            <td>Mobile number</td>
+            <td>:</td>
+            <td id="rnumber"></td>
+          </tr>
+          <tr>
+            <td>Date of birth</td>
+            <td>:</td>
+            <td id="rbirth"></td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td>:</td>
+            <td id="rage"></td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>:</td>
+            <td id="rgender"></td>
+          </tr>
+          <tr>
+            <td>Social media url</td>
+            <td>:</td>
+            <td id="rurl"></td>
+          </tr>
+          <tr>
+            <td>Image</td>
+            <td>:</td>
+            <td id="rimg"><img src="assets/img_porto/1.jpg" alt="image" width="100px" /></td>
+          </tr>
+        </table>
+      </section>
+    </section>
+
+    <script>
+      function displayItem() {
+        var fname = document.getElementById('fname').value;
+        document.getElementById('rfname').innerHTML = fname;
+
+        var lname = document.getElementById('lname').value;
+        document.getElementById('rlname').innerHTML = lname;
+
+        var nname = document.getElementById('nname').value;
+        document.getElementById('rnname').innerHTML = nname;
+
+        var email = document.getElementById('email').value;
+        document.getElementById('remail').innerHTML = email;
+
+        var number = document.getElementById('number').value;
+        document.getElementById('rnumber').innerHTML = number;
+
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        document.getElementById('rgender').innerHTML = gender;
+
+        var birth = document.getElementById('birth').value;
+        document.getElementById('rbirth').innerHTML = birth;
+
+        var age = document.getElementById('age').value;
+        document.getElementById('rage').innerHTML = age;
+
+        var url = document.getElementById('url').value;
+        document.getElementById('rurl').innerHTML = '<a target=_blank href= ' + url + '>Instagram</a>';
+      }
+    </script>
+  </body>
+</html>
