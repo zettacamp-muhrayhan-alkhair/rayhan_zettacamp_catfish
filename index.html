@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Tahoma, sans-serif;
+      }
+
+      body {
+        background-color: rgb(255, 255, 255);
+      }
+
+      header section {
+        width: 100%;
+        height: 60px;
+        background-color: #18215e;
+        position: relative;
+        top: 0;
+      }
+
+      nav ul {
+        display: flex;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin: auto 10px;
+        font-size: 20px;
+        list-style-type: none;
+        color: white;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+      }
+
+      nav ul li a:hover {
+        color: #c2b1f5;
+      }
+
+      .desc {
+        height: 100px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+      }
+
+      .desc h2 {
+        font-size: 35px;
+      }
+
+      .desc h2,
+      .desc p {
+        text-align: center;
+      }
+
+      .cardContainer {
+        display: flex;
+        justify-content: space-evenly;
+        width: 70%;
+        margin: auto;
+        margin-bottom: 80px;
+      }
+
+      .card {
+        width: 250px;
+        box-shadow: 0 5px 20px rgb(0 0 0 / 0.2);
+        border-radius: 20px;
+      }
+
+      .cardHead {
+        background-color: #18215e;
+        padding: 20px;
+        color: white;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .cardTitle {
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .cardContent {
+        padding: 20px;
+      }
+
+      .cardPrice {
+        text-align: center;
+      }
+
+      .price-amount {
+        font-size: 14px;
+      }
+
+      .price-amount span {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .cardPrice p {
+        font-size: 15px;
+      }
+
+      .cardFeatures {
+        margin-top: 16px;
+      }
+
+      .cardFeatures ul li {
+        list-style-type: none;
+        padding: 1px 0;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .btn {
+        background-color: #13aa52;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+      }
+
+      .btn:hover {
+        transform: scale(1.02);
+      }
+
+      .footContainer {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: #18215e;
+        position: relative;
+        bottom: 50;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <section>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li>|</li>
+            <li><a href="html/about.html">About</a></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
+    <main>
+      <section class="desc">
+        <h2>Start Hosting Your Website using Postulat Indonesia</h2>
+        <p>Come on! Get your business online with hosting from Postulat Indonesia. Take advantage of up to 65% off with a bonus free domain and free SSL for your website.</p>
+      </section>
+
+      <section class="cardContainer">
+        <section class="card">
+          <section class="cardHead">
+            <section class="cardTitle">
+              <h4>SMALL</h4>
+            </section>
+          </section>
+          <section class="cardContent">
+            <section class="cardPrice">
+              <section class="price-amount">Rp. <span>20.000</span>,- /month</section>
+              <p>Free SSL, Free some domain, and Free premium WordPress Plugins & Themes</p>
+            </section>
+            <section class="cardFeatures">
+              <p>Features :</p>
+              <ul>
+                <li>Unlimited space</li>
+                <li>Unlimited traffic</li>
+                <li>Unlimited email</li>
+                <li>Unlimited MySQL DB</li>
+                <li>6 domains</li>
+                <li>Free Weebly sitebuilder</li>
+                <li>Free SSL (Let's Encrypt)</li>
+                <li>Small Cloud Resource</li>
+                <li>MAX CPU 1 Core</li>
+                <li>Max RAM 1 GB</li>
+                <li>Turbo Booster (optional)</li>
+                <li>Security 360 (optional)</li>
+              </ul>
+            </section>
+            <section class="button">
+              <a href="html/register.html"><button class="btn" role="button">Select</button></a>
+            </section>
+          </section>
+        </section>
+        <section class="card">
+          <section class="cardHead">
+            <section class="cardTitle">
+              <h4>MEDIUM</h4>
+            </section>
+          </section>
+          <section class="cardContent">
+            <section class="cardPrice">
+              <section class="price-amount">Rp. <span>25.000</span>,- /month</section>
+              <p>Free SSL, Free some domain, and Free premium WordPress Plugins & Themes</p>
+            </section>
+            <section class="cardFeatures">
+              <p>Features :</p>
+              <ul>
+                <li>Unlimited space</li>
+                <li>Unlimited traffic</li>
+                <li>Unlimited email</li>
+                <li>Unlimited MySQL DB</li>
+                <li>Unlimited domains</li>
+                <li>Free Weebly sitebuilder</li>
+                <li>Free SSL (Let's Encrypt)</li>
+                <li>Small Cloud Resource</li>
+                <li>MAX CPU 1.5 Core</li>
+                <li>Max RAM 2 GB</li>
+                <li>Turbo Booster (optional)</li>
+                <li>Security 360 (optional)</li>
+              </ul>
+            </section>
+            <section class="button">
+              <a href="html/register.html"><button class="btn" role="button">Select</button></a>
+            </section>
+          </section>
+        </section>
+        <section class="card">
+          <section class="cardHead">
+            <section class="cardTitle">
+              <h4>LARGE</h4>
+            </section>
+          </section>
+          <section class="cardContent">
+            <section class="cardPrice">
+              <section class="price-amount">Rp. <span>15.000</span>,- /month</section>
+              <p>Free SSL, Free some domain, and Free premium WordPress Plugins & Themes</p>
+            </section>
+            <section class="cardFeatures">
+              <p>Features :</p>
+              <ul>
+                <li>Unlimited space</li>
+                <li>Unlimited traffic</li>
+                <li>Unlimited email</li>
+                <li>Unlimited MySQL DB</li>
+                <li>Unlimited domains</li>
+                <li>Free Weebly sitebuilder</li>
+                <li>Free SSL (Let's Encrypt)</li>
+                <li>Small Cloud Resource</li>
+                <li>MAX CPU 2 Core</li>
+                <li>Max RAM 3 GB</li>
+                <li>Turbo Booster (optional)</li>
+                <li>Security 360 (optional)</li>
+              </ul>
+            </section>
+            <section class="button">
+              <a href="html/register.html"><button class="btn" role="button">Select</button></a>
+            </section>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <section class="footContainer">
+        <section class="footTitle">
+          <h3>Postulat Indonesia</h3>
+        </section>
+      </section>
+    </footer>
+  </body>
+</html>
