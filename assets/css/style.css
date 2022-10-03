@@ -1,0 +1,23 @@
+main {
+  font-family: Tahoma, sans-serif;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+img {
+  width: 200px;
+}
+
+article {
+  font-size: 16px;
+}
+
+.bigger {
+  font-size: 30px;
+}
+
+.smaller {
+  font-size: 26px;
+}
