@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Embedded Styling</title>
+    <style>
+      table {
+        margin: 0 auto;
+        text-align: center;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      table,
+      td {
+        border: 2px solid black;
+      }
+
+      caption {
+        margin: 10px 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <table>
+        <caption>
+          Hobby
+        </caption>
+        <tr class="green">
+          <td>Swimming</td>
+        </tr>
+        <tr>
+          <td>Watching movies</td>
+        </tr>
+        <tr>
+          <td>Photography</td>
+        </tr>
+      </table>
+      <table>
+        <caption>
+          Favorite Movies
+        </caption>
+        <tr>
+          <td>Extreme Job by Lee Byeong-heon</td>
+        </tr>
+        <tr class="red">
+          <td>The Shawshank Redemption by Frank Darabont</td>
+        </tr>
+        <tr>
+          <td>You are the Apple of My Eye by Giddens Ko</td>
+        </tr>
+      </table>
+      <table>
+        <caption>
+          Favorite Songs
+        </caption>
+        <tr>
+          <td>Hit the Road Jack by Ray Charles</td>
+        </tr>
+        <tr>
+          <td>10&frasl;10 by Rex Orange County</td>
+        </tr>
+        <tr class="blue">
+          <td>Pluto Projector by Rex Orange County</td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>
