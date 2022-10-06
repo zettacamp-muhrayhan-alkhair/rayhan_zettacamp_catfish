@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>List of Items</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        width: 60%;
+        margin: 2rem 1.5rem;
+      }
+
+      .container h2 {
+        padding-bottom: 1rem;
+        font-size: 2rem;
+      }
+
+      .wrapper {
+        border: 1px solid rgba(211, 211, 211, 1);
+        border-radius: 10px;
+        height: 87vh;
+        overflow: auto;
+        width: 100%;
+        padding: 1.5rem;
+      }
+
+      .item {
+        display: flex;
+        border: 1px solid rgba(211, 211, 211, 1);
+        border-radius: 10px;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .item-desc h4 {
+        font-size: 1.5rem;
+      }
+
+      img {
+        width: 65px;
+        padding-right: 10px;
+      }
+
+      .footContainer {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        color: white;
+        background-color: #18215e;
+        position: relative;
+        bottom: 0;
+      }
+
+      .footContainer ul {
+        display: flex;
+        justify-content: center;
+      }
+
+      .footContainer ul li {
+        margin: auto 10px;
+        font-size: 20px;
+        list-style-type: none;
+        color: white;
+      }
+
+      .footContainer ul li a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .footContainer ul li a:hover {
+        color: #c2b1f5;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <section class="container">
+          <h2>List of Items in Storage</h2>
+          <section class="wrapper">
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-1.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6D Ultimate</h4>
+                <p>11 units | Rp 19.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-2.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6 Pro</h4>
+                <p>10 units | Rp 18.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-3.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6</h4>
+                <p>5 units | Rp 10.899.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-4.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>AMD Ryzen 9 7950X</h4>
+                <p>15 units | Rp 11.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-5.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i9 13900K</h4>
+                <p>10 units | Rp 8.790.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-6.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i7 13700K</h4>
+                <p>4 units | Rp 6.199.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-7.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;7 III</h4>
+                <p>13 units | Rp 28.990.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-8.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;9 Mark II</h4>
+                <p>3 units | Rp 63.572.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-9.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;1</h4>
+                <p>2 units | Rp 91.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-1.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6D Ultimate</h4>
+                <p>11 units | Rp 19.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-2.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6 Pro</h4>
+                <p>10 units | Rp 18.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-3.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6</h4>
+                <p>5 units | Rp 10.899.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-4.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>AMD Ryzen 9 7950X</h4>
+                <p>15 units | Rp 11.999.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-5.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i9 13900K</h4>
+                <p>10 units | Rp 8.790.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-6.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i7 13700K</h4>
+                <p>4 units | Rp 6.199.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-7.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;7 III</h4>
+                <p>13 units | Rp 28.990.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-8.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;9 Mark II</h4>
+                <p>3 units | Rp 63.572.000,-</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-9.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;1</h4>
+                <p>2 units | Rp 91.999.000,-</p>
+              </section>
+            </section>
+          </section>
+        </section>
+        <section class="container">
+          <h2>List of Items in Sold</h2>
+          <section class="wrapper">
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-1.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6D Ultimate</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-2.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6 Pro</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-3.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-4.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>AMD Ryzen 9 7950X</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-5.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i9 13900K</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-6.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i7 13700K</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-7.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;7 III</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-8.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;9 Mark II</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-9.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;1</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-1.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6D Ultimate</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-2.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6 Pro</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-3.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>ROG Phone 6</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-4.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>AMD Ryzen 9 7950X</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-5.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i9 13900K</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-6.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Intel Core i7 13700K</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-7.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;7 III</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-8.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;9 Mark II</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+            <section class="item">
+              <section class="item-img">
+                <img src="../img/product-9.png" alt="" />
+              </section>
+              <section class="item-desc">
+                <h4>Sony &alpha;1</h4>
+                <p>Out of stock</p>
+              </section>
+            </section>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <section class="footContainer">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li>|</li>
+          <li><a href="assets/html/about.html">About</a></li>
+          <li>|</li>
+          <li><a href="assets/html/contact.html">Contact</a></li>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>
