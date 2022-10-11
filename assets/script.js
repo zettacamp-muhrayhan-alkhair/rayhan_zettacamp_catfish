@@ -1,4 +1,4 @@
-// let inputBooks = prompt('Enter the number of books you want to buy :');
+let wantToBuy = confirm('Want to buy in my store?');
 let inputBooks;
 let disc = 50 / 100;
 let priceBook = 10000;
@@ -10,5 +10,8 @@ function bookPurchase(inputBooks) {
   totalPrice = totalPrice + totalPrice * tax;
   console.log(totalPrice);
 }
-
-bookPurchase(prompt('Enter the number of books you want to buy :'));
+if (wantToBuy == true) {
+  bookPurchase(prompt('Enter the number of books you want to buy :'));
+} else {
+  console.log('Thank you for wasting my time');
+}
