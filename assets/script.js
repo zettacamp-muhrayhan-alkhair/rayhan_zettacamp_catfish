@@ -1,48 +1,30 @@
 let wantToBuy = confirm('Want to buy in my store?');
-let inputBooks;
 let stocks = 10;
-const disc = 50 / 100;
-let priceBook = 10000;
+const bookPrice = 100000;
+let inputNumberofBooks;
 let totalPrice;
-const tax = 10 / 100;
-// function bookPurchase(inputBooks) {
-// totalPrice = priceBook * inputBooks;
-// totalPrice = totalPrice - totalPrice * disc;
-// totalPrice = totalPrice + totalPrice * tax;
-// console.log(`You buy ${inputBooks} Books`);
-// console.log(`Total price : ${totalPrice}`);
-// }
-// if (wantToBuy == true) {
-//   bookPurchase(prompt('Enter the number of books you want to buy :'));
-// } else {
-//   console.log('Thank you for wasting my time!!!');
-// }
+const discount = (bookPrice * 50) / 100;
+// let afterDiscount = bookPrice - discount;
+const tax = (discount * 10) / 100;
+// let afterTax = bookPrice + tax;
+let finalPrice = 0;
 
-function bookPurchase() {
-  while (wantToBuy == true) {
-    inputBooks = prompt(`Enter the number of books you want to buy : (stocks : ${stocks})`);
-    if (stocks > 0 && inputBooks < stocks) {
-      totalPrice = priceBook * inputBooks;
-      totalPrice = totalPrice - totalPrice * disc;
-      totalPrice = totalPrice + totalPrice * tax;
-      stocks = stocks - inputBooks;
-      console.log(`You buy ${inputBooks} Books`);
-      console.log(`Total price : ${totalPrice}`);
-    } else if (inputBooks == stocks) {
-      totalPrice = priceBook * inputBooks;
-      totalPrice = totalPrice - totalPrice * disc;
-      totalPrice = totalPrice + totalPrice * tax;
-      stocks = stocks - inputBooks;
-      console.log(`You buy ${inputBooks} Books`);
-      console.log(`Total price : ${totalPrice}`);
-    } else if (stocks > 0 && inputBooks > stocks) {
-      console.log(`You can not buy more than stocks`);
-      console.log(`${stocks} books left`);
-    } else {
-      console.log('stock is running out');
+if (wantToBuy) {
+  bookPurchase(prompt(`Enter the number of books you want to buy : (stock : ${stocks})`));
+  function bookPurchase(inputNumberofBooks) {
+    totalPrice = bookPrice - discount + tax;
+    console.log(`There are ${stocks} books in stock`);
+    for (let i = 0; inputNumberofBooks > i; i++) {
+      if (i > stocks - 1) {
+        console.log('Out of stock');
+        break;
+      } else {
+        console.log(`You bought ${i + 1} books`);
+        console.log(`You have to pay ${(finalPrice += totalPrice)}`);
+      }
+      console.log(`${stocks - (i + 1)} books left`);
     }
-    wantToBuy = confirm('Want to buy in my store again?');
   }
+} else {
+  console.log('Thank you for wasting my time!!!');
 }
-
-bookPurchase();
