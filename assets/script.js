@@ -13,23 +13,86 @@ let tax = 10 / 100;
 //   console.log(totalPrice);
 // }
 
-function bookPurchase(inputBooks) {
-  if (stockBooks > 0 && stockBooks > inputBooks) {
-    totalPrice = priceBook * inputBooks;
-    totalPrice = totalPrice - totalPrice * disc;
-    totalPrice = totalPrice + totalPrice * tax;
+// function bookPurchase(inputBooks) {
+//   while (wantToBuy == true) {
+//     inputBooks = prompt(`Enter the number of books you want to buy : (Total Stocks = ${stockBooks})`);
+//     if (stockBooks > 0 && stockBooks > inputBooks) {
+//       totalPrice = priceBook * inputBooks;
+//       totalPrice = totalPrice - totalPrice * disc;
+//       totalPrice = totalPrice + totalPrice * tax;
+//       stockBooks = stockBooks - inputBooks;
+//       console.log(`You buy ${inputBooks} books`);
+//       console.log(totalPrice);
+//     } else if (stockBooks < inputBooks && stockBooks > 0) {
+//       prompt(`Stock of books is less than your number input, ${stockBooks} books left `);
+//       totalPrice = priceBook * inputBooks;
+//       totalPrice = totalPrice - totalPrice * disc;
+//       totalPrice = totalPrice + totalPrice * tax;
+//       stockBooks = stockBooks - inputBooks;
+//       console.log(`You buy ${inputBooks} books`);
+//       console.log(totalPrice);
+//     } else {
+//       console.log('Out of stock');
+//     }
+//   }
+// }
 
-    console.log(`You buy ${inputBooks} books`);
-    console.log(totalPrice);
+function bookPurchase() {
+  for (inputBooks = prompt(`Enter the number of books you want to buy : (Total Stocks = ${stockBooks})`); stockBooks > 0; stockBooks - inputBooks) {
+    if (stockBooks > 0 && stockBooks > inputBooks) {
+      totalPrice = priceBook * inputBooks;
+      totalPrice = totalPrice - totalPrice * disc;
+      totalPrice = totalPrice + totalPrice * tax;
+      stockBooks = stockBooks - inputBooks;
+      console.log(`You buy ${inputBooks} books`);
+      console.log(totalPrice);
+    } else if (stockBooks < inputBooks && stockBooks > 0) {
+      prompt(`Stock of books is less than your number input, ${stockBooks} books left `);
+      totalPrice = priceBook * inputBooks;
+      totalPrice = totalPrice - totalPrice * disc;
+      totalPrice = totalPrice + totalPrice * tax;
+      stockBooks = stockBooks - inputBooks;
+      console.log(`You buy ${inputBooks} books`);
+      console.log(totalPrice);
+    } else {
+      console.log('Out of stock');
+    }
   }
-
-  totalPrice = priceBook * inputBooks;
-  totalPrice = totalPrice - totalPrice * disc;
-  totalPrice = totalPrice + totalPrice * tax;
-  stockBooks = stockBooks - inputBooks;
-  console.log(`You buy ${inputBooks} books`);
-  console.log(totalPrice);
 }
+
+if (wantToBuy == true) {
+  bookPurchase();
+} else {
+  console.log('Thank you for wasting my time!!!');
+}
+
+// function bookPurchase(inputBooks) {
+//   while (wantToBuy == true) {
+//     inputBooks = prompt(`Enter the number of books you want to buy : (Total Stocks = ${stockBooks})`);
+//     if (stockBooks > 0 && stockBooks > inputBooks) {
+//       totalPrice = priceBook * inputBooks;
+//       totalPrice = totalPrice - totalPrice * disc;
+//       totalPrice = totalPrice + totalPrice * tax;
+//       stockBooks = stockBooks - inputBooks;
+//       console.log(`You buy ${inputBooks} books`);
+//       console.log(totalPrice);
+//     } else if (stockBooks < inputBooks && stockBooks > 0) {
+//       prompt(`Stock of books is less than your number input, ${stockBooks} books left `);
+//       totalPrice = priceBook * inputBooks;
+//       totalPrice = totalPrice - totalPrice * disc;
+//       totalPrice = totalPrice + totalPrice * tax;
+//       stockBooks = stockBooks - inputBooks;
+//       console.log(`You buy ${inputBooks} books`);
+//       console.log(totalPrice);
+//     } else {
+//       console.log('Out of stock');
+//     }
+//   }
+// }
+
+// while (wantToBuy) {
+//   bookPurchase(prompt(`Enter the number of books you want to buy : (Total Stocks = ${stockBooks})`));
+// }
 
 // if (wantToBuy == true) {
 //   bookPurchase(prompt('Enter the number of books you want to buy :'));
