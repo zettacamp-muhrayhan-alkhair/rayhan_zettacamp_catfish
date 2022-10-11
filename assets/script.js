@@ -13,5 +13,5 @@ function bookPurchase(inputBooks) {
 if (wantToBuy == true) {
   bookPurchase(prompt('Enter the number of books you want to buy :'));
 } else {
-  console.log('Thank you for wasting my time');
+  console.log('Thank you for wasting my time!!!');
 }
