@@ -11,6 +11,7 @@ function bookPurchase(inputBooks) {
   console.log(`You buy ${inputBooks} Books`);
   console.log(`Total price : ${totalPrice}`);
 }
+
 if (wantToBuy == true) {
   bookPurchase(prompt('Enter the number of books you want to buy :'));
 } else {
