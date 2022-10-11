@@ -54,7 +54,7 @@ function bookPurchase() {
       console.log(`Total price : ${totalPrice}`);
       stocks = stocks - inputBooks;
       inputBooks = prompt(`Enter the number of books you want to buy : (stocks : ${stocks})`);
-    } else if (stocks > 0 && inputBooks > stocks) {
+    } else if (inputBooks > stocks) {
       console.log(`You can not buy more than stocks`);
       console.log(`${stocks} books left`);
     } else {
