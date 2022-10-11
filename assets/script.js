@@ -1,9 +1,9 @@
 let wantToBuy = confirm('Want to buy in my store?');
 let inputBooks;
-let disc = 50 / 100;
+const disc = 50 / 100;
 let priceBook = 10000;
 let totalPrice;
-let tax = 10 / 100;
+const tax = 10 / 100;
 function bookPurchase(inputBooks) {
   totalPrice = priceBook * inputBooks;
   totalPrice = totalPrice - totalPrice * disc;
