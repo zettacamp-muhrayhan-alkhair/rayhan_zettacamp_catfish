@@ -4,9 +4,7 @@ const bookPrice = 100000;
 let inputNumberofBooks;
 let totalPrice;
 const discount = (bookPrice * 50) / 100;
-// let afterDiscount = bookPrice - discount;
 const tax = (discount * 10) / 100;
-// let afterTax = bookPrice + tax;
 let finalPrice = 0;
 
 if (wantToBuy) {
