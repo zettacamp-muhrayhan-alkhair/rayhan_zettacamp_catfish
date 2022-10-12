@@ -46,22 +46,13 @@
 // console.log(data_array);
 
 let wantToBuy = confirm('Want to buy in my store?');
-// let inputNumberofBooks;
-// const bookPrice = 1000000 * inputNumberofBooks;
-// let totalPrice;
-// const discount = (bookPrice * 50) / 100;
-// const tax = (discount * 10) / 100;
-// // let finalPrice = 0;
-// let credit = 3;
-// let mustPayEveryMonth;
-
 let inputNumberofBooks;
 let bookPrice;
 let totalPrice;
 let discount;
 let tax;
 // let finalPrice = 0;
-let credit = 12;
+let creditTerm;
 let mustPayEveryMonth;
 let pricePerMonth = [];
 let overallPrice = [];
@@ -69,23 +60,27 @@ let overallPrice = [];
 if (wantToBuy) {
   bookPurchase(prompt(`Enter the number of books you want to buy :`));
   function bookPurchase(inputNumberofBooks) {
+    console.log(`You bought ${inputNumberofBooks} books`);
+    creditTerm = prompt(`Enter the amount of credit term :`);
+    console.log(`Your credit term ${creditTerm} months`);
     bookPrice = 1000000 * inputNumberofBooks;
     discount = (bookPrice * 50) / 100;
     tax = (discount * 10) / 100;
-    console.log(inputNumberofBooks);
     totalPrice = bookPrice - discount + tax;
-    console.log(totalPrice);
-    mustPayEveryMonth = totalPrice / credit;
-    console.log(mustPayEveryMonth);
-    for (let i = 1; i <= credit; i++) {
-      overallPrice[i - 1] = { Month: `${i} month`, price: `${mustPayEveryMonth}` };
+    console.log(`Final price of your book ${totalPrice}`);
+    mustPayEveryMonth = totalPrice / creditTerm;
+    console.log(`You must pay ${mustPayEveryMonth} per month`);
+    for (let i = 0; i < creditTerm; i++) {
+      pricePerMonth.push({ Month: `${i + 1} month`, price: `${mustPayEveryMonth}` });
     }
-    for (let j = 0; j < overallPrice.length; j++) {
-      pricePerMonth.push(overallPrice);
-    }
+    // for (let j = 0; j < pricePerMonth.length; j++) {
+    //   overallPrice.push(pricePerMonth);
+    // }
   }
+  // console.log(overallPrice);
+  console.log(pricePerMonth);
 } else {
   console.log('Thank you for wasting my time!!!');
 }
 
-console.log(overallPrice);
+081288958509
