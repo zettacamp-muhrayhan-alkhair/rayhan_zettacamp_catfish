@@ -55,7 +55,7 @@ let tax;
 let creditTerm;
 let mustPayEveryMonth;
 let pricePerMonth = [];
-let overallPrice = [];
+// let overallPrice = [];
 
 if (wantToBuy) {
   bookPurchase(prompt(`Enter the number of books you want to buy :`));
@@ -82,3 +82,14 @@ if (wantToBuy) {
 } else {
   console.log('Thank you for wasting my time!!!');
 }
+
+const spreadOpt = [...pricePerMonth];
+console.log(spreadOpt);
+
+const typesOfBooks = ['HTML', 'CSS', 'JS', 'PHP', 'Angular', 'TS', 'MangoDB'];
+const [firstBook, secondBook, thirdBook, , fifthBook, sixthBook] = typesOfBooks;
+console.log(firstBook);
+console.log(secondBook);
+console.log(thirdBook);
+console.log(fifthBook);
+console.log(sixthBook);
