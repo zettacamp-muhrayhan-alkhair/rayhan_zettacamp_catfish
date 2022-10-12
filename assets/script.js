@@ -61,7 +61,7 @@ if (wantToBuy) {
   bookPurchase(prompt(`Enter the number of books you want to buy :`));
   function bookPurchase(inputNumberofBooks) {
     console.log(`You bought ${inputNumberofBooks} books`);
-    creditTerm = prompt(`Enter the amount of credit term :`);
+    creditTerm = prompt(`Enter the amount of credit term : (in month)`);
     console.log(`Your credit term ${creditTerm} months`);
     bookPrice = 1000000 * inputNumberofBooks;
     discount = (bookPrice * 50) / 100;
