@@ -82,5 +82,3 @@ if (wantToBuy) {
 } else {
   console.log('Thank you for wasting my time!!!');
 }
-
-081288958509
