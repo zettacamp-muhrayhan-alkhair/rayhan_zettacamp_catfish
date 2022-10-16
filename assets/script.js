@@ -1,4 +1,10 @@
-const songLists = [
+let songListss = [
+  {
+    title: 'Dir Due Daeng (Cover Maya - Meggy Z)',
+    artist: 'Sarino',
+    genre: 'Dangdut',
+    duration: 1,
+  },
   {
     title: 'Berak Tak Cebok',
     artist: 'Kufaku',
@@ -61,18 +67,27 @@ const songLists = [
   },
 ];
 
+let songLists = [];
+for (let i = 0; i < songListss.length; i++) {
+  songLists.push(songListss[Math.floor(Math.random() * songListss.length)]);
+}
+
 let ask = confirm('Do you want to see my list song?');
+let totalDuration = 0;
+let newSongLists = [];
+let maxDuration;
+let totalRealDuration = 0;
 
 // a function to group song based on artists
 function songArtists() {
-  const inputArtist = prompt('Enter name of artist :');
+  const inputArtist = prompt('Enter name of artist : (Kufaku, Manis Manja Group, Arif Alfiansyah, OM PMR, Mesin Tempur, Orkes Pencil Alis, Sarino)');
   const songArtist = songLists.filter(({ artist }) => artist === inputArtist);
   console.log(songArtist);
 }
 
 // a function to group song based on genres
 function songGenres() {
-  const inputGenre = prompt('Enter name of genre :');
+  const inputGenre = prompt('Enter name of genre : (Dangdut, Pop, Grindcore, Pop Dangdut, Pop Rock)');
   const songGenre = songLists.filter(({ genre }) => genre === inputGenre);
   console.log(songGenre);
 }
@@ -91,13 +106,9 @@ function songGenres() {
 
 // a function to group song to play song less than 1 hour with random artists & genres
 
-let totalDuration = 0;
-let newSongLists = [];
-let maxDuration;
-let totalRealDuration = 0;
-
 function songDuration() {
   maxDuration = prompt('Enter duration of song less than : (in minute)');
+  console.log(`Maximum duration of the new song lists : ${maxDuration} minutes `);
   for (const i of songLists) {
     totalDuration += i.duration;
     if (totalDuration < maxDuration) {
@@ -108,7 +119,7 @@ function songDuration() {
     totalRealDuration = totalDuration;
   }
   console.log(newSongLists);
-  console.log(totalRealDuration);
+  console.log(`Total duration of new song lists : ${totalRealDuration} minutes`);
 }
 
 if (ask) {
