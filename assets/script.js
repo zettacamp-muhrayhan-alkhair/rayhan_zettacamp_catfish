@@ -1,4 +1,4 @@
-let songListss = [
+let songLists = [
   {
     title: 'Dir Due Daeng (Cover Maya - Meggy Z)',
     artist: 'Sarino',
@@ -67,10 +67,10 @@ let songListss = [
   },
 ];
 
-let songLists = [];
-for (let i = 0; i < songListss.length; i++) {
-  songLists.push(songListss[Math.floor(Math.random() * songListss.length)]);
-}
+// let songLists = [];
+// for (let i = 0; i < songListss.length; i++) {
+//   songLists.push(songListss[Math.floor(Math.random() * songListss.length)]);
+// }
 
 let ask = confirm('Do you want to see my list song?');
 let totalDuration = 0;
