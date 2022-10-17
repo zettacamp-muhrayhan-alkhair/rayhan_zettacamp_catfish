@@ -1,7 +1,7 @@
 let firstCase: Array<string | number> = [1, 'data', 3, 'result'];
 let firstFinalResult: string = '';
 
-function firstResult(): any {
+function firstResult(): string {
   for (let i: number = 0; i < firstCase.length; i++) {
     firstFinalResult += firstCase[i];
     firstFinalResult += ' ';
@@ -26,11 +26,11 @@ let finalSecondResult: string = '';
 // console.log(secondResult());
 // console.log(typeof secondResult());
 
-function secondResult(): any {
-  for (let i: number = 0; i < secondCase.length; i++) {
-    finalSecondResult = secondCase.join(' ');
-  }
-  return finalSecondResult;
+function secondResult(): string {
+  //   for (let i: number = 0; i < secondCase.length; i++) {
+  return (finalSecondResult = secondCase.join(' '));
+
+  //   return finalSecondResult;
 }
 
 console.log(secondResult());
