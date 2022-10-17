@@ -1,7 +1,8 @@
-let firstCase: Array<string | number> = [1, 'data', 3, 'result'];
+type combinedType = string | number;
+let firstCase: Array<combinedType> = [1, 'data', 3, 'result'];
 let firstFinalResult: string = '';
 
-function firstResult(): string {
+function firstResult() {
   for (let i: number = 0; i < firstCase.length; i++) {
     firstFinalResult += firstCase[i];
     firstFinalResult += ' ';
@@ -12,25 +13,11 @@ function firstResult(): string {
 console.log(firstResult());
 console.log(typeof firstResult());
 
-let secondCase: Array<string> = ['Bejo', 'has', '4', 'sport', 'car'];
+let secondCase: string[] = ['Bejo', 'has', '4', 'sport', 'car'];
 let finalSecondResult: string = '';
 
-// function secondResult(): any {
-//   for (let i: number = 0; i < secondCase.length; i++) {
-//     finalSecondResult += secondCase[i];
-//     finalSecondResult += ' ';
-//   }
-//   return finalSecondResult;
-// }
-
-// console.log(secondResult());
-// console.log(typeof secondResult());
-
 function secondResult(): string {
-  //   for (let i: number = 0; i < secondCase.length; i++) {
   return (finalSecondResult = secondCase.join(' '));
-
-  //   return finalSecondResult;
 }
 
 console.log(secondResult());
