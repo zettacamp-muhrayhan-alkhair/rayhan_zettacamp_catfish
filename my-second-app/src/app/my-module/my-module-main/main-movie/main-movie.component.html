@@ -1,0 +1,18 @@
+<div class="card" style="width: 18rem">
+  <img class="card-img-top" [src]="movies.img" />
+  <div class="card-body">
+    <h5 class="card-title" [ngClass]="clicked ? 'clicked' : ''">
+      {{ movies.title }}
+    </h5>
+    <p class="card-text">
+      {{ movies.description }}
+    </p>
+    <button
+      class="btn btn-primary"
+      [disabled]="!activeButton"
+      (click)="btnClicked()"
+    >
+      Buy Movie {{ clicked ? "&check;" : "" }}
+    </button>
+  </div>
+</div>
