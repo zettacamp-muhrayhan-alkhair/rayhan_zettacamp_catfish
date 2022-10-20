@@ -1,0 +1,26 @@
+<div class="container">
+  <div>
+    <p class="editya">Add new User</p>
+    <div class="form-group">
+      <label for="">Full Name</label>
+      <input type="text" [(ngModel)]="newFullName" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="">Nickname</label><br />
+      <input type="text" [(ngModel)]="newNickname" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="">Email</label><br />
+      <input type="email" [(ngModel)]="newEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="">Username</label><br />
+      <input type="text" [(ngModel)]="newUsername" class="form-control" />
+    </div>
+    <div class="form-group">
+      <br /><button (click)="onAddNewUser()" class="btn btn-primary">
+        Add User
+      </button>
+    </div>
+  </div>
+</div>

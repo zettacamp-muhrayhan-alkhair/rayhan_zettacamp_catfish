@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem" *ngIf="user">
+  <img
+    class="card-img-top"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Man-and-woman-icon.svg/1200px-Man-and-woman-icon.svg.png"
+  />
+  <div class="card-body">
+    <h3 class="card-title">{{ user.fullname }}</h3>
+    <p>{{ user.nickname }}</p>
+    <p>
+      {{ user.email }}
+    </p>
+    <p>{{ user.username }}</p>
+  </div>
+</div>
