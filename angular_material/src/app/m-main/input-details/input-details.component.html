@@ -1,4 +1,5 @@
-<div class="card" style="width: 18rem" *ngIf="user">
+<!-- <div class="card" style="width: 18rem" *ngIf="user"> -->
+<div class="card" style="width: 18rem">
   <img
     class="card-img-top"
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Man-and-woman-icon.svg/1200px-Man-and-woman-icon.svg.png"
@@ -10,5 +11,6 @@
       {{ user.email }}
     </p>
     <p>{{ user.username }}</p>
+    <button class="btn btn-danger">Remove All User Data</button>
   </div>
 </div>

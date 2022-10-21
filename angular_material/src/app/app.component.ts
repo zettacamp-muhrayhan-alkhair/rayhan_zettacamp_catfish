@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   // title = 'angular_material';
-  userLists: any = [];
+  // @Input() index: any;
+  userLists: {}[] = [];
 
   onUserAdded(userData: {
     userFullName: string;
