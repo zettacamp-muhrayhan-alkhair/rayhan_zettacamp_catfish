@@ -1,0 +1,19 @@
+<mat-card class="example-card" [ngClass]="student.like ? 'liked' : ''">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <img mat-card-avatar [src]="student.img" />
+    </div>
+    <mat-card-title>{{ student.name }}</mat-card-title>
+    <mat-card-subtitle>{{ student.status }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="student.img" />
+  <mat-card-actions>
+    <button mat-button (click)="onLike()">LIKE</button>
+    <button mat-button (click)="onDescription()">DESCRIPTION</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <p *ngIf="student.descBool">
+      {{ student.desc }}
+    </p>
+  </mat-card-content>
+</mat-card>
