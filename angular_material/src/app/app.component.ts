@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   // selectedStudent:
   constructor(private data: DataService) {}
 
-  students: {}[] = [];
+  students: any = [];
   ngOnInit(): void {
     this.students = this.data.students;
     // this.data.selectedStudent$.subscribe((student) => {

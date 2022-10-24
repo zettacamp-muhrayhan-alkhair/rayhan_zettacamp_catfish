@@ -1,0 +1,28 @@
+{
+    "students": [
+      {
+        "name": "aaaa",
+        "status": "active",
+        "img": "https://randompicturegenerator.com/img/people-generator/ga96942021ad2ed4e55531b6cf727aa93224bbed40cbf755155b1cf35e96c17c25c1e276d308b67b31981f143778b93ca_640.jpg",
+        "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit pariatur laborum sapiente amet voluptatum, ea quas blanditiis dolorem sit quaerat in laboriosam minima at harum quibusdam fuga consequuntur non suscipit! Vel aliquam consequatur reprehenderit impedit corrupti eum sequi voluptatibus aperiam, eveniet temporibus harum, unde assumenda quae esse quaerat suscipit iusto!",
+        "descBool": false,
+        "like": false
+      },
+      {
+        "name": "bbbbb",
+        "status": "inactive",
+        "img": "https://randompicturegenerator.com/img/people-generator/gb4612c18d373b8d417f10aa4b359fd5fcd0c238fe9b1a09802c3d28817c9300f3c5c526faef7801f7c6c4333eba122c8_640.jpg",
+        "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit pariatur laborum sapiente amet voluptatum, ea quas blanditiis dolorem sit quaerat in laboriosam minima at harum quibusdam fuga consequuntur non suscipit! Vel aliquam consequatur reprehenderit impedit corrupti eum sequi voluptatibus aperiam, eveniet temporibus harum, unde assumenda quae esse quaerat suscipit iusto!",
+        "descBool": false,
+        "like": false
+      },
+      {
+        "name": "cccc",
+        "status": "inactive",
+        "img": "https://randompicturegenerator.com/img/people-generator/g762ac4dbbd24f82749a7e74c090539736e5774808a8d84909da7c162f78fa65b563e9e186d2a34e7c9261c7c7821dc24_640.jpg",
+        "desc": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit pariatur laborum sapiente amet voluptatum, ea quas blanditiis dolorem sit quaerat in laboriosam minima at harum quibusdam fuga consequuntur non suscipit! Vel aliquam consequatur reprehenderit impedit corrupti eum sequi voluptatibus aperiam, eveniet temporibus harum, unde assumenda quae esse quaerat suscipit iusto!",
+        "descBool": false,
+        "like": false
+      }
+    ]
+  }
