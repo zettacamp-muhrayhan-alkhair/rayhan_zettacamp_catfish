@@ -42,7 +42,7 @@ export class BookManagementService {
     this.selectedBook.next(data);
   }
 
-  resetSelectedBook() {
+  resetSelectedBook(): any {
     this.selectedBook.next(null);
   }
 

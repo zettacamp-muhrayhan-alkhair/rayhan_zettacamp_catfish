@@ -36,6 +36,5 @@ export class BookCardComponent implements OnInit {
     } else {
       this.bookManagementService.setSelectedBook(book);
     }
-    this.selected = !this.selected;
   }
 }
