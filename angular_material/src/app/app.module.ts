@@ -50,6 +50,7 @@ import { MatTableModule } from '@angular/material/table';
 // Component
 import { CardComponent } from './card/card.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, CardComponent, CardDetailsComponent],
@@ -91,7 +92,8 @@ import { CardDetailsComponent } from './card-details/card-details.component';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

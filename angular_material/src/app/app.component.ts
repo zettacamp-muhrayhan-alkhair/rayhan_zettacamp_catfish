@@ -13,9 +13,9 @@ export class AppComponent implements OnInit {
 
   students: any = [];
   ngOnInit(): void {
-    this.students = this.data.students;
-    // this.data.selectedStudent$.subscribe((student) => {
-    //   this.selectedStudent = student;
-    // });
+    this.data.students.subscribe((student) => {
+      this.students = student;
+      console.log(this.students);
+    });
   }
 }
