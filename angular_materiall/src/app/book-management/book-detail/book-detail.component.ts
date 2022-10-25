@@ -19,6 +19,6 @@ export class BookDetailComponent implements OnInit {
     });
   }
   closeDetail() {
-    this.bookManagementService.resetSelectedBOok();
+    this.bookManagementService.resetSelectedBook();
   }
 }

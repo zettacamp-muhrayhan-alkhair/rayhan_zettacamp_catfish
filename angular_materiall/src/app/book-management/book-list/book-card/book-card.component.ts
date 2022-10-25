@@ -32,7 +32,7 @@ export class BookCardComponent implements OnInit {
 
   selectBook(book: Book) {
     if (this.selected) {
-      this.bookManagementService.resetSelectedBOok();
+      this.bookManagementService.resetSelectedBook();
     } else {
       this.bookManagementService.setSelectedBook(book);
     }
