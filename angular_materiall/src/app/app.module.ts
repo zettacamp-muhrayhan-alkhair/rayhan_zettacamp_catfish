@@ -8,6 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Import Angular Material Module
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 
+// Import HTTP CLIENT MODULE
+import { HttpClientModule } from '@angular/common/http';
+
+// Import Working Module
+import { BookManagementModule } from './book-management/book-management.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,6 +21,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    BookManagementModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

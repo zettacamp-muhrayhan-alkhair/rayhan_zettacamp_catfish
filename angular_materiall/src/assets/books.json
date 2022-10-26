@@ -1,0 +1,40 @@
+{
+  "books": [
+    {
+      "_id": "1",
+      "name": "In Search of Lost Time",
+      "author": "Marcel Proust",
+      "publisher": "Grasset and Gallimard",
+      "publishDate": "1913",
+      "img": "https://kbimages1-a.akamaihd.net/0e77a0f9-14f7-4a97-9784-053bc1691e87/1200/1200/False/in-search-of-lost-time-volumes-1-to-7-8.jpg",
+      "desc": "In Search of Lost Time follows the narrator's recollections of childhood and experiences into adulthood in the late 19th-century and early 20th-century high-society France, while reflecting on the loss of time and lack of meaning in the world. The novel began to take shape in 1909."
+    },
+    {
+      "_id": "2",
+      "name": "Ulysses",
+      "author": "James Joyce",
+      "publisher": "Shakespeare and Company",
+      "publishDate": "1922",
+      "img": "https://kbimages1-a.akamaihd.net/e4608a69-8854-488a-aed8-dc6dd2285ead/1200/1200/False/ulysses-16.jpg",
+      "desc": "Ulysses, novel by Irish writer James Joyce, first published in book form in 1922. Stylistically dense and exhilarating, it is generally regarded as a masterpiece and has been the subject of numerous volumes of commentary and analysis. The novel is constructed as a modern parallel to Homer's Odyssey."
+    },
+    {
+      "_id": "3",
+      "name": "Don Quixote",
+      "author": "Miguel de Cervantes",
+      "publisher": "Francisco de Robles",
+      "publishDate": "1605",
+      "img": "https://kbimages1-a.akamaihd.net/392971e9-4f19-4827-a041-3abe4d0e1f54/1200/1200/False/don-quixote-111.jpg",
+      "desc": "Don Quixote is a middle-aged gentleman from the region of La Mancha in central Spain. Obsessed with the chivalrous ideals touted in books he has read, he decides to take up his lance and sword to defend the helpless and destroy the wicked."
+    },
+    {
+      "_id": "4",
+      "name": "One Hundred Years of Solitude",
+      "author": "Gabriel García Márquez",
+      "publisher": "Editorial Sudamericana",
+      "publishDate": "1967",
+      "img": "https://kbimages1-a.akamaihd.net/b1e75ebc-3e99-421a-be6a-b7317a4f670f/1200/1200/False/one-hundred-years-of-solitude-3.jpg",
+      "desc": "One Hundred Years of Solitude is a 1967 novel by Colombian author Gabriel García Márquez that tells the multi-generational story of the Buendía family, whose patriarch, José Arcadio Buendía, founded the fictitious town of Macondo. The novel is often cited as one of the supreme achievements in world literature."
+    }
+  ]
+}
