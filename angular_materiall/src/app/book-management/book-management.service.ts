@@ -46,13 +46,7 @@ export class BookManagementService {
     this.selectedBook.next(null);
   }
 
-  // addBookToData(data: Book) {
-  //   let tempBooks = this.getValuetAllBooksDatas();
-  //   tempBooks.push(data);
-  //   this.setAllBooksDatas(tempBooks);
-  // }
-
-  // resetAllBooksDatas() {
-  //   this.books.next([]);
-  // }
+  getBookById(id: number): Book {
+    return this.getValuetAllBooksDatas().filter((item) => item.id == id)[0];
+  }
 }

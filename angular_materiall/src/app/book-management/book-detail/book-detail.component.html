@@ -1,5 +1,5 @@
-<div>
-  <mat-card class="example-card" *ngIf="selectedBook; else noBookSelected">
+<div *ngIf="selectedBook; else noBookSelected" class="card">
+  <mat-card class="example-card">
     <div class="img-container">
       <img mat-card-image [src]="selectedBook.img" alt="Photo of a Shiba Inu" />
     </div>
@@ -18,8 +18,15 @@
         {{ selectedBook.desc }}
       </p>
     </mat-card-content>
+    <!-- <mat-card-actions align="end">
+      <button mat-raised-button color="warn" (click)="closeDetail()">
+        Close
+      </button>
+    </mat-card-actions> -->
     <mat-card-actions align="end">
-      <button mat-button color="warn" (click)="closeDetail()">Close</button>
+      <button mat-raised-button color="warn" [routerLink]="['/book-list']">
+        Close
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

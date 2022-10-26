@@ -1,24 +1,15 @@
-* {
-  color: #3f51b5;
-}
-
-.noBook {
-  line-height: 150%;
-}
-
-img {
-  width: 36%;
-  margin: 2rem auto;
-  border-radius: 2rem;
-  -webkit-border-radius: 2rem;
-  -moz-border-radius: 2rem;
-  -ms-border-radius: 2rem;
-  -o-border-radius: 2rem;
-  overflow: hidden;
+.card {
+  width: 40%;
+  margin: auto;
 }
 
 .img-container {
-  width: 100%;
+  padding-top: 2rem;
+}
+
+img {
+  width: 70%;
+  margin: 2rem auto;
 }
 
 mat-card-header {

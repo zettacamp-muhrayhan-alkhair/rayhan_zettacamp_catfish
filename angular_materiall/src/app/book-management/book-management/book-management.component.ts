@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-management',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-management.component.css'],
 })
 export class BookManagementComponent implements OnInit {
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSeeList() {
+    this.router.navigate(['/book-list']);
   }
 }

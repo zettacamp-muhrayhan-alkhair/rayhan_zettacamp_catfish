@@ -1,2 +1,19 @@
-<app-book-management></app-book-management>
-
+<div class="container">
+  <div class="navbar">
+    <ul>
+      <a
+        [routerLink]="['/']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ><button mat-button>Home</button></a
+      >
+      <a [routerLink]="['/book-list']" routerLinkActive="active"
+        ><button mat-button>Book List</button></a
+      >
+      <!-- <a [routerLink]="['/book-details']"
+        ><button mat-button>Book Details</button></a
+      > -->
+    </ul>
+  </div>
+  <router-outlet></router-outlet>
+</div>

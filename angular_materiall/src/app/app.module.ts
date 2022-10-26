@@ -12,6 +12,9 @@ import { BookManagementModule } from './book-management/book-management.module';
 // HTTPCLIENTMODULE
 import { HttpClientModule } from '@angular/common/http';
 
+// Router Module
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
 
     // HTTPCLIENT MODULE
     HttpClientModule,
+
+    // Router Module
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

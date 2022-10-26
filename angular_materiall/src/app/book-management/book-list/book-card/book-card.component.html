@@ -3,9 +3,24 @@
     <mat-card-title>{{ book.name }}</mat-card-title>
     <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
     <mat-card-actions align="end">
-      <button mat-button color="primary" (click)="selectBook(book)">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/book-details', book.id]"
+        (click)="selectBook(book)"
+      >
         See Details
       </button>
     </mat-card-actions>
   </mat-card>
 </div>
+<!-- [routerLink]="[
+          '/book-details',
+          book.id,
+          book.name,
+          book.author,
+          book.publisher,
+          book.publishDate,
+          book.img,
+          book.desc
+        ]" -->

@@ -6,6 +6,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCardComponent } from './book-list/book-card/book-card.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     BookManagementComponent,
@@ -13,7 +15,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     BookDetailComponent,
     BookCardComponent,
   ],
-  imports: [CommonModule, AngularMaterialModule],
+  imports: [CommonModule, AngularMaterialModule, RouterModule],
   exports: [
     BookManagementComponent,
     BookListComponent,
