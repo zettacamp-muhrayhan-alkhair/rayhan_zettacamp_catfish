@@ -1,4 +1,5 @@
 <div class="container">
   <h1>List of Users</h1>
-  <app-user-card></app-user-card>
+  <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+  <button (click)="addUser()">Add User</button>
 </div>

@@ -7,6 +7,7 @@ import { UserCardComponent } from './user-list/user-card/user-card.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserCreationComponent,
     UserCardComponent,
   ],
-  imports: [CommonModule, AngularMaterialModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    AngularMaterialModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     UserManagementComponent,
     UserListComponent,

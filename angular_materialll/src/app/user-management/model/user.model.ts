@@ -7,6 +7,6 @@ export interface User {
   gender: string;
   email: string;
   position: string;
-  'marital status': string;
+  'maritalStatus': string;
   addresses: Addresses;
 }
