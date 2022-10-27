@@ -8,6 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Import Angular Material Module
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 
+import { UserManagementModule } from './user-management/user-management.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,6 +19,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    UserManagementModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
