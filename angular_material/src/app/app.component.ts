@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'angular_material';
+<<<<<<< HEAD
   // selectedStudent:
   constructor(private data: DataService) {}
 
@@ -18,4 +19,6 @@ export class AppComponent implements OnInit {
       console.log(this.students);
     });
   }
+=======
+>>>>>>> parent of b6a523d (angular day 5 first task)
 }

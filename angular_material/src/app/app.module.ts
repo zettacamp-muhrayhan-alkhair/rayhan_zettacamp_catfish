@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material Form Controls
@@ -51,11 +52,16 @@ import { MatTableModule } from '@angular/material/table';
 import { CardComponent } from './card/card.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { HttpClientModule } from '@angular/common/http';
+=======
+>>>>>>> parent of b6a523d (angular day 5 first task)
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, CardDetailsComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     AppRoutingModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
@@ -94,8 +100,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatTableModule,
     HttpClientModule
+=======
+    AppRoutingModule
+>>>>>>> parent of b6a523d (angular day 5 first task)
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
