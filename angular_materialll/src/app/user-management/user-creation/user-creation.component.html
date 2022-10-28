@@ -62,24 +62,42 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <form action="" formGroupName="addresses">
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "userForm.address" | translate }}</mat-label>
-      <input matInput formControlName="address" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
-      <input matInput formControlName="zipCode" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "userForm.city" | translate }}</mat-label>
-      <input matInput formControlName="city" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "userForm.country" | translate }}</mat-label>
-      <input matInput formControlName="country" />
-    </mat-form-field>
-  </form>
+  <div formArrayName="addresses">
+    <div
+      *ngFor="let address of addresses.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.address" | translate }}</mat-label>
+          <input matInput formControlName="address" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
+          <input matInput formControlName="zipCode" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.city" | translate }}</mat-label>
+          <input matInput formControlName="city" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.country" | translate }}</mat-label>
+          <input matInput formControlName="country" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="removeAddress(i)">
+          Remove
+        </button>
+      </div>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="addAddresses()"
+    >
+      Add More Addresses
+    </button>
+  </div>
   <button mat-raised-button color="primary">
     {{ "actions.submit" | translate }}
   </button>

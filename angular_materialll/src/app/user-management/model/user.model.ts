@@ -8,5 +8,5 @@ export interface User {
   email: string;
   position: string;
   maritalStatus: string;
-  addresses: Addresses;
+  addresses: Addresses[];
 }

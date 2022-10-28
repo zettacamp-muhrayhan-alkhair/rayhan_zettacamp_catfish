@@ -7,12 +7,14 @@
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
-    "addresses": {
-      "address": "Palangan",
-      "zipCode": 99999,
-      "city": "Sleman",
-      "country": "Malaysia"
-    }
+    "addresses": [
+      {
+        "address": "Palangan",
+        "zipCode": 99999,
+        "city": "Sleman",
+        "country": "Malaysia"
+      }
+    ]
   },
   {
     "_id": "2",
@@ -22,12 +24,14 @@
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
-    "addresses": {
-      "address": "Palangan",
-      "zipCode": 99999,
-      "city": "Sleman",
-      "country": "Malaysia"
-    }
+    "addresses": [
+      {
+        "address": "Palangan",
+        "zipCode": 99999,
+        "city": "Sleman",
+        "country": "Malaysia"
+      }
+    ]
   },
   {
     "_id": "4",
@@ -37,11 +41,13 @@
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
-    "addresses": {
-      "address": "Palangan",
-      "zipCode": 99999,
-      "city": "Sleman",
-      "country": "Malaysia"
-    }
+    "addresses": [
+      {
+        "address": "Palangan",
+        "zipCode": 99999,
+        "city": "Sleman",
+        "country": "Malaysia"
+      }
+    ]
   }
 ]
