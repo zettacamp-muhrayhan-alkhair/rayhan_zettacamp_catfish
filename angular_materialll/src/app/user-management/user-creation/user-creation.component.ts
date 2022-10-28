@@ -64,11 +64,13 @@ export class UserCreationComponent implements OnInit {
       this.userManagementService.updateUser(this.userForm.value);
       // Make form null again
       this.userForm.reset();
+      // ROute to user list
       this.router.navigate(['/user-list']);
     } else {
       this.userManagementService.addUserToData(this.userForm.value);
       // Make form null again
       this.userForm.reset();
+      // ROute to user list
       this.router.navigate(['/user-list']);
     }
   }
