@@ -10,7 +10,11 @@
     "address": "Alamat",
     "zipCode": "Kode Pos",
     "city": "Kota",
-    "country": "Negara"
+    "country": "Negara",
+    "male": "Laki-laki",
+    "female": "Perempuan",
+    "married": "Menikah",
+    "single": "Lajang"
   },
   "actions": {
     "submit": "Kirim"

@@ -32,7 +32,7 @@ export class UserCreationComponent implements OnInit {
 
   isEdit: boolean = false;
 
-  selectedLang = 'en';
+  selectedLang: any = null;
 
   constructor(
     private userManagementService: UserManagementService,
@@ -81,6 +81,7 @@ export class UserCreationComponent implements OnInit {
   }
 
   setLanguage(lang: string) {
+    this.selectedLang = lang;
     this.translateService.use(lang);
   }
 

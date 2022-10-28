@@ -10,7 +10,11 @@
     "address": "Address",
     "zipCode": "Zip Code",
     "city": "City",
-    "country": "Country"
+    "country": "Country",
+    "male": "Male",
+    "female": "Female",
+    "married": "Married",
+    "single": "Single"
   },
   "actions": {
     "submit": "Submit"
