@@ -1,10 +1,24 @@
+<div class="language">
+  <mat-form-field appearance="outline">
+    <mat-label>Language</mat-label>
+    <mat-select
+      [(value)]="selectedLang"
+      #lang
+      (valueChange)="setLanguage(lang.value)"
+    >
+      <mat-option value="en">English</mat-option>
+      <mat-option value="id">Indonesian</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
-    <mat-label>ID Number</mat-label>
+    <mat-label>{{ "terjemahan._id" | translate }}</mat-label>
     <input matInput formControlName="_id" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
+    <mat-label>{{ "userForm.name" | translate }}</mat-label>
     <input matInput formControlName="name" />
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -42,7 +56,7 @@
   </mat-form-field>
   <form action="" formGroupName="addresses">
     <mat-form-field appearance="fill">
-      <mat-label>Address</mat-label>
+      <mat-label>{{ "terjemahan.address" | translate }}</mat-label>
       <input matInput formControlName="address" />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -58,5 +72,6 @@
       <input matInput formControlName="country" />
     </mat-form-field>
   </form>
-  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="primary">Submit</button>
+  <!-- <button mat-raised-button color="primary" (click)="onReset()">Reset</button> -->
 </form>

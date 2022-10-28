@@ -1,0 +1,18 @@
+{
+  "terjemahan": {
+    "_id": "Nomor ID",
+    "name": "Nama",
+    "age": "Umur",
+    "gender": "Jenis Kelamin",
+    "email": "Surel",
+    "position": "Posisi",
+    "maritalStatus": "Status Perkawinan",
+    "address": "Alamat",
+    "zipCode": "Kode Pos",
+    "city": "Kota",
+    "country": "Negara"
+  },
+  "actions": {
+    "submit": "Sumbit"
+  }
+}

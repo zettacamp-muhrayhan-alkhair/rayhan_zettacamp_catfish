@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../model/user.model';
 import { UserManagementService } from '../../user-management.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { UserManagementService } from '../../user-management.service';
   styleUrls: ['./user-card.component.css'],
 })
 export class UserCardComponent implements OnInit {
-  // usersData: any;
   @Input() user: any;
 
   constructor(

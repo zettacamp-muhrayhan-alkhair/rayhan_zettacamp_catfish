@@ -9,7 +9,7 @@ import { UserManagementService } from '../user-management.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  users: any;
+  users: User[] = [];
   constructor(
     private router: Router,
     private userManagementService: UserManagementService
@@ -19,7 +19,6 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     this.userManagementService.users$.subscribe((data) => {
       this.users = data;
-      console.log(this.users);
     });
   }
 

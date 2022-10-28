@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserManagementService } from '../user-management.service';
 import { first } from 'rxjs';
+
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-creation',
@@ -30,9 +32,13 @@ export class UserCreationComponent implements OnInit {
 
   isEdit: boolean = false;
 
+  selectedLang = 'en';
+
   constructor(
     private userManagementService: UserManagementService,
-    private router: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private router: Router,
+    public translateService: TranslateService
   ) {
     // if (this.router.snapshot.params['id']) {
     //   this._id = this.router.snapshot.params['id'];
@@ -42,7 +48,7 @@ export class UserCreationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.router.snapshot.queryParamMap.get('userId');
+    const id = this.activeRouter.snapshot.queryParamMap.get('userId');
     this.isEdit = id != null;
     console.log(this.isEdit);
 
@@ -65,12 +71,22 @@ export class UserCreationComponent implements OnInit {
       this.userManagementService.updateUser(this.userForm.value);
       // Make form null again
       this.userForm.reset();
+      this.router.navigate(['/user-list']);
     } else {
       this.userManagementService.addUserToData(this.userForm.value);
       // Make form null again
       this.userForm.reset();
+      this.router.navigate(['/user-list']);
     }
   }
+
+  setLanguage(lang: string) {
+    this.translateService.use(lang);
+  }
+
+  // onReset() {
+  //   this.userForm.reset();
+  // }
   // onSubmit() {
   //   if (this.router.snapshot.params['id']) {
   //     // this.userManagementService.editUser(this._id, this.userForm.value)
