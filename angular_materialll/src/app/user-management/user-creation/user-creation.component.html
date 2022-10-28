@@ -55,10 +55,10 @@
     <mat-label>{{ "userForm.maritalStatus" | translate }}</mat-label>
     <mat-select formControlName="maritalStatus">
       <mat-option value="Married">{{
-        "userForm.married" | translate
+        "marriage.married" | translate
       }}</mat-option>
       <mat-option value="Single">{{
-        "userForm.single" | translate
+        "marriage.single" | translate
       }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -84,7 +84,12 @@
           <mat-label>{{ "userForm.country" | translate }}</mat-label>
           <input matInput formControlName="country" />
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="removeAddress(i)">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="removeAddress(i)"
+          *ngIf="addresses.length > 1"
+        >
           Remove
         </button>
       </div>

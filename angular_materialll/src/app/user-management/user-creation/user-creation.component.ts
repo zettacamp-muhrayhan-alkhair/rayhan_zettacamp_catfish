@@ -12,7 +12,17 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./user-creation.component.css'],
 })
 export class UserCreationComponent implements OnInit {
-  userForm: any;
+  // userForm: any;
+  userForm: any = this.fb.group({
+    _id: this.fb.control(null),
+    name: this.fb.control(null),
+    age: this.fb.control(null),
+    gender: this.fb.control(null),
+    email: this.fb.control(null),
+    position: this.fb.control(null),
+    maritalStatus: this.fb.control(null),
+    addresses: this.fb.array([]),
+  });
 
   constructor(
     private userManagementService: UserManagementService,
@@ -31,26 +41,18 @@ export class UserCreationComponent implements OnInit {
     this.isEdit = id != null;
 
     if (this.isEdit) {
-      this.userManagementService.users
+      this.userManagementService.users$
         .pipe(first((items) => items.length !== 0))
         .subscribe((items) => {
-          const item = items.find((items) => items._id === id);
-          this.setFormValues(item);
+          const item: any = items.find((items) => items._id === id);
+          for (let i = 0; i < item.addresses.length; i++) {
+            this.addAddresses();
+          }
+          this.userForm.patchValue(item);
         });
+    } else {
+      this.addAddresses();
     }
-
-    this.userForm = this.fb.group({
-      _id: this.fb.control(null),
-      name: this.fb.control(null),
-      age: this.fb.control(null),
-      gender: this.fb.control(null),
-      email: this.fb.control(null),
-      position: this.fb.control(null),
-      maritalStatus: this.fb.control(null),
-      addresses: this.fb.array([]),
-    });
-
-    this.addAddresses();
   }
 
   setFormValues(user: any) {

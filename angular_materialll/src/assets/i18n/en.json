@@ -12,11 +12,13 @@
     "city": "City",
     "country": "Country",
     "male": "Male",
-    "female": "Female",
-    "married": "Married",
-    "single": "Single"
+    "female": "Female"
   },
   "actions": {
     "submit": "Submit"
+  },
+  "marriage": {
+    "married": "Married",
+    "single": "Single"
   }
 }

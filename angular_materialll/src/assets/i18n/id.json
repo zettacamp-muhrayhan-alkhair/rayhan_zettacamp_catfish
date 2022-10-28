@@ -12,11 +12,13 @@
     "city": "Kota",
     "country": "Negara",
     "male": "Laki-laki",
-    "female": "Perempuan",
-    "married": "Menikah",
-    "single": "Lajang"
+    "female": "Perempuan"
   },
   "actions": {
     "submit": "Kirim"
+  },
+  "marriage": {
+    "married": "Married",
+    "single": "Single"
   }
 }
