@@ -14,7 +14,7 @@
 
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
-    <mat-label>{{ "terjemahan._id" | translate }}</mat-label>
+    <mat-label>{{ "userForm._id" | translate }}</mat-label>
     <input matInput formControlName="_id" />
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -22,20 +22,20 @@
     <input matInput formControlName="name" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Age</mat-label>
+    <mat-label>{{ "userForm.age" | translate }}</mat-label>
     <input matInput formControlName="age" />
   </mat-form-field>
   <mat-radio-group aria-label="Select an option" formControlName="gender">
-    <mat-label>Gender</mat-label>
+    <mat-label>{{ "userForm.gender" | translate }}</mat-label>
     <mat-radio-button value="Male">Male</mat-radio-button>
     <mat-radio-button value="Female">Female</mat-radio-button>
   </mat-radio-group>
   <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
+    <mat-label>{{ "userForm.email" | translate }}</mat-label>
     <input matInput formControlName="email" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Position</mat-label>
+    <mat-label>{{ "userForm.position" | translate }}</mat-label>
     <mat-select formControlName="position">
       <mat-option value="Frontend Developer">Frontend Developer</mat-option>
       <mat-option value="Backend Developer">Backend Developer</mat-option>
@@ -48,7 +48,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Marital Status</mat-label>
+    <mat-label>{{ "userForm.maritalStatus" | translate }}</mat-label>
     <mat-select formControlName="maritalStatus">
       <mat-option value="Married">Married</mat-option>
       <mat-option value="Single">Single</mat-option>
@@ -56,22 +56,24 @@
   </mat-form-field>
   <form action="" formGroupName="addresses">
     <mat-form-field appearance="fill">
-      <mat-label>{{ "terjemahan.address" | translate }}</mat-label>
+      <mat-label>{{ "userForm.address" | translate }}</mat-label>
       <input matInput formControlName="address" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Zip Code</mat-label>
+      <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
       <input matInput formControlName="zipCode" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>City</mat-label>
+      <mat-label>{{ "userForm.city" | translate }}</mat-label>
       <input matInput formControlName="city" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Country</mat-label>
+      <mat-label>{{ "userForm.country" | translate }}</mat-label>
       <input matInput formControlName="country" />
     </mat-form-field>
   </form>
-  <button mat-raised-button color="primary">Submit</button>
+  <button mat-raised-button color="primary">
+    {{ "userForm.submit" | translate }}
+  </button>
   <!-- <button mat-raised-button color="primary" (click)="onReset()">Reset</button> -->
 </form>

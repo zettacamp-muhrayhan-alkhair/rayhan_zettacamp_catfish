@@ -1,5 +1,5 @@
 {
-  "terjemahan": {
+  "userForm": {
     "_id": "Nomor ID",
     "name": "Nama",
     "age": "Umur",
@@ -13,6 +13,6 @@
     "country": "Negara"
   },
   "actions": {
-    "submit": "Sumbit"
+    "submit": "Kirim"
   }
 }
