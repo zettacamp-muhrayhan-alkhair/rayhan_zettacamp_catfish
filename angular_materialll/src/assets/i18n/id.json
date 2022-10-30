@@ -11,12 +11,15 @@
     "zipCode": "Kode Pos",
     "city": "Kota",
     "country": "Negara",
-    "male": "Laki-laki",
-    "female": "Perempuan",
+
     "married": "Menikah",
     "single": "Lajang"
   },
   "actions": {
     "submit": "Kirim"
+  },
+  "gender": {
+    "male": "Laki-laki",
+    "female": "Perempuan"
   }
 }

@@ -48,7 +48,7 @@ export class UserCreationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.activeRouter.snapshot.queryParamMap.get('userId');
+    const id = this.activeRouter.snapshot.queryParamMap.get('id');
     this.isEdit = id != null;
     console.log(this.isEdit);
 

@@ -18,5 +18,9 @@
   },
   "actions": {
     "submit": "Submit"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
   }
 }

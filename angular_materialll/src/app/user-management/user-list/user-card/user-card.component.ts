@@ -15,16 +15,11 @@ export class UserCardComponent implements OnInit {
     private router: Router
   ) {}
 
-  // ngOnInit(): void {
-  //   this.userManagementService.users$.subscribe((users) => {
-  //     this.usersData = users;
-  //   });
-  // }
   ngOnInit(): void {}
 
   onEditUser() {
     this.router.navigate(['/user-form'], {
-      queryParams: { userId: this.user._id },
+      queryParams: { id: this.user._id },
     });
   }
 }
