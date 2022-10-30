@@ -6,6 +6,8 @@ import { first } from 'rxjs';
 
 import { TranslateService } from '@ngx-translate/core';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-user-creation',
   templateUrl: './user-creation.component.html',
@@ -37,7 +39,7 @@ export class UserCreationComponent implements OnInit {
   selectedLang: any = null;
 
   ngOnInit(): void {
-    const id = this.activeRouter.snapshot.queryParamMap.get('userId');
+    const id = this.activeRouter.snapshot.queryParamMap.get('id');
     this.isEdit = id != null;
 
     if (this.isEdit) {
@@ -62,12 +64,14 @@ export class UserCreationComponent implements OnInit {
   onSubmit() {
     if (this.isEdit) {
       this.userManagementService.updateUser(this.userForm.value);
+      Swal.fire('Success', 'dnisadisadoias', 'warning');
       // Make form null again
       this.userForm.reset();
       // ROute to user list
       this.router.navigate(['/user-list']);
     } else {
       this.userManagementService.addUserToData(this.userForm.value);
+      Swal.fire('Success', 'dnisadisadoias', 'success');
       // Make form null again
       this.userForm.reset();
       // ROute to user list

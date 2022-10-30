@@ -2,51 +2,51 @@
   {
     "_id": "1",
     "name": "hanhan",
-    "age": 20,
+    "age": 21,
     "gender": "Male",
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
     "addresses": [
       {
-        "address": "Palangan",
+        "address": "Bawah Patung Gunung Hokage",
         "zipCode": 99999,
-        "city": "Sleman",
-        "country": "Malaysia"
+        "city": "Distrik 12",
+        "country": "Konoha"
       }
     ]
   },
   {
     "_id": "2",
-    "name": "sadasd",
-    "age": 20,
+    "name": "enigma",
+    "age": 21,
     "gender": "Male",
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
     "addresses": [
       {
-        "address": "Palangan",
+        "address": "Area Perang Dunia ke 2",
         "zipCode": 99999,
-        "city": "Sleman",
-        "country": "Malaysia"
+        "city": "Manchester",
+        "country": "Inggris"
       }
     ]
   },
   {
-    "_id": "4",
-    "name": "asfadgsf",
-    "age": 20,
+    "_id": "3",
+    "name": "Rehan Baiq",
+    "age": 21,
     "gender": "Male",
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
     "addresses": [
       {
-        "address": "Palangan",
+        "address": "Begitu Sulit",
         "zipCode": 99999,
-        "city": "Sleman",
-        "country": "Malaysia"
+        "city": "Baik",
+        "country": "Indonesia"
       }
     ]
   }

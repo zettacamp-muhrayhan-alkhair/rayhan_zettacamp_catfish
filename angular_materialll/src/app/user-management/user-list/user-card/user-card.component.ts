@@ -24,7 +24,7 @@ export class UserCardComponent implements OnInit {
 
   onEditUser() {
     this.router.navigate(['/user-form'], {
-      queryParams: { userId: this.user._id },
+      queryParams: { id: this.user._id },
     });
   }
 }
