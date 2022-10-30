@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormArray,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserManagementService } from '../user-management.service';
 import { first } from 'rxjs';
@@ -16,13 +22,13 @@ import Swal from 'sweetalert2';
 export class UserCreationComponent implements OnInit {
   // userForm: any;
   userForm: any = this.fb.group({
-    _id: this.fb.control(null),
-    name: this.fb.control(null),
-    age: this.fb.control(null),
-    gender: this.fb.control(null),
-    email: this.fb.control(null),
-    position: this.fb.control(null),
-    maritalStatus: this.fb.control(null),
+    _id: this.fb.control(null, Validators.required),
+    name: this.fb.control(null, Validators.required),
+    age: this.fb.control(null, Validators.required),
+    gender: this.fb.control(null, Validators.required),
+    email: this.fb.control(null, [Validators.required, Validators.email]),
+    position: this.fb.control(null, Validators.required),
+    maritalStatus: this.fb.control(null, Validators.required),
     addresses: this.fb.array([]),
   });
 
@@ -64,14 +70,14 @@ export class UserCreationComponent implements OnInit {
   onSubmit() {
     if (this.isEdit) {
       this.userManagementService.updateUser(this.userForm.value);
-      Swal.fire('Success', 'dnisadisadoias', 'warning');
+      Swal.fire('User Updated', 'You just updated the user', 'success');
       // Make form null again
       this.userForm.reset();
       // ROute to user list
       this.router.navigate(['/user-list']);
     } else {
       this.userManagementService.addUserToData(this.userForm.value);
-      Swal.fire('Success', 'dnisadisadoias', 'success');
+      Swal.fire('User Added', 'You just added new user', 'success');
       // Make form null again
       this.userForm.reset();
       // ROute to user list
@@ -90,10 +96,10 @@ export class UserCreationComponent implements OnInit {
 
   newAddresses(): FormGroup {
     return this.fb.group({
-      address: '',
-      zipCode: '',
-      city: '',
-      country: '',
+      address: this.fb.control(null, Validators.required),
+      zipCode: this.fb.control(null, Validators.required),
+      city: this.fb.control(null, Validators.required),
+      country: this.fb.control(null, Validators.required),
     });
   }
 
