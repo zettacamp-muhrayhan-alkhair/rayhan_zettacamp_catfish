@@ -19,6 +19,11 @@
         <mat-form-field appearance="fill">
           <mat-label>{{ "userForm._id" | translate }}</mat-label>
           <input matInput formControlName="_id" />
+          <mat-error
+            *ngIf="userForm.get('_id').invalid && userForm.get('_id').touched"
+          >
+            Please input valid <strong>ID</strong>
+          </mat-error>
         </mat-form-field>
         <!-- <p
           class="err"
@@ -31,18 +36,22 @@
         <mat-form-field appearance="fill">
           <mat-label>{{ "userForm.name" | translate }}</mat-label>
           <input matInput formControlName="name" />
+          <mat-error
+            *ngIf="userForm.get('name').invalid && userForm.get('name').touched"
+          >
+            Please input valid <strong>name</strong>
+          </mat-error>
         </mat-form-field>
-        <!-- <p
-          class="err"
-          *ngIf="!userForm.get('name').valid && userForm.get('name').touched"
-        >
-          Please enter a valid Name!
-        </p> -->
       </div>
       <div class="wrapper">
         <mat-form-field appearance="fill">
           <mat-label>{{ "userForm.age" | translate }}</mat-label>
           <input matInput formControlName="age" />
+          <mat-error
+            *ngIf="userForm.get('age').invalid && userForm.get('age').touched"
+          >
+            Please input valid <strong>age</strong>
+          </mat-error>
         </mat-form-field>
         <!-- <p
           class="err"
@@ -66,6 +75,13 @@
         <mat-form-field appearance="fill">
           <mat-label>{{ "userForm.email" | translate }}</mat-label>
           <input matInput formControlName="email" />
+          <mat-error
+            *ngIf="
+              userForm.get('email').invalid && userForm.get('email').touched
+            "
+          >
+            Please input valid <strong>email</strong>
+          </mat-error>
         </mat-form-field>
         <!-- <p
           class="err"
@@ -115,6 +131,14 @@
                 <mat-form-field appearance="fill">
                   <mat-label>{{ "userForm.address" | translate }}</mat-label>
                   <input matInput formControlName="address" />
+                  <!-- <mat-error
+                    *ngIf="
+                      userForm.get('address').invalid &&
+                      userForm.get('address').touched
+                    "
+                  >
+                    Please input valid <strong>age</strong>
+                  </mat-error> -->
                 </mat-form-field>
               </div>
               <div class="wrapper">

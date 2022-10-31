@@ -70,8 +70,7 @@ export class UserCreationComponent implements OnInit {
     this.userForm.get('name').valueChanges.subscribe((inputName: any) => {
       const specialChar = /[^a-z|\s]/i;
 
-      let finalName: any = inputName;
-      finalName = finalName.replace(specialChar, '');
+      let finalName = inputName.replace(specialChar, '');
       this.userForm.get('name').patchValue(finalName, { emitEvent: false });
     });
   }
