@@ -1,110 +1,172 @@
-<div class="language">
-  <mat-form-field appearance="outline">
-    <mat-label>Language</mat-label>
-    <mat-select
-      [(value)]="selectedLang"
-      #lang
-      (valueChange)="setLanguage(lang.value)"
-    >
-      <mat-option value="en">English</mat-option>
-      <mat-option value="id">Indonesian</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>{{ "userForm._id" | translate }}</mat-label>
-    <input matInput formControlName="_id" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ "userForm.name" | translate }}</mat-label>
-    <input matInput formControlName="name" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ "userForm.age" | translate }}</mat-label>
-    <input matInput formControlName="age" />
-  </mat-form-field>
-  <mat-radio-group aria-label="Select an option" formControlName="gender">
-    <mat-label>{{ "userForm.gender" | translate }}</mat-label>
-    <mat-radio-button value="Male">{{
-      "userForm.male" | translate
-    }}</mat-radio-button>
-    <mat-radio-button value="Female">{{
-      "userForm.female" | translate
-    }}</mat-radio-button>
-  </mat-radio-group>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ "userForm.email" | translate }}</mat-label>
-    <input matInput formControlName="email" />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ "userForm.position" | translate }}</mat-label>
-    <mat-select formControlName="position">
-      <mat-option value="Frontend Developer">Frontend Developer</mat-option>
-      <mat-option value="Backend Developer">Backend Developer</mat-option>
-      <mat-option value="Mobile Developer">Mobile Developer</mat-option>
-      <mat-option value="Quality Assurance">Quality Assurance</mat-option>
-      <mat-option value="Data Scientist">Data Scientist</mat-option>
-      <mat-option value="UI Design">UI Design</mat-option>
-      <mat-option value="UX Researcher">UX Researcher</mat-option>
-      <mat-option value="IT Support">IT Support</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ "userForm.maritalStatus" | translate }}</mat-label>
-    <mat-select formControlName="maritalStatus">
-      <mat-option value="Married">{{
-        "marriage.married" | translate
-      }}</mat-option>
-      <mat-option value="Single">{{
-        "marriage.single" | translate
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div formArrayName="addresses">
-    <div
-      *ngFor="let address of addresses.controls; let i = index"
-      [formGroupName]="i"
-    >
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>{{ "userForm.address" | translate }}</mat-label>
-          <input matInput formControlName="address" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
-          <input matInput formControlName="zipCode" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>{{ "userForm.city" | translate }}</mat-label>
-          <input matInput formControlName="city" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>{{ "userForm.country" | translate }}</mat-label>
-          <input matInput formControlName="country" />
-        </mat-form-field>
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="removeAddress(i)"
-          *ngIf="addresses.length > 1"
-        >
-          Remove
-        </button>
-      </div>
-    </div>
-    <button
-      mat-raised-button
-      color="primary"
-      type="button"
-      (click)="addAddresses()"
-    >
-      Add More Addresses
-    </button>
+<div class="container">
+  <div class="langContainer">
+    <mat-form-field appearance="outline">
+      <mat-label>Language</mat-label>
+      <mat-select
+        [(value)]="selectedLang"
+        #lang
+        (valueChange)="setLanguage(lang.value)"
+      >
+        <mat-option value="en">English</mat-option>
+        <mat-option value="id">Indonesian</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <button mat-raised-button color="primary">
-    {{ "actions.submit" | translate }}
-  </button>
-  <!-- <button mat-raised-button color="primary" (click)="onReset()">Reset</button> -->
-</form>
+
+  <div class="formContainer">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm._id" | translate }}</mat-label>
+          <input matInput formControlName="_id" />
+        </mat-form-field>
+        <!-- <p
+          class="err"
+          *ngIf="!userForm.get('_id').valid && userForm.get('_id').touched"
+        >
+          Please enter a valid ID!
+        </p> -->
+      </div>
+      <div class="wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.name" | translate }}</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+        <!-- <p
+          class="err"
+          *ngIf="!userForm.get('name').valid && userForm.get('name').touched"
+        >
+          Please enter a valid Name!
+        </p> -->
+      </div>
+      <div class="wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.age" | translate }}</mat-label>
+          <input matInput formControlName="age" />
+        </mat-form-field>
+        <!-- <p
+          class="err"
+          *ngIf="!userForm.get('age').valid && userForm.get('age').touched"
+        >
+          Please enter a valid Age!
+        </p> -->
+      </div>
+      <div class="wrapper">
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+          <mat-label>{{ "userForm.gender" | translate }}</mat-label>
+          <mat-radio-button value="Male">{{
+            "userForm.male" | translate
+          }}</mat-radio-button>
+          <mat-radio-button value="Female">{{
+            "userForm.female" | translate
+          }}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.email" | translate }}</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+        <!-- <p
+          class="err"
+          *ngIf="!userForm.get('email').valid && userForm.get('email').touched"
+        >
+          Please enter a valid Email!
+        </p> -->
+      </div>
+      <div class="wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.position" | translate }}</mat-label>
+          <mat-select formControlName="position">
+            <mat-option value="Frontend Developer"
+              >Frontend Developer</mat-option
+            >
+            <mat-option value="Backend Developer">Backend Developer</mat-option>
+            <mat-option value="Mobile Developer">Mobile Developer</mat-option>
+            <mat-option value="Quality Assurance">Quality Assurance</mat-option>
+            <mat-option value="Data Scientist">Data Scientist</mat-option>
+            <mat-option value="UI Design">UI Design</mat-option>
+            <mat-option value="UX Researcher">UX Researcher</mat-option>
+            <mat-option value="IT Support">IT Support</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "userForm.maritalStatus" | translate }}</mat-label>
+          <mat-select formControlName="maritalStatus">
+            <mat-option value="Married">{{
+              "marriage.married" | translate
+            }}</mat-option>
+            <mat-option value="Single">{{
+              "marriage.single" | translate
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="addressWrapper">
+        <div formArrayName="addresses">
+          <div
+            *ngFor="let address of addresses.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div>
+              <div class="wrapper">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ "userForm.address" | translate }}</mat-label>
+                  <input matInput formControlName="address" />
+                </mat-form-field>
+              </div>
+              <div class="wrapper">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
+                  <input matInput formControlName="zipCode" />
+                </mat-form-field>
+              </div>
+              <div class="wrapper">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ "userForm.city" | translate }}</mat-label>
+                  <input matInput formControlName="city" />
+                </mat-form-field>
+              </div>
+              <div class="wrapper">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ "userForm.country" | translate }}</mat-label>
+                  <input matInput formControlName="country" />
+                </mat-form-field>
+              </div>
+              <div class="wrapper">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="removeAddress(i)"
+                  *ngIf="addresses.length > 1"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="wrapper">
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              (click)="addAddresses()"
+            >
+              Add More Addresses
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <button mat-raised-button color="primary">
+          {{ "actions.submit" | translate }}
+        </button>
+        <div *ngIf="userForm.invalid && userForm.touched">
+          Please enter a valid Data
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
