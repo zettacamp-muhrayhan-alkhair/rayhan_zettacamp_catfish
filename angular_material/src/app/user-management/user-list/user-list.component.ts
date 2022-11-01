@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { UserManagementService } from '../user-management.service';
@@ -10,6 +10,7 @@ import { UserManagementService } from '../user-management.service';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
+  @Input() filteredName = '';
   constructor(
     private router: Router,
     private userManagementService: UserManagementService

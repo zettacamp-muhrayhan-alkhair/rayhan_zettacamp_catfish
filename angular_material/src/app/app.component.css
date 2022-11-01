@@ -1,0 +1,22 @@
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  border-bottom: 2px solid #e3e3e3;
+}
+
+.navbar button {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.navbar .btn {
+  margin-right: 2rem;
+}
+
+.navbar .logo {
+  margin-left: 2rem;
+}

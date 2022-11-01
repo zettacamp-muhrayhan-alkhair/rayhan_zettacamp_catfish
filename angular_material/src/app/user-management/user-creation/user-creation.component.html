@@ -25,12 +25,6 @@
             Please input valid <strong>ID</strong>
           </mat-error>
         </mat-form-field>
-        <!-- <p
-          class="err"
-          *ngIf="!userForm.get('_id').valid && userForm.get('_id').touched"
-        >
-          Please enter a valid ID!
-        </p> -->
       </div>
       <div class="wrapper">
         <mat-form-field appearance="fill">
@@ -53,12 +47,6 @@
             Please input valid <strong>age</strong>
           </mat-error>
         </mat-form-field>
-        <!-- <p
-          class="err"
-          *ngIf="!userForm.get('age').valid && userForm.get('age').touched"
-        >
-          Please enter a valid Age!
-        </p> -->
       </div>
       <div class="wrapper">
         <mat-radio-group aria-label="Select an option" formControlName="gender">
@@ -83,12 +71,6 @@
             Please input valid <strong>email</strong>
           </mat-error>
         </mat-form-field>
-        <!-- <p
-          class="err"
-          *ngIf="!userForm.get('email').valid && userForm.get('email').touched"
-        >
-          Please enter a valid Email!
-        </p> -->
       </div>
       <div class="wrapper">
         <mat-form-field appearance="fill">
@@ -131,14 +113,6 @@
                 <mat-form-field appearance="fill">
                   <mat-label>{{ "userForm.address" | translate }}</mat-label>
                   <input matInput formControlName="address" />
-                  <!-- <mat-error
-                    *ngIf="
-                      userForm.get('address').invalid &&
-                      userForm.get('address').touched
-                    "
-                  >
-                    Please input valid <strong>age</strong>
-                  </mat-error> -->
                 </mat-form-field>
               </div>
               <div class="wrapper">

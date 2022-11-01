@@ -1,7 +1,20 @@
+<h1>List of Users</h1>
 <div class="container">
-  <h1>List of Users</h1>
-  <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
-  <button mat-raised-button color="primary" (click)="addUser()">
-    Add User
-  </button>
+  <div class="filer">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Searching ...</mat-label>
+      <input matInput placeholder="hanhan" [(ngModel)]="filteredName" />
+    </mat-form-field>
+  </div>
+  <div class="listContainer">
+    <app-user-card
+      *ngFor="let user of users | filter: filteredName"
+      [user]="user"
+    ></app-user-card>
+  </div>
+  <div class="button">
+    <button mat-raised-button color="primary" (click)="addUser()">
+      Add User
+    </button>
+  </div>
 </div>

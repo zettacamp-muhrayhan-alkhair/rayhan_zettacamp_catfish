@@ -1,7 +1,7 @@
 [
   {
     "_id": "1",
-    "name": "hanhan",
+    "name": "HáNhan",
     "age": 21,
     "gender": "Male",
     "email": "rayhan.khair@zettacamp.pro",
@@ -18,9 +18,9 @@
   },
   {
     "_id": "2",
-    "name": "enigma",
+    "name": "enIGma",
     "age": 21,
-    "gender": "Male",
+    "gender": "Female",
     "email": "rayhan.khair@zettacamp.pro",
     "position": "Frontend Developer",
     "maritalStatus": "Single",
@@ -47,6 +47,40 @@
         "zipCode": 99999,
         "city": "Baik",
         "country": "Indonesia"
+      }
+    ]
+  },
+  {
+    "_id": "4",
+    "name": "Arya Purnama",
+    "age": 26,
+    "gender": "Female",
+    "email": "arya.purnama@zettacamp.pro",
+    "position": "Mobile Developer",
+    "maritalStatus": "Married",
+    "addresses": [
+      {
+        "address": "Rumah",
+        "zipCode": 99999,
+        "city": "Kota",
+        "country": "Negara"
+      }
+    ]
+  },
+  {
+    "_id": "5",
+    "name": "Crème Brûlée",
+    "age": 26,
+    "gender": "Female",
+    "email": "arya.purnama@zettacamp.pro",
+    "position": "Mobile Developer",
+    "maritalStatus": "Married",
+    "addresses": [
+      {
+        "address": "Rumah",
+        "zipCode": 99999,
+        "city": "Kota",
+        "country": "Negara"
       }
     ]
   }

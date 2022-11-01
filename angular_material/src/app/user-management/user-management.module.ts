@@ -12,6 +12,11 @@ import { AppRoutingModule } from '../app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+
+import { FormsModule } from '@angular/forms';
+import { ExtendPipe } from './pipes/extend.pipe';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -23,14 +28,18 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     UserListComponent,
     UserCreationComponent,
     UserCardComponent,
+    ShortenPipe,
+    FilterPipe,
+    ExtendPipe,
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    FormsModule,
 
-    // NgxJdenticonModule
+    // NgxidenticonModule
 
     TranslateModule.forRoot({
       defaultLanguage: 'en',

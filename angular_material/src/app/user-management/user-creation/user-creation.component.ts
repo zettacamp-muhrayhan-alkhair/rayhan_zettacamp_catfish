@@ -20,10 +20,7 @@ export class UserCreationComponent implements OnInit {
       Validators.required,
       Validators.pattern('^[0-9]+$'),
     ]),
-    name: this.fb.control(null, [
-      Validators.required,
-      Validators.pattern('^[a-zA-Z]+$'),
-    ]),
+    name: this.fb.control(null, [Validators.required]),
     age: this.fb.control(null, [
       Validators.required,
       Validators.min(12),

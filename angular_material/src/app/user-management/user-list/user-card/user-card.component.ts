@@ -13,7 +13,8 @@ export class UserCardComponent implements OnInit {
   constructor(
     private userManagementService: UserManagementService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   // ngOnInit(): void {
   //   this.userManagementService.users$.subscribe((users) => {

@@ -1,8 +1,13 @@
-<div>
-  <button mat-button [routerLink]="['']">Home</button>
-  <button mat-button [routerLink]="['user-list']">User List</button>
-  <button mat-button [routerLink]="['user-form']">Form User</button>
+<div class="navbar">
+  <div class="logo">
+    <button mat-button color="primary" [routerLink]="['']">enigma</button>
+  </div>
+  <div class="btn">
+    <button mat-button color="primary" [routerLink]="['']">Home</button>
+    <button mat-button color="primary" [routerLink]="['user-list']">User List</button>
+    <button mat-button color="primary" [routerLink]="['user-form']">Form User</button>
+  </div>
 </div>
-<div>
+<div class="body">
   <router-outlet></router-outlet>
 </div>
