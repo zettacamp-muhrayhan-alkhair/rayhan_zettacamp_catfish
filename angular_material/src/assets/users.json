@@ -83,5 +83,22 @@
         "country": "Negara"
       }
     ]
+  },
+  {
+    "_id": "6",
+    "name": "Muh. Rayhan",
+    "age": 20,
+    "gender": "Male",
+    "email": "rayhan.khair@zettacamp.pro",
+    "position": "Backend Developer",
+    "maritalStatus": "Single",
+    "addresses": [
+      {
+        "address": "Rumah",
+        "zipCode": 99999,
+        "city": "Kota",
+        "country": "Negara"
+      }
+    ]
   }
 ]
