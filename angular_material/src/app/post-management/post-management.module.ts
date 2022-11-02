@@ -7,6 +7,8 @@ import { PostCardComponent } from './post-list/post-card/post-card.component';
 
 // Module
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
     PostCreationComponent,
     PostCardComponent,
   ],
-  imports: [CommonModule, AngularMaterialModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     PostManagementComponent,
     PostListComponent,

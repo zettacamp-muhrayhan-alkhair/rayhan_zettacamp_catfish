@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../model/post.model';
 import { PostManagementService } from '../post-management.service';
 
 @Component({
@@ -7,13 +8,14 @@ import { PostManagementService } from '../post-management.service';
   styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent implements OnInit {
-  posts: any = [];
+  posts: Post[] = [];
   constructor(private postManagementService: PostManagementService) {}
 
-  ngOnInit(): void {}
-
-  getPosts() {
-    this.posts = this.postManagementService.posts;
-    console.log(this.postManagementService.getDatas());
+  ngOnInit(): void {
+    this.postManagementService.posts$.subscribe((post) => {
+      this.posts = post;
+    });
   }
+
+  onAddPost() {}
 }
