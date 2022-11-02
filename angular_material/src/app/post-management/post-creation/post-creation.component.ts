@@ -19,6 +19,7 @@ export class PostCreationComponent implements OnInit {
   });
 
   isEdit: boolean = false;
+  id: any = this.activeRouter.snapshot.queryParamMap.get('id');
 
   constructor(
     private postManagementService: PostManagementService,
@@ -26,31 +27,28 @@ export class PostCreationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id: any = this.activeRouter.snapshot.queryParamMap.get('id');
-    this.isEdit = id != null;
+    this.isEdit = this.id != null;
     console.log(this.isEdit);
 
-    if (this.isEdit) {
-      this.postManagementService.posts
-        .pipe(first((posts) => posts.length !== 0))
-        .subscribe((post) => {
-          const posts = post.find((post) => post.id === id);
-          this.setFormValues(posts);
-        });
-    }
+    // if (this.isEdit) {
+    //   this.postManagementService.posts
+    //     .pipe(first((posts) => posts.length !== 0))
+    //     .subscribe((post) => {
+    //       const posts = post.find((post) => post.id === id);
+    //       this.setFormValues(posts);
+    //     });
+    // }
   }
 
-  setFormValues(post: any) {
-    this.postForm.setValue(post);
-  }
+  // setFormValues(post: any) {
+  //   this.postForm.setValue(post);
+  // }
 
   onSubmit(newPost: any) {
     if (this.isEdit) {
-      this.postManagementService.updatePost(this.postForm.value);
-      // Make form null again
-      this.postForm.reset();
+      this.postManagementService.updatePost(this.postForm.value, this.id);
     } else {
-      this.postManagementService.addPostToData(this.postForm.value);
+      this.postManagementService.createPost(this.postForm.value);
       // Make form null again
       this.postForm.reset();
     }

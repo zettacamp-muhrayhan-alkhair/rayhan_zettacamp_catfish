@@ -16,9 +16,7 @@ export class PostCardComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    // const id = this.activatedRoute.snapshot.queryParamMap.get('id');
-  }
+  ngOnInit(): void {}
 
   onEditPost() {
     this.router.navigate(['/post-form'], {
@@ -26,14 +24,7 @@ export class PostCardComponent implements OnInit {
     });
   }
 
-  // onDeletePost() {
-  //   // queryParams: { id: this.post.id }
-  //   // this.postManagementService.deletePost(this.id);
-  // }
+  onDeletePost() {}
 
   //
-
-  onDeletePost() {
-    this.postManagementService.deletePost(this.post.id).subscribe(() => {});
-  }
 }

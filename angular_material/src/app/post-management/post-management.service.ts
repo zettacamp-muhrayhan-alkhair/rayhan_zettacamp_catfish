@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from './model/post.model';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -43,37 +43,17 @@ export class PostManagementService {
       });
   }
 
-  // deletePost(postId: any) {
-  //   // this.httpClient
-  //   //   .delete('https://jsonplaceholder.typicode.com/posts/' + postId)
-  //   //   .subscribe((post: any) => {});
-  // }
+  deletePost(postId: any) {}
 
-  updatePost(post: any) {
-    const posts = this.posts.getValue().map((postData) => {
-      return postData.id === post.id ? post : postData;
-    });
-    this.posts.next(posts);
+  updatePost(value: any, id: any) {
+    fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
+      method: 'PATCH',
+      body: JSON.stringify(value),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
   }
-
-
-
-  // newwwww
-
-  getPostById(id: number) {
-    return this.httpClient.get<Post[]>(
-      'https://jsonplaceholder.typicode.com/posts/' + id
-    );
-  }
-
-  patchPost(id: any, data: any) {
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
-    return this.httpClient.patch<Post>(url, data);
-  }
-
-  deletePost(id: number){
-    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
-    return this.httpClient.delete<any>(url);
-    
-}
 }
