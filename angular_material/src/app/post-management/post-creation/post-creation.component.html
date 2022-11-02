@@ -1,4 +1,4 @@
-<form [formGroup]="postForm" (ngSubmit)="onCreatePost(postForm.value)">
+<form [formGroup]="postForm" (ngSubmit)="onSubmit(postForm.value)">
   <mat-form-field appearance="fill">
     <mat-label>User ID</mat-label>
     <input matInput formControlName="userId" />

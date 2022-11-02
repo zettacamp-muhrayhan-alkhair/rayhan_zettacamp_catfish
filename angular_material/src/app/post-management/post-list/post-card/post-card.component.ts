@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostManagementService } from '../../post-management.service';
 
 @Component({
@@ -12,15 +12,28 @@ export class PostCardComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postManagementService: PostManagementService
+    private postManagementService: PostManagementService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     // const id = this.activatedRoute.snapshot.queryParamMap.get('id');
   }
 
+  onEditPost() {
+    this.router.navigate(['/post-form'], {
+      queryParams: { id: this.post.id },
+    });
+  }
+
+  // onDeletePost() {
+  //   // queryParams: { id: this.post.id }
+  //   // this.postManagementService.deletePost(this.id);
+  // }
+
+  //
+
   onDeletePost() {
-    // queryParams: { id: this.post.id }
-    this.postManagementService.deletePost();
+    this.postManagementService.deletePost(this.post.id).subscribe(() => {});
   }
 }

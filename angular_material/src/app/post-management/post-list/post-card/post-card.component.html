@@ -2,7 +2,9 @@
   <mat-card-title>{{ post.title }}</mat-card-title>
   <mat-card-subtitle>{{ post.body }}</mat-card-subtitle>
   <mat-card-actions align="end">
-    <button mat-raised-button color="primary">Edit Post</button>
+    <button mat-raised-button color="primary" (click)="onEditPost()">
+      Edit Post
+    </button>
     <button mat-raised-button color="warn" (click)="onDeletePost()">
       Delete Post
     </button>

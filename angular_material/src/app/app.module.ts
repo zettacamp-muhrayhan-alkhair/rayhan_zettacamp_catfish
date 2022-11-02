@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { PostManagementModule } from './post-management/post-management.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
 
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     PostManagementModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot([]),
   ],
   providers: [],
