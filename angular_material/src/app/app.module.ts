@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 
 // Module
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, AngularMaterialModule],
+  imports: [BrowserModule, AppRoutingModule, AngularMaterialModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
