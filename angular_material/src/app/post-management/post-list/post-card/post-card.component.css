@@ -1,0 +1,11 @@
+mat-card {
+  margin: auto;
+  background-color: white;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  width: 80%;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
