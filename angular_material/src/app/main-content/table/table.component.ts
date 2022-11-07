@@ -22,6 +22,14 @@ export class TableComponent implements OnInit {
   emailFilter = new FormControl();
 
   filteredValue = { name: '', user_type: '', email: '' };
+
+  availableSources: Dropdown[] = Drop;
+
+  sourceFilter = new FormControl('');
+
+  filterValues: any = {
+    status: '',
+  };
   constructor(private tableService: TableService) {}
 
   ngOnInit(): void {
@@ -48,6 +56,13 @@ export class TableComponent implements OnInit {
     this.fieldListener();
   }
 
+  fieldListener() {
+    this.sourceFilter.valueChanges.subscribe((status) => {
+      this.filterValues.status = status;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+  }
+
   customFilterPredicate() {
     const myFilterPredicate = function (data: Table, filter: string): boolean {
       console.log(data, filter);
@@ -70,21 +85,5 @@ export class TableComponent implements OnInit {
       return nameFound && userTypeFound && emailFound && statusFound;
     };
     return myFilterPredicate;
-  }
-
-  availableSources: Dropdown[] = Drop;
-
-  sourceFilter = new FormControl('');
-
-  filterValues: any = {
-    status: '',
-  };
-
-  fieldListener() {
-    this.sourceFilter.valueChanges.subscribe((status) => {
-
-      this.filterValues.status = status;
-      this.dataSource.filter = JSON.stringify(this.filterValues);
-    });
   }
 }
