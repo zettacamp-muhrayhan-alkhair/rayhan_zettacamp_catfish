@@ -68,7 +68,8 @@ export class TableComponent implements OnInit {
       console.log(data, filter);
 
       let searchString = JSON.parse(filter);
-      let nameFound = data.last_name
+      let fullname = data.last_name + ' ' + data.first_name
+      let nameFound = fullname
         .toString()
         .trim()
         .toLowerCase()
