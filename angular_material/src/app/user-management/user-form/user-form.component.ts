@@ -5,6 +5,7 @@ import {
   MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 import Swal from 'sweetalert2';
 
@@ -27,7 +28,8 @@ export class UserFormComponent implements OnInit {
   });
   constructor(
     private fb: FormBuilder,
-    private matDialogRef: MatDialogRef<UserFormComponent>
+    private matDialogRef: MatDialogRef<UserFormComponent>,
+
   ) {}
 
   ngOnInit(): void {}
@@ -35,7 +37,7 @@ export class UserFormComponent implements OnInit {
   onClose() {
     this.matDialogRef.close();
   }
-
+  
   onAdd() {
     if (this.userForm.valid) {
       this.matDialogRef.close(this.userForm.value);
