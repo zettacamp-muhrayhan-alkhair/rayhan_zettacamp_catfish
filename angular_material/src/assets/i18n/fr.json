@@ -1,0 +1,18 @@
+{
+  "userForm": {
+    "_id": "Numéro d'Identification",
+    "firstname": "Prénom",
+    "lastname": "Nom de Famille",
+    "gender": "Le Genre",
+    "birth": "Date de Naissance",
+    "civility": "Civilité"
+  },
+  "generals": {
+    "title": "Liste des Utilisateurs",
+    "lang": "Langue"
+  },
+  "gender": {
+    "male": "Mâle",
+    "female": "Femelle"
+  }
+}

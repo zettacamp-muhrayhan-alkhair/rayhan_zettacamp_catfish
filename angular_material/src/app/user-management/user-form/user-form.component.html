@@ -1,0 +1,53 @@
+<div class="container">
+  <h2 mat-dialog-title>Add New User</h2>
+  <mat-dialog-content [formGroup]="userForm">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm._id" | translate }}</mat-label>
+      <input matInput placeholder="ID Number" formControlName="_id" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.firstname" | translate }}</mat-label>
+      <input matInput placeholder="First Name" formControlName="firstname" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.lastname" | translate }}</mat-label>
+      <input matInput placeholder="Last Name" formControlName="lastname" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.birth" | translate }}</mat-label>
+      <input matInput [matDatepicker]="birthDatePicker" />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="birthDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #birthDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.civility" | translate }}</mat-label>
+      <mat-select formControlName="civility" placeholder="Select Civility">
+        <mat-option value="Frontend Developer">Frontend Developer</mat-option>
+        <mat-option value="Backend Developer">Backend Developer</mat-option>
+        <mat-option value="Mobile Developer">Mobile Developer</mat-option>
+        <mat-option value="Quality Assurance">Quality Assurance</mat-option>
+        <mat-option value="Data Scientist">Data Scientist</mat-option>
+        <mat-option value="UI Design">UI Design</mat-option>
+        <mat-option value="UX Researcher">UX Researcher</mat-option>
+        <mat-option value="IT Support">IT Support</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-radio-group aria-label="Select an option" formControlName="gender">
+      <mat-label>{{ "userForm.gender" | translate }}</mat-label>
+      <mat-radio-button value="Male">
+        {{ "gender.male" | translate }}
+      </mat-radio-button>
+      <mat-radio-button value="Female">
+        {{ "gender.female" | translate }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+    <button mat-raised-button color="primary" (click)="onAdd()">Add</button>
+  </mat-dialog-actions>
+</div>

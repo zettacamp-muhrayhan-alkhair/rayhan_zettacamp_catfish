@@ -1,0 +1,25 @@
+<h1>{{ "generals.title" | translate }}</h1>
+<div class="container">
+  <div class="langContainer">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "generals.lang" | translate }}</mat-label>
+      <mat-select
+        [(value)]="selectedLang"
+        #lang
+        (valueChange)="setLanguage(lang.value)"
+      >
+        <mat-option value="en">English</mat-option>
+        <mat-option value="fr">France</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="listContainer">
+    <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+  </div>
+  <div class="button">
+    <button mat-raised-button color="primary" (click)="addUser()">
+      Add User
+    </button>
+  </div>
+</div>

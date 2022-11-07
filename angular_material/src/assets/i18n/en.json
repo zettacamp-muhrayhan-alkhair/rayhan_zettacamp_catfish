@@ -1,0 +1,18 @@
+{
+  "userForm": {
+    "_id": "ID Number",
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "gender": "Gender",
+    "birth": "Date of Birth",
+    "civility": "Civility"
+  },
+  "generals": {
+    "title": "List of Users",
+    "lang": "Language"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
+  }
+}
