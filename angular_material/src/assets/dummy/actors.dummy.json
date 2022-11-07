@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Andrew Lincoln",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Andrew_Lincoln_%2842749683025%29_%28cropped%29.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Danai Gurira",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Danai_Gurira_by_Gage_Skidmore_3.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Norman Reedus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Norman_Reedus_by_Gage_Skidmore_4.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Michael Rooker",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Michael_Rooker_%2849645306596%29.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Melissa McBride",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Melissa_McBride_2019.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Michael Cudlitz",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/Michael_Cudlitz_July_2018.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Lauren Cohan",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Lauren_Cohan_by_Gage_Skidmore_4.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Lennie James",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Lennie_James_by_Gage_Skidmore.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Jon Bernthal",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Crop_of_Jon_Bernthal_by_Gage_Skidmore_3.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Sarah Wayne Callies",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Sarah_Wayne_Callies_by_Gage_Skidmore_2.jpg",
+    "movie_id": [
+      "The Walking Dead (Season 1), The Walking Dead (Season 3), The Walking Dead (Season 4)"
+    ]
+  }
+]

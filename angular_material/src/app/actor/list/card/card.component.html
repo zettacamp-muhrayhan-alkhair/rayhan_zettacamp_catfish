@@ -1,0 +1,14 @@
+<mat-card class="example-card">
+  <div class="image">
+    <img mat-card-image [src]="actor.image" />
+  </div>
+
+  <mat-card-content>
+    <p>
+      {{ actor.name }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onClick()">Details</button>
+  </mat-card-actions>
+</mat-card>

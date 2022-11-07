@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "The Walking Dead (season 1)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/0/0e/TheWalkingDeadPoster.jpg",
+    "descripton": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quam! Itaque nulla consectetur totam molestias eius, mollitia autem explicabo vel?",
+    "actor_id": ["Andrew Lincoln", "Danai Gurira", "Michael Rooker"]
+  },
+  {
+    "id": 2,
+    "title": "The Walking Dead (season 2)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/fc/Walking_Dead_S2_Poster.jpg",
+    "descripton": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quam! Itaque nulla consectetur totam molestias eius, mollitia autem explicabo vel?",
+    "actor_id": ["Andrew Lincoln", "Danai Gurira", "Michael Rooker"]
+  },
+  {
+    "id": 3,
+    "title": "The Walking Dead (season 3)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/e8/Walking_Dead_Season_3_Official_Poster.jpg",
+    "descripton": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quam! Itaque nulla consectetur totam molestias eius, mollitia autem explicabo vel?",
+    "actor_id": ["Andrew Lincoln", "Danai Gurira", "Michael Rooker"]
+  },
+  {
+    "id": 4,
+    "title": "The Walking Dead (season 4)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/6/69/Walking_Dead_S4_Poster.jpg",
+    "descripton": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quam! Itaque nulla consectetur totam molestias eius, mollitia autem explicabo vel?",
+    "actor_id": ["Andrew Lincoln", "Danai Gurira", "Michael Rooker"]
+  },
+  {
+    "id": 5,
+    "title": "The Walking Dead (season 5)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/f5/Walking_Dead_Season_5_Poster.jpg",
+    "descripton": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quam! Itaque nulla consectetur totam molestias eius, mollitia autem explicabo vel?",
+    "actor_id": ["Andrew Lincoln", "Danai Gurira", "Michael Rooker"]
+  },
+  {
+    "id": 6,
+    "title": "The Walking Dead (season 6)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/c3/TWD_S6_KEY_ART.jpg?20160229152049",
+    "descripton": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quam! Itaque nulla consectetur totam molestias eius, mollitia autem explicabo vel?",
+    "actor_id": ["Andrew Lincoln", "Danai Gurira", "Michael Rooker"]
+  }
+]

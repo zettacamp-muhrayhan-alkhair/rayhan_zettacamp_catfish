@@ -1,0 +1,12 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Detail" class="detail">
+    <img [src]="selectedMovie.image" alt="me" />
+    <div>
+      <h3>{{ selectedMovie.title }}</h3>
+      <p>{{ selectedMovie.description }}</p>
+    </div>
+  </mat-tab>
+  <mat-tab label="Actor">
+    <h3>{{ selectedMovie.actor_id }}</h3>
+  </mat-tab>
+</mat-tab-group>
