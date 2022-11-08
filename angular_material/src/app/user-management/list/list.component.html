@@ -1,0 +1,14 @@
+<mat-form-field>
+  <input
+    matInput
+    class="form-field"
+    [formControl]="searchName"
+    placeholder="Name Filter"
+  />
+</mat-form-field>
+<!-- <button (click)="onClick()">Submit</button> -->
+<br />
+
+<div class="container">
+  <app-card *ngFor="let user of users" [user]="user"></app-card>
+</div>

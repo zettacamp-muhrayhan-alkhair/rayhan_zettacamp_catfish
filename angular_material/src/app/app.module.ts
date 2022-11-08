@@ -10,9 +10,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { PromoManagementModule } from './promo-management/promo-management.module';
+import { SchoolManagementModule } from './school-management/school-management.module';
+import { UserManagementModule } from './user-management/user-management.module';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, AngularMaterialModule, BrowserAnimationsModule, GraphQLModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularMaterialModule,
+    BrowserAnimationsModule,
+    GraphQLModule,
+    HttpClientModule,
+    PromoManagementModule,
+    SchoolManagementModule,UserManagementModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
