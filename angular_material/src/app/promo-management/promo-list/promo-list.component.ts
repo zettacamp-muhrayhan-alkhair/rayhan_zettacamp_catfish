@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Promo } from 'src/app/models/promo.model';
 import { SubSink } from 'subsink/dist/subsink';
+import Swal from 'sweetalert2';
 import { PromoManagementService } from '../promo-management.service';
 
 @Component({
@@ -14,10 +15,11 @@ export class PromoListComponent implements OnInit {
   promos: Promo[] = [];
 
   promoForm = new FormGroup({
-    ref: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
-    sub_title: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    ref: new FormControl(null, Validators.required),
+    title: new FormControl(null, Validators.required),
+    sub_title: new FormControl(null, Validators.required),
+    description: new FormControl(null, Validators.required),
+    image_url: new FormControl(null, Validators.required),
   });
 
   constructor(private promoManagementService: PromoManagementService) {}
@@ -32,13 +34,15 @@ export class PromoListComponent implements OnInit {
   }
 
   onSubmit() {
-    let valueForm = this.promoForm.value;
-    this.subs.sink = this.promoManagementService
-      .createPromo(valueForm)
-      .subscribe();
-
-    console.log(valueForm);
-
-    this.promoForm.reset();
+    if (this.promoForm.valid) {
+      let valueForm = this.promoForm.value;
+      this.subs.sink = this.promoManagementService
+        .createPromo(valueForm)
+        .subscribe();
+      Swal.fire('mantap', 'joss', 'success');
+      this.promoForm.reset();
+    } else {
+      Swal.fire('salah', 'makanbang', 'error');
+    }
   }
 }

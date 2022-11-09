@@ -8,7 +8,8 @@ import { HttpHeaders } from '@angular/common/http';
 const uri = environment.apiUrl; // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
-    link: httpLink.create({ uri,
+    link: httpLink.create({
+      uri,
       headers: new HttpHeaders().set(
         'Authorization',
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZlYzVjMmNlNjM1YjJmYjZhODFmMmQiLCJlbWFpbCI6Im0ubXVnbmllcjJAeW9wbWFpbC5jb20iLCJpYXQiOjE2Njc4Nzk4NTUsImV4cCI6MTY2Nzk2NjI1NX0.j7OyVCCc0Up2VXwLrXCGbDoH0XtoTULGWBrdthojIyQ'

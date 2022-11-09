@@ -1,14 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from '@apollo/client';
 import { Apollo, gql } from 'apollo-angular';
 import { BehaviorSubject } from 'rxjs';
-
-interface ICreateData {
-  title: string;
-  sub_title: string;
-  ref: string;
-  description: string;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -24,29 +16,37 @@ export class PromoManagementService {
     const sub_title = valueForm.sub_title;
     const ref = valueForm.ref;
     const description = valueForm.description;
+    const image_url = valueForm.image_url;
     console.log(valueForm);
 
     return this.apollo.mutate({
       mutation: gql`
-        mutation (
+        mutation CreatePromo(
           $ref: String
           $title: String
           $sub_title: String
           $description: String
+          $image_url: String
         ) {
           CreatePromo(
             promo_input: {
-              ref: $ref
               title: $title
               sub_title: $sub_title
+              ref: $ref
               description: $description
+              image_url: $image_url
             }
           ) {
             _id
+            ref
+            image_url
+            description
+            title
+            sub_title
           }
         }
       `,
-      variables: [title, sub_title, ref, description],
+      variables: { title, sub_title, ref, description, image_url },
     });
   }
 
