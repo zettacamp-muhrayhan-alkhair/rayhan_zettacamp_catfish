@@ -29,24 +29,21 @@ export class PromoListComponent implements OnInit {
   ngOnInit(): void {
     this.subs.sink = this.promoManagementService
       .getPromos()
-      .subscribe((promo: any) => {
+      .valueChanges.subscribe((promo: any) => {
         this.promos = promo.data.GetAllPromos;
         console.log(promo.data.GetAllPromos);
       });
   }
 
   onSubmit() {
-    if (this.promoForm.valid) {
-      this.loadingSpinner = null;
-      let valueForm = this.promoForm.value;
-      this.subs.sink = this.promoManagementService
-        .createPromo(valueForm)
-        .subscribe((resp) => {
-          this.loadingSpinner = resp;
-          Swal.fire('mantap', 'joss', 'success');
-        });
-    } else {
-      Swal.fire('salah', 'makanbang', 'error');
-    }
+    this.loadingSpinner = null;
+    let valueForm = this.promoForm.value;
+    this.subs.sink = this.promoManagementService
+      .createPromo(valueForm)
+      .subscribe((resp) => {
+        this.loadingSpinner = resp;
+        Swal.fire('mantap', 'joss', 'success');
+      });
+    this.promoManagementService.getPromos().refetch();
   }
 }

@@ -25,7 +25,9 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button mat-raised-button color="primary">Add</button>
+      <button mat-raised-button color="primary" [disabled]="promoForm.invalid">
+        Add
+      </button>
     </mat-dialog-actions>
     <div class="spinner" *ngIf="!this.loadingSpinner">
       <mat-spinner></mat-spinner>
