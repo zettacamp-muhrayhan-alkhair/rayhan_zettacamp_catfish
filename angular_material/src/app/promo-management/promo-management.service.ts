@@ -54,7 +54,7 @@ export class PromoManagementService {
     return this.apollo.query({
       query: gql`
         query {
-          GetAllPromos(pagination: { limit: 1000, page: 0 }) {
+          GetAllPromos(pagination: { limit: 20, page: 0 }) {
             _id
             image_url
             title

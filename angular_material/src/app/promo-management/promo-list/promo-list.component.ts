@@ -14,6 +14,8 @@ export class PromoListComponent implements OnInit {
   private subs = new SubSink();
   promos: Promo[] = [];
 
+  loadingSpinner: any = 'on';
+
   promoForm = new FormGroup({
     ref: new FormControl(null, Validators.required),
     title: new FormControl(null, Validators.required),
@@ -35,12 +37,14 @@ export class PromoListComponent implements OnInit {
 
   onSubmit() {
     if (this.promoForm.valid) {
+      this.loadingSpinner = null;
       let valueForm = this.promoForm.value;
       this.subs.sink = this.promoManagementService
         .createPromo(valueForm)
-        .subscribe();
-      Swal.fire('mantap', 'joss', 'success');
-      this.promoForm.reset();
+        .subscribe((resp) => {
+          this.loadingSpinner = resp;
+          Swal.fire('mantap', 'joss', 'success');
+        });
     } else {
       Swal.fire('salah', 'makanbang', 'error');
     }
