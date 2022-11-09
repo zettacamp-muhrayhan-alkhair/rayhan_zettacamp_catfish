@@ -8,14 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './list/card/card.component';
-import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', component: UserManagementComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
-  declarations: [UserManagementComponent, ListComponent, CardComponent, UserListComponent],
+  declarations: [UserManagementComponent, ListComponent, CardComponent],
   imports: [
     CommonModule,
     AngularMaterialModule,

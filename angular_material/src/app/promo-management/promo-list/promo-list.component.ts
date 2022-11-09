@@ -8,7 +8,7 @@ import { PromoManagementService } from '../promo-management.service';
   templateUrl: './promo-list.component.html',
   styleUrls: ['./promo-list.component.css'],
 })
-export class PromoListComponent implements OnInit, OnDestroy {
+export class PromoListComponent implements OnInit {
   private subs = new SubSink();
   promos: Promo[] = [];
 
@@ -18,11 +18,8 @@ export class PromoListComponent implements OnInit, OnDestroy {
     this.subs.sink = this.promoManagementService
       .getPromos()
       .subscribe((promo: any) => {
-        this.promos.push(promo.data.GetAllPromos[0]);
+        this.promos = promo.data.GetAllPromos;
+        console.log(promo.data.GetAllPromos);
       });
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 }

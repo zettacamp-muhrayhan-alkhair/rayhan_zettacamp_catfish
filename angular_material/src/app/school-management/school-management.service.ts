@@ -6,8 +6,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class SchoolManagementService {
-  schools = new BehaviorSubject<any>([]);
-  schools$ = this.schools.asObservable();
   constructor(private apollo: Apollo) {}
 
   getSchools() {
