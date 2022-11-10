@@ -1,4 +1,25 @@
 div {
-  border: 1px solid black;
   margin: 5px;
+}
+
+.border-column {
+  border: 1px solid black;
+}
+
+.reset {
+  padding: 0;
+  margin: 0;
+}
+
+.p-col-8 > div {
+  height: 210px;
+}
+
+.reset-box-square {
+  height: 70px;
+  width: 70px;
+}
+
+.reset-box {
+  height: 50px;
 }
