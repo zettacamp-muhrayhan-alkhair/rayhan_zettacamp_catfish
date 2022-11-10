@@ -43,7 +43,10 @@ export class PromoListComponent implements OnInit {
       .subscribe((resp) => {
         this.loadingSpinner = resp;
         Swal.fire('mantap', 'joss', 'success');
+        this.promoForm.reset();
+        this.promoForm.markAsPristine();
+        this.promoForm.updateValueAndValidity();
+        this.promoManagementService.getPromos().refetch();
       });
-    this.promoManagementService.getPromos().refetch();
   }
 }
