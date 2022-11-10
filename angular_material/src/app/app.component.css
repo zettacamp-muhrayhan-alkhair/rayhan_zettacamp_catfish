@@ -1,4 +1,17 @@
 div {
-  border: 1px solid black;
   margin: 5px;
+  color: darkcyan;
+}
+
+.border-column {
+  border: 2px solid darkcyan;
+}
+
+.p-col > div {
+  height: 210px;
+}
+
+.reset {
+  padding: 0;
+  margin: 0;
 }
