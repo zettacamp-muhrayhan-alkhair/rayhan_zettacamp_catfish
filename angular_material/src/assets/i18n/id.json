@@ -1,0 +1,15 @@
+{
+  "userForm": {
+    "_id": "Nomor ID",
+    "first_name": "Nama Depan",
+    "last_name": "Nama Belakang",
+    "civility": "Civility"
+  },
+  "generals": {
+    "home": "Beranda",
+    "users": "Pengguna",
+    "adduser": "Tambah Pengguna",
+    "lang": "Bahasa",
+    "submit": "Kirim"
+  }
+}

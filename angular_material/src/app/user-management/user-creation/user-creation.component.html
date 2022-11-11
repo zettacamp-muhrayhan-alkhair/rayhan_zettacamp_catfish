@@ -1,0 +1,31 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+  <div class="wrap">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm._id" | translate }}</mat-label>
+      <input matInput formControlName="_id" />
+    </mat-form-field>
+  </div>
+  <div class="wrap">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.first_name" | translate }}</mat-label>
+      <input matInput formControlName="first_name" />
+    </mat-form-field>
+  </div>
+  <div class="wrap">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.last_name" | translate }}</mat-label>
+      <input matInput formControlName="last_name" />
+    </mat-form-field>
+  </div>
+  <div class="wrap">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "userForm.civility" | translate }}</mat-label>
+      <input matInput formControlName="civility" />
+    </mat-form-field>
+  </div>
+  <div class="wrap">
+    <button mat-raised-button color="primary">
+      {{ "generals.submit" | translate }}
+    </button>
+  </div>
+</form>

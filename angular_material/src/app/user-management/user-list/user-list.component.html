@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="btnContainer">
+    <button mat-raised-button color="primary" (click)="onAddUser()">
+      {{ "generals.adduser" | translate }}
+    </button>
+  </div>
+  <div class="listContainer">
+    <app-user-card class="card" *ngFor="let user of users" [user]="user"></app-user-card>
+  </div>
+</div>
