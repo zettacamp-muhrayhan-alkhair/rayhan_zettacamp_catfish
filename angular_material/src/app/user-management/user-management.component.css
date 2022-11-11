@@ -10,10 +10,11 @@
   width: 100%;
   text-align: center;
 }
-/* .container .wrapper img {
+.container .wrapper img {
   width: 100%;
   text-align: center;
-} */
+  margin-bottom: 0.5rem;
+}
 
 .img-wrapper {
   margin-left: auto;
