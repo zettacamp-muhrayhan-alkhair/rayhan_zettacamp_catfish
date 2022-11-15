@@ -6,9 +6,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  token = new BehaviorSubject('');
-  token$ = this.token.asObservable();
-
   constructor(private apollo: Apollo) {}
 
   getToken(loginForm: any) {

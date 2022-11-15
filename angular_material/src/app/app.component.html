@@ -6,11 +6,7 @@
     <button mat-button [routerLink]="['']">Home</button>
     <button mat-button [routerLink]="['menu']">Menu</button>
     <button class="border" mat-button [routerLink]="['login']">Login</button>
-    <button
-      mat-button
-      *ngFor="let menu of menus"
-      [routerLink]="[menu?.routing]"
-    >
+    <button mat-button *ngFor="let menu of menus" [routerLink]="[menu?.slug]">
       {{ menu?.name }}
     </button>
   </div>
