@@ -1,0 +1,12 @@
+.container {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-image: url("../../assets/homepage/homepage-bg.png");
+  z-index: 1;
+}
+
+.wrapper .title {
+  font-size: 4rem;
+  font-weight: 500;
+}

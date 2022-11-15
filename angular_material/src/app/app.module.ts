@@ -7,10 +7,33 @@ import { AppComponent } from './app.component';
 // Module
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomepageModule } from './homepage/homepage.module';
+import { LoginModule } from './login/login.module';
+import { MenuModule } from './menu/menu.module';
+import { AboutModule } from './about/about.module';
+import { CartModule } from './cart/cart.module';
+import { StockManagementModule } from './stock-management/stock-management.module';
+import { MenuManagementModule } from './menu-management/menu-management.module';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, AngularMaterialModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularMaterialModule,
+    BrowserAnimationsModule,
+    HomepageModule,
+    LoginModule,
+    MenuModule,
+    AboutModule,
+    CartModule,
+    StockManagementModule,
+    MenuManagementModule,
+    GraphQLModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
