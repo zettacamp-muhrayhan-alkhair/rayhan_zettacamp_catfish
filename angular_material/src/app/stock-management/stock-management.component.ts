@@ -13,7 +13,8 @@ import { SubSink } from 'subsink';
 })
 export class StockManagementComponent implements OnInit {
   private subs = new SubSink();
-  displayedColumns: string[] = ['name', 'stock', 'status'];
+  private dialogSubs = new SubSink();
+  displayedColumns: string[] = ['name', 'stock', 'available', 'actions'];
   ingredients: any = [];
   dataSource = new MatTableDataSource();
 
@@ -25,7 +26,7 @@ export class StockManagementComponent implements OnInit {
   ngOnInit(): void {
     this.subs.sink = this.stockManagementService
       .getAllIngredients()
-      .subscribe((data: any) => {
+      .valueChanges.subscribe((data: any) => {
         this.ingredients = data.data.GetAllIngredients.data;
         this.dataSource = new MatTableDataSource(
           data.data.GetAllIngredients.data
@@ -34,10 +35,26 @@ export class StockManagementComponent implements OnInit {
   }
 
   onClick() {
-    openAddStockDialog(this.matDialog)
+    this.dialogSubs.sink = openAddStockDialog(this.matDialog)
       .pipe(filter((val) => !!val))
       .subscribe((val) => {
-        this.stockManagementService.createIngredient(val);
+        this.stockManagementService
+          .createIngredient(val)
+          .subscribe(() =>
+            this.stockManagementService.getAllIngredients().refetch()
+          );
       });
+  }
+
+  onUpdate(element: any) {
+    // this.dialogSubs.sink = openAddStockDialog(this.matDialog)
+  }
+
+  onDelete(element: any) {
+    this.stockManagementService
+      .deleteIngredient(element)
+      .subscribe(() =>
+        this.stockManagementService.getAllIngredients().refetch()
+      );
   }
 }

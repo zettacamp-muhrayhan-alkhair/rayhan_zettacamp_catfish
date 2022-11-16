@@ -34,7 +34,6 @@ export class StockFormComponent implements OnInit {
   onAdd() {
     if (this.stockForm.valid) {
       this.dialogRef.close(this.stockForm.value);
-      console.log(this.stockForm.value);
     }
   }
 }
