@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from './login/login.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit {
   menus: any = [];
   isToken: boolean = false;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('userToken') !== null) {
@@ -22,5 +23,9 @@ export class AppComponent implements OnInit {
     } else {
       this.isToken = false;
     }
+  }
+
+  onLogout() {
+    localStorage.clear();
   }
 }

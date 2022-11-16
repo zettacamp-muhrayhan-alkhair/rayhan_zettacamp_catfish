@@ -2,12 +2,11 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {
   MatDialog,
-  MatDialogClose,
   MatDialogConfig,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { StockManagementService } from '../stock-management.service';
+import { Ingredient } from 'src/app/model/ingredient.model';
 
 @Component({
   selector: 'app-stock-form',
@@ -16,13 +15,16 @@ import { StockManagementService } from '../stock-management.service';
 })
 export class StockFormComponent implements OnInit {
   stockForm = this.fb.group({
-    name: this.fb.control(null, Validators.required),
-    stock: this.fb.control(null, Validators.required),
+    name: this.fb.control('', Validators.required),
+    stock: this.fb.control('', [
+      Validators.required,
+      Validators.pattern(/^-?(0|[1-9]\d*)?$/),
+    ]),
   });
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<StockFormComponent>,
-    private stockManagementService: StockManagementService
+    @Inject(MAT_DIALOG_DATA) private ingredient: Ingredient
   ) {}
 
   ngOnInit(): void {}
@@ -31,10 +33,8 @@ export class StockFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onAdd() {
-    if (this.stockForm.valid) {
-      this.dialogRef.close(this.stockForm.value);
-    }
+  onSubmit() {
+    this.dialogRef.close(this.stockForm.value);
   }
 }
 

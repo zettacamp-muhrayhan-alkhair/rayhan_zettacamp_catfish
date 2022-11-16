@@ -1,4 +1,4 @@
-<button mat-raised-button color="primary" (click)="onClick()">
+<button mat-raised-button color="primary" (click)="onAdd()">
   Add Ingredients
 </button>
 
@@ -7,7 +7,7 @@
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let element">
-      <button (click)="onClick()">{{ element.name }}</button>
+      <button (click)="onUpdate(element)">{{ element.name }}</button>
     </td>
   </ng-container>
   <!-- Stock Column -->

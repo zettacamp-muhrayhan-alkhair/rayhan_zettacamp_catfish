@@ -30,8 +30,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       .subscribe((data: any) => {
         let userData = data.data.Login.user.usertype;
         let userToken = data.data.Login.token;
-        localStorage.setItem('userToken', `Bearer ${userToken}`);
-        localStorage.setItem('userData', JSON.stringify(userData));
+        if (userToken) {
+          localStorage.setItem('userToken', `Bearer ${userToken}`);
+          localStorage.setItem('userData', JSON.stringify(userData));
+          this.router.navigate(['home']);
+        }
       });
     this.loginForm.reset();
   }

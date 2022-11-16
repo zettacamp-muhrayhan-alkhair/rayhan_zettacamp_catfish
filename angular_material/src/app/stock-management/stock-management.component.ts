@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { openAddStockDialog } from './stock-form/stock-form.component';
+import { openEditStockDialog } from './stock-form/stock-edit/stock-edit.component';
 import { StockManagementService } from './stock-management.service';
 import { filter } from 'rxjs';
 import { SubSink } from 'subsink';
@@ -27,15 +28,15 @@ export class StockManagementComponent implements OnInit {
     this.subs.sink = this.stockManagementService
       .getAllIngredients()
       .valueChanges.subscribe((data: any) => {
-        this.ingredients = data.data.GetAllIngredients.data;
+        this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
         this.dataSource = new MatTableDataSource(
-          data.data.GetAllIngredients.data
+          data.data.GetAllIngredients.data.ingredient_data
         );
       });
   }
 
-  onClick() {
-    this.dialogSubs.sink = openAddStockDialog(this.matDialog)
+  onAdd() {
+    openAddStockDialog(this.matDialog)
       .pipe(filter((val) => !!val))
       .subscribe((val) => {
         this.stockManagementService
@@ -46,8 +47,13 @@ export class StockManagementComponent implements OnInit {
       });
   }
 
-  onUpdate(element: any) {
-    // this.dialogSubs.sink = openAddStockDialog(this.matDialog)
+  onUpdate(ingredient: any) {
+    openEditStockDialog(this.matDialog, ingredient)
+      .pipe(filter((val) => !!val))
+      .subscribe((val: any) => {
+        this.stockManagementService.updateIngredient(val).subscribe();
+        console.log(val._id);
+      });
   }
 
   onDelete(element: any) {

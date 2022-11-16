@@ -14,11 +14,16 @@ export class StockManagementService {
           GetAllIngredients(data: {}) {
             message
             data {
-              _id
-              name
-              stock
-              status
-              available
+              ingredient_data {
+                _id
+                name
+                stock
+                status
+                available
+              }
+              info_page {
+                count
+              }
             }
           }
         }
@@ -26,21 +31,23 @@ export class StockManagementService {
     });
   }
 
-  getOneIngredient() {
-    const _id = '';
+  getOneIngredient(element: any) {
+    const _id = element._id;
     return this.apollo.query({
       query: gql`
-       query GetOneIngredient(data: {_id: $_id}) {
-        message,
-        data{
-           _id
-            name
-            status 
-            stock
-            available
+        query GetOneIngredient($_id: ID) {
+          GetOneIngredient(data: { _id: $_id }) {
+            message
+            data {
+              _id
+              name
+              status
+              stock
+              available
+            }
+          }
         }
-      }
-    `,
+      `,
       variables: { _id },
     });
   }
@@ -74,9 +81,8 @@ export class StockManagementService {
     return this.apollo.mutate({
       mutation: gql`
         mutation UpdateIngredient($_id: ID, $name: String, $stock: Int) {
-          CreateIngredient(data: { _id: $_id, name: $name, stock: $stock }) {
+          UpdateIngredient(data: { _id: $_id, name: $name, stock: $stock }) {
             message
-            userId
             data {
               _id
               name
