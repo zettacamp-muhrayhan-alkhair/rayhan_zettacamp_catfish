@@ -9,13 +9,18 @@ import { LoginService } from './login/login.service';
 export class AppComponent implements OnInit {
   title = 'angular_material';
   menus: any = [];
+  isToken: boolean = false;
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    let userData: any = localStorage.getItem('userData');
-    userData = JSON.parse(userData);
-    this.menus = userData.filter((val: any) => val.view === true);
-    console.log(this.menus);
+    if (localStorage.getItem('userToken') !== null) {
+      this.isToken = true;
+      let userData: any = localStorage.getItem('userData');
+      userData = JSON.parse(userData);
+      this.menus = userData.filter((val: any) => val.view === true);
+    } else {
+      this.isToken = false;
+    }
   }
 }

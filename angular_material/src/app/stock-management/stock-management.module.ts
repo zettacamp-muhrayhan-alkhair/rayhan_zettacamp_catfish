@@ -4,6 +4,7 @@ import { StockManagementComponent } from './stock-management.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { StockFormComponent } from './stock-form/stock-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: StockManagementComponent, title: 'Stock Management' },
@@ -11,7 +12,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [StockManagementComponent, StockFormComponent],
-  imports: [CommonModule, AngularMaterialModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, AngularMaterialModule, RouterModule.forChild(routes), ReactiveFormsModule],
   exports: [StockManagementComponent],
 })
 export class StockManagementModule {}

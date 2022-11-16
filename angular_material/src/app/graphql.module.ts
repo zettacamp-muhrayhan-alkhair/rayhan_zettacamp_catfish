@@ -4,7 +4,7 @@ import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
 
-const uri = 'https://08b9-103-236-192-220.ap.ngrok.io/graphql';
+const uri = 'https://cea6-103-236-192-220.ap.ngrok.io/graphql';
 const token: any = localStorage.getItem('userToken');
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {

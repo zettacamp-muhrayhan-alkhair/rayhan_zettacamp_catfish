@@ -28,12 +28,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subs.sink = this.loginService
       .getToken(loginForm)
       .subscribe((data: any) => {
-        console.log(data.data.Login);
-        console.log(data.data.Login.user);
         let userData = data.data.Login.user.usertype;
-        console.log(userData);
         let userToken = data.data.Login.token;
-        localStorage.setItem('userToken', userToken);
+        localStorage.setItem('userToken', `Bearer ${userToken}`);
         localStorage.setItem('userData', JSON.stringify(userData));
       });
     this.loginForm.reset();
