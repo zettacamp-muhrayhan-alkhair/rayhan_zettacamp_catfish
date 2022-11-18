@@ -24,6 +24,7 @@
     "apollo-angular": "^4.1.0",
     "dotenv": "^16.0.3",
     "graphql": "^16",
+    "primeflex": "^1.0.0",
     "rxjs": "~7.5.0",
     "subsink": "^1.0.2",
     "sweetalert": "^2.1.2",

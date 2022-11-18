@@ -1,5 +1,11 @@
 <div class="container">
-  <!-- <app-card-menu></app-card-menu> -->
-
-  card
+  <div class="card-wrapper">
+    <app-card-menu
+      *ngFor="let recipe of menu"
+      [recipe]="recipe"
+    ></app-card-menu>
+  </div>
+  <div class="list-wrapper">
+    <app-recipe-list> </app-recipe-list>
+  </div>
 </div>

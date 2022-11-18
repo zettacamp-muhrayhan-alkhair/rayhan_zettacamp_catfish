@@ -12,7 +12,12 @@
 
   <mat-dialog-actions>
     <button mat-raised-button color="warn" (click)="onClose()">Close</button>
-    <button mat-raised-button color="primary" (click)="onSubmit()">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!stockForm.valid"
+      (click)="onSubmit()"
+    >
       Submit
     </button>
   </mat-dialog-actions>

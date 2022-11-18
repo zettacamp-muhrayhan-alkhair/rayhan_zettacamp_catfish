@@ -13,9 +13,10 @@ import { MenuModule } from './menu/menu.module';
 import { AboutModule } from './about/about.module';
 import { CartModule } from './cart/cart.module';
 import { StockManagementModule } from './stock-management/stock-management.module';
-import { MenuManagementModule } from './menu-management/menu-management.module';
+
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuManagementModule } from './menu-management/menu-management.module';
 
 @NgModule({
   declarations: [AppComponent],

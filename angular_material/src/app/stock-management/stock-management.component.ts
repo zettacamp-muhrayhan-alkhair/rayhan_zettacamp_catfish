@@ -6,6 +6,8 @@ import { openEditStockDialog } from './stock-form/stock-edit/stock-edit.componen
 import { StockManagementService } from './stock-management.service';
 import { filter } from 'rxjs';
 import { SubSink } from 'subsink';
+import Swal from 'sweetalert2';
+import { MenuManagementService } from '../menu-management/menu-management.service';
 
 @Component({
   selector: 'app-stock-management',
@@ -21,7 +23,8 @@ export class StockManagementComponent implements OnInit {
 
   constructor(
     private stockManagementService: StockManagementService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private menuManagementService: MenuManagementService
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +48,7 @@ export class StockManagementComponent implements OnInit {
             this.stockManagementService.getAllIngredients().refetch()
           );
       });
+    
   }
 
   onUpdate(ingredient: any) {
@@ -52,15 +56,27 @@ export class StockManagementComponent implements OnInit {
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
         this.stockManagementService.updateIngredient(val).subscribe();
-        console.log(val._id);
+        this.menuManagementService.getAllRecipes().refetch();
       });
   }
 
   onDelete(element: any) {
-    this.stockManagementService
-      .deleteIngredient(element)
-      .subscribe(() =>
-        this.stockManagementService.getAllIngredients().refetch()
-      );
+    this.stockManagementService.deleteIngredient(element);
+    // Swal.fire({
+    //   title: 'Are you sure?',
+    //   text: "You won't be able to revert this!",
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Yes, delete it!',
+    // }).then((confirm: any) => {
+    //   if (confirm.isConfirmed) {
+    //     this.stockManagementService.deleteIngredient(element);
+    //     this.stockManagementService.getAllIngredients().refetch();
+    //   } else {
+    //     this.stockManagementService.getAllIngredients().refetch();
+    //   }
+    // });
   }
 }

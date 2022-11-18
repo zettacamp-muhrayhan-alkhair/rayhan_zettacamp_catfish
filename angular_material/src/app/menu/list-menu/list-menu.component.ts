@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu.service';
 import { SubSink } from 'subsink/dist/subsink';
+import { MenuManagementService } from 'src/app/menu-management/menu-management.service';
 
 @Component({
   selector: 'app-list-menu',
@@ -8,15 +9,19 @@ import { SubSink } from 'subsink/dist/subsink';
   styleUrls: ['./list-menu.component.css'],
 })
 export class ListMenuComponent implements OnInit {
-  menus: any = [];
+  menu: any = [];
   subs = new SubSink();
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    private menuManagementService: MenuManagementService
+  ) {}
 
   ngOnInit(): void {
-    // this.subs.sink = this.menuService.getAllMenus().subscribe((data: any) => {
-    //   this.menus = data;
-    //   console.log(data.data);
-    //   console.log(this.menus.data);
-    // });
+    this.subs.sink = this.menuManagementService
+      .getPublishRecipes()
+      .valueChanges.subscribe((data: any) => {
+        this.menu = data.data.GetAllrecipes.data.recipe_data;
+      });
   }
+
 }

@@ -1,12 +1,50 @@
 .container {
+  display: flex;
+}
+
+.side-content {
   height: 100vh;
+  width: 45%;
+  background: url("../../assets/homepage/homepage-bg.png");
   position: absolute;
   top: 0;
-  background-image: url("../../assets/homepage/homepage-bg.png");
-  z-index: 1;
+  z-index: -1;
 }
 
 .wrapper .title {
   font-size: 4rem;
   font-weight: 500;
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content h1 {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.main-content h4 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  margin: -1.5rem 0;
+}
+
+.main-content .btn-wrapper {
+  margin: 0.5rem 0;
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 1rem;
 }

@@ -4,14 +4,21 @@ import { MenuManagementComponent } from './menu-management.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MenuEditComponent } from './menu-form/menu-edit/menu-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: MenuManagementComponent, title: 'Menu Management' },
 ];
 
 @NgModule({
-  declarations: [MenuManagementComponent, MenuFormComponent],
-  imports: [CommonModule, AngularMaterialModule, RouterModule.forChild(routes)],
-  exports: [MenuManagementComponent],
+  declarations: [MenuManagementComponent, MenuFormComponent, MenuEditComponent],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+  ],
+  exports: [MenuManagementComponent, MenuEditComponent],
 })
 export class MenuManagementModule {}

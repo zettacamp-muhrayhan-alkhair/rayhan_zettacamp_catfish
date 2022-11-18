@@ -1,3 +1,21 @@
 .example-card {
-  max-width: 400px;
+  max-width: 350px;
+  height: 500px;
 }
+
+.img-wrapper {
+  height: 250px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+/* .sold {
+  font-size: 200px;
+} */

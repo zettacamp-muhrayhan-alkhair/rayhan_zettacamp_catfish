@@ -41,7 +41,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Stock Used</mat-label>
-          <input matInput formControlName="stock_used" />
+          <input type="number" matInput formControlName="stock_used" />
         </mat-form-field>
         <button
           mat-raised-button
@@ -52,15 +52,15 @@
           Delete Ingredient
         </button>
       </div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="addIngredient()"
+      >
+        Add More ingredient
+      </button>
     </div>
-    <button
-      mat-raised-button
-      color="primary"
-      type="button"
-      (click)="addIngredient()"
-    >
-      Add More ingredient
-    </button>
   </mat-dialog-content>
 
   <mat-dialog-actions>

@@ -1,19 +1,13 @@
 <mat-toolbar>
-  <div class="wrapper">
+  <div class="wrapper title-wrapper">
     <a [routerLink]="['']">ZettaCafe</a>
   </div>
   <div class="wrapper btn-wrapper">
-    <button mat-button [routerLink]="['']" *ngIf="!isToken">Home</button>
-    <button mat-button [routerLink]="['menu']" *ngIf="!isToken">Menu</button>
     <button
-      class="border"
       mat-button
-      [routerLink]="['login']"
-      *ngIf="!isToken"
+      *ngFor="let menu of newDummyMenus"
+      [routerLink]="[menu?.slug]"
     >
-      Login
-    </button>
-    <button mat-button *ngFor="let menu of menus" [routerLink]="[menu?.slug]">
       {{ menu?.name }}
     </button>
     <button

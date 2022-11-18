@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -99,22 +100,53 @@ export class StockManagementService {
 
   deleteIngredient(ingredient: any) {
     const _id = ingredient._id;
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation DeleteIngredient($_id: ID) {
-          DeleteIngredient(data: { _id: $_id }) {
-            message
-            data {
-              _id
-              name
-              stock
-              status
-              available
+    return this.apollo
+      .mutate({
+        mutation: gql`
+          mutation DeleteIngredient($_id: ID) {
+            DeleteIngredient(data: { _id: $_id }) {
+              message
+              data {
+                _id
+                name
+                stock
+                status
+                available
+              }
             }
           }
-        }
-      `,
-      variables: { _id },
-    });
+        `,
+        variables: { _id },
+      })
+      .subscribe(
+        (data) => {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+          }).then((confirm: any) => {
+            if (confirm.isConfirmed) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Yes...',
+                text: 'Ingredient is Deleted',
+              });
+              this.getAllIngredients().refetch();
+            } else {
+              this.getAllIngredients().refetch();
+            }
+          });
+        },
+        (err) =>
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.message,
+          })
+      );
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubSink } from 'subsink/dist/subsink';
+import Swal from 'sweetalert2';
 import { LoginService } from './login.service';
 
 @Component({
@@ -9,11 +10,14 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   private subs = new SubSink();
   loginForm = this.fb.group({
-    email: this.fb.control(null, Validators.email),
-    password: this.fb.control(null, Validators.minLength(6)),
+    email: this.fb.control(null, [Validators.required, Validators.email]),
+    password: this.fb.control(null, [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
   constructor(
@@ -24,22 +28,42 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {}
 
-  onSubmit(loginForm: any) {
-    this.subs.sink = this.loginService
-      .getToken(loginForm)
-      .subscribe((data: any) => {
+  onSubmit() {
+    console.log('seb', this.loginForm.value);
+    this.loginService.getToken(this.loginForm.value).subscribe(
+      (data: any) => {
+        Swal.fire({
+          title: 'User Valid',
+          text: data.data.Login.message,
+          icon: 'success',
+        });
+        console.log('set', this.loginForm.value);
         let userData = data.data.Login.user.usertype;
         let userToken = data.data.Login.token;
-        if (userToken) {
-          localStorage.setItem('userToken', `Bearer ${userToken}`);
-          localStorage.setItem('userData', JSON.stringify(userData));
-          this.router.navigate(['home']);
-        }
-      });
+        localStorage.setItem('userToken', userToken);
+        localStorage.setItem('userData', JSON.stringify(userData));
+      },
+      (err) => {
+        Swal.fire({
+          title: 'Invalid User',
+          text: err.message,
+          icon: 'error',
+        });
+      }
+    );
     this.loginForm.reset();
   }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
-  }
 }
+
+// .subscribe(
+//   (data) => {
+//     console.log(data);
+//   },
+//   (err) => {
+//     Swal.fire({
+//       title: 'Invalid User',
+//       text: err.message,
+//       icon: 'error',
+//     });
+//   }
+// );

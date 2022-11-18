@@ -7,6 +7,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Ingredient } from 'src/app/model/ingredient.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stock-edit',
@@ -16,7 +17,10 @@ import { Ingredient } from 'src/app/model/ingredient.model';
 export class StockEditComponent implements OnInit {
   stockForm = this.fb.group({
     name: this.fb.control(this.ingredient.name, Validators.required),
-    stock: this.fb.control(this.ingredient.stock, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+    stock: this.fb.control(this.ingredient.stock, [
+      Validators.required,
+      Validators.pattern(/^-?(0|[1-9]\d*)?$/),
+    ]),
   });
   constructor(
     private fb: FormBuilder,
@@ -32,6 +36,11 @@ export class StockEditComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close({ ...this.stockForm.value, _id: this.ingredient._id });
+    Swal.fire(
+      'Ingredient Updated',
+      'You have updated new Ingredient',
+      'success'
+    );
   }
 }
 

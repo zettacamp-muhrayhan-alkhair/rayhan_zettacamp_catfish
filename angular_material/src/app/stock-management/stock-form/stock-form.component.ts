@@ -7,6 +7,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Ingredient } from 'src/app/model/ingredient.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stock-form',
@@ -35,6 +36,7 @@ export class StockFormComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close(this.stockForm.value);
+    Swal.fire('Ingredient Added', 'You have added new Ingredient', 'success');
   }
 }
 

@@ -6,13 +6,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListMenuComponent } from './list-menu/list-menu.component';
 import { CardMenuComponent } from './list-menu/card-menu/card-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuFormComponent } from './menu-form/menu-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [{ path: '', component: MenuComponent, title: 'Menu' }];
 
 @NgModule({
-  declarations: [MenuComponent, ListMenuComponent, CardMenuComponent],
+  declarations: [
+    MenuComponent,
+    ListMenuComponent,
+    CardMenuComponent,
+    MenuFormComponent,
+    RecipeListComponent,
+  ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     AngularMaterialModule,
     RouterModule.forChild(routes),
     HttpClientModule,

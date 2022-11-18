@@ -1,20 +1,22 @@
 mat-toolbar {
   display: flex;
   justify-content: space-between;
-  background-color: transparent;
-  border-bottom: 1px solid #0098db;
+  background: transparent;
+}
+
+.title-wrapper {
+  margin-left: 3rem;
 }
 
 .btn-wrapper {
   display: flex;
   gap: 1rem;
+  margin-right: 3rem;
 }
-
-
 
 .wrapper a {
   text-decoration: none;
-  color: #0098db;
+  color: white !important;
 }
 
 mat-toolbar button {

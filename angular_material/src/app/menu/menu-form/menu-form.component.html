@@ -1,12 +1,17 @@
 <div class="container">
-  <mat-dialog-content [formGroup]="stockForm">
+  <mat-dialog-content [formGroup]="menu">
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" formControlName="name" />
+      <mat-label>Amount</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Amount"
+        formControlName="amount"
+      />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Stock</mat-label>
-      <input matInput placeholder="Stock" formControlName="stock" />
+      <mat-label>Note</mat-label>
+      <input matInput placeholder="note" formControlName="note" />
     </mat-form-field>
   </mat-dialog-content>
 
@@ -15,7 +20,7 @@
     <button
       mat-raised-button
       color="primary"
-      [disabled]="!stockForm.valid"
+      [disabled]="!menu.valid"
       (click)="onSubmit()"
     >
       Submit
