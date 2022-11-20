@@ -8,6 +8,30 @@ import Swal from 'sweetalert2';
 export class MenuManagementService {
   constructor(private apollo: Apollo) {}
 
+  getAllIngredients() {
+    return this.apollo.watchQuery({
+      query: gql`
+        query GetAllIngredients {
+          GetAllIngredients(data: {}) {
+            message
+            data {
+              ingredient_data {
+                _id
+                name
+                stock
+                status
+                available
+              }
+              info_page {
+                count
+              }
+            }
+          }
+        }
+      `,
+    });
+  }
+
   getAllRecipes() {
     return this.apollo.watchQuery({
       query: gql`
@@ -42,6 +66,53 @@ export class MenuManagementService {
           }
         }
       `,
+    });
+  }
+
+  getAllRecipesWithPage(inputLimit, inputPage) {
+    let limit: Number;
+    let page: Number;
+    if (!inputLimit || !inputPage) {
+      limit = inputLimit;
+      page = 1;
+    } else {
+      limit = inputLimit;
+      page = inputPage + 1;
+    }
+    return this.apollo.watchQuery({
+      query: gql`
+        query GetAllrecipes($limit: Int, $page: Int) {
+          GetAllrecipes(data: { limit: $limit, page: $page }) {
+            message
+            data {
+              recipe_data {
+                _id
+                link_recipe
+                recipe_name
+                published
+                status
+                ingredients {
+                  ingredient_id {
+                    _id
+                    name
+                    stock
+                    status
+                    available
+                  }
+                  stock_used
+                }
+                link_recipe
+                price
+                status
+              }
+              info_page {
+                count
+              }
+            }
+          }
+        }
+      `,
+      variables: { limit, page },
     });
   }
 
@@ -107,6 +178,37 @@ export class MenuManagementService {
     });
   }
 
+  deleteIngredientUpdateRecipe(element: any) {
+    const _id = element._id;
+    const ingredient_id = element.ingredients.ingredient_id._id;
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation UpdateRecipe($_id: ID, $ingredient_id: String) {
+          UpdateRecipe(data: { _id: $_id, ingredients: $ingredient_id }) {
+            message
+            data {
+              _id
+              recipe_name
+              status
+              published
+              ingredients {
+                ingredient_id {
+                  name
+                  stock
+                }
+                stock_used
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        _id,
+        ingredient_id,
+      },
+    });
+  }
+
   createRecipe(element: any) {
     const recipe_name = element.recipe_name;
     const link_recipe = element.link_recipe;
@@ -153,7 +255,6 @@ export class MenuManagementService {
         variables: { recipe_name, link_recipe, price, ingredients },
       })
       .subscribe((data: any) => {
-        console.log(data);
         Swal.fire({
           title: 'Recipe Added',
           icon: 'success',

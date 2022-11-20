@@ -1,47 +1,54 @@
 .container {
+  height: 100vh;
+  background: url(../../assets/homepage/home-bg.png) no-repeat;
+  background-size: contain;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 300;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
 }
 
 .side-content {
-  height: 100vh;
-  width: 45%;
-  background: url("../../assets/homepage/homepage-bg.png");
-  position: absolute;
-  top: 0;
-  z-index: -1;
-}
-
-.wrapper .title {
-  font-size: 4rem;
-  font-weight: 500;
+  width: 25%;
+  margin-right: 3rem;
 }
 
 .main-content {
-  width: 100%;
   display: flex;
-  gap: 2rem;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 40%;
 }
 
-.main-content h1 {
+.title {
   font-size: 6rem;
   font-weight: 700;
 }
 
-.main-content h4 {
-  font-size: 3rem;
+.subtitle {
+  font-size: 2.2rem;
   font-weight: 500;
+  margin-top: 2rem;
 }
 
-.main-content p {
+.description {
+  margin-top: 0.5rem;
   font-size: 1.2rem;
-  margin: -1.5rem 0;
-}
-
-.main-content .btn-wrapper {
-  margin: 0.5rem 0;
+  text-align: center;
+  font-weight: 400;
 }
 
 .btn-wrapper {

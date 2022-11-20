@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { openAddStockDialog } from './stock-form/stock-form.component';
@@ -18,8 +18,13 @@ export class StockManagementComponent implements OnInit {
   private subs = new SubSink();
   private dialogSubs = new SubSink();
   displayedColumns: string[] = ['name', 'stock', 'available', 'actions'];
-  ingredients: any = [];
+  ingredientsLength;
+  ingredients = [];
   dataSource = new MatTableDataSource();
+
+  pageEvent: any;
+  pageSize = 5;
+  pageIndex = 0;
 
   constructor(
     private stockManagementService: StockManagementService,
@@ -29,12 +34,33 @@ export class StockManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs.sink = this.stockManagementService
+      .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
+      .valueChanges.subscribe((data: any) => {
+        this.ingredients = data?.data?.GetAllIngredients?.data?.ingredient_data;
+        this.dataSource = new MatTableDataSource(
+          data?.data?.GetAllIngredients?.data?.ingredient_data
+        );
+      });
+
+    this.stockManagementService
       .getAllIngredients()
       .valueChanges.subscribe((data: any) => {
+        this.ingredientsLength =
+          data.data.GetAllIngredients.data.ingredient_data.length;
+      });
+  }
+
+  indexingPage(event) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.stockManagementService
+      .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
+      .valueChanges.subscribe((data: any) => {
         this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
-        this.dataSource = new MatTableDataSource(
-          data.data.GetAllIngredients.data.ingredient_data
-        );
+        this.dataSource = new MatTableDataSource(this.ingredients);
+        this.stockManagementService
+          .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
+          .refetch();
       });
   }
 
@@ -48,7 +74,6 @@ export class StockManagementComponent implements OnInit {
             this.stockManagementService.getAllIngredients().refetch()
           );
       });
-    
   }
 
   onUpdate(ingredient: any) {
@@ -56,27 +81,27 @@ export class StockManagementComponent implements OnInit {
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
         this.stockManagementService.updateIngredient(val).subscribe();
+        this.stockManagementService.getAllIngredients().refetch();
         this.menuManagementService.getAllRecipes().refetch();
       });
   }
 
   onDelete(element: any) {
-    this.stockManagementService.deleteIngredient(element);
-    // Swal.fire({
-    //   title: 'Are you sure?',
-    //   text: "You won't be able to revert this!",
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   confirmButtonColor: '#3085d6',
-    //   cancelButtonColor: '#d33',
-    //   confirmButtonText: 'Yes, delete it!',
-    // }).then((confirm: any) => {
-    //   if (confirm.isConfirmed) {
-    //     this.stockManagementService.deleteIngredient(element);
-    //     this.stockManagementService.getAllIngredients().refetch();
-    //   } else {
-    //     this.stockManagementService.getAllIngredients().refetch();
-    //   }
-    // });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((confirm: any) => {
+      if (confirm.isConfirmed) {
+        this.stockManagementService.deleteIngredient(element);
+        this.stockManagementService.getAllIngredients().refetch();
+      } else {
+        this.stockManagementService.getAllIngredients().refetch();
+      }
+    });
   }
 }

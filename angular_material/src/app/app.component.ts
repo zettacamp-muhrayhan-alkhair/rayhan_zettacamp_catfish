@@ -54,14 +54,6 @@ export class AppComponent implements OnInit {
         this.newDummyMenus = data.filter((val) => val.view === true);
       });
     }
-    // if (localStorage.getItem('userToken') !== null) {
-    //   this.isToken = true;
-    //   let userData: any = localStorage.getItem('userData');
-    //   userData = JSON.parse(userData);
-    //   this.dbMenus = userData.filter((val: any) => val.view === true);
-    // } else {
-    //   this.isToken = false;
-    // }
   }
 
   onLogout() {

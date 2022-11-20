@@ -1,27 +1,31 @@
-<mat-toolbar>
-  <div class="wrapper title-wrapper">
-    <a [routerLink]="['']">ZettaCafe</a>
-  </div>
-  <div class="wrapper btn-wrapper">
-    <button
-      mat-button
-      *ngFor="let menu of newDummyMenus"
-      [routerLink]="[menu?.slug]"
-    >
-      {{ menu?.name }}
-    </button>
-    <button
-      class="border"
-      mat-button
-      [routerLink]="['home']"
-      *ngIf="isToken"
-      (click)="onLogout()"
-    >
-      Logout
-    </button>
-  </div>
-</mat-toolbar>
+<div class="app-container">
+  <mat-toolbar>
+    <div class="wrapper title-wrapper">
+      <a mat-button [routerLink]="['']">{{ "ZettaCafe" | uppercase }}</a>
+    </div>
+    <div class="wrapper nav-wrapper">
+      <a
+        mat-button
+        color="primary"
+        *ngFor="let menu of newDummyMenus"
+        [routerLink]="[menu?.slug]"
+      >
+        {{ menu?.name | uppercase }}
+      </a>
+      <a
+        class="border"
+        mat-button
+        color="primary"
+        [routerLink]="['home']"
+        *ngIf="isToken"
+        (click)="onLogout()"
+      >
+        {{ "Logout" | uppercase }}
+      </a>
+    </div>
+  </mat-toolbar>
+</div>
 
-<div>
+<div class="child-container">
   <router-outlet></router-outlet>
 </div>

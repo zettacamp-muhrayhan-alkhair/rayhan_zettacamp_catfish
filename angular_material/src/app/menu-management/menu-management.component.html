@@ -40,5 +40,14 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <mat-paginator
+      [length]="recipesLength"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+      (page)="pageEvent = indexingPage($event)"
+    >
+    </mat-paginator>
   </div>
 </div>

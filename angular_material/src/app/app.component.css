@@ -1,33 +1,49 @@
+.app-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
 mat-toolbar {
+  height: 5 rem;
+  background: transparent;
   display: flex;
   justify-content: space-between;
-  background: transparent;
 }
 
 .title-wrapper {
-  margin-left: 3rem;
+  margin-left: 5rem;
 }
 
-.btn-wrapper {
-  display: flex;
-  gap: 1rem;
-  margin-right: 3rem;
-}
-
-.wrapper a {
+.title-wrapper a {
+  color: white;
   text-decoration: none;
-  color: white !important;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-mat-toolbar button {
-  font-size: 1.2rem;
-  color: #0098db;
-}
-
-mat-toolbar button:hover {
+.title-wrapper a:hover {
+  transition: 0.4s;
   background-color: white;
+  color: #3f51b5;
 }
 
-.border {
-  border: 1px solid white;
+.nav-wrapper {
+  margin-right: 5rem;
+}
+
+.nav-wrapper a {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.nav-wrapper a:hover {
+  transition: 0.4s;
+  background-color: #3f51b5;
+  color: white;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
 }

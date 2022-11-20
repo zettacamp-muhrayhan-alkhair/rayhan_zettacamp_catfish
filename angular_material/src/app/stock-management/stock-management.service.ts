@@ -32,6 +32,40 @@ export class StockManagementService {
     });
   }
 
+  getAllIngredientsWithPage(inputLimit, inputPage) {
+    let limit: Number;
+    let page: Number;
+    if (!inputLimit || !inputPage) {
+      limit = inputLimit;
+      page = 1;
+    } else {
+      limit = inputLimit;
+      page = inputPage + 1;
+    }
+    return this.apollo.watchQuery({
+      query: gql`
+        query GetAllIngredients($limit: Int, $page: Int) {
+          GetAllIngredients(data: { page: $page, limit: $limit }) {
+            message
+            data {
+              ingredient_data {
+                _id
+                name
+                stock
+                status
+                available
+              }
+              info_page {
+                count
+              }
+            }
+          }
+        }
+      `,
+      variables: { page, limit },
+    });
+  }
+
   getOneIngredient(element: any) {
     const _id = element._id;
     return this.apollo.query({
@@ -119,26 +153,10 @@ export class StockManagementService {
         variables: { _id },
       })
       .subscribe(
-        (data) => {
+        (data: any) => {
           Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!',
-          }).then((confirm: any) => {
-            if (confirm.isConfirmed) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Yes...',
-                text: 'Ingredient is Deleted',
-              });
-              this.getAllIngredients().refetch();
-            } else {
-              this.getAllIngredients().refetch();
-            }
+            icon: 'success',
+            title: data?.data?.DeleteIngredient?.message,
           });
         },
         (err) =>

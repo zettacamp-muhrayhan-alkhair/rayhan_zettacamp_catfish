@@ -2,8 +2,7 @@
   <div class="img-wrapper">
     <img mat-card-image [src]="recipe.link_recipe" [alt]="recipe.recipe_name" />
   </div>
-  <mat-card-header
-    >"
+  <mat-card-header>
     <mat-card-title>{{ recipe.recipe_name }}</mat-card-title>
     <mat-card-subtitle>{{ recipe.price | currency: "Rp. " }}</mat-card-subtitle>
   </mat-card-header>

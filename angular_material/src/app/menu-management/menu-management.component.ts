@@ -18,6 +18,12 @@ export class MenuManagementComponent implements OnInit {
   displayedColumns: string[] = ['name', 'ingredients', 'actions'];
   recipes: any = [];
   dataSource = new MatTableDataSource();
+
+  recipesLength;
+  pageEvent;
+  pageSize = 5;
+  pageIndex = 0;
+
   constructor(
     private menuManagementService: MenuManagementService,
     private matDialog: MatDialog
@@ -25,10 +31,30 @@ export class MenuManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs.sink = this.menuManagementService
-      .getAllRecipes()
+      .getAllRecipesWithPage(this.pageSize, this.pageIndex)
       .valueChanges.subscribe((data: any) => {
         this.recipes = data.data.GetAllrecipes.data.recipe_data;
         this.dataSource = new MatTableDataSource(this.recipes);
+      });
+
+    this.menuManagementService
+      .getAllRecipes()
+      .valueChanges.subscribe((data: any) => {
+        this.recipesLength = data.data.GetAllrecipes.data.recipe_data.length;
+      });
+  }
+
+  indexingPage(event) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.menuManagementService
+      .getAllRecipesWithPage(this.pageSize, this.pageIndex)
+      .valueChanges.subscribe((data: any) => {
+        this.recipes = data.data.GetAllrecipes.data.recipe_data;
+        this.dataSource = new MatTableDataSource(this.recipes);
+        this.menuManagementService
+          .getAllRecipesWithPage(this.pageSize, this.pageIndex)
+          .refetch();
       });
   }
 

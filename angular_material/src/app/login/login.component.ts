@@ -12,9 +12,10 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
   private subs = new SubSink();
+
   loginForm = this.fb.group({
-    email: this.fb.control(null, [Validators.required, Validators.email]),
-    password: this.fb.control(null, [
+    email: this.fb.control('', [Validators.required, Validators.email]),
+    password: this.fb.control('', [
       Validators.required,
       Validators.minLength(6),
     ]),
@@ -26,7 +27,10 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.setItem('userToken', '');
+    localStorage.setItem('userData', '');
+  }
 
   onSubmit() {
     console.log('seb', this.loginForm.value);
@@ -54,16 +58,3 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
   }
 }
-
-// .subscribe(
-//   (data) => {
-//     console.log(data);
-//   },
-//   (err) => {
-//     Swal.fire({
-//       title: 'Invalid User',
-//       text: err.message,
-//       icon: 'error',
-//     });
-//   }
-// );

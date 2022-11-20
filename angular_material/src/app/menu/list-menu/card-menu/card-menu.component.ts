@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs';
+import { MenuManagementService } from 'src/app/menu-management/menu-management.service';
 import { StockManagementService } from 'src/app/stock-management/stock-management.service';
 import { openAddMenuUserDialog } from '../../menu-form/menu-form.component';
 
@@ -15,11 +16,12 @@ export class CardMenuComponent implements OnInit {
   isNotAvailableStock = false;
   constructor(
     private matDialog: MatDialog,
-    private stockManagementService: StockManagementService
+    private stockManagementService: StockManagementService,
+    private menuManagementService: MenuManagementService
   ) {}
 
   ngOnInit(): void {
-    this.stockManagementService
+    this.menuManagementService
       .getAllIngredients()
       .valueChanges.subscribe((data: any) => {
         this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
@@ -38,6 +40,7 @@ export class CardMenuComponent implements OnInit {
   }
 
   onAddToCart(recipe: any) {
+    console.log(recipe);
     if (!localStorage.getItem('menu')) {
       localStorage.setItem('menu', JSON.stringify([]));
     }
@@ -51,6 +54,8 @@ export class CardMenuComponent implements OnInit {
           arr.map((data: any) => {
             data.amount += val.amount;
             data.note = val.note;
+            data.name = recipe.recipe_name;
+            console.log(data);
 
             return data;
           });

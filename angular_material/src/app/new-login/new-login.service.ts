@@ -1,36 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class NewLoginService {
   constructor(private apollo: Apollo) {}
 
-  getToken(loginForm: any) {
-    const email = loginForm.email;
-    const password = loginForm.password;
-
-    console.log('met', loginForm);
-
+  getDataLogin(loginForm) {
     return this.apollo.mutate({
       mutation: gql`
-        mutation Login($data: userParams) {
-          Login(data: $data) {
+        mutation Login($loginForm: userParams) {
+          Login(data: $loginForm) {
             message
             token
             user {
               usertype {
                 name
-                view
                 slug
+                view
               }
             }
           }
         }
       `,
-      variables: { data: { email, password } },
+      variables: { loginForm },
     });
   }
 }

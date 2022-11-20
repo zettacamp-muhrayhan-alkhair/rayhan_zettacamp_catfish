@@ -8,6 +8,7 @@ import {
 } from '@angular/material/dialog';
 import { Recipe } from 'src/app/model/recipe.model';
 import { StockManagementService } from 'src/app/stock-management/stock-management.service';
+import { MenuManagementService } from '../../menu-management.service';
 
 @Component({
   selector: 'app-menu-edit',
@@ -17,11 +18,12 @@ import { StockManagementService } from 'src/app/stock-management/stock-managemen
 export class MenuEditComponent implements OnInit {
   allIngredients: any = [];
 
-  menuForm:any;
+  menuForm: any;
 
   constructor(
     private fb: FormBuilder,
     private stockManagementService: StockManagementService,
+    private menuManagementService: MenuManagementService,
     private dialogRef: MatDialogRef<MenuEditComponent>,
     @Inject(MAT_DIALOG_DATA) private recipe: any
   ) {}
@@ -32,28 +34,28 @@ export class MenuEditComponent implements OnInit {
     let tempIngeridient = {
       recipe_name: this.recipe.recipe_name,
       link_recipe: this.recipe.link_recipe,
-      price: this.recipe.price
-    }
+      price: this.recipe.price,
+    };
 
     let ingredients = [];
-      
-    if(this.recipe?.ingredients?.length) {
+
+    if (this.recipe?.ingredients?.length) {
       this.recipe.ingredients.forEach((ingredient) => {
         ingredients.push({
           ingredient_id: ingredient.ingredient_id._id,
-          stock_used: ingredient.stock_used
-        })
+          stock_used: ingredient.stock_used,
+        });
         this.addIngredient();
       });
-    const temp = {
-      ...tempIngeridient,
-      ingredients: ingredients,
+      const temp = {
+        ...tempIngeridient,
+        ingredients: ingredients,
+      };
+
+      this.menuForm.patchValue(temp);
     }
 
-    this.menuForm.patchValue(temp);
-    }
-
-    this.stockManagementService
+    this.menuManagementService
       .getAllIngredients()
       .valueChanges.subscribe(
         (data: any) =>
@@ -62,13 +64,13 @@ export class MenuEditComponent implements OnInit {
       );
   }
 
-  initForm(){
+  initForm() {
     this.menuForm = new FormGroup({
       recipe_name: this.fb.control(null, Validators.required),
       link_recipe: this.fb.control(null, Validators.required),
       price: this.fb.control(null, Validators.required),
       ingredients: this.fb.array([]),
-    })
+    });
   }
 
   onSubmit() {
@@ -95,11 +97,21 @@ export class MenuEditComponent implements OnInit {
   }
 
   removeIngredient(i: number) {
+    // for (let ingredient_id of this.recipe.ingredients) {
+    //   console.log(ingredient_id);
+    // }
+    // console.log(i);
+
+    // console.log(this.recipe.ingredients);
+    this.menuManagementService
+      .deleteIngredientUpdateRecipe(this.recipe)
+      .subscribe();
     this.ingredients.removeAt(i);
   }
 }
 
 export function openEditMenuDialog(matDialog: MatDialog, recipe: Recipe) {
+  console.log(recipe);
   const config = new MatDialogConfig();
   config.disableClose = true;
   config.autoFocus = true;
@@ -107,7 +119,6 @@ export function openEditMenuDialog(matDialog: MatDialog, recipe: Recipe) {
   config.data = {
     ...recipe,
   };
-
 
   const dialogRef = matDialog.open(MenuEditComponent, config);
 
