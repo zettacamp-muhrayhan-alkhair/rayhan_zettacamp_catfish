@@ -28,8 +28,6 @@ export class NewLoginComponent implements OnInit {
   onSubmit() {
     this.newLoginService
       .getDataLogin(this.loginForm.value)
-      .subscribe((data) => {
-        console.log(data);
-      });
+      .subscribe((data) => {});
   }
 }

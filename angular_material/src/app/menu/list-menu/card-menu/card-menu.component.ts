@@ -12,8 +12,9 @@ import { openAddMenuUserDialog } from '../../menu-form/menu-form.component';
 })
 export class CardMenuComponent implements OnInit {
   @Input() recipe: any;
-  ingredients: any = [];
   isNotAvailableStock = false;
+  ingredients: string[] = [];
+  allIngredients;
   constructor(
     private matDialog: MatDialog,
     private stockManagementService: StockManagementService,
@@ -21,11 +22,10 @@ export class CardMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.menuManagementService
-      .getAllIngredients()
-      .valueChanges.subscribe((data: any) => {
-        this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
-      });
+    for (let ingredient of this.recipe.ingredients) {
+      this.ingredients.push(ingredient.ingredient_id.name);
+      this.allIngredients = this.ingredients.join(', ');
+    }
 
     let arr = [];
     for (let ingredient of this.recipe.ingredients) {
@@ -40,7 +40,6 @@ export class CardMenuComponent implements OnInit {
   }
 
   onAddToCart(recipe: any) {
-    console.log(recipe);
     if (!localStorage.getItem('menu')) {
       localStorage.setItem('menu', JSON.stringify([]));
     }
@@ -50,20 +49,27 @@ export class CardMenuComponent implements OnInit {
         let arr: any = localStorage.getItem('menu');
         arr = JSON.parse(arr);
         let arrCheck = arr.filter((data: any) => data._id === val._id);
+        if ((arrCheck.length = 0)) {
+        }
         if (arrCheck.length > 0) {
           arr.map((data: any) => {
             data.amount += val.amount;
+            data.recipe = recipe.price;
             data.note = val.note;
+            data.price = recipe.price * data.amount;
             data.name = recipe.recipe_name;
-            console.log(data);
 
             return data;
           });
         } else {
+          val.amount += val.amount;
+          val.recipe = recipe.price;
+          val.note = val.note;
+          val.price = recipe.price * val.amount;
+          val.name = recipe.recipe_name;
           arr.push(val);
         }
         localStorage.setItem('menu', JSON.stringify(arr));
-        console.log(arr);
       });
   }
 }

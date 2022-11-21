@@ -12,8 +12,6 @@ export class LoginService {
     const email = loginForm.email;
     const password = loginForm.password;
 
-    console.log('met', loginForm);
-
     return this.apollo.mutate({
       mutation: gql`
         mutation Login($data: userParams) {

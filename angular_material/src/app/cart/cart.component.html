@@ -1,1 +1,8 @@
-<p>cart works!</p>
+<div class="container">
+  <div *ngFor="let recipes of cart">
+    <p *ngFor="let recipe of recipes.menu">
+      {{ recipe.recipe_id.recipe_name }}
+    </p>
+    <button (click)="onCheckOut(recipes._id)">CheckOut</button>
+  </div>
+</div>

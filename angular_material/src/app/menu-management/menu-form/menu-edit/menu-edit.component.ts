@@ -19,6 +19,11 @@ export class MenuEditComponent implements OnInit {
   allIngredients: any = [];
 
   menuForm: any;
+  dataRecipe: any;
+
+  arr = [];
+
+  isDeleted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -29,6 +34,12 @@ export class MenuEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.menuManagementService
+      .getOneRecipe(this.recipe)
+      .subscribe((data: any) => {
+        this.dataRecipe = data.data.GetOneRecipe.data;
+      });
+
     this.initForm();
 
     let tempIngeridient = {
@@ -66,15 +77,29 @@ export class MenuEditComponent implements OnInit {
 
   initForm() {
     this.menuForm = new FormGroup({
-      recipe_name: this.fb.control(null, Validators.required),
-      link_recipe: this.fb.control(null, Validators.required),
-      price: this.fb.control(null, Validators.required),
+      recipe_name: this.fb.control(
+        this.recipe.recipe_name,
+        Validators.required
+      ),
+      link_recipe: this.fb.control(
+        this.recipe.link_recipe,
+        Validators.required
+      ),
+      price: this.fb.control(this.recipe.price, Validators.required),
       ingredients: this.fb.array([]),
     });
   }
 
   onSubmit() {
-    this.dialogRef.close({ ...this.menuForm.value, _id: this.recipe._id });
+    if (this.isDeleted) {
+      this.menuManagementService
+        .deleteIngredientUpdateRecipe(this.recipe, this.arr)
+        .subscribe((data) => {});
+      this.dialogRef.close({ ...this.menuForm.value, _id: this.recipe._id });
+    } else {
+      this.dialogRef.close({ ...this.menuForm.value, _id: this.recipe._id });
+    }
+    this.isDeleted = false;
   }
 
   onClose() {
@@ -96,22 +121,15 @@ export class MenuEditComponent implements OnInit {
     this.ingredients.push(this.createIngredient());
   }
 
-  removeIngredient(i: number) {
-    // for (let ingredient_id of this.recipe.ingredients) {
-    //   console.log(ingredient_id);
-    // }
-    // console.log(i);
-
-    // console.log(this.recipe.ingredients);
-    this.menuManagementService
-      .deleteIngredientUpdateRecipe(this.recipe)
-      .subscribe();
+  removeIngredient(i: number, _id: any) {
+    let arrCheck = _id;
+    this.arr.push(arrCheck);
+    this.isDeleted = true;
     this.ingredients.removeAt(i);
   }
 }
 
 export function openEditMenuDialog(matDialog: MatDialog, recipe: Recipe) {
-  console.log(recipe);
   const config = new MatDialogConfig();
   config.disableClose = true;
   config.autoFocus = true;

@@ -165,6 +165,7 @@ export class MenuManagementService {
               published
               ingredients {
                 ingredient_id {
+                  _id
                   name
                   stock
                 }
@@ -178,13 +179,12 @@ export class MenuManagementService {
     });
   }
 
-  deleteIngredientUpdateRecipe(element: any) {
+  deleteIngredientUpdateRecipe(element: any, ingredientId: any) {
     const _id = element._id;
-    const ingredient_id = element.ingredients.ingredient_id._id;
     return this.apollo.mutate({
       mutation: gql`
-        mutation UpdateRecipe($_id: ID, $ingredient_id: String) {
-          UpdateRecipe(data: { _id: $_id, ingredients: $ingredient_id }) {
+        mutation UpdateRecipe($_id: ID, $ingredientId: [ID]) {
+          UpdateRecipe(data: { _id: $_id, ingredient_id: $ingredientId }) {
             message
             data {
               _id
@@ -204,7 +204,7 @@ export class MenuManagementService {
       `,
       variables: {
         _id,
-        ingredient_id,
+        ingredientId,
       },
     });
   }
@@ -380,7 +380,6 @@ export class MenuManagementService {
       })
       .subscribe(
         (data: any) => {
-          console.log(data);
           Swal.fire({
             icon: 'success',
             title: 'success',

@@ -8,5 +8,25 @@ import { Apollo, gql } from 'apollo-angular';
 export class MenuService {
   constructor(private httpClient: HttpClient, private apollo: Apollo) {}
 
- 
+  createTransaction(menu: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation CreateTransaction($menu: [menuFieldsParams]) {
+          CreateTransaction(data: { menu: $menu }) {
+            message
+            data {
+              status
+              order_status
+              menu {
+                recipe_id {
+                  price
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: { menu },
+    });
+  }
 }

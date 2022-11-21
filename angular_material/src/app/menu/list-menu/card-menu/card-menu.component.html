@@ -8,8 +8,11 @@
   </mat-card-header>
   <mat-card-content>
     Ingredients:
-    <p *ngFor="let ingredient of recipe.ingredients">
+    <!-- <p *ngFor="let ingredient of recipe.ingredients">
       {{ ingredient.ingredient_id.name }},
+    </p> -->
+    <p>
+      {{ allIngredients }}
     </p>
   </mat-card-content>
   <mat-card-actions>

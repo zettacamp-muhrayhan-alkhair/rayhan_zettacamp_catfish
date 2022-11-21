@@ -32,7 +32,6 @@ export class MenuFormComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close({ ...this.menu.value, _id: this.recipe._id });
-    console.log(this.menu.value);
   }
 }
 

@@ -47,7 +47,9 @@
           mat-raised-button
           color="warn"
           type="button"
-          (click)="removeIngredient(i)"
+          (click)="
+            removeIngredient(i, ingredients.controls[i].value.ingredient_id)
+          "
         >
           Delete Ingredient
         </button>
