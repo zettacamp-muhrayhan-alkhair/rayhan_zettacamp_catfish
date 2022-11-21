@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('seb', this.loginForm.value);
     this.loginService.getToken(this.loginForm.value).subscribe(
       (data: any) => {
         Swal.fire({
@@ -41,7 +40,6 @@ export class LoginComponent implements OnInit {
           text: data.data.Login.message,
           icon: 'success',
         });
-        console.log('set', this.loginForm.value);
         let userData = data.data.Login.user.usertype;
         let userToken = data.data.Login.token;
         localStorage.setItem('userToken', userToken);
