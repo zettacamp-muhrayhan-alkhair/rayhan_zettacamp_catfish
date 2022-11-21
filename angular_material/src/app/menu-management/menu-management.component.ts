@@ -34,13 +34,8 @@ export class MenuManagementComponent implements OnInit {
       .getAllRecipesWithPage(this.pageSize, this.pageIndex)
       .valueChanges.subscribe((data: any) => {
         this.recipes = data.data.GetAllrecipes.data.recipe_data;
+        this.recipesLength = data?.data?.GetAllrecipes?.data.info_page[0].count;
         this.dataSource = new MatTableDataSource(this.recipes);
-      });
-
-    this.menuManagementService
-      .getAllRecipes()
-      .valueChanges.subscribe((data: any) => {
-        this.recipesLength = data.data.GetAllrecipes.data.recipe_data.length;
       });
   }
 

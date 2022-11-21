@@ -20,7 +20,7 @@ mat-toolbar {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .title-wrapper a:hover {
@@ -30,12 +30,12 @@ mat-toolbar {
 }
 
 .nav-wrapper {
-  margin-right: 5rem;
+  margin-right: 3rem;
 }
 
 .nav-wrapper a {
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .nav-wrapper a:hover {
@@ -46,4 +46,8 @@ mat-toolbar {
   -moz-transition: 0.4s;
   -ms-transition: 0.4s;
   -o-transition: 0.4s;
+}
+
+.changeCSS a {
+  color: #3f51b5 !important;
 }

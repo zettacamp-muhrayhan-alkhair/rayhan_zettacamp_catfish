@@ -37,16 +37,11 @@ export class StockManagementComponent implements OnInit {
       .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
       .valueChanges.subscribe((data: any) => {
         this.ingredients = data?.data?.GetAllIngredients?.data?.ingredient_data;
+        this.ingredientsLength =
+          data?.data?.GetAllIngredients?.data.info_page[0].count;
         this.dataSource = new MatTableDataSource(
           data?.data?.GetAllIngredients?.data?.ingredient_data
         );
-      });
-
-    this.stockManagementService
-      .getAllIngredients()
-      .valueChanges.subscribe((data: any) => {
-        this.ingredientsLength =
-          data.data.GetAllIngredients.data.ingredient_data.length;
       });
   }
 

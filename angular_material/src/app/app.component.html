@@ -1,16 +1,68 @@
 <div class="app-container">
   <mat-toolbar>
-    <div class="wrapper title-wrapper">
-      <a mat-button [routerLink]="['']">{{ "ZettaCafe" | uppercase }}</a>
+    <div class="wrapper title-wrapper" [ngClass]="!isNotApp ? 'changeCSS' : ''">
+      <a mat-button [routerLink]="['']" (click)="onChange()">{{
+        "ZettaCafe" | uppercase
+      }}</a>
     </div>
     <div class="wrapper nav-wrapper">
+      <a
+        class="border"
+        mat-button
+        color="primary"
+        [routerLink]="['home']"
+        (click)="onChange()"
+      >
+        {{ "Home" | uppercase }}
+      </a>
+      <a
+        class="border"
+        mat-button
+        color="primary"
+        [routerLink]="['menu']"
+        *ngIf="!isToken"
+        (click)="onClick()"
+      >
+        {{ "Menu" | uppercase }}
+      </a>
+      <a
+        class="border"
+        mat-button
+        color="primary"
+        [routerLink]="['about']"
+        *ngIf="!isToken"
+        (click)="onClick()"
+      >
+        {{ "About" | uppercase }}
+      </a>
+      <a
+        class="border"
+        mat-button
+        color="primary"
+        [routerLink]="['login']"
+        *ngIf="!isToken"
+        (click)="onClick()"
+      >
+        {{ "Login" | uppercase }}
+      </a>
       <a
         mat-button
         color="primary"
         *ngFor="let menu of newDummyMenus"
         [routerLink]="[menu?.slug]"
+        (click)="onClick()"
       >
         {{ menu?.name | uppercase }}
+      </a>
+      <a
+        class="border"
+        mat-button
+        color="primary"
+        *ngIf="isToken"
+        [routerLink]="['about']"
+        (click)="onClick()"
+      >
+        {{ "About" | uppercase }}
       </a>
       <a
         class="border"

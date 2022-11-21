@@ -23,6 +23,7 @@ export class CartService {
                   recipe_id {
                     recipe_name
                     price
+                    link_recipe
                   }
                 }
               }
@@ -45,6 +46,32 @@ export class CartService {
               menu {
                 recipe_id {
                   recipe_name
+                  price
+                }
+                amount
+                note
+              }
+            }
+          }
+        }
+      `,
+      variables: { _id },
+    });
+  }
+
+  cancelTransaction(data: any) {
+    const _id = data;
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation DeleteTransaction($_id: ID) {
+          DeleteTransaction(data: { _id: $_id }) {
+            message
+            data {
+              _id
+              menu {
+                recipe_id {
+                  recipe_name
+                  price
                 }
                 amount
                 note

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Apollo, gql } from 'apollo-angular';
 import { SubSink } from 'subsink/dist/subsink';
 import Swal from 'sweetalert2';
 import { LoginService } from './login.service';
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private apollo: Apollo
   ) {}
 
   ngOnInit(): void {
@@ -32,27 +34,33 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userData', '');
   }
 
-  onSubmit() {
-    this.loginService.getToken(this.loginForm.value).subscribe(
+  onSubmit(value) {
+    console.log(value);
+    this.loginService.getToken(value).subscribe(
       (data: any) => {
-        Swal.fire({
-          title: 'User Valid',
-          text: data.data.Login.message,
-          icon: 'success',
-        });
-        let userData = data.data.Login.user.usertype;
-        let userToken = data.data.Login.token;
-        localStorage.setItem('userToken', userToken);
-        localStorage.setItem('userData', JSON.stringify(userData));
-      },
-      (err) => {
-        Swal.fire({
-          title: 'Invalid User',
-          text: err.message,
-          icon: 'error',
-        });
+        if (data) {
+          console.log(data);
+          Swal.fire({
+            title: 'Login Success',
+            text: data.data.Login.message,
+            icon: 'success',
+          });
+          let userData = data.data.Login.user.usertype;
+          let userToken = data.data.Login.token;
+          localStorage.setItem('userToken', userToken);
+          localStorage.setItem('userData', JSON.stringify(userData));
+          this.router.navigate(['home']).then(() => window.location.reload());
+        } else {
+        }
       }
+      // (err) => {
+      //   Swal.fire({
+      //     title: 'Invalid User',
+      //     text: err.message,
+      //     icon: 'error',
+      //   });
+      // }
     );
-    this.loginForm.reset();
+    // this.loginForm.reset();
   }
 }

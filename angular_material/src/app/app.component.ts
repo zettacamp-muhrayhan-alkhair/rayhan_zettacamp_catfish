@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   isToken: boolean = false;
   newDummyMenus: any = [];
 
+  isNotApp = false;
+
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isNotApp = true;
     let userData: any = localStorage.getItem('userData');
     userData = JSON.parse(userData);
     this.dbMenus = userData;
@@ -58,5 +61,16 @@ export class AppComponent implements OnInit {
 
   onLogout() {
     localStorage.clear();
+    this.router.navigate(['home']).then(() => {
+      window.location.reload();
+    });
+  }
+
+  onClick() {
+    this.isNotApp = false;
+  }
+
+  onChange() {
+    this.isNotApp = true;
   }
 }

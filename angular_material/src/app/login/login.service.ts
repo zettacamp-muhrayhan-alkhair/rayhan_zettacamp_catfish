@@ -8,9 +8,9 @@ import Swal from 'sweetalert2';
 export class LoginService {
   constructor(private apollo: Apollo) {}
 
-  getToken(loginForm: any) {
-    const email = loginForm.email;
-    const password = loginForm.password;
+  getToken(data: any) {
+    // const email = loginForm.email;
+    // const password = loginForm.password;
 
     return this.apollo.mutate({
       mutation: gql`
@@ -28,7 +28,7 @@ export class LoginService {
           }
         }
       `,
-      variables: { data: { email, password } },
+      variables: { data },
     });
   }
 }

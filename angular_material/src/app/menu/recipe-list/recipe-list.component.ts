@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { MenuComponent } from '../menu.component';
 import { MenuService } from '../menu.service';
 
@@ -13,7 +14,7 @@ export class RecipeListComponent implements OnInit {
 
   recipes;
   dataSource = new MatTableDataSource();
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {
     this.recipes = localStorage.getItem('menu');
@@ -31,7 +32,9 @@ export class RecipeListComponent implements OnInit {
       recipe.recipe_id = recipe._id;
       delete recipe._id;
     }
-    this.menuService.createTransaction(this.recipes).subscribe((data) => {});
+    this.menuService.createTransaction(this.recipes).subscribe((data) => {
+      localStorage.removeItem('menu');
+    });
   }
 
   onEdit(data) {
@@ -39,6 +42,13 @@ export class RecipeListComponent implements OnInit {
   }
 
   onDelete(data) {
-    console.log('met delete');
+    let menu: any = localStorage.getItem('menu');
+    menu = JSON.parse(menu);
+    let index = menu.filter((val) => val._id !== data._id);
+    // console.log(index);
+    localStorage.setItem('menu', JSON.stringify(index));
+    this.router.navigate(['menu']).then(() => {
+      window.location.reload();
+    });
   }
 }

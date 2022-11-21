@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="" [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" />
@@ -9,10 +9,10 @@
       <input matInput type="password" formControlName="password" />
     </mat-form-field>
     <button
+      type="submit"
       mat-raised-button
       color="primary"
       [disabled]="loginForm.invalid"
-      (click)="onSubmit()"
     >
       Submit
     </button>

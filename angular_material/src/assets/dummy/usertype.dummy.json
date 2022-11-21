@@ -1,15 +1,5 @@
 [
   {
-    "name": "Home",
-    "view": true,
-    "slug": "home"
-  },
-  {
-    "name": "Menu",
-    "view": true,
-    "slug": "menu"
-  },
-  {
     "name": "Stock Management",
     "view": false,
     "slug": "stock-management"
@@ -20,18 +10,8 @@
     "slug": "menu-management"
   },
   {
-    "name": "About",
-    "view": true,
-    "slug": "about"
-  },
-  {
     "name": "Cart",
     "view": false,
     "slug": "cart"
-  },
-  {
-    "name": "Get Started",
-    "view": true,
-    "slug": "login"
   }
 ]
