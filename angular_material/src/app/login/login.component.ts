@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { SubSink } from 'subsink/dist/subsink';
 import Swal from 'sweetalert2';
+import { AppComponent } from '../app.component';
 import { LoginService } from './login.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    private apollo: Apollo
+    private appComponent: AppComponent
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +55,11 @@ export class LoginComponent implements OnInit {
           icon: 'success',
         }).then(() => {
           this.router.navigate(['home']).then(() => {
-            window.location.reload();
+            if (role === 'Admin') {
+              this.appComponent.isAdmin = true;
+            } else {
+              this.appComponent.isCustomer = true;
+            }
           });
         });
       },

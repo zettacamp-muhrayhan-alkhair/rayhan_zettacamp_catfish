@@ -1,12 +1,13 @@
 .example-card {
-  max-width: 350px;
-  height: 500px;
+  max-width: 200px;
+  height: 400px;
+}
+.img-wrapper {
+  padding: 10px;
 }
 
-.img-wrapper {
-  height: 250px;
-  overflow: hidden;
-  margin-bottom: 1rem;
+.img-wrapper img {
+  height: 100px;
 }
 
 mat-card-content {
@@ -15,7 +16,3 @@ mat-card-content {
   flex-wrap: wrap;
   gap: 0.2rem;
 }
-
-/* .sold {
-  font-size: 200px;
-} */

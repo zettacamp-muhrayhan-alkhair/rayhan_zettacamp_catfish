@@ -1,0 +1,99 @@
+.container {
+  color: white;
+  position: absolute;
+  top: 0;
+  background: url(https://images.pexels.com/photos/7758253/pexels-photo-7758253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
+    no-repeat;
+  background-size: cover;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title-social h1 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.wrapper .content-wrapper {
+  width: calc(50%);
+}
+
+.form-wrapper {
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+form {
+  width: 50%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: fit-content;
+}
+
+mat-label {
+  color: white;
+}
+
+mat-form-field input {
+  width: 100%;
+}
+
+.social-wrapper {
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-btn-social {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.title-btn-social h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.btn-btn-social button {
+  color: white;
+  width: fit-content;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.btn-btn-social button:hover {
+  transition: 0.3s;
+  scale: 1.1;
+  background-color: white;
+  color: black;
+  width: fit-content;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}

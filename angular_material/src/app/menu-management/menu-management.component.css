@@ -1,9 +1,28 @@
 .container {
-  padding-top: 100px;
-  width: 80%;
-  margin: 0 auto;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  background: url(https://images.pexels.com/photos/276147/pexels-photo-276147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
+    no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+
+.wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-paginator {
+  width: 60%;
 }
 
 table {
-  width: 100%;
+  width: 60%;
 }
