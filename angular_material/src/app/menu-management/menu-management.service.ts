@@ -69,9 +69,10 @@ export class MenuManagementService {
     });
   }
 
-  getAllRecipesWithPage(inputLimit, inputPage) {
+  getAllRecipesWithPage(inputLimit: number, inputPage: number, published: any) {
     let limit: Number;
     let page: Number;
+    let publishing: unknown;
     if (!inputLimit || !inputPage) {
       limit = inputLimit;
       page = 1;
@@ -79,10 +80,21 @@ export class MenuManagementService {
       limit = inputLimit;
       page = inputPage + 1;
     }
+
+    if (published === 'Publish') {
+      publishing = 'Publish';
+    } else if (published === 'Unpublish') {
+      publishing = 'Unpublish';
+    } else {
+      publishing = '';
+    }
+
     return this.apollo.watchQuery({
       query: gql`
-        query GetAllrecipes($limit: Int, $page: Int) {
-          GetAllrecipes(data: { limit: $limit, page: $page }) {
+        query GetAllrecipes($limit: Int, $page: Int, $publishing: String) {
+          GetAllrecipes(
+            data: { limit: $limit, page: $page, published: $publishing }
+          ) {
             message
             data {
               recipe_data {
@@ -112,7 +124,57 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { limit, page },
+      variables: { limit, page, publishing },
+      fetchPolicy: 'network-only',
+    });
+  }
+
+  getAllRecipesWithPublished(published: string) {
+    let publishing: string;
+
+    if (published === 'Publish') {
+      publishing = 'Publish';
+    } else if (published === 'Unpublish') {
+      publishing = 'Unpublish';
+    } else {
+      publishing = '';
+    }
+
+    return this.apollo.watchQuery({
+      query: gql`
+        query GetAllrecipes($publishing: String) {
+          GetAllrecipes(data: { published: $publishing }) {
+            message
+            data {
+              recipe_data {
+                _id
+                link_recipe
+                recipe_name
+                published
+                status
+                ingredients {
+                  ingredient_id {
+                    _id
+                    name
+                    stock
+                    status
+                    available
+                  }
+                  stock_used
+                }
+                link_recipe
+                price
+                status
+              }
+              info_page {
+                count
+              }
+            }
+          }
+        }
+      `,
+      variables: { publishing },
+      fetchPolicy: 'network-only',
     });
   }
 
@@ -218,49 +280,41 @@ export class MenuManagementService {
       ingredient.stock_used = Number(ingredient.stock_used);
     }
     const ingredient_id = element.ingredients.ingredient_id;
-    return this.apollo
-      .mutate({
-        mutation: gql`
-          mutation CreateRecipe(
-            $recipe_name: String
-            $link_recipe: String
-            $price: Int
-            $ingredients: [recipeIngredientsParams]
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation CreateRecipe(
+          $recipe_name: String
+          $link_recipe: String
+          $price: Int
+          $ingredients: [recipeIngredientsParams]
+        ) {
+          CreateRecipe(
+            data: {
+              recipe_name: $recipe_name
+              link_recipe: $link_recipe
+              price: $price
+              ingredients: $ingredients
+            }
           ) {
-            CreateRecipe(
-              data: {
-                recipe_name: $recipe_name
-                link_recipe: $link_recipe
-                price: $price
-                ingredients: $ingredients
-              }
-            ) {
-              message
-              data {
-                _id
-                recipe_name
-                status
-                published
-                ingredients {
-                  ingredient_id {
-                    name
-                    stock
-                  }
-                  stock_used
+            message
+            data {
+              _id
+              recipe_name
+              status
+              published
+              ingredients {
+                ingredient_id {
+                  name
+                  stock
                 }
+                stock_used
               }
             }
           }
-        `,
-        variables: { recipe_name, link_recipe, price, ingredients },
-      })
-      .subscribe((data: any) => {
-        Swal.fire({
-          title: 'Recipe Added',
-          icon: 'success',
-          text: data.data.CreateRecipe.message,
-        });
-      });
+        }
+      `,
+      variables: { recipe_name, link_recipe, price, ingredients },
+    });
   }
 
   updateRecipe(element: any) {
@@ -354,44 +408,28 @@ export class MenuManagementService {
 
   deleteRecipe(element: any) {
     const _id = element._id;
-    return this.apollo
-      .mutate({
-        mutation: gql`
-          mutation DeleteRecipe($_id: ID) {
-            DeleteRecipe(data: { _id: $_id }) {
-              message
-              data {
-                _id
-                recipe_name
-                status
-                published
-                ingredients {
-                  ingredient_id {
-                    name
-                    stock
-                  }
-                  stock_used
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation DeleteRecipe($_id: ID) {
+          DeleteRecipe(data: { _id: $_id }) {
+            message
+            data {
+              _id
+              recipe_name
+              status
+              published
+              ingredients {
+                ingredient_id {
+                  name
+                  stock
                 }
+                stock_used
               }
             }
           }
-        `,
-        variables: { _id },
-      })
-      .subscribe(
-        (data: any) => {
-          Swal.fire({
-            icon: 'success',
-            title: 'success',
-            text: data.data.DeleteRecipe.data.message,
-          });
-        },
-        (err) =>
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: err.message,
-          })
-      );
+        }
+      `,
+      variables: { _id },
+    });
   }
 }

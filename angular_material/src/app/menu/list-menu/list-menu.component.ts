@@ -11,17 +11,17 @@ import { MenuManagementService } from 'src/app/menu-management/menu-management.s
 export class ListMenuComponent implements OnInit {
   menu: any = [];
   subs = new SubSink();
-  constructor(
-    private menuService: MenuService,
-    private menuManagementService: MenuManagementService
-  ) {}
+  constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.subs.sink = this.menuManagementService
+    this.getAllRecipesOnMenu();
+  }
+
+  getAllRecipesOnMenu() {
+    this.subs.sink = this.menuService
       .getPublishRecipes()
-      .valueChanges.subscribe((data: any) => {
+      .subscribe((data: any) => {
         this.menu = data.data.GetAllrecipes.data.recipe_data;
       });
   }
-
 }

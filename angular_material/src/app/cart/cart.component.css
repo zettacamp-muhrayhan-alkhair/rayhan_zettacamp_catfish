@@ -2,19 +2,47 @@
   padding-top: 100px;
 }
 
-mat-card-actions {
+.do-not-have-transactions {
+  width: 95vw;
+  height: 95wh;
+}
+
+.do-not-have-transactions h1 {
+  width: fit-content;
+  height: max-content;
+  font-size: 3rem;
+  padding: 10rem 0;
+  margin: auto;
+}
+
+.card-actions {
   display: flex;
-  margin: 1rem 1rem;
+  margin: 1rem 0;
+  margin-left: 2rem;
+  margin-right: 1rem;
   justify-content: space-between;
   gap: 2rem;
 }
 
-mat-card {
+.card-wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
 }
 
 mat-card img {
   width: 100px;
   height: 100px;
+}
+
+.example-card mat-card-actions {
+  display: flex;
+  margin-left: 1rem;
+  margin-right: 0.1rem;
+  justify-content: space-between;
+  gap: 2rem;
 }

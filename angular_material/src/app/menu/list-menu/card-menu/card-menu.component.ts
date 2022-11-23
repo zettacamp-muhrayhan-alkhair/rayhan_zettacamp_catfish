@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs';
 import { MenuManagementService } from 'src/app/menu-management/menu-management.service';
 import { StockManagementService } from 'src/app/stock-management/stock-management.service';
+import Swal from 'sweetalert2';
 import { openAddMenuUserDialog } from '../../menu-form/menu-form.component';
+import { MenuService } from '../../menu.service';
 
 @Component({
   selector: 'app-card-menu',
@@ -14,12 +16,8 @@ export class CardMenuComponent implements OnInit {
   @Input() recipe: any;
   isNotAvailableStock = false;
   ingredients: string[] = [];
-  allIngredients;
-  constructor(
-    private matDialog: MatDialog,
-    private stockManagementService: StockManagementService,
-    private menuManagementService: MenuManagementService
-  ) {}
+  allIngredients: any;
+  constructor(private matDialog: MatDialog, private menuService: MenuService) {}
 
   ngOnInit(): void {
     for (let ingredient of this.recipe.ingredients) {
@@ -40,36 +38,25 @@ export class CardMenuComponent implements OnInit {
   }
 
   onAddToCart(recipe: any) {
-    if (!localStorage.getItem('menu')) {
-      localStorage.setItem('menu', JSON.stringify([]));
-    }
     openAddMenuUserDialog(this.matDialog, recipe)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
-        let arr: any = localStorage.getItem('menu');
-        arr = JSON.parse(arr);
-        let arrCheck = arr.filter((data: any) => data._id === val._id);
-        if ((arrCheck.length = 0)) {
-        }
-        if (arrCheck.length > 0) {
-          arr.map((data: any) => {
-            data.amount += val.amount;
-            data.recipe = recipe.price;
-            data.note = val.note;
-            data.price = recipe.price * data.amount;
-            data.name = recipe.recipe_name;
-
-            return data;
-          });
-        } else {
-          val.amount += val.amount;
-          val.recipe = recipe.price;
-          val.note = val.note;
-          val.price = recipe.price * val.amount;
-          val.name = recipe.recipe_name;
-          arr.push(val);
-        }
-        localStorage.setItem('menu', JSON.stringify(arr));
+        this.menuService.createTransaction(val).subscribe(
+          (data: any) => {
+            Swal.fire({
+              title: 'Recipe added to cart',
+              text: data.data.CreateTransaction.message,
+              icon: 'success',
+            });
+          },
+          (err: any) => {
+            Swal.fire({
+              title: 'Recipe not added to cart',
+              text: err.message,
+              icon: 'error',
+            });
+          }
+        );
       });
   }
 }

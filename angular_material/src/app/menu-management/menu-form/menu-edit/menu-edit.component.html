@@ -44,6 +44,7 @@
           <input type="number" matInput formControlName="stock_used" />
         </mat-form-field>
         <button
+          *ngIf="ingredients.length > 1"
           mat-raised-button
           color="warn"
           type="button"

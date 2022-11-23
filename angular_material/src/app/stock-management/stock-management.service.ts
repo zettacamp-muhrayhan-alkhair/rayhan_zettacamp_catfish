@@ -63,6 +63,7 @@ export class StockManagementService {
         }
       `,
       variables: { page, limit },
+      fetchPolicy: 'network-only',
     });
   }
 
@@ -134,37 +135,23 @@ export class StockManagementService {
 
   deleteIngredient(ingredient: any) {
     const _id = ingredient._id;
-    return this.apollo
-      .mutate({
-        mutation: gql`
-          mutation DeleteIngredient($_id: ID) {
-            DeleteIngredient(data: { _id: $_id }) {
-              message
-              data {
-                _id
-                name
-                stock
-                status
-                available
-              }
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation DeleteIngredient($_id: ID) {
+          DeleteIngredient(data: { _id: $_id }) {
+            message
+            data {
+              _id
+              name
+              stock
+              status
+              available
             }
           }
-        `,
-        variables: { _id },
-      })
-      .subscribe(
-        (data: any) => {
-          Swal.fire({
-            icon: 'success',
-            title: data?.data?.DeleteIngredient?.message,
-          });
-        },
-        (err) =>
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: err.message,
-          })
-      );
+        }
+      `,
+      variables: { _id },
+      fetchPolicy: 'network-only',
+    });
   }
 }

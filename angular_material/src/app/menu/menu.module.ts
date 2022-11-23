@@ -8,7 +8,6 @@ import { CardMenuComponent } from './list-menu/card-menu/card-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [{ path: '', component: MenuComponent, title: 'Menu' }];
 
@@ -18,7 +17,6 @@ const routes: Routes = [{ path: '', component: MenuComponent, title: 'Menu' }];
     ListMenuComponent,
     CardMenuComponent,
     MenuFormComponent,
-    RecipeListComponent,
   ],
   imports: [
     CommonModule,

@@ -33,6 +33,10 @@ export class StockManagementComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAllStockWithPage();
+  }
+
+  getAllStockWithPage() {
     this.subs.sink = this.stockManagementService
       .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
       .valueChanges.subscribe((data: any) => {
@@ -53,9 +57,7 @@ export class StockManagementComponent implements OnInit {
       .valueChanges.subscribe((data: any) => {
         this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
         this.dataSource = new MatTableDataSource(this.ingredients);
-        this.stockManagementService
-          .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
-          .refetch();
+        this.getAllStockWithPage();
       });
   }
 
@@ -65,9 +67,7 @@ export class StockManagementComponent implements OnInit {
       .subscribe((val) => {
         this.stockManagementService
           .createIngredient(val)
-          .subscribe(() =>
-            this.stockManagementService.getAllIngredients().refetch()
-          );
+          .subscribe(() => this.getAllStockWithPage());
       });
   }
 
@@ -76,8 +76,6 @@ export class StockManagementComponent implements OnInit {
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
         this.stockManagementService.updateIngredient(val).subscribe();
-        this.stockManagementService.getAllIngredients().refetch();
-        this.menuManagementService.getAllRecipes().refetch();
       });
   }
 
@@ -92,10 +90,23 @@ export class StockManagementComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((confirm: any) => {
       if (confirm.isConfirmed) {
-        this.stockManagementService.deleteIngredient(element);
-        this.stockManagementService.getAllIngredients().refetch();
+        this.stockManagementService.deleteIngredient(element).subscribe(
+          (data: any) => {
+            Swal.fire({
+              icon: 'success',
+              title: data?.data?.DeleteIngredient?.message,
+            });
+            this.getAllStockWithPage();
+          },
+          (err) =>
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.message,
+            })
+        );
       } else {
-        this.stockManagementService.getAllIngredients().refetch();
+        this.getAllStockWithPage();
       }
     });
   }

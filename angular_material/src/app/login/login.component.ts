@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userData', '');
   }
 
-  onSubmit(value) {
+  onSubmit(value: any) {
     console.log(value);
     this.loginService.getToken(value).subscribe(
       (data: any) => {
         if (data) {
-          console.log(data);
+          // console.log(data);
           Swal.fire({
             title: 'Login Success',
             text: data.data.Login.message,
@@ -49,18 +49,17 @@ export class LoginComponent implements OnInit {
           let userToken = data.data.Login.token;
           localStorage.setItem('userToken', userToken);
           localStorage.setItem('userData', JSON.stringify(userData));
-          this.router.navigate(['home']).then(() => window.location.reload());
-        } else {
         }
+        this.router.navigate(['home']).then(() => window.location.reload());
+      },
+      (err) => {
+        Swal.fire({
+          title: 'Invalid User',
+          text: err.message,
+          icon: 'error',
+        });
       }
-      // (err) => {
-      //   Swal.fire({
-      //     title: 'Invalid User',
-      //     text: err.message,
-      //     icon: 'error',
-      //   });
-      // }
     );
-    // this.loginForm.reset();
+    this.loginForm.reset();
   }
 }

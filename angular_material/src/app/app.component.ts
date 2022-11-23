@@ -18,18 +18,14 @@ export class AppComponent implements OnInit {
 
   isNotApp = false;
 
-  constructor(
-    private loginService: LoginService,
-    private router: Router,
-    private appService: AppService
-  ) {}
+  constructor(private router: Router, private appService: AppService) {}
 
   ngOnInit(): void {
     this.isNotApp = true;
-    let userData: any = localStorage.getItem('userData');
-    userData = JSON.parse(userData);
-    this.dbMenus = userData;
     if (localStorage.getItem('userToken')) {
+      let userData: any = localStorage.getItem('userData');
+      userData = JSON.parse(userData);
+      this.dbMenus = userData;
       this.isToken = true;
       this.appService.usertypes$
         .pipe(first((data) => data.length !== 0))

@@ -4,13 +4,21 @@
       <button id="add" mat-raised-button color="primary" (click)="onAdd()">
         Add Recipe
       </button>
+      <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select (valueChange)="onFilterPublished($event)" name="food">
+          <mat-option *ngFor="let food of publisheds" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">
-          <button (click)="onUpdate(element)">{{ element.recipe_name }}</button>
+          {{ element.recipe_name }}
         </td>
       </ng-container>
       <!-- Stock Column -->
@@ -25,7 +33,18 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button (click)="onDelete(element)">
+          <button
+            mat-raised-button
+            [disabled]="element.published"
+            (click)="onUpdate(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-raised-button
+            [disabled]="element.published"
+            (click)="onDelete(element)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
           <mat-slide-toggle

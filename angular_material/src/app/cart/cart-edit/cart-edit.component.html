@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-dialog-content [formGroup]="cartForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Amount"
+        formControlName="amount"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Note</mat-label>
+      <input matInput placeholder="Note" formControlName="note" />
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!cartForm.valid"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </mat-dialog-actions>
+</div>

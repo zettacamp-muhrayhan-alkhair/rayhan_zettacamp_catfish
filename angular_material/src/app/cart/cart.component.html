@@ -1,20 +1,40 @@
+<div class="do-not-have-transactions" *ngIf="cart.length === 0">
+  <h1>You do not have any transaction</h1>
+</div>
+
 <div class="container">
   <ng-container *ngFor="let recipes of cart">
     <mat-card class="example-card" *ngFor="let recipe of recipes.menu">
-      <mat-card-header>
-        <mat-card-title>{{ recipe.recipe_id.recipe_name }}</mat-card-title>
-        <mat-card-subtitle
-          >{{ recipe.recipe_id.price | currency: "Rp. " }} per
-          item</mat-card-subtitle
-        >
-      </mat-card-header>
-      <img [src]="recipe.recipe_id.link_recipe" />
+      <div class="card-wrapper">
+        <mat-card-header>
+          <mat-card-title>{{ recipe.recipe_id.recipe_name }}</mat-card-title>
+          <mat-card-subtitle>{{ recipe.amount }} items</mat-card-subtitle>
+          <mat-card-subtitle
+            >{{ recipe.recipe_id.price | currency: "Rp. " }} per
+            item</mat-card-subtitle
+          >
+        </mat-card-header>
+        <img [src]="recipe.recipe_id.link_recipe" />
+      </div>
+      <mat-card-actions align="end">
+        <mat-card-title>
+          Total: {{ recipe.amount * recipe.recipe_id.price | currency: "Rp. " }}
+        </mat-card-title>
+        <div class="btn-wrapper">
+          <button mat-raised-button color="primary" (click)="onEdit(recipe)">
+            Edit
+          </button>
+          <button mat-raised-button color="warn" (click)="onRemove(recipe)">
+            Remove
+          </button>
+        </div>
+      </mat-card-actions>
     </mat-card>
-
-    <mat-card-actions align="end">
-      <mat-card-title>{{
-        recipes.total_price | currency: "Rp. "
-      }}</mat-card-title>
+    <mat-card-actions class="card-actions">
+      <mat-card-title
+        >Total Price:
+        {{ recipes.total_price | currency: "Rp. " }}</mat-card-title
+      >
       <div class="btn-wrapper">
         <button mat-raised-button color="warn" (click)="onCancel(recipes._id)">
           Cancel

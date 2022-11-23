@@ -27,7 +27,6 @@ export class MenuEditComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private stockManagementService: StockManagementService,
     private menuManagementService: MenuManagementService,
     private dialogRef: MatDialogRef<MenuEditComponent>,
     @Inject(MAT_DIALOG_DATA) private recipe: any
