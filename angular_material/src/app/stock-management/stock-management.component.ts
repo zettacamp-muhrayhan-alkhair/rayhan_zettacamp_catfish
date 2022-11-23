@@ -8,6 +8,7 @@ import { filter } from 'rxjs';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
 import { MenuManagementService } from '../menu-management/menu-management.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-management',
@@ -18,7 +19,7 @@ export class StockManagementComponent implements OnInit {
   private subs = new SubSink();
   private dialogSubs = new SubSink();
   displayedColumns: string[] = ['name', 'stock', 'available', 'actions'];
-  ingredientsLength;
+  ingredientsLength: number;
   ingredients = [];
   dataSource = new MatTableDataSource();
 
@@ -26,34 +27,73 @@ export class StockManagementComponent implements OnInit {
   pageSize = 5;
   pageIndex = 0;
 
+  filtername: any = new FormControl('');
+  searchName = '';
+  defaultFilter = '';
+
+  availabilities: any[] = [
+    { value: '', viewValue: 'Allx' },
+    { value: 'Unavailable', viewValue: 'Unavailable' },
+    { value: 'Available', viewValue: 'Available' },
+  ];
+
+  availability = '';
+
   constructor(
     private stockManagementService: StockManagementService,
-    private matDialog: MatDialog,
-    private menuManagementService: MenuManagementService
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.getAllStockWithPage();
+    this.filtername.valueChanges.subscribe((data) => {
+      this.searchName = data;
+      this.getAllStockWithPage();
+    });
   }
 
   getAllStockWithPage() {
     this.subs.sink = this.stockManagementService
-      .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
+      .getAllIngredientsWithPage(
+        this.pageSize,
+        this.pageIndex,
+        this.searchName,
+        this.availability
+      )
       .valueChanges.subscribe((data: any) => {
         this.ingredients = data?.data?.GetAllIngredients?.data?.ingredient_data;
         this.ingredientsLength =
-          data?.data?.GetAllIngredients?.data.info_page[0].count;
+          data.data.GetAllIngredients.data.info_page[0].count;
         this.dataSource = new MatTableDataSource(
           data?.data?.GetAllIngredients?.data?.ingredient_data
         );
       });
   }
 
-  indexingPage(event) {
+  onFilterAvailability(event: any) {
+    this.availability = event;
+    this.stockManagementService
+      .getAllIngredientsWithPage(
+        this.pageSize,
+        this.pageIndex,
+        this.searchName,
+        this.availability
+      )
+      .valueChanges.subscribe(() => {
+        this.getAllStockWithPage();
+      });
+  }
+
+  indexingPage(event: any) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.stockManagementService
-      .getAllIngredientsWithPage(this.pageSize, this.pageIndex)
+      .getAllIngredientsWithPage(
+        this.pageSize,
+        this.pageIndex,
+        this.searchName,
+        this.availability
+      )
       .valueChanges.subscribe((data: any) => {
         this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
         this.dataSource = new MatTableDataSource(this.ingredients);

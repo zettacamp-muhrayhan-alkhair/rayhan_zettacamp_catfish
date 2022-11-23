@@ -36,6 +36,36 @@ export class CartService {
     });
   }
 
+  getHistoryTransaction() {
+    return this.apollo.query({
+      query: gql`
+        query GetAllTransaction {
+          GetAllTransaction(data: { typetr: "Checkout" }) {
+            message
+            data {
+              transaction_data {
+                menu {
+                  recipe_id {
+                    recipe_name
+                  }
+                  amount
+                }
+                total_price
+                order_status
+                order_date
+                user_id {
+                  first_name
+                  last_name
+                }
+              }
+            }
+          }
+        }
+      `,
+      fetchPolicy: 'network-only',
+    });
+  }
+
   checkOut(data: any) {
     const _id = data;
     return this.apollo.mutate({

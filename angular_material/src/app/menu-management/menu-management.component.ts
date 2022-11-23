@@ -7,6 +7,7 @@ import { openAddMenuDialog } from './menu-form/menu-form.component';
 import { MenuManagementService } from './menu-management.service';
 import { filter } from 'rxjs';
 import { openEditMenuDialog } from './menu-form/menu-edit/menu-edit.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-menu-management',
@@ -22,7 +23,7 @@ export class MenuManagementComponent implements OnInit {
 
   published = 'all';
   private subs = new SubSink();
-  displayedColumns: string[] = ['name', 'ingredients', 'actions'];
+  displayedColumns: string[] = ['name', 'ingredients', 'publisher', 'actions'];
   recipes: any[] = [];
   dataSource = new MatTableDataSource();
 
@@ -31,6 +32,10 @@ export class MenuManagementComponent implements OnInit {
   pageSize: number = 5;
   pageIndex: number = 0;
 
+  filtername: any = new FormControl('');
+  defaultFilter = '';
+  searchName = '';
+
   constructor(
     private menuManagementService: MenuManagementService,
     private matDialog: MatDialog
@@ -38,21 +43,24 @@ export class MenuManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllRecipesWithPage();
+    this.filtername.valueChanges.subscribe((data: any) => {
+      this.searchName = data;
+      this.getAllRecipesWithPage();
+    });
   }
 
   getAllRecipesWithPage() {
     this.subs.sink = this.menuManagementService
-      .getAllRecipesWithPage(this.pageSize, this.pageIndex, this.published)
+      .getAllRecipesWithPage(
+        this.pageSize,
+        this.pageIndex,
+        this.published,
+        this.searchName
+      )
       .valueChanges.subscribe((data: any) => {
         this.recipes = data.data.GetAllrecipes.data.recipe_data;
         this.recipesLength = data?.data?.GetAllrecipes?.data.info_page[0].count;
         this.dataSource = new MatTableDataSource(this.recipes);
-      });
-
-    this.menuManagementService
-      .getAllRecipesWithPublished(this.published)
-      .valueChanges.subscribe((data: any) => {
-        this.recipesLength = data.data.GetAllrecipes.data.recipe_data.length;
       });
   }
 
@@ -60,7 +68,12 @@ export class MenuManagementComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.menuManagementService
-      .getAllRecipesWithPage(this.pageSize, this.pageIndex, this.published)
+      .getAllRecipesWithPage(
+        this.pageSize,
+        this.pageIndex,
+        this.published,
+        this.searchName
+      )
       .valueChanges.subscribe((data: any) => {
         this.recipes = data.data.GetAllrecipes.data.recipe_data;
         this.dataSource = new MatTableDataSource(this.recipes);
@@ -96,7 +109,12 @@ export class MenuManagementComponent implements OnInit {
   onFilterPublished(event: any) {
     this.published = event;
     this.menuManagementService
-      .getAllRecipesWithPage(this.pageSize, this.pageIndex, this.published)
+      .getAllRecipesWithPage(
+        this.pageSize,
+        this.pageIndex,
+        this.published,
+        this.searchName
+      )
       .valueChanges.subscribe(() => {
         this.getAllRecipesWithPage();
       });

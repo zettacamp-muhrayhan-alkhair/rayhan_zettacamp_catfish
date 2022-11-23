@@ -5,6 +5,7 @@ import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
 import { openEditRecipeCartDialog } from './cart-edit/cart-edit.component';
 import { CartService } from './cart.service';
+import { openHistoryTransactionDialog } from './history-transaction/history-transaction.component';
 
 @Component({
   selector: 'app-cart',
@@ -48,6 +49,14 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       }
     );
+  }
+
+  onHistory() {
+    openHistoryTransactionDialog(this.matDialog)
+      .pipe(filter((val) => !!val))
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
 
   onCancel(data: any) {

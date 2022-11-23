@@ -4,6 +4,19 @@
       <button id="add" mat-raised-button color="primary" (click)="onAdd()">
         Add Ingredients
       </button>
+      <input
+        type="text"
+        [formControl]="filtername"
+        [(ngModel)]="defaultFilter"
+      />
+      <mat-form-field appearance="fill">
+        <mat-label>Availability</mat-label>
+        <mat-select (valueChange)="onFilterAvailability($event)" name="food">
+          <mat-option *ngFor="let food of availabilities" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Name Column -->

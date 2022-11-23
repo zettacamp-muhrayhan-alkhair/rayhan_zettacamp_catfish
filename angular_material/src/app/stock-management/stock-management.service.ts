@@ -31,21 +31,13 @@ export class StockManagementService {
       `,
     });
   }
-
-  getAllIngredientsWithPage(inputLimit, inputPage) {
-    let limit: Number;
-    let page: Number;
-    if (!inputLimit || !inputPage) {
-      limit = inputLimit;
-      page = 1;
-    } else {
-      limit = inputLimit;
-      page = inputPage + 1;
-    }
-    return this.apollo.watchQuery({
+  getAllIngredientsWithAvailability(availability: string, searchName: string) {
+    return this.apollo.query({
       query: gql`
-        query GetAllIngredients($limit: Int, $page: Int) {
-          GetAllIngredients(data: { page: $page, limit: $limit }) {
+        query GetAllIngredients($availability: String, $searchName: String) {
+          GetAllIngredients(
+            data: { available: $availability, name: $searchName }
+          ) {
             message
             data {
               ingredient_data {
@@ -62,7 +54,73 @@ export class StockManagementService {
           }
         }
       `,
-      variables: { page, limit },
+      variables: { availability, searchName },
+    });
+  }
+
+  getAllIngredientsWithPage(
+    inputLimit: number,
+    inputPage: number,
+    name: string,
+    availability: string
+  ) {
+    let limit: Number;
+    let page: Number;
+    let filtername: string = '';
+    let available: string;
+
+    if (name) {
+      filtername = name;
+    }
+
+    if (availability === 'Available') {
+      available = availability;
+    } else if (availability === 'Unavailable') {
+      available = availability;
+    } else {
+      available = '';
+    }
+
+    if (!inputLimit || !inputPage) {
+      limit = inputLimit;
+      page = 1;
+    } else {
+      limit = inputLimit;
+      page = inputPage + 1;
+    }
+    return this.apollo.watchQuery({
+      query: gql`
+        query GetAllIngredients(
+          $limit: Int
+          $page: Int
+          $filtername: String
+          $available: String
+        ) {
+          GetAllIngredients(
+            data: {
+              page: $page
+              limit: $limit
+              name: $filtername
+              available: $available
+            }
+          ) {
+            message
+            data {
+              ingredient_data {
+                _id
+                name
+                stock
+                status
+                available
+              }
+              info_page {
+                count
+              }
+            }
+          }
+        }
+      `,
+      variables: { page, limit, filtername, available },
       fetchPolicy: 'network-only',
     });
   }

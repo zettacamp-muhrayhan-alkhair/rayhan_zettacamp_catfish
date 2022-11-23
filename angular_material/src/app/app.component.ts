@@ -22,10 +22,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isNotApp = true;
-    if (localStorage.getItem('userToken')) {
-      let userData: any = localStorage.getItem('userData');
-      userData = JSON.parse(userData);
-      this.dbMenus = userData;
+    if (localStorage.getItem('token')) {
+      let data: any = localStorage.getItem('data');
+      data = JSON.parse(data);
+      this.dbMenus = data;
       this.isToken = true;
       this.appService.usertypes$
         .pipe(first((data) => data.length !== 0))

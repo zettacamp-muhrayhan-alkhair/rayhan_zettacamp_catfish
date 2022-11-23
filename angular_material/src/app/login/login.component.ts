@@ -1,5 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { SubSink } from 'subsink/dist/subsink';
@@ -14,12 +19,9 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   private subs = new SubSink();
 
-  loginForm = this.fb.group({
-    email: this.fb.control('', [Validators.required, Validators.email]),
-    password: this.fb.control('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -30,36 +32,39 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    localStorage.setItem('userToken', '');
-    localStorage.setItem('userData', '');
+    localStorage.setItem('token', '');
+    localStorage.setItem('data', '');
+    localStorage.setItem('role', '');
   }
 
   onSubmit(value: any) {
-    console.log(value);
-    this.loginService.getToken(value).subscribe(
-      (data: any) => {
-        if (data) {
-          // console.log(data);
-          Swal.fire({
-            title: 'Login Success',
-            text: data.data.Login.message,
-            icon: 'success',
+    console.log('seb', value);
+    this.loginService.getAuthorization(value).subscribe(
+      (val: any) => {
+        const token = val?.data?.Login?.token;
+        const data = val?.data?.Login?.user?.usertype;
+        const role = val?.data?.Login?.user?.role;
+        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('data', JSON.stringify(data));
+        localStorage.setItem('role', JSON.stringify(role));
+
+        Swal.fire({
+          title: 'You have logged in',
+          text: val?.data?.Login?.message,
+          icon: 'success',
+        }).then(() => {
+          this.router.navigate(['home']).then(() => {
+            window.location.reload();
           });
-          let userData = data.data.Login.user.usertype;
-          let userToken = data.data.Login.token;
-          localStorage.setItem('userToken', userToken);
-          localStorage.setItem('userData', JSON.stringify(userData));
-        }
-        this.router.navigate(['home']).then(() => window.location.reload());
+        });
       },
       (err) => {
         Swal.fire({
-          title: 'Invalid User',
-          text: err.message,
+          title: 'Wrong input',
+          text: err?.message,
           icon: 'error',
         });
       }
     );
-    this.loginForm.reset();
   }
 }

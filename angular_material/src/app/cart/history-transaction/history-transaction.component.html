@@ -1,0 +1,14 @@
+<div class="container" *ngFor="let transaction of transactions">
+  <h1>{{ transaction.order_status }}</h1>
+  <p>
+    {{ transaction.user_id.first_name }} {{ transaction.user_id.last_name }}
+  </p>
+  <div *ngFor="let recipe of transaction.menu">
+    <p>{{ recipe.recipe_id.recipe_name }}</p>
+    <p>{{ recipe.amount }}</p>
+  </div>
+  <span>{{ transaction.total_price | currency: "Rp. " }}</span>
+  <h3>{{ transaction.order_date | date: "fullDate" }}</h3>
+</div>
+
+<button mat-raised-button color="warn" (click)="onClose()">Close</button>

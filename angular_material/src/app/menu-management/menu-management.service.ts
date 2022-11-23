@@ -69,10 +69,21 @@ export class MenuManagementService {
     });
   }
 
-  getAllRecipesWithPage(inputLimit: number, inputPage: number, published: any) {
+  getAllRecipesWithPage(
+    inputLimit: number,
+    inputPage: number,
+    published: any,
+    filtername: string
+  ) {
     let limit: Number;
     let page: Number;
     let publishing: unknown;
+    let name: String;
+
+    if (filtername) {
+      name = filtername;
+    }
+
     if (!inputLimit || !inputPage) {
       limit = inputLimit;
       page = 1;
@@ -91,9 +102,19 @@ export class MenuManagementService {
 
     return this.apollo.watchQuery({
       query: gql`
-        query GetAllrecipes($limit: Int, $page: Int, $publishing: String) {
+        query GetAllrecipes(
+          $limit: Int
+          $page: Int
+          $publishing: String
+          $name: String
+        ) {
           GetAllrecipes(
-            data: { limit: $limit, page: $page, published: $publishing }
+            data: {
+              limit: $limit
+              page: $page
+              published: $publishing
+              recipe_name: $name
+            }
           ) {
             message
             data {
@@ -124,12 +145,12 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { limit, page, publishing },
+      variables: { limit, page, publishing, name },
       fetchPolicy: 'network-only',
     });
   }
 
-  getAllRecipesWithPublished(published: string) {
+  getAllRecipesWithPublished(published: string, filtername: string) {
     let publishing: string;
 
     if (published === 'Publish') {
@@ -142,8 +163,10 @@ export class MenuManagementService {
 
     return this.apollo.watchQuery({
       query: gql`
-        query GetAllrecipes($publishing: String) {
-          GetAllrecipes(data: { published: $publishing }) {
+        query GetAllrecipes($publishing: String, $filtername: String) {
+          GetAllrecipes(
+            data: { published: $publishing, recipe_name: $filtername }
+          ) {
             message
             data {
               recipe_data {
@@ -173,7 +196,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { publishing },
+      variables: { publishing, filtername },
       fetchPolicy: 'network-only',
     });
   }

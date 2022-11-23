@@ -8,24 +8,25 @@ import Swal from 'sweetalert2';
 export class LoginService {
   constructor(private apollo: Apollo) {}
 
-  getToken(data: any) {
+  getAuthorization(value: any) {
     return this.apollo.mutate({
       mutation: gql`
-        mutation Login($data: userParams) {
-          Login(data: $data) {
+        mutation Login($value: userParams) {
+          Login(data: $value) {
             message
             token
             user {
+              role
               usertype {
                 name
-                view
                 slug
+                view
               }
             }
           }
         }
       `,
-      variables: { data },
+      variables: { value },
     });
   }
 }

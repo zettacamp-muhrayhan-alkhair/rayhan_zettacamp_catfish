@@ -5,7 +5,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { RouterModule, Routes } from '@angular/router';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuEditComponent } from './menu-form/menu-edit/menu-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: MenuManagementComponent, title: 'Menu Management' },
@@ -15,6 +15,7 @@ const routes: Routes = [
   declarations: [MenuManagementComponent, MenuFormComponent, MenuEditComponent],
   imports: [
     CommonModule,
+    FormsModule,
     AngularMaterialModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
