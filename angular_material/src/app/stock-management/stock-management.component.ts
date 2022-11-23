@@ -32,7 +32,7 @@ export class StockManagementComponent implements OnInit {
   defaultFilter = '';
 
   availabilities: any[] = [
-    { value: '', viewValue: 'Allx' },
+    { value: '', viewValue: 'All' },
     { value: 'Unavailable', viewValue: 'Unavailable' },
     { value: 'Available', viewValue: 'Available' },
   ];

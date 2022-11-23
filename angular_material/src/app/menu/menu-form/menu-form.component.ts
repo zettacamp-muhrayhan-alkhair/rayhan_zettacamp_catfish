@@ -15,7 +15,7 @@ import { Recipe } from 'src/app/model/recipe.model';
 })
 export class MenuFormComponent implements OnInit {
   menu = this.fb.group({
-    amount: this.fb.control('', Validators.required),
+    amount: this.fb.control('', [Validators.required, Validators.min(0)]),
     note: this.fb.control(''),
   });
   constructor(
