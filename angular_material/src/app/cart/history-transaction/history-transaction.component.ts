@@ -4,6 +4,7 @@ import {
   MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -13,6 +14,15 @@ import { CartService } from '../cart.service';
 })
 export class HistoryTransactionComponent implements OnInit {
   transactions = [];
+  displayedColumns: string[] = [
+    'order_date',
+    'role',
+    'order_status',
+    'total_price',
+  ];
+
+  dataSource = new MatTableDataSource();
+
   constructor(
     public dialogRef: MatDialogRef<HistoryTransactionComponent>,
     private cartService: CartService
@@ -29,7 +39,7 @@ export class HistoryTransactionComponent implements OnInit {
   getAllTransactions() {
     this.cartService.getHistoryTransaction().subscribe((data: any) => {
       this.transactions = data.data.GetAllTransaction.data.transaction_data;
-      console.log(this.transactions);
+      this.dataSource = new MatTableDataSource(this.transactions);
     });
   }
 }

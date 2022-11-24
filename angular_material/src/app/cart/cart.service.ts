@@ -147,7 +147,6 @@ export class CartService {
   }
 
   updateTransaction(data: any) {
-    console.log(data);
     const recipe_id = data._id._id;
     const amount = data.amount;
     const note = data.note;

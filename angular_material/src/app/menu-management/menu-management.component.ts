@@ -57,11 +57,21 @@ export class MenuManagementComponent implements OnInit {
         this.published,
         this.searchName
       )
-      .subscribe((data: any) => {
-        this.recipes = data.data.GetAllrecipes.data.recipe_data;
-        this.recipesLength = data?.data?.GetAllrecipes?.data.info_page[0].count;
-        this.dataSource = new MatTableDataSource(this.recipes);
-      });
+      .subscribe(
+        (data: any) => {
+          this.recipes = data.data.GetAllrecipes.data.recipe_data;
+          this.recipesLength =
+            data?.data?.GetAllrecipes?.data.info_page[0].count;
+          this.dataSource = new MatTableDataSource(this.recipes);
+        },
+        (err) => {
+          Swal.fire({
+            title: 'Input not Found',
+            text: err.message,
+            icon: 'info',
+          });
+        }
+      );
   }
 
   indexingPage(event) {
@@ -101,8 +111,13 @@ export class MenuManagementComponent implements OnInit {
       _id: element._id,
       published: event.checked ? 'Publish' : 'Unpublish',
     };
-    this.menuManagementService.updatePublished(data).subscribe(() => {
+    this.menuManagementService.updatePublished(data).subscribe((data: any) => {
       this.getAllRecipesWithPage();
+      Swal.fire({
+        icon: 'success',
+        title: 'success',
+        text: data.data.UpdateRecipe.message,
+      });
     });
   }
 
@@ -124,9 +139,14 @@ export class MenuManagementComponent implements OnInit {
     openEditMenuDialog(this.matDialog, recipe)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
-        this.menuManagementService
-          .updateRecipe(val)
-          .subscribe(() => this.getAllRecipesWithPage());
+        this.menuManagementService.updateRecipe(val).subscribe((data: any) => {
+          this.getAllRecipesWithPage();
+          Swal.fire({
+            icon: 'success',
+            title: 'success',
+            text: data.data.UpdateRecipe.message,
+          });
+        });
       });
   }
 

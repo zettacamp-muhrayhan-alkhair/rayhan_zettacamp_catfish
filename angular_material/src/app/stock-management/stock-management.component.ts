@@ -60,14 +60,23 @@ export class StockManagementComponent implements OnInit {
         this.searchName,
         this.availability
       )
-      .valueChanges.subscribe((data: any) => {
-        this.ingredients = data?.data?.GetAllIngredients?.data?.ingredient_data;
-        this.ingredientsLength =
-          data.data.GetAllIngredients.data.info_page[0].count;
-        this.dataSource = new MatTableDataSource(
-          data?.data?.GetAllIngredients?.data?.ingredient_data
-        );
-      });
+      .valueChanges.subscribe(
+        (data: any) => {
+          this.ingredients =
+            data?.data?.GetAllIngredients?.data?.ingredient_data;
+          this.ingredientsLength =
+            data.data.GetAllIngredients.data.info_page[0].count;
+          this.dataSource = new MatTableDataSource(
+            data?.data?.GetAllIngredients?.data?.ingredient_data
+          );
+        },
+        (err) => {
+          Swal.fire({
+            text: err.message,
+            icon: 'error',
+          });
+        }
+      );
   }
 
   onFilterAvailability(event: any) {

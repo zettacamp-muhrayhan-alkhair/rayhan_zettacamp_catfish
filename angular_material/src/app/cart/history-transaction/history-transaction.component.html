@@ -1,12 +1,46 @@
-<div class="container" *ngFor="let transaction of transactions">
-  <h1>{{ transaction.order_status }}</h1>
-  <p>Role: {{ transaction.user_id.last_name }}</p>
-  <div *ngFor="let recipe of transaction.menu">
-    <p>{{ recipe.recipe_id.recipe_name }}</p>
-    <p>{{ recipe.amount }}</p>
+<div class="container">
+  <div class="wrapper">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Order Date Column -->
+      <ng-container matColumnDef="order_date">
+        <th mat-header-cell *matHeaderCellDef>Order Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.order_date | date: "fullDate" }}
+        </td>
+      </ng-container>
+      <!-- role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.user_id.last_name }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="order_status">
+        <th mat-header-cell *matHeaderCellDef>Order Status</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.order_status }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="total_price">
+        <th mat-header-cell *matHeaderCellDef>Total Price</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.total_price }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <!-- <mat-paginator
+      [length]="recipesLength"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="[1, 5, 10, 25, 100]"
+      aria-label="Select page"
+      (page)="pageEvent = indexingPage($event)"
+    >
+    </mat-paginator> -->
   </div>
-  <span>{{ transaction.total_price | currency: "Rp. " }}</span>
-  <h3>{{ transaction.order_date | date: "fullDate" }}</h3>
 </div>
 
 <button mat-raised-button color="warn" (click)="onClose()">Close</button>

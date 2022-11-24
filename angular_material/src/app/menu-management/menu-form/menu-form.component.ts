@@ -28,7 +28,8 @@ export class MenuFormComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<MenuFormComponent>,
     @Inject(MAT_DIALOG_DATA) private recipe: Recipe,
-    private stockManagementService: StockManagementService, private menuManagementService: MenuManagementService
+    private stockManagementService: StockManagementService,
+    private menuManagementService: MenuManagementService
   ) {}
 
   ngOnInit(): void {

@@ -38,15 +38,33 @@ export class CartComponent implements OnInit, OnDestroy {
           title: 'Transaction is Success',
           text: data.data.UpdateTransaction.message,
           icon: 'success',
+        }).then(() => {
+          this.getAllTransactions();
         });
-        this.getAllTransactions();
       },
       (err) => {
-        Swal.fire({
-          title: 'Transaction is failed',
-          text: err.message,
-          icon: 'error',
-        });
+        console.log(err);
+        if (err.message.includes('Transaction is Failed')) {
+          let message = err.message
+            .replaceAll('"', '')
+            .replaceAll('[', '')
+            .replaceAll(']', '')
+            .replaceAll(',', ', ');
+          Swal.fire({
+            title: 'Transaction is failed',
+            text: message,
+            icon: 'error',
+          }).then(() => {
+            this.getAllTransactions();
+          });
+        } else {
+          console.log(err.message);
+          Swal.fire({
+            title: err,
+            text: err.message,
+            icon: 'error',
+          });
+        }
       }
     );
   }
@@ -80,6 +98,7 @@ export class CartComponent implements OnInit, OnDestroy {
       this.cartService
         .cancelTransaction(this.cart[0]._id)
         .subscribe((data: any) => {
+          this.getAllTransactions();
           Swal.fire({
             title: 'Dropped',
             text: data.data.DeleteTransaction.message,
@@ -88,6 +107,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
     } else {
       this.cartService.removeItem(data).subscribe((data: any) => {
+        this.getAllTransactions();
         Swal.fire({
           title: 'Dropped',
           text: 'Recipe is deleted from cart',
