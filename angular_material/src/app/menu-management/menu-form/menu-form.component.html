@@ -1,29 +1,46 @@
 <div class="container">
   <mat-dialog-content [formGroup]="menuForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" formControlName="recipe_name" />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Price</mat-label>
-      <input
-        type="number"
-        matInput
-        placeholder="Stock"
-        formControlName="price"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Image Link</mat-label>
-      <input
-        type="url"
-        matInput
-        placeholder="Image Link"
-        formControlName="link_recipe"
-      />
-    </mat-form-field>
-    <div formArrayName="ingredients">
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="recipe_name" />
+        <mat-error *ngIf="menuForm.controls['recipe_name'].invalid"
+          >Please input correct name!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Stock"
+          formControlName="price"
+        />
+        <mat-error *ngIf="menuForm.controls['price'].invalid"
+          >Please input correct price!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Image Link</mat-label>
+        <input
+          type="url"
+          matInput
+          placeholder="Image Link"
+          formControlName="link_recipe"
+        />
+        <mat-error *ngIf="menuForm.controls['link_recipe'].invalid"
+          >Please input correct image link!</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div formArrayName="ingredients" class="input-wrapper">
       <div
+        class="ingredient-wrapper"
         *ngFor="let ingredient of ingredients.controls; let i = index"
         [formGroupName]="i"
       >
@@ -37,39 +54,26 @@
               {{ ingredient.name }}
             </mat-option>
           </mat-select>
+          <mat-error
+            *ngIf="ingredients.controls[i].get('ingredient_id').invalid"
+            >Please select correct ingredient!</mat-error
+          >
         </mat-form-field>
-        <!-- mat auto complete -->
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>name</mat-label>
-          <input
-            type="text"
-            placeholder="Pick one"
-            aria-label="Number"
-            matInput
-            formControlName="ingredient_id"
-            [matAutocomplete]="auto"
-          />
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option
-              *ngFor="let ingredient of allIngredients"
-              [value]="ingredient._id"
-            >
-              {{ ingredient.name }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field> -->
-        <!-- mat auto complaet -->
         <mat-form-field appearance="fill">
           <mat-label>Stock Used</mat-label>
-          <input matInput formControlName="stock_used" />
+          <input type="number" matInput formControlName="stock_used" />
+          <mat-error *ngIf="ingredients.controls[i].get('stock_used').invalid"
+            >Please input correct amount!</mat-error
+          >
         </mat-form-field>
         <button
           mat-raised-button
           color="warn"
           type="button"
+          *ngIf="ingredients.length > 1"
           (click)="removeIngredient(i)"
         >
-          Delete Ingredient
+          <mat-icon>delete</mat-icon>
         </button>
       </div>
     </div>

@@ -23,12 +23,19 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getAllTransactions() {
-    this.subs.sink = this.cartService
-      .getAllTransaction()
-      .subscribe((data: any) => {
+    this.subs.sink = this.cartService.getAllTransaction().subscribe(
+      (data: any) => {
         let menu = data.data.GetAllTransaction.data.transaction_data;
         this.cart = menu;
-      });
+      },
+      (err) => {
+        Swal.fire({
+          title: 'No Transaction',
+          text: err.message,
+          icon: 'error',
+        });
+      }
+    );
   }
 
   onCheckOut(data: any) {
@@ -43,28 +50,13 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       },
       (err) => {
-        console.log(err);
-        if (err.message.includes('Transaction is Failed')) {
-          let message = err.message
-            .replaceAll('"', '')
-            .replaceAll('[', '')
-            .replaceAll(']', '')
-            .replaceAll(',', ', ');
-          Swal.fire({
-            title: 'Transaction is failed',
-            text: message,
-            icon: 'error',
-          }).then(() => {
-            this.getAllTransactions();
-          });
-        } else {
-          console.log(err.message);
-          Swal.fire({
-            title: err,
-            text: err.message,
-            icon: 'error',
-          });
-        }
+        Swal.fire({
+          title: 'Transaction is failed',
+          text: err.message,
+          icon: 'error',
+        }).then(() => {
+          this.getAllTransactions();
+        });
       }
     );
   }
@@ -72,48 +64,105 @@ export class CartComponent implements OnInit, OnDestroy {
   onHistory() {
     openHistoryTransactionDialog(this.matDialog)
       .pipe(filter((val) => !!val))
-      .subscribe((data: any) => {
-        console.log(data);
-      });
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+        },
+        (err) => {
+          Swal.fire({
+            title: 'No History',
+            text: err.message,
+            icon: 'error',
+          });
+        }
+      );
   }
 
   onCancel(data: any) {
-    this.cartService.cancelTransaction(data).subscribe(() => {
-      this.getAllTransactions();
-    });
+    this.cartService.cancelTransaction(data).subscribe(
+      (data: any) => {
+        Swal.fire({
+          title: 'Transaction is Deleted',
+          text: data.data.DeleteTransaction.message,
+          icon: 'success',
+        }).then(() => {
+          this.getAllTransactions();
+        });
+      },
+      (err) => {
+        Swal.fire({
+          title: 'Transaction is not Deleted',
+          text: err.message,
+          icon: 'error',
+        });
+      }
+    );
   }
 
   onEdit(data: any) {
     openEditRecipeCartDialog(this.matDialog, data)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
-        this.cartService.updateTransaction(val).subscribe(() => {
-          this.getAllTransactions();
-        });
+        this.cartService.updateTransaction(val).subscribe(
+          (data: any) => {
+            Swal.fire({
+              title: 'Transaction is Updated',
+              text: data.data.UpdateTransaction.message,
+              icon: 'success',
+            }).then(() => {
+              this.getAllTransactions();
+            });
+          },
+          (err) => {
+            Swal.fire({
+              title: 'Transaction is not Updated',
+              text: err.message,
+              icon: 'error',
+            });
+          }
+        );
       });
   }
 
   onRemove(data: any) {
     if (this.cart[0].menu.length === 1) {
-      this.cartService
-        .cancelTransaction(this.cart[0]._id)
-        .subscribe((data: any) => {
-          this.getAllTransactions();
+      this.cartService.cancelTransaction(this.cart[0]._id).subscribe(
+        (data: any) => {
           Swal.fire({
-            title: 'Dropped',
+            title: 'Transaction is Updated',
             text: data.data.DeleteTransaction.message,
             icon: 'success',
+          }).then(() => {
+            this.getAllTransactions();
           });
-        });
+        },
+        (err) => {
+          Swal.fire({
+            title: 'Transaction is not updated',
+            text: err.message,
+            icon: 'success',
+          });
+        }
+      );
     } else {
-      this.cartService.removeItem(data).subscribe((data: any) => {
-        this.getAllTransactions();
-        Swal.fire({
-          title: 'Dropped',
-          text: 'Recipe is deleted from cart',
-          icon: 'success',
-        });
-      });
+      this.cartService.removeItem(data).subscribe(
+        (data: any) => {
+          Swal.fire({
+            title: 'Transaction is Updated',
+            text: 'Recipe is deleted from cart',
+            icon: 'success',
+          }).then(() => {
+            this.getAllTransactions();
+          });
+        },
+        (err) => {
+          Swal.fire({
+            title: 'Transaction is not Updated',
+            text: err.message,
+            icon: 'error',
+          });
+        }
+      );
     }
   }
 

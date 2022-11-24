@@ -19,7 +19,7 @@ export class StockEditComponent implements OnInit {
     name: this.fb.control(this.ingredient.name, Validators.required),
     stock: this.fb.control(this.ingredient.stock, [
       Validators.required,
-      Validators.pattern(/^-?(0|[1-9]\d*)?$/),
+      Validators.min(0),
     ]),
   });
   constructor(
@@ -28,7 +28,9 @@ export class StockEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private ingredient: Ingredient
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.stockForm.controls['name'].disable();
+  }
 
   onClose() {
     this.dialogRef.close();

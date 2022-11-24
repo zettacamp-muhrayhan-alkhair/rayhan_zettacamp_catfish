@@ -114,9 +114,26 @@ export class StockManagementComponent implements OnInit {
     openAddStockDialog(this.matDialog)
       .pipe(filter((val) => !!val))
       .subscribe((val) => {
-        this.stockManagementService
-          .createIngredient(val)
-          .subscribe(() => this.getAllStockWithPage());
+        this.stockManagementService.createIngredient(val).subscribe(
+          (data: any) => {
+            console.log(data);
+            Swal.fire({
+              title: 'Ingredient is Added',
+              icon: 'success',
+              text: data.data.CreateIngredient.message,
+            }).then(() => {
+              this.getAllStockWithPage();
+            });
+          },
+          (err) => {
+            console.log(err);
+            Swal.fire({
+              title: 'Ingredient is not Added',
+              icon: 'error',
+              text: err.message,
+            });
+          }
+        );
       });
   }
 
@@ -124,7 +141,24 @@ export class StockManagementComponent implements OnInit {
     openEditStockDialog(this.matDialog, ingredient)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
-        this.stockManagementService.updateIngredient(val).subscribe();
+        this.stockManagementService.updateIngredient(val).subscribe(
+          (data: any) => {
+            Swal.fire({
+              title: 'Ingredient is updated',
+              icon: 'success',
+              text: data.data.UpdateIngredient.message,
+            }).then(() => {
+              this.getAllStockWithPage();
+            });
+          },
+          (err) => {
+            Swal.fire({
+              title: 'Ingredient is not updated',
+              icon: 'error',
+              text: err.message,
+            });
+          }
+        );
       });
   }
 

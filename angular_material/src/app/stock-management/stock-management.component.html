@@ -2,8 +2,8 @@
   <div class="wrapper">
     <div class="table-wrapper">
       <div class="btn-container">
-        <button id="add" mat-raised-button color="primary" (click)="onAdd()">
-          Add Ingredients
+        <button mat-raised-button color="primary" (click)="onAdd()">
+          Add New Ingredient
         </button>
       </div>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -47,12 +47,14 @@
           </th>
           <td mat-cell *matCellDef="let element">
             <mat-icon
+              matTooltip="Available"
               [ngStyle]="{ color: 'green' }"
               *ngIf="element.available === true"
             >
               done
             </mat-icon>
             <mat-icon
+              matTooltip="Unavailable"
               [ngStyle]="{ color: 'red' }"
               *ngIf="element.available === false"
             >
@@ -63,10 +65,18 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button (click)="onUpdate(element)">
+            <button
+              matTooltip="Edit the ingredient"
+              mat-raised-button
+              (click)="onUpdate(element)"
+            >
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-raised-button (click)="onDelete(element)">
+            <button
+              matTooltip="Delet the ingredient"
+              mat-raised-button
+              (click)="onDelete(element)"
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </td>

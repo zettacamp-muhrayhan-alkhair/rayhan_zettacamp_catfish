@@ -1,18 +1,25 @@
 <div class="container">
   <mat-dialog-content [formGroup]="cartForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input
-        type="number"
-        matInput
-        placeholder="Amount"
-        formControlName="amount"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Note</mat-label>
-      <input matInput placeholder="Note" formControlName="note" />
-    </mat-form-field>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Amount"
+          formControlName="amount"
+        />
+        <mat-error *ngIf="cartForm.controls['amount'].invalid"
+          >Please input correct amount!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Note</mat-label>
+        <textarea matInput placeholder="Note" formControlName="note"></textarea>
+      </mat-form-field>
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions>

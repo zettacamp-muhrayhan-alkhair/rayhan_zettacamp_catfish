@@ -28,7 +28,6 @@ export class MenuFormComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<MenuFormComponent>,
     @Inject(MAT_DIALOG_DATA) private recipe: Recipe,
-    private stockManagementService: StockManagementService,
     private menuManagementService: MenuManagementService
   ) {}
 
@@ -59,7 +58,7 @@ export class MenuFormComponent implements OnInit {
   createIngredient(): FormGroup {
     return this.fb.group({
       ingredient_id: this.fb.control('', Validators.required),
-      stock_used: this.fb.control('', Validators.required),
+      stock_used: this.fb.control('', [Validators.required, Validators.min(1)]),
     });
   }
 
@@ -76,6 +75,8 @@ export function openAddMenuDialog(matDialog: MatDialog) {
   const config = new MatDialogConfig();
   config.disableClose = true;
   config.autoFocus = true;
+
+  config.width = '520px';
 
   const dialogRef = matDialog.open(MenuFormComponent, config);
 

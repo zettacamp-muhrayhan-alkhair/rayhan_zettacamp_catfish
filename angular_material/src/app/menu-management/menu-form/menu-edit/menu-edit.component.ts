@@ -112,7 +112,7 @@ export class MenuEditComponent implements OnInit {
   createIngredient(): FormGroup {
     return this.fb.group({
       ingredient_id: this.fb.control('', Validators.required),
-      stock_used: this.fb.control('', Validators.required),
+      stock_used: this.fb.control('', [Validators.required, Validators.min(1)]),
     });
   }
 
@@ -132,6 +132,7 @@ export function openEditMenuDialog(matDialog: MatDialog, recipe: Recipe) {
   const config = new MatDialogConfig();
   config.disableClose = true;
   config.autoFocus = true;
+  config.width = '520px';
 
   config.data = {
     ...recipe,

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartGuard } from './guards/cart.guard';
+import { MenuManagementGuard } from './guards/menu-management.guard';
+import { StockManagementGuard } from './guards/stock-management.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,6 +28,7 @@ const routes: Routes = [
   {
     path: 'cart',
     loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
+    canActivate: [CartGuard],
   },
   {
     path: 'login',
@@ -37,6 +41,7 @@ const routes: Routes = [
       import('./stock-management/stock-management.module').then(
         (m) => m.StockManagementModule
       ),
+    canActivate: [StockManagementGuard],
   },
   {
     path: 'menu-management',
@@ -44,6 +49,7 @@ const routes: Routes = [
       import('./menu-management/menu-management.module').then(
         (m) => m.MenuManagementModule
       ),
+    canActivate: [MenuManagementGuard],
   },
   {
     path: '**',

@@ -66,7 +66,7 @@ export class MenuManagementComponent implements OnInit {
         },
         (err) => {
           Swal.fire({
-            title: 'Input not Found',
+            title: 'No recipe show',
             text: err.message,
             icon: 'info',
           });
@@ -95,14 +95,24 @@ export class MenuManagementComponent implements OnInit {
     openAddMenuDialog(this.matDialog)
       .pipe(filter((val) => !!val))
       .subscribe((val) => {
-        this.menuManagementService.createRecipe(val).subscribe((data: any) => {
-          this.getAllRecipesWithPage();
-          Swal.fire({
-            title: 'Recipe Added',
-            icon: 'success',
-            text: data.data.CreateRecipe.message,
-          });
-        });
+        this.menuManagementService.createRecipe(val).subscribe(
+          (data: any) => {
+            Swal.fire({
+              title: 'Recipe Added',
+              icon: 'success',
+              text: data.data.CreateRecipe.message,
+            }).then(() => {
+              this.getAllRecipesWithPage();
+            });
+          },
+          (err) => {
+            Swal.fire({
+              title: 'Recipe has been listed',
+              text: err.message,
+              icon: 'error',
+            });
+          }
+        );
       });
   }
 
@@ -140,11 +150,12 @@ export class MenuManagementComponent implements OnInit {
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
         this.menuManagementService.updateRecipe(val).subscribe((data: any) => {
-          this.getAllRecipesWithPage();
+          console.log(data); // message is null
           Swal.fire({
             icon: 'success',
-            title: 'success',
-            text: data.data.UpdateRecipe.message,
+            title: 'Recipe is updated',
+          }).then(() => {
+            this.getAllRecipesWithPage();
           });
         });
       });

@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
     private appComponent: AppComponent
@@ -34,18 +33,31 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onShowPassword(event: any) {
+    let password = document.getElementById('password') as HTMLInputElement;
+    if (event.checked === true) {
+      password.type = 'text';
+    } else {
+      password.type = 'password';
+    }
+  }
+
   onSubmit(value: any) {
     this.loginService.getAuthorization(value).subscribe(
       (val: any) => {
+        let token: any;
+        let data: any;
+        let role: any;
         this.loginService
           .getAuthorization(this.loginForm.value)
-          .subscribe(() => {});
-        const token = val?.data?.Login?.token;
-        const data = val?.data?.Login?.user?.usertype;
-        const role = val?.data?.Login?.user?.role;
-        localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('data', JSON.stringify(data));
-        localStorage.setItem('role', JSON.stringify(role));
+          .subscribe((val: any) => {
+            token = val?.data?.Login?.token;
+            data = val?.data?.Login?.user?.usertype;
+            role = val?.data?.Login?.user?.role;
+            localStorage.setItem('token', JSON.stringify(token));
+            localStorage.setItem('data', JSON.stringify(data));
+            localStorage.setItem('role', JSON.stringify(role));
+          });
 
         Swal.fire({
           title: 'You have logged in',

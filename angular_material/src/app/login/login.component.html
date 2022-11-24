@@ -20,17 +20,35 @@
         <div class="form-field">
           <mat-form-field appearance="fill">
             <mat-label>{{ "login.email" | translate }}</mat-label>
-            <input matInput formControlName="email" />
+            <input type="email" matInput formControlName="email" />
+            <mat-error *ngIf="loginForm.controls['email'].invalid"
+              >Please input correct email!</mat-error
+            >
           </mat-form-field>
         </div>
         <div class="form-field">
           <mat-form-field appearance="fill">
             <mat-label>{{ "login.password" | translate }}</mat-label>
-            <input matInput formControlName="password" />
+            <input
+              id="password"
+              type="password"
+              matInput
+              formControlName="password"
+            />
+            <mat-error *ngIf="loginForm.controls['password'].invalid"
+              >Please input correct password!</mat-error
+            >
           </mat-form-field>
+          <mat-checkbox (change)="onShowPassword($event)"
+            >Show Password</mat-checkbox
+          >
         </div>
         <div class="btn-action">
-          <button mat-raised-button color="primary">
+          <button
+            [disabled]="loginForm.invalid"
+            mat-raised-button
+            color="primary"
+          >
             {{ "login.btn-submit" | translate }}
           </button>
         </div>
