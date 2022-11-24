@@ -100,7 +100,7 @@ export class MenuManagementService {
       publishing = '';
     }
 
-    return this.apollo.watchQuery({
+    return this.apollo.query({
       query: gql`
         query GetAllrecipes(
           $limit: Int

@@ -32,16 +32,14 @@ export class LoginComponent implements OnInit {
     private appComponent: AppComponent
   ) {}
 
-  ngOnInit(): void {
-    localStorage.setItem('token', '');
-    localStorage.setItem('data', '');
-    localStorage.setItem('role', '');
-  }
+  ngOnInit(): void {}
 
   onSubmit(value: any) {
-    console.log('seb', value);
     this.loginService.getAuthorization(value).subscribe(
       (val: any) => {
+        this.loginService
+          .getAuthorization(this.loginForm.value)
+          .subscribe(() => {});
         const token = val?.data?.Login?.token;
         const data = val?.data?.Login?.user?.usertype;
         const role = val?.data?.Login?.user?.role;

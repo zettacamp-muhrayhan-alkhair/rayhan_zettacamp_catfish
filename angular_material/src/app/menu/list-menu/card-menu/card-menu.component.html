@@ -1,4 +1,4 @@
-<mat-card class="example-card" [ngClass]="isNotAvailableStock ? 'sold' : ''">
+<!-- <mat-card class="example-card" [ngClass]="isNotAvailableStock ? 'sold' : ''">
   <div class="img-wrapper">
     <img mat-card-image [src]="recipe.link_recipe" [alt]="recipe.recipe_name" />
   </div>
@@ -8,9 +8,6 @@
   </mat-card-header>
   <mat-card-content>
     Ingredients:
-    <!-- <p *ngFor="let ingredient of recipe.ingredients">
-      {{ ingredient.ingredient_id.name }},
-    </p> -->
     <p>
       {{ allIngredients }}
     </p>
@@ -25,4 +22,21 @@
       Add to Cart
     </button>
   </mat-card-actions>
-</mat-card>
+</mat-card> -->
+
+<div class="container">
+  <div class="img-wrapper">
+    <img [src]="recipe.link_recipe" alt="" />
+  </div>
+  <div class="content-wrapper"></div>
+  <div class="btn-wrapper">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="isNotAvailableStock"
+      (click)="onAddToCart(recipe)"
+    >
+      Add to Cart
+    </button>
+  </div>
+</div>

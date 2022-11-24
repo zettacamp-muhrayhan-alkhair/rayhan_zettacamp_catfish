@@ -57,7 +57,7 @@ export class MenuManagementComponent implements OnInit {
         this.published,
         this.searchName
       )
-      .valueChanges.subscribe((data: any) => {
+      .subscribe((data: any) => {
         this.recipes = data.data.GetAllrecipes.data.recipe_data;
         this.recipesLength = data?.data?.GetAllrecipes?.data.info_page[0].count;
         this.dataSource = new MatTableDataSource(this.recipes);
@@ -74,7 +74,7 @@ export class MenuManagementComponent implements OnInit {
         this.published,
         this.searchName
       )
-      .valueChanges.subscribe((data: any) => {
+      .subscribe((data: any) => {
         this.recipes = data.data.GetAllrecipes.data.recipe_data;
         this.dataSource = new MatTableDataSource(this.recipes);
         this.getAllRecipesWithPage();
@@ -115,7 +115,7 @@ export class MenuManagementComponent implements OnInit {
         this.published,
         this.searchName
       )
-      .valueChanges.subscribe(() => {
+      .subscribe(() => {
         this.getAllRecipesWithPage();
       });
   }

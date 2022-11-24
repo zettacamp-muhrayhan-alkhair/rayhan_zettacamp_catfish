@@ -1,0 +1,27 @@
+{
+  "app": {
+    "home": "Home",
+    "about": "About",
+    "menu": "Menu",
+    "menu-management": "Menu Management",
+    "stock-management": "Stock Management",
+    "cart": "Cart",
+    "login": "login",
+    "logout": "logout",
+    "lang": "Language",
+    "en": "English",
+    "id": "Indonesian"
+  },
+  "home": {
+    "title": "Feel the taste of Japanese foods",
+    "subtitle": "Feel the taste of most popular Japanese foods from anywhere and anytime",
+    "btn-menu": "View Menu",
+    "btn-order": "Order Now"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "signin": "Sign in with:",
+    "btn-submit": "Submit"
+  }
+}

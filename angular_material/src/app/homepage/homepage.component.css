@@ -44,9 +44,14 @@ p {
   border: 2px solid white;
   color: white;
   height: 3rem;
-  width: 10rem;
+  width: 12rem;
   font-size: 1.1rem;
   font-weight: 500;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
 }
 
 .btn-wrapper button:hover {
@@ -55,7 +60,7 @@ p {
   background-color: white;
   color: black;
   height: 3rem;
-  width: 10rem;
+  width: 12rem;
   font-size: 1.1rem;
   font-weight: 500;
   -webkit-transition: 0.2s;

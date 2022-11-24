@@ -6,7 +6,7 @@
       </div>
       <div class="btn-social">
         <div class="title-btn-social">
-          <h3>Sign in with:</h3>
+          <h3>{{ "login.signin" | translate }}</h3>
         </div>
         <div class="btn-btn-social">
           <button mat-raised-button>Instagram</button>
@@ -19,18 +19,20 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <div class="form-field">
           <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
+            <mat-label>{{ "login.email" | translate }}</mat-label>
             <input matInput formControlName="email" />
           </mat-form-field>
         </div>
         <div class="form-field">
           <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
+            <mat-label>{{ "login.password" | translate }}</mat-label>
             <input matInput formControlName="password" />
           </mat-form-field>
         </div>
         <div class="btn-action">
-          <button mat-raised-button color="primary">Submit</button>
+          <button mat-raised-button color="primary">
+            {{ "login.btn-submit" | translate }}
+          </button>
         </div>
       </form>
     </div>

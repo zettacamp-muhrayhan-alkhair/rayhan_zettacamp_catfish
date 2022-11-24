@@ -69,7 +69,9 @@ export class CartComponent implements OnInit, OnDestroy {
     openEditRecipeCartDialog(this.matDialog, data)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
-        this.cartService.updateTransaction(val).subscribe();
+        this.cartService.updateTransaction(val).subscribe(() => {
+          this.getAllTransactions();
+        });
       });
   }
 

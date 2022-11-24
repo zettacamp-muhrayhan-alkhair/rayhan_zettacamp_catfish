@@ -5,28 +5,28 @@
       <a mat-button [routerLink]="['']">{{ "ZettaCafe" | uppercase }}</a>
       <!-- </div> -->
       <a mat-button [routerLink]="['about']">
-        {{ "About" | uppercase }}
+        {{ "app.about" | translate | uppercase }}
       </a>
       <a mat-button [routerLink]="['home']">
-        {{ "Home" | uppercase }}
+        {{ "app.home" | translate | uppercase }}
       </a>
       <a mat-button [routerLink]="['menu']">
-        {{ "Menu" | uppercase }}
+        {{ "app.menu" | translate | uppercase }}
       </a>
     </div>
     <div class="wrapper nav-wrapper">
       <a mat-button [routerLink]="['menu-management']" *ngIf="isAdmin">
-        {{ "Menu Management" | uppercase }}
+        {{ "app.menu-management" | translate | uppercase }}
       </a>
       <a mat-button [routerLink]="['stock-management']" *ngIf="isAdmin">
-        {{ "Stock Management" | uppercase }}
+        {{ "app.stock-management" | translate | uppercase }}
       </a>
       <a mat-button [routerLink]="['cart']" *ngIf="isAdmin || isCustomer">
-        {{ "Cart" | uppercase }}
+        {{ "app.cart" | translate | uppercase }}
       </a>
 
       <a mat-button [routerLink]="['login']" *ngIf="!isAdmin && !isCustomer">
-        {{ "Login" | uppercase }}
+        {{ "app.login" | translate | uppercase }}
       </a>
       <!-- <a
         mat-button
@@ -43,8 +43,19 @@
         (click)="onLogout()"
         *ngIf="isAdmin || isCustomer"
       >
-        {{ "Logout" | uppercase }}
+        {{ "app.logout" | translate | uppercase }}
       </a>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "app.lang" | translate }}</mat-label>
+        <mat-select
+          [(value)]="selectedLang"
+          #lang
+          (valueChange)="setLanguage(lang.value)"
+        >
+          <mat-option value="en">{{ "app.en" | translate }}</mat-option>
+          <mat-option value="id">{{ "app.id" | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </mat-toolbar>
 </div>

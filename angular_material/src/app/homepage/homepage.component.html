@@ -1,29 +1,15 @@
-<!-- <ng-container class="container">
-  <h1 class="title first-font letter-spacing">ZettaCafe</h1>
-  <h4 class="subtitle">Fell the taste of Japanese foods</h4>
-  <p class="description first-font">
-    Feel the taste of most populars Japanese foods from anywhere and anytime
-  </p>
-  <div class="btn-wrapper">
-    <button class="btn" mat-raised-button (click)="onMenu()">View Menu</button>
-    <button class="btn btn-reset" mat-raised-button (click)="onLogin()">
-      Order Now
-    </button>
-  </div>
-</ng-container> -->
-
 <div class="container">
   <div class="wrapper">
-    <h1>Fell the taste of Japanese foods</h1>
+    <h1>{{ "home.title" | translate }}</h1>
     <p class="description first-font">
-      Feel the taste of most populars Japanese foods from anywhere and anytime
+      {{ "home.subtitle" | translate }}
     </p>
     <div class="btn-wrapper">
       <button class="btn" mat-raised-button (click)="onMenu()">
-        View Menu
+        {{ "home.btn-menu" | translate }}
       </button>
       <button class="btn btn-reset" mat-raised-button (click)="onLogin()">
-        Order Now
+        {{ "home.btn-order" | translate }}
       </button>
     </div>
   </div>

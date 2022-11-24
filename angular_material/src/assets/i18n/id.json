@@ -1,0 +1,27 @@
+{
+  "app": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "menu": "Menu",
+    "menu-management": "Manajemen Menu",
+    "stock-management": "Manajemen Stock",
+    "cart": "Keranjang",
+    "login": "Masuk",
+    "logout": "Keluar",
+    "lang": "Bahasa",
+    "en": "Inggris",
+    "id": "Bahasa Indonesia"
+  },
+  "home": {
+    "title": "Rasakan cita rasa makanan Jepang",
+    "subtitle": "Rasakan cita rasa makanan Jepang terpopuler dari mana saja dan kapan saja",
+    "btn-menu": "Lihat Menu",
+    "btn-order": "Pesan Sekarang"
+  },
+  "login": {
+    "email": "Surel",
+    "password": "Kata Sandi",
+    "signin": "Masuk dengan:",
+    "btn-submit": "Kirim"
+  }
+}
