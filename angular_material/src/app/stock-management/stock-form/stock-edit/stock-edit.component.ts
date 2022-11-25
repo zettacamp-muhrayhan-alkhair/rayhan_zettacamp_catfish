@@ -38,11 +38,6 @@ export class StockEditComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close({ ...this.stockForm.value, _id: this.ingredient._id });
-    Swal.fire(
-      'Ingredient Updated',
-      'You have updated new Ingredient',
-      'success'
-    );
   }
 }
 

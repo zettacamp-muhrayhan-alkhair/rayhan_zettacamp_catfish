@@ -45,7 +45,8 @@
       >
         {{ "app.logout" | translate | uppercase }}
       </a>
-      <mat-form-field appearance="outline">
+      <mat-slide-toggle (change)="setLanguage($event)"></mat-slide-toggle>
+      <!-- <mat-form-field appearance="outline">
         <mat-label>{{ "app.lang" | translate }}</mat-label>
         <mat-select
           [(value)]="selectedLang"
@@ -55,7 +56,7 @@
           <mat-option value="en">{{ "app.en" | translate }}</mat-option>
           <mat-option value="id">{{ "app.id" | translate }}</mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
   </mat-toolbar>
 </div>

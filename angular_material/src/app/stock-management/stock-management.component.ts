@@ -46,7 +46,7 @@ export class StockManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllStockWithPage();
-    this.filtername.valueChanges.subscribe((data) => {
+    this.filtername.valueChanges.subscribe((data: any) => {
       this.searchName = data;
       this.getAllStockWithPage();
     });
@@ -71,10 +71,13 @@ export class StockManagementComponent implements OnInit {
           );
         },
         (err) => {
-          Swal.fire({
-            text: err.message,
-            icon: 'error',
-          });
+          setTimeout(() => {
+            Swal.fire({
+              title: 'No ingredient',
+              text: err.message,
+              icon: 'error',
+            });
+          }, 1000);
         }
       );
   }
@@ -88,9 +91,20 @@ export class StockManagementComponent implements OnInit {
         this.searchName,
         this.availability
       )
-      .valueChanges.subscribe(() => {
-        this.getAllStockWithPage();
-      });
+      .valueChanges.subscribe(
+        () => {
+          this.getAllStockWithPage();
+        },
+        (err) => {
+          setTimeout(() => {
+            Swal.fire({
+              title: 'No ingredient',
+              text: err.message,
+              icon: 'error',
+            });
+          }, 300);
+        }
+      );
   }
 
   indexingPage(event: any) {
@@ -116,7 +130,6 @@ export class StockManagementComponent implements OnInit {
       .subscribe((val) => {
         this.stockManagementService.createIngredient(val).subscribe(
           (data: any) => {
-            console.log(data);
             Swal.fire({
               title: 'Ingredient is Added',
               icon: 'success',
@@ -126,7 +139,6 @@ export class StockManagementComponent implements OnInit {
             });
           },
           (err) => {
-            console.log(err);
             Swal.fire({
               title: 'Ingredient is not Added',
               icon: 'error',

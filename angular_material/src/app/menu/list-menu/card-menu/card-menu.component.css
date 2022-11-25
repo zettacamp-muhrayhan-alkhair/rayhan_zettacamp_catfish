@@ -1,44 +1,52 @@
-/* .example-card {
-  width: 300px;
-  height: 300px;
-}
-
-.img-wrapper {
-  padding: 10px;
-  height: 200px;
-  overflow: hidden;
-}
-
-.img-wrapper img {
-  width: 100%;
-  overflow: hidden;
-}
-
-mat-card-content {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 0.2rem;
-} */
-
 .container {
   width: 250px;
   height: 300px;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  border-radius: 40px 40px 0 0;
-  -webkit-border-radius: 40px 40px 0 0;
-  -moz-border-radius: 40px 40px 0 0;
-  -ms-border-radius: 40px 40px 0 0;
-  -o-border-radius: 40px 40px 0 0;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
 }
 
 .img-wrapper {
-  height: 200px;
+  height: 150px;
   overflow: hidden;
 }
 
 .img-wrapper img {
   width: 100%;
-  overflow: hidden;
+  scale: 1;
+}
+
+.content-wrapper {
+  padding: 10px;
+  height: 110px;
+}
+
+.content-wrapper mat-card-title,
+.content-wrapper mat-card-subtitle {
+  color: white;
+}
+
+.content-wrapper mat-card-title {
+  font-size: 1.2rem;
+}
+
+.btn-wrapper {
+  position: relative;
+  bottom: 0;
+}
+
+.btn-wrapper button {
+  position: relative;
+  height: 40px;
+  bottom: 0;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+  -webkit-border-radius: 25px 25px 0 0;
+  -moz-border-radius: 25px 25px 0 0;
+  -ms-border-radius: 25px 25px 0 0;
+  -o-border-radius: 25px 25px 0 0;
 }

@@ -36,7 +36,6 @@ export class StockFormComponent implements OnInit {
 
   onSubmit() {
     this.dialogRef.close(this.stockForm.value);
-    Swal.fire('Ingredient Added', 'You have added new Ingredient', 'success');
   }
 }
 

@@ -17,9 +17,17 @@ export class CardMenuComponent implements OnInit {
   isNotAvailableStock = false;
   ingredients: string[] = [];
   allIngredients: any;
+  isToken: boolean = false;
+
   constructor(private matDialog: MatDialog, private menuService: MenuService) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.isToken = true;
+    } else {
+      this.isToken = false;
+    }
+
     for (let ingredient of this.recipe.ingredients) {
       this.ingredients.push(ingredient.ingredient_id.name);
       this.allIngredients = this.ingredients.join(', ');

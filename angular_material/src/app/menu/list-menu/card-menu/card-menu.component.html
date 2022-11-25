@@ -28,12 +28,21 @@
   <div class="img-wrapper">
     <img [src]="recipe.link_recipe" alt="" />
   </div>
-  <div class="content-wrapper"></div>
+  <div class="content-wrapper">
+    <div class="title-wrapper">
+      <mat-card-title>{{ recipe.recipe_name }}</mat-card-title>
+    </div>
+    <div class="subtitle-wrapper">
+      <mat-card-subtitle>{{
+        recipe.price | currency: "Rp. "
+      }}</mat-card-subtitle>
+    </div>
+  </div>
   <div class="btn-wrapper">
     <button
       mat-raised-button
       color="primary"
-      [disabled]="isNotAvailableStock"
+      [disabled]="isNotAvailableStock || !isToken"
       (click)="onAddToCart(recipe)"
     >
       Add to Cart

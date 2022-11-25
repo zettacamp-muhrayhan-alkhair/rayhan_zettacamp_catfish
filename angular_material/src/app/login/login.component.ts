@@ -31,7 +31,11 @@ export class LoginComponent implements OnInit {
     private appComponent: AppComponent
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.setItem('token', '');
+    localStorage.setItem('data', '');
+    localStorage.setItem('role', '');
+  }
 
   onShowPassword(event: any) {
     let password = document.getElementById('password') as HTMLInputElement;
@@ -58,7 +62,6 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('role', JSON.stringify(role));
           });
-
         Swal.fire({
           title: 'You have logged in',
           text: val?.data?.Login?.message,

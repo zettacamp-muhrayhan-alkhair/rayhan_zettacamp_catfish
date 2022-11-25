@@ -125,7 +125,7 @@ export class MenuManagementComponent implements OnInit {
       this.getAllRecipesWithPage();
       Swal.fire({
         icon: 'success',
-        title: 'success',
+        title: 'Recipe is updated',
         text: data.data.UpdateRecipe.message,
       });
     });
@@ -154,6 +154,7 @@ export class MenuManagementComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title: 'Recipe is updated',
+            text: data.data.UpdateRecipe.message,
           }).then(() => {
             this.getAllRecipesWithPage();
           });

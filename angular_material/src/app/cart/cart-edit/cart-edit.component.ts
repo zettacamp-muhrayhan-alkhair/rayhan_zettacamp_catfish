@@ -39,11 +39,6 @@ export class CartEditComponent implements OnInit {
       ...this.cartForm.value,
       _id: this.menuRecipe.recipe_id,
     });
-    Swal.fire(
-      'Ingredient Updated',
-      'You have updated new Ingredient',
-      'success'
-    );
   }
 }
 
