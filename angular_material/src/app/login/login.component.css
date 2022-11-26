@@ -1,3 +1,10 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+
 .container {
   color: white;
   position: absolute;
@@ -35,6 +42,10 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+mat-error {
+  font-size: 0.6rem;
 }
 
 form {
@@ -84,6 +95,12 @@ mat-form-field input {
   width: fit-content;
   background-color: transparent;
   border: 1px solid white;
+  padding: 0 16px;
+}
+
+.btn-btn-social button a {
+  color: white;
+  text-decoration: none;
 }
 
 .btn-btn-social button:hover {
@@ -96,4 +113,18 @@ mat-form-field input {
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
+}
+
+.form-wrapper .btn-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-wrapper .btn-actions button {
+  padding: 0 16px;
+}
+
+.form-wrapper .btn-actions button:disabled {
+  background-color: #666;
 }

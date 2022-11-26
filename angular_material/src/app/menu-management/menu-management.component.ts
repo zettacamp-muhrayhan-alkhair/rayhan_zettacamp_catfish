@@ -66,29 +66,29 @@ export class MenuManagementComponent implements OnInit {
         },
         (err) => {
           Swal.fire({
-            title: 'No recipe show',
-            text: err.message,
-            icon: 'info',
+            title: err.message,
+            icon: 'warning',
           });
         }
       );
   }
 
-  indexingPage(event) {
+  indexingPage(event: any) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.menuManagementService
-      .getAllRecipesWithPage(
-        this.pageSize,
-        this.pageIndex,
-        this.published,
-        this.searchName
-      )
-      .subscribe((data: any) => {
-        this.recipes = data.data.GetAllrecipes.data.recipe_data;
-        this.dataSource = new MatTableDataSource(this.recipes);
-        this.getAllRecipesWithPage();
-      });
+    this.getAllRecipesWithPage();
+    // this.menuManagementService
+    //   .getAllRecipesWithPage(
+    //     this.pageSize,
+    //     this.pageIndex,
+    //     this.published,
+    //     this.searchName
+    //   )
+    //   .subscribe((data: any) => {
+    //     this.recipes = data.data.GetAllrecipes.data.recipe_data;
+    //     this.dataSource = new MatTableDataSource(this.recipes);
+    //     this.getAllRecipesWithPage();
+    //   });
   }
 
   onAdd() {

@@ -21,7 +21,7 @@
   "login": {
     "email": "Email",
     "password": "Password",
-    "signin": "Sign in with:",
+    "social": "Social media:",
     "btn-submit": "Submit"
   }
 }

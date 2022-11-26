@@ -21,7 +21,7 @@
   "login": {
     "email": "Surel",
     "password": "Kata Sandi",
-    "signin": "Masuk dengan:",
+    "social": "Media social:",
     "btn-submit": "Kirim"
   }
 }

@@ -4,6 +4,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   border-radius: 40px;
+  position: relative;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   -ms-border-radius: 40px;
@@ -22,7 +23,6 @@
 
 .content-wrapper {
   padding: 10px;
-  height: 110px;
 }
 
 .content-wrapper mat-card-title,
@@ -35,18 +35,31 @@
 }
 
 .btn-wrapper {
-  position: relative;
+  position: absolute;
   bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.btn-wrapper .sold-out {
+  padding: 10px;
+  color: #c50300;
+}
+
+.sold-out h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .btn-wrapper button {
-  position: relative;
-  height: 40px;
-  bottom: 0;
   width: 100%;
-  border-radius: 25px 25px 0 0;
-  -webkit-border-radius: 25px 25px 0 0;
-  -moz-border-radius: 25px 25px 0 0;
-  -ms-border-radius: 25px 25px 0 0;
-  -o-border-radius: 25px 25px 0 0;
+  border-radius: 15px 15px 0 0;
+  -webkit-border-radius: 15px 15px 0 0;
+  -moz-border-radius: 15px 15px 0 0;
+  -ms-border-radius: 15px 15px 0 0;
+  -o-border-radius: 15px 15px 0 0;
+}
+
+.btn-wrapper button:disabled {
+  background-color: #555;
 }

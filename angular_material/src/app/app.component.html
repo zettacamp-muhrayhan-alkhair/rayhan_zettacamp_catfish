@@ -14,49 +14,38 @@
         {{ "app.menu" | translate | uppercase }}
       </a>
     </div>
-    <div class="wrapper nav-wrapper">
-      <a mat-button [routerLink]="['menu-management']" *ngIf="isAdmin">
-        {{ "app.menu-management" | translate | uppercase }}
-      </a>
-      <a mat-button [routerLink]="['stock-management']" *ngIf="isAdmin">
-        {{ "app.stock-management" | translate | uppercase }}
-      </a>
-      <a mat-button [routerLink]="['cart']" *ngIf="isAdmin || isCustomer">
-        {{ "app.cart" | translate | uppercase }}
-      </a>
+    <div class="wrapper parent-wrapper">
+      <div class="nav-wrapper">
+        <a mat-button [routerLink]="['menu-management']" *ngIf="isAdmin">
+          {{ "app.menu-management" | translate | uppercase }}
+        </a>
+        <a mat-button [routerLink]="['stock-management']" *ngIf="isAdmin">
+          {{ "app.stock-management" | translate | uppercase }}
+        </a>
+        <a mat-button [routerLink]="['cart']" *ngIf="isAdmin || isCustomer">
+          {{ "app.cart" | translate | uppercase }}
+        </a>
 
-      <a mat-button [routerLink]="['login']" *ngIf="!isAdmin && !isCustomer">
-        {{ "app.login" | translate | uppercase }}
-      </a>
-      <!-- <a
-        mat-button
-        
-        *ngFor="let menu of newDummyMenus"
-        [routerLink]="[menu?.slug]"
-        (click)="onClick()"
-      >
-        {{ menu?.name | uppercase }}
-      </a> -->
-      <a
-        mat-button
-        [routerLink]="['home']"
-        (click)="onLogout()"
-        *ngIf="isAdmin || isCustomer"
-      >
-        {{ "app.logout" | translate | uppercase }}
-      </a>
-      <mat-slide-toggle (change)="setLanguage($event)"></mat-slide-toggle>
-      <!-- <mat-form-field appearance="outline">
-        <mat-label>{{ "app.lang" | translate }}</mat-label>
-        <mat-select
-          [(value)]="selectedLang"
-          #lang
-          (valueChange)="setLanguage(lang.value)"
+        <a mat-button [routerLink]="['login']" *ngIf="!isAdmin && !isCustomer">
+          {{ "app.login" | translate | uppercase }}
+        </a>
+        <a
+          mat-button
+          [routerLink]="['home']"
+          (click)="onLogout()"
+          *ngIf="isAdmin || isCustomer"
         >
-          <mat-option value="en">{{ "app.en" | translate }}</mat-option>
-          <mat-option value="id">{{ "app.id" | translate }}</mat-option>
-        </mat-select>
-      </mat-form-field> -->
+          {{ "app.logout" | translate | uppercase }}
+        </a>
+      </div>
+      <div class="wrapper lang-container">
+        <div class="lang-wrapper">Language</div>
+        <div class="lang-wrapper">
+          <div>EN</div>
+          <mat-slide-toggle (change)="setLanguage($event)"></mat-slide-toggle>
+          <div>ID</div>
+        </div>
+      </div>
     </div>
   </mat-toolbar>
 </div>

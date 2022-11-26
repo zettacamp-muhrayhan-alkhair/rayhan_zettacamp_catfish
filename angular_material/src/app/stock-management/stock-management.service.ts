@@ -61,12 +61,14 @@ export class StockManagementService {
     inputLimit: number,
     inputPage: number,
     name: string,
-    availability: string
+    availability: string,
+    name_sort: number
   ) {
     let limit: Number;
     let page: Number;
     let filtername: string = '';
     let available: string;
+    let sort = name_sort;
 
     if (name) {
       filtername = name;
@@ -94,6 +96,7 @@ export class StockManagementService {
           $page: Int
           $filtername: String
           $available: String
+          $sort: Int
         ) {
           GetAllIngredients(
             data: {
@@ -101,6 +104,7 @@ export class StockManagementService {
               limit: $limit
               name: $filtername
               available: $available
+              name_sort: $sort
             }
           ) {
             message
@@ -119,7 +123,7 @@ export class StockManagementService {
           }
         }
       `,
-      variables: { page, limit, filtername, available },
+      variables: { page, limit, filtername, available, sort },
       fetchPolicy: 'network-only',
     });
   }

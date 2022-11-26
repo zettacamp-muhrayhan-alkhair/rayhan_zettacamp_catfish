@@ -4,6 +4,7 @@ import {
   MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartService } from '../cart.service';
 
@@ -15,11 +16,16 @@ import { CartService } from '../cart.service';
 export class HistoryTransactionComponent implements OnInit {
   transactions = [];
   displayedColumns: string[] = [
-    'order_date',
     'role',
+    'order_date',
     'order_status',
     'total_price',
   ];
+
+  pageEvent: any;
+  pageSize: number = 3;
+  pageIndex: number = 0;
+  historyLength: number;
 
   dataSource = new MatTableDataSource();
 
@@ -37,10 +43,21 @@ export class HistoryTransactionComponent implements OnInit {
   }
 
   getAllTransactions() {
-    this.cartService.getHistoryTransaction().subscribe((data: any) => {
-      this.transactions = data.data.GetAllTransaction.data.transaction_data;
-      this.dataSource = new MatTableDataSource(this.transactions);
-    });
+    this.cartService
+      .getHistoryTransaction(this.pageIndex, this.pageSize)
+      .subscribe((data: any) => {
+        this.transactions = data.data.GetAllTransaction.data.transaction_data;
+        console.log(data);
+        this.historyLength =
+          data.data.GetAllTransaction.data.info_page[0].count;
+        this.dataSource = new MatTableDataSource(this.transactions);
+      });
+  }
+
+  indexingPage(event: PageEvent): any {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getAllTransactions();
   }
 }
 

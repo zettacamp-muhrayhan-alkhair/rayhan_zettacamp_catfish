@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { openAddStockDialog } from './stock-form/stock-form.component';
@@ -7,7 +7,6 @@ import { StockManagementService } from './stock-management.service';
 import { filter } from 'rxjs';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
-import { MenuManagementService } from '../menu-management/menu-management.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -30,6 +29,8 @@ export class StockManagementComponent implements OnInit {
   filtername: any = new FormControl('');
   searchName = '';
   defaultFilter = '';
+
+  name_sort: number = 1;
 
   availabilities: any[] = [
     { value: '', viewValue: 'All' },
@@ -58,7 +59,8 @@ export class StockManagementComponent implements OnInit {
         this.pageSize,
         this.pageIndex,
         this.searchName,
-        this.availability
+        this.availability,
+        this.name_sort
       )
       .valueChanges.subscribe(
         (data: any) => {
@@ -71,57 +73,65 @@ export class StockManagementComponent implements OnInit {
           );
         },
         (err) => {
-          setTimeout(() => {
-            Swal.fire({
-              title: 'No ingredient',
-              text: err.message,
-              icon: 'error',
-            });
-          }, 1000);
+          Swal.fire({
+            title: 'No ingredient',
+            text: err.message,
+            icon: 'error',
+          });
         }
       );
   }
 
   onFilterAvailability(event: any) {
     this.availability = event;
-    this.stockManagementService
-      .getAllIngredientsWithPage(
-        this.pageSize,
-        this.pageIndex,
-        this.searchName,
-        this.availability
-      )
-      .valueChanges.subscribe(
-        () => {
-          this.getAllStockWithPage();
-        },
-        (err) => {
-          setTimeout(() => {
-            Swal.fire({
-              title: 'No ingredient',
-              text: err.message,
-              icon: 'error',
-            });
-          }, 300);
-        }
-      );
+    // this.stockManagementService
+    //   .getAllIngredientsWithPage(
+    //     this.pageSize,
+    //     this.pageIndex,
+    //     this.searchName,
+    //     this.availability
+    //   )
+    //   .valueChanges.subscribe(
+    //     () => {
+    //       this.getAllStockWithPage();
+    //     },
+    //     (err) => {
+    //       Swal.fire({
+    //         title: 'No ingredient',
+    //         text: err.message,
+    //         icon: 'error',
+    //       });
+    //     }
+    //   );
+    this.getAllStockWithPage();
   }
 
   indexingPage(event: any) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.stockManagementService
-      .getAllIngredientsWithPage(
-        this.pageSize,
-        this.pageIndex,
-        this.searchName,
-        this.availability
-      )
-      .valueChanges.subscribe((data: any) => {
-        this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
-        this.dataSource = new MatTableDataSource(this.ingredients);
-        this.getAllStockWithPage();
-      });
+    this.getAllStockWithPage();
+    // this.stockManagementService
+    //   .getAllIngredientsWithPage(
+    //     this.pageSize,
+    //     this.pageIndex,
+    //     this.searchName,
+    //     this.availability
+    //   )
+    //   .valueChanges.subscribe((data: any) => {
+    //     this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
+    //     this.dataSource = new MatTableDataSource(this.ingredients);
+    //     this.getAllStockWithPage();
+    //   });
+  }
+
+  onSort() {
+    if (this.name_sort === 1) {
+      this.name_sort = -1;
+    } else {
+      this.name_sort = 1;
+    }
+
+    this.getAllStockWithPage();
   }
 
   onAdd() {

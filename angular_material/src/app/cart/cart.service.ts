@@ -36,11 +36,24 @@ export class CartService {
     });
   }
 
-  getHistoryTransaction() {
+  getHistoryTransaction(inputPage: number, inputLimit: number) {
+    let page: number;
+    let limit: number;
+    if (!inputLimit || !inputPage) {
+      limit = inputLimit;
+      page = 1;
+    } else {
+      limit = inputLimit;
+      page = inputPage + 1;
+    }
+    console.log(page);
+    console.log(limit);
     return this.apollo.query({
       query: gql`
-        query GetAllTransaction {
-          GetAllTransaction(data: { typetr: "Checkout" }) {
+        query GetAllTransaction($page: Int, $limit: Int) {
+          GetAllTransaction(
+            data: { typetr: "Checkout", page: $page, limit: $limit }
+          ) {
             message
             data {
               transaction_data {
@@ -58,10 +71,14 @@ export class CartService {
                   last_name
                 }
               }
+              info_page {
+                count
+              }
             }
           }
         }
       `,
+      variables: { limit, page },
       fetchPolicy: 'network-only',
     });
   }

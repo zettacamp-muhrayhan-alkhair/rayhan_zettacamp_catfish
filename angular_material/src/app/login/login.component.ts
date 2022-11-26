@@ -32,9 +32,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    localStorage.setItem('token', '');
-    localStorage.setItem('data', '');
-    localStorage.setItem('role', '');
+    // localStorage.setItem('token', '');
+    // localStorage.setItem('data', '');
+    // localStorage.setItem('role', '');
   }
 
   onShowPassword(event: any) {
@@ -52,16 +52,16 @@ export class LoginComponent implements OnInit {
         let token: any;
         let data: any;
         let role: any;
-        this.loginService
-          .getAuthorization(this.loginForm.value)
-          .subscribe((val: any) => {
-            token = val?.data?.Login?.token;
-            data = val?.data?.Login?.user?.usertype;
-            role = val?.data?.Login?.user?.role;
-            localStorage.setItem('token', JSON.stringify(token));
-            localStorage.setItem('data', JSON.stringify(data));
-            localStorage.setItem('role', JSON.stringify(role));
-          });
+        // this.loginService
+        //   .getAuthorization(this.loginForm.value)
+        //   .subscribe((val: any) => {
+        //   });
+        token = val?.data?.Login?.token;
+        data = val?.data?.Login?.user?.usertype;
+        role = val?.data?.Login?.user?.role;
+        localStorage.setItem('token', token);
+        localStorage.setItem('data', JSON.stringify(data));
+        localStorage.setItem('role', JSON.stringify(role));
         Swal.fire({
           title: 'You have logged in',
           text: val?.data?.Login?.message,

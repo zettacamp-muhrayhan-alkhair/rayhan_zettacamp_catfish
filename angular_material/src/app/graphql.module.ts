@@ -4,14 +4,16 @@ import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
 
-const uri = 'https://7f3c-103-236-192-220.ap.ngrok.io/graphql';
+const uri =
+  'https://c938-2001-448a-4049-48b1-85c-d5ee-57db-f7f9.ap.ngrok.io/graphql';
 let token: any = localStorage?.getItem('token');
-token = JSON.parse(token);
+// token = token ? token : '';
+
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: httpLink.create({
       uri,
-      headers: new HttpHeaders().set('Authorization', `${token}`),
+      headers: new HttpHeaders().set('Authorization', token),
     }),
     cache: new InMemoryCache(),
   };
