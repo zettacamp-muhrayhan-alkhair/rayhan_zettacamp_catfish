@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppComponent } from '../app.component';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-homepage',
@@ -9,11 +9,40 @@ import { AppComponent } from '../app.component';
 })
 export class HomepageComponent implements OnInit {
   isToken: any;
-  constructor(private router: Router, private appComponenet: AppComponent) {}
+  specialOffer = [];
+  menuHighligth = [];
+  oneMenuHighligth: any;
+  constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit(): void {
-    // this.isToken = this.appComponenet.isToken;
     this.isToken = localStorage.getItem('token');
+    this.getSpecialOffer();
+    this.getMenuHighlight();
+  }
+
+  getSpecialOffer() {
+    this.homeService.getSpecialOffer().subscribe((data: any) => {
+      const arr = [];
+      data.menuHighlight.map((data: any) => {
+        const obj = {
+          ...data,
+          normal_price: (100 / (100 - data.discount)) * data.price,
+        };
+        arr.push(obj);
+      });
+      this.specialOffer = arr;
+    });
+  }
+
+  getMenuHighlight() {
+    this.homeService.getMenuHighlight().subscribe((data: any) => {
+      this.menuHighligth = data.specialOffer;
+      const menuHighligth =
+        this.menuHighligth[
+          Math.floor(Math.random() * this.menuHighligth.length)
+        ];
+      this.oneMenuHighligth = menuHighligth;
+    });
   }
 
   onMenu() {

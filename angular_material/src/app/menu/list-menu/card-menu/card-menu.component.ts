@@ -16,7 +16,6 @@ export class CardMenuComponent implements OnInit {
   @Input() recipe: any;
   isNotAvailableStock = false;
   ingredients: string[] = [];
-  allIngredients: any;
   isToken: boolean = false;
 
   constructor(private matDialog: MatDialog, private menuService: MenuService) {}
@@ -26,11 +25,6 @@ export class CardMenuComponent implements OnInit {
       this.isToken = true;
     } else {
       this.isToken = false;
-    }
-
-    for (let ingredient of this.recipe.ingredients) {
-      this.ingredients.push(ingredient.ingredient_id.name);
-      this.allIngredients = this.ingredients.join(', ');
     }
 
     let arr = [];

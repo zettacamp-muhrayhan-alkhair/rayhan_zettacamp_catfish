@@ -30,7 +30,7 @@ export class StockManagementComponent implements OnInit {
   searchName = '';
   defaultFilter = '';
 
-  name_sort: number = 1;
+  name_sort: number = 0;
 
   availabilities: any[] = [
     { value: '', viewValue: 'All' },
@@ -84,25 +84,6 @@ export class StockManagementComponent implements OnInit {
 
   onFilterAvailability(event: any) {
     this.availability = event;
-    // this.stockManagementService
-    //   .getAllIngredientsWithPage(
-    //     this.pageSize,
-    //     this.pageIndex,
-    //     this.searchName,
-    //     this.availability
-    //   )
-    //   .valueChanges.subscribe(
-    //     () => {
-    //       this.getAllStockWithPage();
-    //     },
-    //     (err) => {
-    //       Swal.fire({
-    //         title: 'No ingredient',
-    //         text: err.message,
-    //         icon: 'error',
-    //       });
-    //     }
-    //   );
     this.getAllStockWithPage();
   }
 
@@ -110,18 +91,6 @@ export class StockManagementComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getAllStockWithPage();
-    // this.stockManagementService
-    //   .getAllIngredientsWithPage(
-    //     this.pageSize,
-    //     this.pageIndex,
-    //     this.searchName,
-    //     this.availability
-    //   )
-    //   .valueChanges.subscribe((data: any) => {
-    //     this.ingredients = data.data.GetAllIngredients.data.ingredient_data;
-    //     this.dataSource = new MatTableDataSource(this.ingredients);
-    //     this.getAllStockWithPage();
-    //   });
   }
 
   onSort() {

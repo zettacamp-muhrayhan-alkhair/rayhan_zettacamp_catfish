@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,39 +10,46 @@ export class MenuService {
   constructor(private httpClient: HttpClient, private apollo: Apollo) {}
 
   getPublishRecipes() {
-    return this.apollo.query({
-      query: gql`
-        query GetAllrecipes {
-          GetAllrecipes(data: { published: "Publish" }) {
-            message
-            data {
-              recipe_data {
-                _id
-                link_recipe
-                recipe_name
-                published
-                status
-                ingredients {
-                  ingredient_id {
-                    name
-                    stock
-                    status
-                    available
+    return this.apollo
+      .query({
+        query: gql`
+          query GetAllrecipes {
+            GetAllrecipes(data: { published: "Publish" }) {
+              message
+              data {
+                recipe_data {
+                  _id
+                  link_recipe
+                  recipe_name
+                  published
+                  status
+                  ingredients {
+                    stock_used
+                    ingredient_id {
+                      name
+                      stock
+                      status
+                      available
+                    }
                   }
+                  link_recipe
+                  price
+                  status
                 }
-                link_recipe
-                price
-                status
-              }
-              info_page {
-                count
+                info_page {
+                  count
+                }
               }
             }
           }
-        }
-      `,
-      fetchPolicy: 'network-only',
-    });
+        `,
+        fetchPolicy: 'network-only',
+      })
+      .pipe(
+        map((data: any) => {
+          return data?.data?.GetAllrecipes;
+        })
+      );
   }
 
   createTransaction(menu: any) {

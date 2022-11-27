@@ -1,5 +1,9 @@
 <div class="container">
   <mat-dialog-content [formGroup]="stockForm">
+    <div class="header">
+      <h2>Add Ingredient</h2>
+      <a (click)="onClose()"><mat-icon>close</mat-icon></a>
+    </div>
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>

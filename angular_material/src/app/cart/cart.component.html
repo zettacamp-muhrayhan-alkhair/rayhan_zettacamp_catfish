@@ -10,40 +10,46 @@
         History
       </button>
       <ng-container *ngFor="let recipes of cart">
-        <mat-card *ngFor="let recipe of recipes.menu">
-          <div class="card-wrapper">
-            <mat-card-header>
-              <mat-card-title>{{
-                recipe.recipe_id.recipe_name
-              }}</mat-card-title>
-              <mat-card-subtitle>{{ recipe.amount }} items</mat-card-subtitle>
-              <mat-card-subtitle
-                >{{ recipe.recipe_id.price | currency: "Rp. " }} per
-                item</mat-card-subtitle
-              >
-            </mat-card-header>
-            <img [src]="recipe.recipe_id.link_recipe" />
-          </div>
-          <mat-card-actions align="end">
-            <mat-card-title>
-              Total:
-              {{ recipe.amount * recipe.recipe_id.price | currency: "Rp. " }}
-            </mat-card-title>
-            <div class="btn-wrapper">
-              <button
-                mat-raised-button
-                color="primary"
-                (click)="onEdit(recipe)"
-              >
-                Edit
-              </button>
-
-              <button mat-raised-button color="warn" (click)="onRemove(recipe)">
-                Remove
-              </button>
+        <div class="card-container">
+          <mat-card *ngFor="let recipe of recipes.menu">
+            <div class="card-wrapper">
+              <mat-card-header>
+                <mat-card-title>{{
+                  recipe.recipe_id.recipe_name
+                }}</mat-card-title>
+                <mat-card-subtitle>{{ recipe.amount }} items</mat-card-subtitle>
+                <mat-card-subtitle
+                  >{{ recipe.recipe_id.price | currency: "Rp. " }} per
+                  item</mat-card-subtitle
+                >
+              </mat-card-header>
+              <img [src]="recipe.recipe_id.link_recipe" />
             </div>
-          </mat-card-actions>
-        </mat-card>
+            <mat-card-actions align="end">
+              <mat-card-subtitle>
+                Total:
+                {{ recipe.amount * recipe.recipe_id.price | currency: "Rp. " }}
+              </mat-card-subtitle>
+              <div class="btn-wrapper">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="onEdit(recipe)"
+                >
+                  Edit
+                </button>
+
+                <button
+                  mat-raised-button
+                  color="warn"
+                  (click)="onRemove(recipe)"
+                >
+                  Remove
+                </button>
+              </div>
+            </mat-card-actions>
+          </mat-card>
+        </div>
         <mat-card-actions class="card-actions">
           <mat-card-title
             >Total Price:

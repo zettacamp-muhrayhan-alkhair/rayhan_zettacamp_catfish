@@ -1,16 +1,44 @@
 <div class="container">
   <div class="wrapper">
-    <h1>{{ "home.title" | translate }}</h1>
-    <p class="description first-font">
-      {{ "home.subtitle" | translate }}
-    </p>
-    <div class="btn-wrapper">
-      <button class="btn" mat-raised-button (click)="onMenu()">
-        {{ "home.btn-menu" | translate }}
-      </button>
-      <button class="btn btn-reset" mat-raised-button (click)="onOrder()">
-        {{ "home.btn-order" | translate }}
-      </button>
+    <div class="first-container">
+      <div class="first-wrapper">
+        <div class="img-wrapper">
+          <img [src]="oneMenuHighligth?.link_recipe" alt="menu highligth" />
+        </div>
+      </div>
+      <div class="second-wrapper">
+        <div class="title-wrapper">
+          <h1>{{ "home.title" | translate }}</h1>
+          <p class="description first-font">
+            {{ "home.subtitle" | translate }}
+          </p>
+        </div>
+        <div class="btn-wrapper">
+          <button class="btn" mat-raised-button (click)="onMenu()">
+            {{ "home.btn-menu" | translate }}
+          </button>
+          <button class="btn" mat-raised-button (click)="onOrder()">
+            {{ "home.btn-order" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="second-container">
+      <div class="card" *ngFor="let recipe of specialOffer">
+        <div class="img-card-wrapper">
+          <p>Disc: {{ recipe.discount }}%</p>
+          <img [src]="recipe.link_recipe" alt="" />
+        </div>
+        <div class="card-content-wrapper">
+          <p class="card-title">{{ recipe.recipe_name }}</p>
+          <p class="card-stroke">
+            {{ recipe.normal_price | currency: "Rp. " }}
+          </p>
+          <p class="card-subtitle">
+            Price: {{ recipe.price | currency: "Rp. " }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,18 +1,29 @@
 <div class="container">
   <mat-dialog-content [formGroup]="menu">
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input
-        type="number"
-        matInput
-        placeholder="Amount"
-        formControlName="amount"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Note</mat-label>
-      <input matInput placeholder="note" formControlName="note" />
-    </mat-form-field>
+    <div class="header">
+      <h2>Add to Cart</h2>
+      <a (click)="onClose()"><mat-icon>close</mat-icon></a>
+    </div>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Amount"
+          formControlName="amount"
+        />
+        <mat-error *ngIf="menu.controls['amount'].invalid"
+          >Please input correct amount!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="input-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>Note</mat-label>
+        <textarea matInput placeholder="Note" formControlName="note"></textarea>
+      </mat-form-field>
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions>

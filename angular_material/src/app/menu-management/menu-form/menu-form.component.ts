@@ -22,6 +22,7 @@ export class MenuFormComponent implements OnInit {
     recipe_name: this.fb.control('', Validators.required),
     link_recipe: this.fb.control('', Validators.required),
     price: this.fb.control('', Validators.required),
+    discount: this.fb.control('', Validators.required),
     ingredients: this.fb.array([]),
   });
   constructor(
@@ -76,7 +77,7 @@ export function openAddMenuDialog(matDialog: MatDialog) {
   config.disableClose = true;
   config.autoFocus = true;
 
-  config.width = '520px';
+  config.width = '590px';
 
   const dialogRef = matDialog.open(MenuFormComponent, config);
 

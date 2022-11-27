@@ -25,8 +25,7 @@ export class CartComponent implements OnInit, OnDestroy {
   getAllTransactions() {
     this.subs.sink = this.cartService.getAllTransaction().subscribe(
       (data: any) => {
-        let menu = data.data.GetAllTransaction.data.transaction_data;
-        this.cart = menu;
+        this.cart = data?.data?.transaction_data;
       },
       (err) => {
         Swal.fire({

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,43 +21,6 @@ export class MenuManagementService {
                 stock
                 status
                 available
-              }
-              info_page {
-                count
-              }
-            }
-          }
-        }
-      `,
-    });
-  }
-
-  getAllRecipes() {
-    return this.apollo.watchQuery({
-      query: gql`
-        query GetAllrecipes {
-          GetAllrecipes(data: {}) {
-            message
-            data {
-              recipe_data {
-                _id
-                link_recipe
-                recipe_name
-                published
-                status
-                ingredients {
-                  ingredient_id {
-                    _id
-                    name
-                    stock
-                    status
-                    available
-                  }
-                  stock_used
-                }
-                link_recipe
-                price
-                status
               }
               info_page {
                 count
@@ -99,54 +63,61 @@ export class MenuManagementService {
       publishing = '';
     }
 
-    return this.apollo.query({
-      query: gql`
-        query GetAllrecipes(
-          $limit: Int
-          $page: Int
-          $publishing: String
-          $name: String
-        ) {
-          GetAllrecipes(
-            data: {
-              limit: $limit
-              page: $page
-              published: $publishing
-              recipe_name: $name
-            }
+    return this.apollo
+      .query({
+        query: gql`
+          query GetAllrecipes(
+            $limit: Int
+            $page: Int
+            $publishing: String
+            $name: String
           ) {
-            message
-            data {
-              recipe_data {
-                _id
-                link_recipe
-                recipe_name
-                published
-                status
-                ingredients {
-                  ingredient_id {
-                    _id
-                    name
-                    stock
-                    status
-                    available
-                  }
-                  stock_used
-                }
-                link_recipe
-                price
-                status
+            GetAllrecipes(
+              data: {
+                limit: $limit
+                page: $page
+                published: $publishing
+                recipe_name: $name
               }
-              info_page {
-                count
+            ) {
+              message
+              data {
+                recipe_data {
+                  _id
+                  link_recipe
+                  recipe_name
+                  discount
+                  published
+                  status
+                  ingredients {
+                    ingredient_id {
+                      _id
+                      name
+                      stock
+                      status
+                      available
+                    }
+                    stock_used
+                  }
+                  link_recipe
+                  price
+                  status
+                }
+                info_page {
+                  count
+                }
               }
             }
           }
-        }
-      `,
-      variables: { limit, page, publishing, name },
-      fetchPolicy: 'network-only',
-    });
+        `,
+        variables: { limit, page, publishing, name },
+        fetchPolicy: 'network-only',
+      })
+      .pipe(
+        map((data: any) => {
+          return data.data.GetAllrecipes;
+        })
+      );
   }
 
   getAllRecipesWithPublished(published: string, filtername: string) {
@@ -174,6 +145,7 @@ export class MenuManagementService {
                 recipe_name
                 published
                 status
+                discount
                 ingredients {
                   ingredient_id {
                     _id
@@ -213,6 +185,7 @@ export class MenuManagementService {
                 recipe_name
                 published
                 status
+                discount
                 ingredients {
                   ingredient_id {
                     name
@@ -247,6 +220,7 @@ export class MenuManagementService {
               recipe_name
               status
               published
+              discount
               ingredients {
                 ingredient_id {
                   _id
@@ -298,6 +272,7 @@ export class MenuManagementService {
     const link_recipe = element.link_recipe;
     const price = Number(element.price);
     const ingredients = element.ingredients;
+    const discount = element.discount;
     for (let ingredient of ingredients) {
       ingredient.stock_used = Number(ingredient.stock_used);
     }
@@ -309,6 +284,7 @@ export class MenuManagementService {
           $link_recipe: String
           $price: Int
           $ingredients: [recipeIngredientsParams]
+          $discount: Int
         ) {
           CreateRecipe(
             data: {
@@ -316,6 +292,7 @@ export class MenuManagementService {
               link_recipe: $link_recipe
               price: $price
               ingredients: $ingredients
+              discount: $discount
             }
           ) {
             message
@@ -324,6 +301,7 @@ export class MenuManagementService {
               recipe_name
               status
               published
+              discount
               ingredients {
                 ingredient_id {
                   name
@@ -335,7 +313,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { recipe_name, link_recipe, price, ingredients },
+      variables: { recipe_name, link_recipe, price, ingredients, discount },
     });
   }
 
@@ -345,6 +323,7 @@ export class MenuManagementService {
     const recipe_name = element.recipe_name;
     const link_recipe = element.link_recipe;
     const price = Number(element.price);
+    const discount = element.discount;
     const ingredients = element.ingredients;
     for (let ingredient of ingredients) {
       ingredient.stock_used = Number(ingredient.stock_used);
@@ -358,6 +337,7 @@ export class MenuManagementService {
           $price: Int
           $ingredients: [recipeIngredientsParams]
           $published: String
+          $discount: Int
         ) {
           UpdateRecipe(
             data: {
@@ -367,6 +347,7 @@ export class MenuManagementService {
               price: $price
               ingredients: $ingredients
               published: $published
+              discount: $discount
             }
           ) {
             message
@@ -374,7 +355,9 @@ export class MenuManagementService {
               _id
               recipe_name
               status
+              discount
               published
+              price
               ingredients {
                 ingredient_id {
                   name
@@ -393,6 +376,7 @@ export class MenuManagementService {
         price,
         ingredients,
         published,
+        discount,
       },
     });
   }
@@ -409,6 +393,7 @@ export class MenuManagementService {
               _id
               recipe_name
               status
+              discount
               published
               ingredients {
                 ingredient_id {
@@ -439,6 +424,7 @@ export class MenuManagementService {
               _id
               recipe_name
               status
+              discount
               published
               ingredients {
                 ingredient_id {

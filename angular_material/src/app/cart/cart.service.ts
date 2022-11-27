@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,32 +9,38 @@ export class CartService {
   constructor(private apollo: Apollo) {}
 
   getAllTransaction() {
-    return this.apollo.query({
-      query: gql`
-        query GetAllTransaction {
-          GetAllTransaction(data: { typetr: "Draft", order_status: Draft }) {
-            message
-            data {
-              transaction_data {
-                _id
-                total_price
-                menu {
-                  amount
-                  note
-                  recipe_id {
-                    _id
-                    recipe_name
-                    price
-                    link_recipe
+    return this.apollo
+      .query({
+        query: gql`
+          query GetAllTransaction {
+            GetAllTransaction(data: { typetr: "Draft", order_status: Draft }) {
+              message
+              data {
+                transaction_data {
+                  _id
+                  total_price
+                  menu {
+                    amount
+                    note
+                    recipe_id {
+                      _id
+                      recipe_name
+                      price
+                      link_recipe
+                    }
                   }
                 }
               }
             }
           }
-        }
-      `,
-      fetchPolicy: 'network-only',
-    });
+        `,
+        fetchPolicy: 'network-only',
+      })
+      .pipe(
+        map((data: any) => {
+          return data?.data?.GetAllTransaction;
+        })
+      );
   }
 
   getHistoryTransaction(inputPage: number, inputLimit: number) {
@@ -46,41 +53,49 @@ export class CartService {
       limit = inputLimit;
       page = inputPage + 1;
     }
-    console.log(page);
-    console.log(limit);
-    return this.apollo.query({
-      query: gql`
-        query GetAllTransaction($page: Int, $limit: Int) {
-          GetAllTransaction(
-            data: { typetr: "Checkout", page: $page, limit: $limit }
-          ) {
-            message
-            data {
-              transaction_data {
-                menu {
-                  recipe_id {
-                    recipe_name
+
+    return this.apollo
+      .query({
+        query: gql`
+          query GetAllTransaction($page: Int, $limit: Int) {
+            GetAllTransaction(
+              data: { typetr: "Checkout", page: $page, limit: $limit }
+            ) {
+              message
+              data {
+                transaction_data {
+                  user_id {
+                    role
                   }
-                  amount
+                  menu {
+                    recipe_id {
+                      recipe_name
+                    }
+                    amount
+                  }
+                  total_price
+                  order_status
+                  order_date
+                  user_id {
+                    first_name
+                    last_name
+                  }
                 }
-                total_price
-                order_status
-                order_date
-                user_id {
-                  first_name
-                  last_name
+                info_page {
+                  count
                 }
-              }
-              info_page {
-                count
               }
             }
           }
-        }
-      `,
-      variables: { limit, page },
-      fetchPolicy: 'network-only',
-    });
+        `,
+        variables: { limit, page },
+        fetchPolicy: 'network-only',
+      })
+      .pipe(
+        map((data: any) => {
+          return data.data.GetAllTransaction;
+        })
+      );
   }
 
   checkOut(data: any) {
@@ -167,7 +182,6 @@ export class CartService {
     const recipe_id = data._id._id;
     const amount = data.amount;
     const note = data.note;
-    // return data
     return this.apollo.mutate({
       mutation: gql`
         mutation UpdateTransaction(

@@ -1,5 +1,9 @@
 <div class="container">
   <mat-dialog-content [formGroup]="menuForm">
+    <div class="header">
+      <h1>Menu Edit Form</h1>
+      <a (click)="onClose()"><mat-icon>close</mat-icon></a>
+    </div>
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
@@ -9,7 +13,7 @@
         >
       </mat-form-field>
     </div>
-    <div class="input-wrapper">
+    <div class="input-wrapper price-wrapper">
       <mat-form-field appearance="fill">
         <mat-label>Price</mat-label>
         <input
@@ -20,6 +24,18 @@
         />
         <mat-error *ngIf="menuForm.controls['price'].invalid"
           >Please input correct price!</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Discount</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Discount in percentage"
+          formControlName="discount"
+        />
+        <mat-error *ngIf="menuForm.controls['discount'].invalid"
+          >Please input correct discount!</mat-error
         >
       </mat-form-field>
     </div>
@@ -45,7 +61,7 @@
         [formGroupName]="i"
       >
         <mat-form-field appearance="fill">
-          <mat-label>name</mat-label>
+          <mat-label>Ingredient name</mat-label>
           <mat-select formControlName="ingredient_id">
             <mat-option
               *ngFor="let ingredient of allIngredients"
@@ -60,36 +76,38 @@
           >
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Stock Used</mat-label>
+          <mat-label>Stock used</mat-label>
           <input type="number" matInput formControlName="stock_used" />
           <mat-error *ngIf="ingredients.controls[i].get('stock_used').invalid"
             >Please input correct amount!</mat-error
           >
         </mat-form-field>
-        <button
-          mat-raised-button
-          color="warn"
-          type="button"
-          *ngIf="ingredients.length > 1"
-          (click)="
-            removeIngredient(i, ingredients.controls[i].value.ingredient_id)
-          "
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="btn-wrapper">
+          <button
+            mat-raised-button
+            color="warn"
+            type="button"
+            *ngIf="ingredients.length > 1"
+            (click)="
+              removeIngredient(i, ingredients.controls[i].value.ingredient_id)
+            "
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="addIngredient()"
+      >
+        Add More ingredient
+      </button>
     </div>
-    <button
-      mat-raised-button
-      color="primary"
-      type="button"
-      (click)="addIngredient()"
-    >
-      Add More ingredient
-    </button>
   </mat-dialog-content>
 
-  <mat-dialog-actions>
+  <mat-dialog-actions align="end">
     <button mat-raised-button color="warn" (click)="onClose()">Close</button>
     <button
       mat-raised-button

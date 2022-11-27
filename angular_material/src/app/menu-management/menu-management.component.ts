@@ -59,15 +59,14 @@ export class MenuManagementComponent implements OnInit {
       )
       .subscribe(
         (data: any) => {
-          this.recipes = data.data.GetAllrecipes.data.recipe_data;
-          this.recipesLength =
-            data?.data?.GetAllrecipes?.data.info_page[0].count;
+          this.recipes = data?.data?.recipe_data;
+          this.recipesLength = data?.data?.info_page[0]?.count;
           this.dataSource = new MatTableDataSource(this.recipes);
         },
         (err) => {
           Swal.fire({
             title: err.message,
-            icon: 'warning',
+            icon: 'error',
           });
         }
       );
@@ -77,18 +76,6 @@ export class MenuManagementComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getAllRecipesWithPage();
-    // this.menuManagementService
-    //   .getAllRecipesWithPage(
-    //     this.pageSize,
-    //     this.pageIndex,
-    //     this.published,
-    //     this.searchName
-    //   )
-    //   .subscribe((data: any) => {
-    //     this.recipes = data.data.GetAllrecipes.data.recipe_data;
-    //     this.dataSource = new MatTableDataSource(this.recipes);
-    //     this.getAllRecipesWithPage();
-    //   });
   }
 
   onAdd() {
@@ -122,27 +109,19 @@ export class MenuManagementComponent implements OnInit {
       published: event.checked ? 'Publish' : 'Unpublish',
     };
     this.menuManagementService.updatePublished(data).subscribe((data: any) => {
-      this.getAllRecipesWithPage();
       Swal.fire({
         icon: 'success',
         title: 'Recipe is updated',
         text: data.data.UpdateRecipe.message,
+      }).then(() => {
+        this.getAllRecipesWithPage();
       });
     });
   }
 
   onFilterPublished(event: any) {
     this.published = event;
-    this.menuManagementService
-      .getAllRecipesWithPage(
-        this.pageSize,
-        this.pageIndex,
-        this.published,
-        this.searchName
-      )
-      .subscribe(() => {
-        this.getAllRecipesWithPage();
-      });
+    this.getAllRecipesWithPage();
   }
 
   onUpdate(recipe: any) {
@@ -150,7 +129,6 @@ export class MenuManagementComponent implements OnInit {
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
         this.menuManagementService.updateRecipe(val).subscribe((data: any) => {
-          console.log(data); // message is null
           Swal.fire({
             icon: 'success',
             title: 'Recipe is updated',
@@ -180,8 +158,9 @@ export class MenuManagementComponent implements OnInit {
               icon: 'success',
               title: 'success',
               text: data.data.DeleteRecipe.message,
+            }).then(() => {
+              this.getAllRecipesWithPage();
             });
-            this.getAllRecipesWithPage();
           },
           (err) =>
             Swal.fire({

@@ -46,10 +46,8 @@ export class HistoryTransactionComponent implements OnInit {
     this.cartService
       .getHistoryTransaction(this.pageIndex, this.pageSize)
       .subscribe((data: any) => {
-        this.transactions = data.data.GetAllTransaction.data.transaction_data;
-        console.log(data);
-        this.historyLength =
-          data.data.GetAllTransaction.data.info_page[0].count;
+        this.transactions = data?.data?.transaction_data;
+        this.historyLength = data?.data?.info_page[0]?.count;
         this.dataSource = new MatTableDataSource(this.transactions);
       });
   }

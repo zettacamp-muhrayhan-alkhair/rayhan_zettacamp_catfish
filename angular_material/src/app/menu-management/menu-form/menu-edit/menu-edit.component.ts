@@ -45,6 +45,7 @@ export class MenuEditComponent implements OnInit {
       recipe_name: this.recipe.recipe_name,
       link_recipe: this.recipe.link_recipe,
       price: this.recipe.price,
+      discount: this.recipe.discount,
     };
 
     let ingredients = [];
@@ -85,6 +86,7 @@ export class MenuEditComponent implements OnInit {
         Validators.required
       ),
       price: this.fb.control(this.recipe.price, Validators.required),
+      discount: this.fb.control(this.recipe.price, Validators.required),
       ingredients: this.fb.array([]),
     });
   }
@@ -132,7 +134,7 @@ export function openEditMenuDialog(matDialog: MatDialog, recipe: Recipe) {
   const config = new MatDialogConfig();
   config.disableClose = true;
   config.autoFocus = true;
-  config.width = '520px';
+  config.width = '590px';
 
   config.data = {
     ...recipe,
