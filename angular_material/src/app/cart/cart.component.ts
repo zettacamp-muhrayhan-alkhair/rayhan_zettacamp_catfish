@@ -13,6 +13,7 @@ import { openHistoryTransactionDialog } from './history-transaction/history-tran
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit, OnDestroy {
+  isLoading: any = 'on';
   private subs = new SubSink();
   cart: any = [];
 
@@ -38,8 +39,10 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onCheckOut(data: any) {
+    this.isLoading = null;
     this.cartService.checkOut(data).subscribe(
       (data: any) => {
+        this.isLoading = data;
         Swal.fire({
           title: 'Transaction is Success',
           text: data.data.UpdateTransaction.message,
@@ -49,33 +52,50 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       },
       (err) => {
-        Swal.fire({
-          title: 'Transaction is failed',
-          text: err.message,
-          icon: 'error',
-        }).then(() => {
-          this.getAllTransactions();
-        });
+        this.isLoading = err;
+        if (err.message.includes('Transaction is Failed')) {
+          let message = err.message
+            .replaceAll('"', '')
+            .replaceAll('[', '')
+            .replaceAll(']', '')
+            .replaceAll(',', ', ');
+          Swal.fire({
+            title: 'Transaction is failed',
+            text: message,
+            icon: 'error',
+          }).then(() => {
+            this.getAllTransactions();
+          });
+        } else {
+          console.log(err.message);
+          Swal.fire({
+            title: err,
+            text: err.message,
+            icon: 'error',
+          }).then(() => {
+            this.getAllTransactions();
+          });
+        }
       }
     );
   }
 
-  onHistory() {
-    openHistoryTransactionDialog(this.matDialog)
-      .pipe(filter((val) => !!val))
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-        },
-        (err) => {
-          Swal.fire({
-            title: 'No History',
-            text: err.message,
-            icon: 'error',
-          });
-        }
-      );
-  }
+  // onHistory() {
+  //   openHistoryTransactionDialog(this.matDialog)
+  //     .pipe(filter((val) => !!val))
+  //     .subscribe(
+  //       (data: any) => {
+  //         console.log(data);
+  //       },
+  //       (err) => {
+  //         Swal.fire({
+  //           title: 'No History',
+  //           text: err.message,
+  //           icon: 'error',
+  //         });
+  //       }
+  //     );
+  // }
 
   onCancel(data: any) {
     this.cartService.cancelTransaction(data).subscribe(

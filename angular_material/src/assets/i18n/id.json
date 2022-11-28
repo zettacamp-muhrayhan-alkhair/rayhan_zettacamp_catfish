@@ -3,6 +3,7 @@
     "home": "Beranda",
     "about": "Tentang",
     "menu": "Menu",
+    "history": "Riwayat",
     "menu-management": "Manajemen Menu",
     "stock-management": "Manajemen Stok",
     "cart": "Keranjang",
@@ -17,6 +18,12 @@
     "subtitle": "Rasakan cita rasa makanan Jepang terpopuler dari mana saja dan kapan saja",
     "btn-menu": "Lihat Menu",
     "btn-order": "Pesan Sekarang"
+  },
+  "menu": {
+    "sold": "Stok Habis",
+    "btn": "Tambah ke Keranjang",
+    "prev": "Halaman Sebelum",
+    "next": "Halaman Berikut"
   },
   "login": {
     "email": "Surel",

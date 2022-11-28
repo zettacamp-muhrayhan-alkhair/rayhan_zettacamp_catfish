@@ -14,7 +14,7 @@
   </div>
   <div class="btn-wrapper">
     <div class="sold-out" *ngIf="isNotAvailableStock && isToken">
-      <h3>Sold Out</h3>
+      <h3>{{ "menu.sold" | translate }}</h3>
     </div>
     <button
       mat-raised-button
@@ -22,7 +22,7 @@
       [disabled]="isNotAvailableStock || !isToken"
       (click)="onAddToCart(recipe)"
     >
-      Add to Cart
+      {{ "menu.btn" | translate }}
     </button>
   </div>
 </div>

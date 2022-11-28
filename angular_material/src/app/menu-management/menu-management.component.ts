@@ -104,18 +104,41 @@ export class MenuManagementComponent implements OnInit {
   }
 
   onPublish(event: any, element: any) {
-    const data = {
-      _id: element._id,
-      published: event.checked ? 'Publish' : 'Unpublish',
-    };
-    this.menuManagementService.updatePublished(data).subscribe((data: any) => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Recipe is updated',
-        text: data.data.UpdateRecipe.message,
-      }).then(() => {
-        this.getAllRecipesWithPage();
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const data = {
+          _id: element._id,
+          published: event.checked ? 'Publish' : 'Unpublish',
+        };
+        this.menuManagementService
+          .updatePublished(data)
+          .subscribe((data: any) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Recipe is updated',
+              text: data.data.UpdateRecipe.message,
+            }).then(() => {
+              this.getAllRecipesWithPage();
+            });
+          });
+      } else {
+        const data = {
+          _id: element._id,
+          published: event.checked ? 'Unpublish' : 'Publish',
+        };
+        this.menuManagementService
+          .updatePublished(data)
+          .subscribe((data: any) => {
+            this.getAllRecipesWithPage();
+          });
+      }
     });
   }
 

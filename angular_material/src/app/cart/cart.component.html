@@ -1,14 +1,14 @@
 <div class="container">
   <div class="wrapper">
     <div class="wrapper-container">
-      <button
+      <!-- <button
         mat-raised-button
         color="primary"
         (click)="onHistory()"
         align="end"
       >
         History
-      </button>
+      </button> -->
       <ng-container *ngFor="let recipes of cart">
         <div class="card-container">
           <mat-card *ngFor="let recipe of recipes.menu">
@@ -73,6 +73,9 @@
           </div>
         </mat-card-actions>
       </ng-container>
+      <div class="spinner-wrapper">
+        <mat-spinner *ngIf="!isLoading" class="spinner"></mat-spinner>
+      </div>
       <div class="do-not-have-transactions" *ngIf="cart.length === 0">
         <h1>You do not have any transaction</h1>
       </div>

@@ -8,8 +8,24 @@
   align-items: flex-start;
 }
 
-.header a {
+.header button {
+  border: none;
   text-decoration: none;
-  color: #f52112;
-  padding: 5px;
+  color: #f44336;
+  padding: 2px;
+  background-color: transparent;
+}
+
+.header button:hover {
+  background-color: #f44336;
+  border-radius: 10px;
+  color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.header button:active {
+  background-color: #f66a60;
+  color: white;
 }

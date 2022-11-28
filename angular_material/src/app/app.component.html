@@ -1,9 +1,7 @@
 <div class="app-container">
   <mat-toolbar>
     <div class="wrapper nav-wrapper">
-      <!-- <div class="wrapper title-wrapper"> -->
       <a mat-button [routerLink]="['']">{{ "ZettaCafe" | uppercase }}</a>
-      <!-- </div> -->
       <a mat-button [routerLink]="['about']">
         {{ "app.about" | translate | uppercase }}
       </a>
@@ -16,34 +14,84 @@
     </div>
     <div class="wrapper parent-wrapper">
       <div class="nav-wrapper">
-        <a mat-button [routerLink]="['menu-management']" *ngIf="isAdmin">
-          {{ "app.menu-management" | translate | uppercase }}
-        </a>
-        <a mat-button [routerLink]="['stock-management']" *ngIf="isAdmin">
-          {{ "app.stock-management" | translate | uppercase }}
-        </a>
-        <a mat-button [routerLink]="['cart']" *ngIf="isAdmin || isCustomer">
-          {{ "app.cart" | translate | uppercase }}
-        </a>
-
-        <a mat-button [routerLink]="['login']" *ngIf="!isAdmin && !isCustomer">
-          {{ "app.login" | translate | uppercase }}
-        </a>
-        <a
-          mat-button
-          [routerLink]="['home']"
-          (click)="onLogout()"
-          *ngIf="isAdmin || isCustomer"
+        <a mat-button [matMenuTriggerFor]="management" *ngIf="isAdmin">
+          <mat-icon>apps</mat-icon></a
         >
-          {{ "app.logout" | translate | uppercase }}
-        </a>
+        <mat-menu class="mat-menu" #management="matMenu" xPosition="before">
+          <div class="management">
+            <a mat-button [routerLink]="['menu-management']" *ngIf="isAdmin">
+              {{ "app.menu-management" | translate | uppercase }}
+            </a>
+            <a mat-button [routerLink]="['stock-management']" *ngIf="isAdmin">
+              {{ "app.stock-management" | translate | uppercase }}
+            </a>
+          </div>
+        </mat-menu>
+
+        <a mat-button [matMenuTriggerFor]="cart" *ngIf="isAdmin || isCustomer">
+          <mat-icon>shopping_cart</mat-icon></a
+        >
+        <mat-menu class="mat-menu" #cart="matMenu" xPosition="before">
+          <div class="cart">
+            <button
+              mat-button
+              (click)="onHistory()"
+              *ngIf="isAdmin || isCustomer"
+            >
+              {{ "app.history" | translate | uppercase }}
+            </button>
+            <button
+              mat-button
+              [routerLink]="['cart']"
+              *ngIf="isAdmin || isCustomer"
+            >
+              {{ "app.cart" | translate | uppercase }}
+            </button>
+          </div>
+        </mat-menu>
+
+        <a mat-button [matMenuTriggerFor]="profile">
+          <mat-icon>account_circle</mat-icon></a
+        >
+        <mat-menu class="mat-menu" #profile="matMenu" xPosition="before">
+          <div class="profile">
+            <button
+              mat-button
+              [disabled]="true"
+              *ngIf="!isAdmin && !isCustomer"
+            >
+              Non User
+            </button>
+            <button mat-button [disabled]="true" *ngIf="isAdmin">
+              {{ "Admin" | uppercase }}
+            </button>
+            <button mat-button [disabled]="true" *ngIf="isCustomer">
+              {{ "User" | uppercase }}
+            </button>
+            <button
+              mat-button
+              [routerLink]="['login']"
+              *ngIf="!isAdmin && !isCustomer"
+            >
+              {{ "app.login" | translate | uppercase }}
+            </button>
+            <button
+              mat-button
+              [routerLink]="['home']"
+              (click)="onLogout()"
+              *ngIf="isAdmin || isCustomer"
+            >
+              {{ "app.logout" | translate | uppercase }}
+            </button>
+          </div>
+        </mat-menu>
       </div>
       <div class="wrapper lang-container">
-        <div class="lang-wrapper">Language</div>
+        <div class="lang-wrapper">{{ "app.lang" | translate }}</div>
         <div class="lang-wrapper">
-          <div>EN</div>
+          <div><span class="fi fi-us"></span></div>
           <mat-slide-toggle (change)="setLanguage($event)"></mat-slide-toggle>
-          <div>ID</div>
+          <div><span class="fi fi-id"></span></div>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "menu": "Menu",
+    "history": "History",
     "menu-management": "Menu Management",
     "stock-management": "Stock Management",
     "cart": "Cart",
@@ -17,6 +18,12 @@
     "subtitle": "Feel the taste of most popular Japanese foods from anywhere and anytime",
     "btn-menu": "View Menu",
     "btn-order": "Order Now"
+  },
+  "menu": {
+    "sold": "Out of stock",
+    "btn": "Add to cart",
+    "prev": "Previous Page",
+    "next": "Next Page"
   },
   "login": {
     "email": "Email",

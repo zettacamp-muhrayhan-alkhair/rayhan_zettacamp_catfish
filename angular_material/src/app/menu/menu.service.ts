@@ -9,12 +9,16 @@ import { map } from 'rxjs';
 export class MenuService {
   constructor(private httpClient: HttpClient, private apollo: Apollo) {}
 
-  getPublishRecipes() {
+  getPublishRecipes(inputPage: number) {
+    const limit = 8;
+    const page = inputPage;
     return this.apollo
       .query({
         query: gql`
-          query GetAllrecipes {
-            GetAllrecipes(data: { published: "Publish" }) {
+          query GetAllrecipes($page: Int, $limit: Int) {
+            GetAllrecipes(
+              data: { published: "Publish", page: $page, limit: $limit }
+            ) {
               message
               data {
                 recipe_data {
@@ -43,6 +47,7 @@ export class MenuService {
             }
           }
         `,
+        variables: { limit, page },
         fetchPolicy: 'network-only',
       })
       .pipe(

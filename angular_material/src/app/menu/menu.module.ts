@@ -5,9 +5,16 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { RouterModule, Routes } from '@angular/router';
 import { ListMenuComponent } from './list-menu/list-menu.component';
 import { CardMenuComponent } from './list-menu/card-menu/card-menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 const routes: Routes = [{ path: '', component: MenuComponent, title: 'Menu' }];
 
@@ -24,6 +31,14 @@ const routes: Routes = [{ path: '', component: MenuComponent, title: 'Menu' }];
     AngularMaterialModule,
     RouterModule.forChild(routes),
     HttpClientModule,
+    TranslateModule.forChild({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [MenuComponent],
 })

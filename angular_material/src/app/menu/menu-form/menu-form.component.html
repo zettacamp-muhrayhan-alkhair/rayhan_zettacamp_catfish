@@ -2,7 +2,7 @@
   <mat-dialog-content [formGroup]="menu">
     <div class="header">
       <h2>Add to Cart</h2>
-      <a (click)="onClose()"><mat-icon>close</mat-icon></a>
+      <button (click)="onClose()"><mat-icon>close</mat-icon></button>
     </div>
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
@@ -27,7 +27,7 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+    <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
     <button
       mat-raised-button
       color="primary"

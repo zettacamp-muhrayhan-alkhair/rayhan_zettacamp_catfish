@@ -30,32 +30,6 @@ export class StockManagementService {
       `,
     });
   }
-  getAllIngredientsWithAvailability(availability: string, searchName: string) {
-    return this.apollo.query({
-      query: gql`
-        query GetAllIngredients($availability: String, $searchName: String) {
-          GetAllIngredients(
-            data: { available: $availability, name: $searchName }
-          ) {
-            message
-            data {
-              ingredient_data {
-                _id
-                name
-                stock
-                status
-                available
-              }
-              info_page {
-                count
-              }
-            }
-          }
-        }
-      `,
-      variables: { availability, searchName },
-    });
-  }
 
   getAllIngredientsWithPage(
     inputLimit: number,

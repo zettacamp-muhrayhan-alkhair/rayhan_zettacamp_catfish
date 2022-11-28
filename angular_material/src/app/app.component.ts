@@ -1,10 +1,10 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { concat, first } from 'rxjs';
-import { AppService } from './app.service';
-import { LoginService } from './login/login.service';
-import { usertype } from './model/usertype.model';
+import { filter } from 'rxjs';
+import Swal from 'sweetalert2';
+import { openHistoryTransactionDialog } from './cart/history-transaction/history-transaction.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
   public isToken: boolean = false;
   constructor(
     private router: Router,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -38,15 +39,29 @@ export class AppComponent implements OnInit {
   }
 
   setLanguage(event: any) {
-    console.log(event);
     if (event.checked === true) {
       this.selectedLang = 'id';
     } else {
       this.selectedLang = 'en';
     }
-
-    // this.selectedLang = lang;
     this.translateService.use(this.selectedLang);
+  }
+
+  onHistory() {
+    openHistoryTransactionDialog(this.matDialog)
+      .pipe(filter((val) => !!val))
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+        },
+        (err) => {
+          Swal.fire({
+            title: 'No History',
+            text: err.message,
+            icon: 'error',
+          });
+        }
+      );
   }
 
   onLogout() {

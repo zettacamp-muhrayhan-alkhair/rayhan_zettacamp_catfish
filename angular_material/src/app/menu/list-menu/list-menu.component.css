@@ -6,3 +6,23 @@
   flex-wrap: wrap;
   gap: 2rem 3rem;
 }
+
+.btn-actions {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  padding: 0 4rem;
+  bottom: 5rem;
+  justify-content: space-between;
+}
+
+.btn-actions a {
+  color: white;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.btn-actions a:active {
+  color: purple;
+}
