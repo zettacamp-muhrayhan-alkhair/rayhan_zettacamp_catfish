@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   public isAdmin: boolean = false;
   public isCustomer: boolean = false;
   public isToken: boolean = false;
+  public isName = '';
   constructor(
     private router: Router,
     private translateService: TranslateService,

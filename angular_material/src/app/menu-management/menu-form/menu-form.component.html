@@ -62,14 +62,21 @@
       >
         <mat-form-field appearance="fill">
           <mat-label>Ingredient name</mat-label>
-          <mat-select formControlName="ingredient_id">
+          <input
+            type="text"
+            placeholder="Ingredient"
+            matInput
+            formControlName="ingredient_id"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option
-              *ngFor="let ingredient of allIngredients"
+              *ngFor="let ingredient of filteredOptions[i] | async"
               [value]="ingredient._id"
             >
               {{ ingredient.name }}
             </mat-option>
-          </mat-select>
+          </mat-autocomplete>
           <mat-error
             *ngIf="ingredients.controls[i].get('ingredient_id').invalid"
             >Please select correct ingredient!</mat-error

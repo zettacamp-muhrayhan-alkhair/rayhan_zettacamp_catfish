@@ -16,6 +16,7 @@ export class LoginService {
             message
             token
             user {
+              last_name
               role
               usertype {
                 name

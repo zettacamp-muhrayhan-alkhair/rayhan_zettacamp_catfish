@@ -3,9 +3,9 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- role Column -->
       <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.user_id.role }}
+          {{ element.user_id.last_name }}
         </td>
       </ng-container>
       <!-- Order Date Column -->
@@ -22,6 +22,12 @@
             *ngIf="element.order_status === 'Success'"
             style="color: #009d00"
             >check_circle</mat-icon
+          >
+          <mat-icon
+            *ngIf="element.order_status === 'Failed'"
+            style="color: #b80101"
+          >
+            cancel</mat-icon
           >
         </td>
       </ng-container>

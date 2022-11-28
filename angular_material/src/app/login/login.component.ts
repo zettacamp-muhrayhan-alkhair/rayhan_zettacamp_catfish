@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
         let token: any;
         let data: any;
         let role: any;
+        let name: any;
         // this.loginService
         //   .getAuthorization(this.loginForm.value)
         //   .subscribe((val: any) => {
@@ -59,9 +60,11 @@ export class LoginComponent implements OnInit {
         token = val?.data?.Login?.token;
         data = val?.data?.Login?.user?.usertype;
         role = val?.data?.Login?.user?.role;
+        name = val?.data?.Login?.user?.last_name;
         localStorage.setItem('token', token);
         localStorage.setItem('data', JSON.stringify(data));
         localStorage.setItem('role', JSON.stringify(role));
+        localStorage.setItem('name', name);
         Swal.fire({
           title: 'You have logged in',
           text: val?.data?.Login?.message,
@@ -70,8 +73,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home']).then(() => {
             if (role === 'Admin') {
               this.appComponent.isAdmin = true;
+              this.appComponent.isName = name;
             } else {
               this.appComponent.isCustomer = true;
+              this.appComponent.isName = name;
             }
           });
         });

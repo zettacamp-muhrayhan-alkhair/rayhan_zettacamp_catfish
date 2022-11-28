@@ -6,9 +6,8 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { first } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { Recipe } from 'src/app/model/recipe.model';
-import { StockManagementService } from 'src/app/stock-management/stock-management.service';
 import { MenuManagementService } from '../menu-management.service';
 
 @Component({
@@ -17,6 +16,7 @@ import { MenuManagementService } from '../menu-management.service';
   styleUrls: ['./menu-form.component.css'],
 })
 export class MenuFormComponent implements OnInit {
+  filteredOptions: Observable<any[]>[] = [];
   allIngredients: any = [];
   menuForm = this.fb.group({
     recipe_name: this.fb.control('', Validators.required),
@@ -41,6 +41,33 @@ export class MenuFormComponent implements OnInit {
           (this.allIngredients =
             data.data.GetAllIngredients.data.ingredient_data)
       );
+    this.manageNameControl(this.ingredients.length - 1);
+  }
+
+  manageNameControl(index: number) {
+    this.filteredOptions[index] = this.ingredients
+      .at(index)
+      .get('ingredient_id')
+      .valueChanges.pipe(
+        startWith<string>(''),
+        map((value: any) => (typeof value === 'string' ? value : value.name)),
+        map((name: string) =>
+          name ? this._filter(name) : this.allIngredients.slice()
+        )
+      );
+  }
+
+  displayFn(ingredient?: any): string | undefined {
+    return ingredient ? ingredient.name : undefined;
+  }
+
+  private _filter(name: string): any[] {
+    const filterValue = name.toLowerCase();
+
+    return this.allIngredients.filter(
+      (ingredient: any) =>
+        ingredient.name.toLowerCase().indexOf(filterValue) === 0
+    );
   }
 
   // Dialog

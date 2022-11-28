@@ -60,13 +60,13 @@
               [disabled]="true"
               *ngIf="!isAdmin && !isCustomer"
             >
-              Non User
+              {{ "Non User" | uppercase }}
             </button>
             <button mat-button [disabled]="true" *ngIf="isAdmin">
-              {{ "Admin" | uppercase }}
+              {{ isName | uppercase }}
             </button>
             <button mat-button [disabled]="true" *ngIf="isCustomer">
-              {{ "User" | uppercase }}
+              {{ isName | uppercase }}
             </button>
             <button
               mat-button
