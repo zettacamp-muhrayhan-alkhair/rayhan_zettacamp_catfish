@@ -26,7 +26,7 @@ export class HomepageComponent implements OnInit {
       data.menuHighlight.map((data: any) => {
         const obj = {
           ...data,
-          normal_price: (100 / (100 - data.discount)) * data.price,
+          discount_price: data.price - (data.discount / 100) * data.price,
         };
         arr.push(obj);
       });

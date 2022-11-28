@@ -78,10 +78,10 @@
         <div class="card-content-wrapper">
           <p class="card-title">{{ recipe.recipe_name }}</p>
           <p class="card-stroke">
-            {{ recipe.normal_price | currency: "Rp. " }}
+            {{ recipe.price | currency: "Rp. " }}
           </p>
           <p class="card-subtitle">
-            Price: {{ recipe.price | currency: "Rp. " }}
+            Price: {{ recipe.discount_price | currency: "Rp. " }}
           </p>
         </div>
       </div>

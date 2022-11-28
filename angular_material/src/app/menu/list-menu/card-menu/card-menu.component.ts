@@ -37,6 +37,13 @@ export class CardMenuComponent implements OnInit {
     } else {
       this.isNotAvailableStock = false;
     }
+
+    const data = {
+      ...this.recipe,
+      discount_price:
+        this.recipe.price - this.recipe.price * (this.recipe.discount / 100),
+    };
+    this.recipe = data;
   }
 
   onAddToCart(recipe: any) {

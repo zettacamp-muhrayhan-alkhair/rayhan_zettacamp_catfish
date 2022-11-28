@@ -25,6 +25,16 @@
   padding: 10px;
 }
 
+.stroke {
+  text-decoration: line-through;
+  font-size: 0.8rem;
+}
+
+.subtitle-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .content-wrapper mat-card-title,
 .content-wrapper mat-card-subtitle {
   color: white;

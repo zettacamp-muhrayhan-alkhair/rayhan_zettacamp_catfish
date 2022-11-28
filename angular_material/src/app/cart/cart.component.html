@@ -1,34 +1,24 @@
 <div class="container">
   <div class="wrapper">
     <div class="wrapper-container">
-      <!-- <button
-        mat-raised-button
-        color="primary"
-        (click)="onHistory()"
-        align="end"
-      >
-        History
-      </button> -->
       <ng-container *ngFor="let recipes of cart">
         <div class="card-container">
           <mat-card *ngFor="let recipe of recipes.menu">
             <div class="card-wrapper">
               <mat-card-header>
-                <mat-card-title>{{
-                  recipe.recipe_id.recipe_name
-                }}</mat-card-title>
+                <mat-card-title>{{ recipe.recipe_name }}</mat-card-title>
                 <mat-card-subtitle>{{ recipe.amount }} items</mat-card-subtitle>
                 <mat-card-subtitle
-                  >{{ recipe.recipe_id.price | currency: "Rp. " }} per
+                  >{{ recipe.discount_price | currency: "Rp. " }} per
                   item</mat-card-subtitle
                 >
               </mat-card-header>
-              <img [src]="recipe.recipe_id.link_recipe" />
+              <img [src]="recipe.link_recipe" />
             </div>
             <mat-card-actions align="end">
               <mat-card-subtitle>
                 Total:
-                {{ recipe.amount * recipe.recipe_id.price | currency: "Rp. " }}
+                {{ recipe.amount * recipe.discount_price | currency: "Rp. " }}
               </mat-card-subtitle>
               <div class="btn-wrapper">
                 <button

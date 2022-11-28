@@ -24,6 +24,7 @@ export class CartService {
                     note
                     recipe_id {
                       _id
+                      discount
                       recipe_name
                       price
                       link_recipe

@@ -23,6 +23,7 @@ export class MenuService {
               data {
                 recipe_data {
                   _id
+                  discount
                   link_recipe
                   recipe_name
                   published

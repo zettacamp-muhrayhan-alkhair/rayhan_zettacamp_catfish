@@ -27,6 +27,28 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subs.sink = this.cartService.getAllTransaction().subscribe(
       (data: any) => {
         this.cart = data?.data?.transaction_data;
+        const arr = [];
+        for (let transaction of data?.data?.transaction_data) {
+          const arrTemp = [];
+          for (let recipe of transaction.menu) {
+            const temp = {
+              ...recipe.recipe_id,
+              amount: recipe.amount,
+              discount_price:
+                recipe.recipe_id.price -
+                (recipe.recipe_id.discount / 100) * recipe.recipe_id.price,
+            };
+            arrTemp.push(temp);
+          }
+          const obj = {
+            ...transaction,
+            _id: transaction._id,
+            menu: arrTemp,
+          };
+          arr.push(obj);
+        }
+        this.cart = arr;
+        console.log(this.cart);
       },
       (err) => {
         Swal.fire({
@@ -79,23 +101,6 @@ export class CartComponent implements OnInit, OnDestroy {
       }
     );
   }
-
-  // onHistory() {
-  //   openHistoryTransactionDialog(this.matDialog)
-  //     .pipe(filter((val) => !!val))
-  //     .subscribe(
-  //       (data: any) => {
-  //         console.log(data);
-  //       },
-  //       (err) => {
-  //         Swal.fire({
-  //           title: 'No History',
-  //           text: err.message,
-  //           icon: 'error',
-  //         });
-  //       }
-  //     );
-  // }
 
   onCancel(data: any) {
     this.cartService.cancelTransaction(data).subscribe(

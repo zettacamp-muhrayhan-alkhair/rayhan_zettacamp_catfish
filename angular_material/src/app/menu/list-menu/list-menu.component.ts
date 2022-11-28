@@ -41,8 +41,8 @@ export class ListMenuComponent implements OnInit {
     this.subs.sink = this.menuService
       .getPublishRecipes(this.page)
       .subscribe((data: any) => {
-        this.menuLength = data?.data?.info_page[0]?.count;
         this.menu = data?.data?.recipe_data;
+        this.menuLength = data?.data?.info_page[0]?.count;
       });
   }
 }

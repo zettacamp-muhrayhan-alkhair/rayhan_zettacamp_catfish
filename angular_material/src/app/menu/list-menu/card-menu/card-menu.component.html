@@ -7,8 +7,13 @@
       <mat-card-title>{{ recipe.recipe_name }}</mat-card-title>
     </div>
     <div class="subtitle-wrapper">
+      <mat-card-subtitle
+        *ngIf="recipe.discount > 0"
+        [ngClass]="recipe.discount > 0 ? 'stroke' : ''"
+        >{{ recipe.price | currency: "Rp. " }}</mat-card-subtitle
+      >
       <mat-card-subtitle>{{
-        recipe.price | currency: "Rp. "
+        recipe.discount_price | currency: "Rp. "
       }}</mat-card-subtitle>
     </div>
   </div>
