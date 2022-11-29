@@ -5,7 +5,6 @@ import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
 import { openEditRecipeCartDialog } from './cart-edit/cart-edit.component';
 import { CartService } from './cart.service';
-import { openHistoryTransactionDialog } from './history-transaction/history-transaction.component';
 
 @Component({
   selector: 'app-cart',

@@ -4,10 +4,7 @@ import {
   MatDialog,
   MatDialogConfig,
   MatDialogRef,
-  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { Ingredient } from 'src/app/model/ingredient.model';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stock-form',
@@ -24,8 +21,7 @@ export class StockFormComponent implements OnInit {
   });
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<StockFormComponent>,
-    @Inject(MAT_DIALOG_DATA) private ingredient: Ingredient
+    public dialogRef: MatDialogRef<StockFormComponent>
   ) {}
 
   ngOnInit(): void {}

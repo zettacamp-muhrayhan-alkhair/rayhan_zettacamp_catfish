@@ -1,16 +1,18 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Apollo, gql } from 'apollo-angular';
+import { filter } from 'rxjs';
 import { SubSink } from 'subsink/dist/subsink';
 import Swal from 'sweetalert2';
 import { AppComponent } from '../app.component';
 import { LoginService } from './login.service';
+import { openCreateUserDialog } from './register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -89,5 +92,28 @@ export class LoginComponent implements OnInit {
         });
       }
     );
+  }
+
+  onCreateUser() {
+    openCreateUserDialog(this.matDialog)
+      .pipe(filter((val) => !!val))
+      .subscribe((val) => {
+        this.loginService.createUser(val).subscribe(
+          (data: any) => {
+            console.log(data);
+            Swal.fire({
+              title: 'User is added',
+              icon: 'success',
+              text: data.data.CreateUser.message,
+            });
+          },
+          (err) => {
+            Swal.fire({
+              icon: 'error',
+              text: err.message,
+            });
+          }
+        );
+      });
   }
 }

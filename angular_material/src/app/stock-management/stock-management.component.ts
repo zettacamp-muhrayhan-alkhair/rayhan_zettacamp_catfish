@@ -16,7 +16,6 @@ import { FormControl } from '@angular/forms';
 })
 export class StockManagementComponent implements OnInit {
   private subs = new SubSink();
-  private dialogSubs = new SubSink();
   displayedColumns: string[] = ['name', 'stock', 'available', 'actions'];
   ingredientsLength: number;
   ingredients = [];

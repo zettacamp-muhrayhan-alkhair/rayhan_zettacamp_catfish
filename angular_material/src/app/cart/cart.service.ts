@@ -180,7 +180,8 @@ export class CartService {
   }
 
   updateTransaction(data: any) {
-    const recipe_id = data._id._id;
+    console.log(data);
+    const recipe_id = data._id;
     const amount = data.amount;
     const note = data.note;
     return this.apollo.mutate({

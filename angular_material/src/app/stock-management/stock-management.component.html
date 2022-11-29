@@ -49,10 +49,10 @@
                 name="food"
               >
                 <mat-option
-                  *ngFor="let food of availabilities"
-                  [value]="food.value"
+                  *ngFor="let availability of availabilities"
+                  [value]="availability.value"
                 >
-                  {{ food.viewValue }}
+                  {{ availability.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>

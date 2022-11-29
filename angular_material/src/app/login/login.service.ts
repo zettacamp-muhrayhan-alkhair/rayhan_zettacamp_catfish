@@ -30,4 +30,25 @@ export class LoginService {
       variables: { value },
     });
   }
+
+  createUser(data: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation CreateUser($data: userParams) {
+          CreateUser(data: $data) {
+            message
+            data {
+              first_name
+              last_name
+              email
+              password
+              role
+            }
+          }
+        }
+      `,
+      variables: { data },
+      fetchPolicy: 'network-only',
+    });
+  }
 }

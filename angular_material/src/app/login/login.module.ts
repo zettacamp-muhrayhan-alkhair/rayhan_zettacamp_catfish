@@ -8,6 +8,7 @@ import { AngularMaterialModule } from '../shared/angular-material/angular-materi
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -18,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -33,6 +34,6 @@ const routes: Routes = [
       },
     }),
   ],
-  exports: [LoginComponent],
+  exports: [LoginComponent, RegisterComponent],
 })
 export class LoginModule {}
