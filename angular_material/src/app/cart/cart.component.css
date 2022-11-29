@@ -82,3 +82,18 @@ mat-card-actions mat-card-subtitle {
   color: white;
   /* color: whitesmoke; */
 }
+
+.spinner-wrapper {
+  display: flex;
+  width: 94%;
+  margin-top: 15rem;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.container::-webkit-scrollbar {
+  scrollbar-width: 2px;
+  scrollbar-color: auto;
+}

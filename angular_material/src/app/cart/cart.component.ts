@@ -47,7 +47,6 @@ export class CartComponent implements OnInit, OnDestroy {
           arr.push(obj);
         }
         this.cart = arr;
-        console.log(this.cart);
       },
       (err) => {
         Swal.fire({
@@ -126,8 +125,10 @@ export class CartComponent implements OnInit, OnDestroy {
     openEditRecipeCartDialog(this.matDialog, data)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
+        console.log(val);
         this.cartService.updateTransaction(val).subscribe(
           (data: any) => {
+            console.log(data);
             Swal.fire({
               title: 'Transaction is Updated',
               text: data.data.UpdateTransaction.message,

@@ -1,5 +1,5 @@
 export interface MenuRecipe {
   amount: Number;
   note: String;
-  _id: String;
+  recipe_id: String;
 }

@@ -150,8 +150,7 @@ export class CartService {
   }
 
   removeItem(data: any) {
-    console.log(data);
-    const recipe_id = data.recipe_id._id;
+    const recipe_id = data._id;
     const amount = data.amount;
     return this.apollo.mutate({
       mutation: gql`
@@ -180,10 +179,14 @@ export class CartService {
   }
 
   updateTransaction(data: any) {
-    console.log(data);
     const recipe_id = data._id;
     const amount = data.amount;
-    const note = data.note;
+    let note: string;
+    if (data.note === null) {
+      note = '';
+    } else {
+      note = data.note;
+    }
     return this.apollo.mutate({
       mutation: gql`
         mutation UpdateTransaction(

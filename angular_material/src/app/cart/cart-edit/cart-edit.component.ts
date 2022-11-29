@@ -7,7 +7,6 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MenuRecipe } from 'src/app/model/cart-recipe.model';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart-edit',
@@ -25,7 +24,7 @@ export class CartEditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CartEditComponent>,
-    @Inject(MAT_DIALOG_DATA) private menuRecipe: MenuRecipe
+    @Inject(MAT_DIALOG_DATA) private menuRecipe: any
   ) {}
 
   ngOnInit(): void {}
