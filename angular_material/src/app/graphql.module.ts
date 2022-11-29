@@ -7,8 +7,7 @@ import {
 } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 
-const uri =
-  'https://fa8a-2001-448a-404f-570a-45f7-25eb-d61d-f31a.ap.ngrok.io/graphql';
+const uri = 'https://90e0-103-236-192-220.ap.ngrok.io/graphql';
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const http = httpLink.create({ uri: uri });

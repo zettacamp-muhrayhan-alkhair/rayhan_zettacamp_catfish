@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomepageComponent } from './homepage.component';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';

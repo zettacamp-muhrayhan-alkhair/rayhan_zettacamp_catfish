@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StockManagementComponent } from './stock-management.component';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { StockFormComponent } from './stock-form/stock-form.component';
 import { ReactiveFormsModule } from '@angular/forms';

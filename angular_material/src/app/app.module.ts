@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Module
-import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageModule } from './homepage/homepage.module';
 import { LoginModule } from './login/login.module';

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuManagementComponent } from './menu-management.component';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuEditComponent } from './menu-form/menu-edit/menu-edit.component';
