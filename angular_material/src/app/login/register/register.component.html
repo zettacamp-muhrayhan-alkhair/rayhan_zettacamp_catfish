@@ -29,12 +29,7 @@
   <div class="form-field">
     <mat-form-field appearance="fill">
       <mat-label>{{ "login.password" | translate }}</mat-label>
-      <input
-        id="password"
-        type="password"
-        matInput
-        formControlName="password"
-      />
+      <input id="regpass" type="password" matInput formControlName="password" />
       <mat-error *ngIf="registerForm.controls['password'].invalid"
         >Please input correct password!</mat-error
       >

@@ -22,13 +22,63 @@
   "menu": {
     "sold": "Out of stock",
     "btn": "Add to cart",
-    "prev": "Previous Page",
-    "next": "Next Page"
+    "prev": "Previous",
+    "next": "Next",
+    "title-dialog": "Add to cart",
+    "amount": "Amount",
+    "note": "Notes",
+    "btn-cancel": "Cancel",
+    "btn-submit": "Submit"
   },
   "login": {
     "email": "Email",
     "password": "Password",
     "social": "Social media:",
     "btn-submit": "Submit"
+  },
+  "menu-management": {
+    "add-new": "Add new Recipe",
+    "table-name": "Name",
+    "table-price": "Price",
+    "publisher": "Publisher",
+    "all": "All",
+    "publish": "Publish",
+    "unpublish": "Unpublish",
+    "item-per-page": "Items per page",
+    "dialog-title": "Menu Add Form",
+    "dialog-name": "Name",
+    "dialog-price": "Price",
+    "dialog-discount": "Discount",
+    "dialog-img": "Image Link",
+    "dialog-ingredient": "Ingredient name",
+    "dialog-stock": "Stock used",
+    "dialog-add": "Add more ingredient",
+    "btn-cancel": "Cancel",
+    "btn-submit": "Submit"
+  },
+  "stock-management": {
+    "add-new": "Add new Ingredient",
+    "table-name": "Name",
+    "table-stock": "Stock",
+    "availability": "Availability",
+    "all": "All",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "item-per-page": "Items per page",
+    "btn-cancel": "Cancel",
+    "btn-submit": "Submit",
+    "dialog-name": "Name",
+    "dialog-stock": "Stock"
+  },
+  "history": {
+    "item-per-page": "Items per page",
+    "btn-cancel": "Cancel",
+    "dialog-name": "Name",
+    "dialog-date": "Order Date",
+    "dialog-status": "Status",
+    "dialog-total": "Total Price"
+  },
+  "cart": {
+    "no-transaction": "You do not have any transaction"
   }
 }

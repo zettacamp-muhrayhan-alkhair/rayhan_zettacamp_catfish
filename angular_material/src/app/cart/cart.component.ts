@@ -33,6 +33,7 @@ export class CartComponent implements OnInit, OnDestroy {
             const temp = {
               ...recipe.recipe_id,
               amount: recipe.amount,
+              note: recipe.note,
               discount_price:
                 recipe.recipe_id.price -
                 (recipe.recipe_id.discount / 100) * recipe.recipe_id.price,
@@ -87,7 +88,6 @@ export class CartComponent implements OnInit, OnDestroy {
             this.getAllTransactions();
           });
         } else {
-          console.log(err.message);
           Swal.fire({
             title: err,
             text: err.message,
@@ -125,10 +125,8 @@ export class CartComponent implements OnInit, OnDestroy {
     openEditRecipeCartDialog(this.matDialog, data)
       .pipe(filter((val) => !!val))
       .subscribe((val: any) => {
-        console.log(val);
         this.cartService.updateTransaction(val).subscribe(
           (data: any) => {
-            console.log(data);
             Swal.fire({
               title: 'Transaction is Updated',
               text: data.data.UpdateTransaction.message,

@@ -68,7 +68,7 @@
       </ng-container>
 
       <div class="do-not-have-transactions" *ngIf="cart.length === 0">
-        <h1>You do not have any transaction</h1>
+        <h1>{{ "cart.no-transaction" | translate }}</h1>
       </div>
     </div>
   </div>

@@ -18,6 +18,8 @@ export class HistoryTransactionComponent implements OnInit {
   displayedColumns: string[] = [
     'role',
     'order_date',
+    'menu',
+    'note',
     'order_status',
     'total_price',
   ];

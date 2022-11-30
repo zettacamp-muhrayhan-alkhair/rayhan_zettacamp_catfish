@@ -53,7 +53,6 @@ export class AppComponent implements OnInit {
       .pipe(filter((val) => !!val))
       .subscribe(
         (data: any) => {
-          console.log(data);
         },
         (err) => {
           Swal.fire({

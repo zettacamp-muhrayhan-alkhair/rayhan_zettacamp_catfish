@@ -34,7 +34,6 @@ export class CartEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.menuRecipe);
     this.dialogRef.close({
       ...this.cartForm.value,
       _id: this.menuRecipe._id,

@@ -176,7 +176,6 @@ export class MenuManagementComponent implements OnInit {
       if (confirm.isConfirmed) {
         this.menuManagementService.deleteRecipe(element).subscribe(
           (data: any) => {
-            console.log(data);
             Swal.fire({
               icon: 'success',
               title: 'success',

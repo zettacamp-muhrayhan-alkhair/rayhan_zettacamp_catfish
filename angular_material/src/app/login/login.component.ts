@@ -100,7 +100,6 @@ export class LoginComponent implements OnInit {
       .subscribe((val) => {
         this.loginService.createUser(val).subscribe(
           (data: any) => {
-            console.log(data);
             Swal.fire({
               title: 'User is added',
               icon: 'success',

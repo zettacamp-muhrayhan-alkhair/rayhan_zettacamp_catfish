@@ -33,7 +33,14 @@ export class RegisterComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onShowPassword(event: any) {}
+  onShowPassword(event: any) {
+    let password = document.getElementById('regpass') as HTMLInputElement;
+    if (event.checked === true) {
+      password.type = 'text';
+    } else {
+      password.type = 'password';
+    }
+  }
 }
 
 export function openCreateUserDialog(matDialog: MatDialog) {

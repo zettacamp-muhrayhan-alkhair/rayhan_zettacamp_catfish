@@ -22,13 +22,64 @@
   "menu": {
     "sold": "Stok Habis",
     "btn": "Tambah ke Keranjang",
-    "prev": "Halaman Sebelum",
-    "next": "Halaman Berikut"
+    "prev": "Sebelumnya",
+    "next": "Berikutnya",
+    "title-dialog": "Tambah ke Keranjang",
+    "amount": "Jumlah",
+    "note": "Catatan",
+    "btn-cancel": "Batal",
+    "btn-submit": "Kirim"
   },
   "login": {
     "email": "Surel",
     "password": "Kata Sandi",
     "social": "Media social:",
     "btn-submit": "Kirim"
+  },
+  "menu-management": {
+    "add-new": "Tambah Resep Baru",
+    "table-name": "Nama",
+    "table-price": "Harga",
+    "publisher": "Penerbit",
+    "all": "Semua",
+    "publish": "Terbit",
+    "unpublish": "Tidak Terbit",
+    "item-per-page": "Item per halaman",
+
+    "dialog-title": "Formulir Tambah Recipe",
+    "dialog-name": "Nama",
+    "dialog-price": "Harga",
+    "dialog-discount": "Diskon",
+    "dialog-img": "Tautan Gambar",
+    "dialog-ingredient": "Nama Bahan",
+    "dialog-stock": "Stok yang Digunakan",
+    "dialog-add": "Tambah Bahan",
+    "btn-cancel": "Batal",
+    "btn-submit": "Kirim"
+  },
+  "stock-management": {
+    "add-new": "Tambah Bahan Baru",
+    "table-name": "Nama",
+    "table-stock": "Stok",
+    "availability": "Ketersediaan",
+    "all": "Semua",
+    "available": "Tersedia",
+    "unavailable": "Tidak Tersedia",
+    "item-per-page": "Item per halaman",
+    "btn-cancel": "Batal",
+    "btn-submit": "Kirim",
+    "dialog-name": "Nama",
+    "dialog-stock": "Stok"
+  },
+  "history": {
+    "item-per-page": "Item per halaman",
+    "btn-cancel": "Batal",
+    "dialog-name": "Nama",
+    "dialog-date": "Tanggal Pesan",
+    "dialog-status": "Status",
+    "dialog-total": "Total Harga"
+  },
+  "cart": {
+    "no-transaction": "Kamu tidak memiliki transaksi apapun"
   }
 }

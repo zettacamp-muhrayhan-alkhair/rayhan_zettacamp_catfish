@@ -69,6 +69,7 @@ export class CartService {
                     role
                   }
                   menu {
+                    note
                     recipe_id {
                       recipe_name
                     }
