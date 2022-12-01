@@ -57,9 +57,25 @@ table {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60%;
+  width: 90%;
 }
 
 .btn-container {
   margin-bottom: 1rem;
+}
+
+.mat-cell {
+  background-color: transparent !important;
+  width: 250px;
+  color: black;
+  font-size: 1rem;
+}
+
+.mat-header-cell {
+  background-color: transparent !important;
+  font-size: 0.8rem;
+}
+
+.actions button {
+  margin: 0 0.5rem;
 }

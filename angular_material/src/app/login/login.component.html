@@ -52,25 +52,32 @@
             >
           </mat-form-field>
         </div>
-        <div class="btn-actions">
-          <mat-checkbox (change)="onShowPassword($event)"
-            >Show Password</mat-checkbox
-          >
-          <button
-            [disabled]="loginForm.invalid"
-            mat-raised-button
-            color="primary"
-          >
-            {{ "login.btn-submit" | translate }}
-          </button>
-          <button
-            type="button"
-            (click)="onCreateUser()"
-            mat-raised-button
-            color="primary"
-          >
-            SignUp
-          </button>
+        <div class="btn-wrapper">
+          <div class="btn-actions user-validation">
+            <mat-checkbox (change)="onShowPassword($event)"
+              >Show Password</mat-checkbox
+            >
+            <a (click)="onForgetPassword()">Forget Password?</a>
+          </div>
+          <div class="btn-actions">
+            <button
+              [disabled]="loginForm.invalid"
+              mat-raised-button
+              color="primary"
+            >
+              {{ "login.btn-submit" | translate }}
+            </button>
+          </div>
+          <div class="btn-actions">
+            <button
+              type="button"
+              (click)="onCreateUser()"
+              mat-raised-button
+              color="primary"
+            >
+              Register
+            </button>
+          </div>
         </div>
       </form>
     </div>

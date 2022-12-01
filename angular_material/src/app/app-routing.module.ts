@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartGuard } from './guards/cart.guard';
+import { LoginGuard } from './guards/login.guard';
 import { MenuManagementGuard } from './guards/menu-management.guard';
 import { StockManagementGuard } from './guards/stock-management.guard';
 
@@ -34,6 +35,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
+    canActivate: [LoginGuard],
   },
   {
     path: 'stock-management',

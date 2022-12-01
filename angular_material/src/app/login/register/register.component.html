@@ -1,47 +1,67 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-  <div class="form-field">
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input type="text" matInput formControlName="first_name" />
-      <mat-error *ngIf="registerForm.controls['first_name'].invalid"
-        >Please input correct first name!</mat-error
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput formControlName="first_name" />
+        <mat-error *ngIf="registerForm.controls['first_name'].invalid"
+          >Please input correct first name!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="last_name" />
+        <mat-error *ngIf="registerForm.controls['last_name'].invalid"
+          >Please input correct last name!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ "login.email" | translate }}</mat-label>
+        <input type="email" matInput formControlName="email" />
+        <mat-error *ngIf="registerForm.controls['email'].invalid"
+          >Please input correct email!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ "login.password" | translate }}</mat-label>
+        <input
+          id="regpass"
+          type="password"
+          matInput
+          formControlName="password"
+        />
+        <mat-error *ngIf="registerForm.controls['password'].invalid"
+          >Please input correct password!</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="btn-wrapper">
+      <mat-checkbox (change)="onShowPassword($event)"
+        >Show Password</mat-checkbox
       >
-    </mat-form-field>
-  </div>
-  <div class="form-field">
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input type="text" matInput formControlName="last_name" />
-      <mat-error *ngIf="registerForm.controls['last_name'].invalid"
-        >Please input correct last name!</mat-error
-      >
-    </mat-form-field>
-  </div>
-  <div class="form-field">
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "login.email" | translate }}</mat-label>
-      <input type="email" matInput formControlName="email" />
-      <mat-error *ngIf="registerForm.controls['email'].invalid"
-        >Please input correct email!</mat-error
-      >
-    </mat-form-field>
-  </div>
-  <div class="form-field">
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "login.password" | translate }}</mat-label>
-      <input id="regpass" type="password" matInput formControlName="password" />
-      <mat-error *ngIf="registerForm.controls['password'].invalid"
-        >Please input correct password!</mat-error
-      >
-    </mat-form-field>
-  </div>
-  <div class="btn-actions">
-    <mat-checkbox (change)="onShowPassword($event)">Show Password</mat-checkbox>
-    <button [disabled]="registerForm.invalid" mat-raised-button color="primary">
-      Submit
-    </button>
-    <button type="button" mat-raised-button color="warn" (click)="onClose()">
-      Cancel
-    </button>
-  </div>
-</form>
+      <div class="btn-actions">
+        <button
+          type="button"
+          mat-raised-button
+          color="warn"
+          (click)="onClose()"
+        >
+          Cancel
+        </button>
+        <button
+          [disabled]="registerForm.invalid"
+          mat-raised-button
+          color="primary"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

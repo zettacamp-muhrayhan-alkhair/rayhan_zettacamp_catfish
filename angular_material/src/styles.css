@@ -14,10 +14,11 @@ body {
   height: 100%;
   background-color: white;
 }
+
 body {
   margin: 0;
 }
 
-::-webkit-scrollbar {
-  scrollbar-width: 2px;
+body::-webkit-scrollbar {
+  display: none;
 }

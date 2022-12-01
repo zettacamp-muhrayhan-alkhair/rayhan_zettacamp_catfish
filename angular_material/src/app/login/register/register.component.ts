@@ -48,6 +48,7 @@ export function openCreateUserDialog(matDialog: MatDialog) {
 
   config.disableClose = true;
   config.autoFocus = true;
+  config.width = '500px';
 
   const dialogRef = matDialog.open(RegisterComponent, config);
 

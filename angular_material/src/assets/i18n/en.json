@@ -2,9 +2,9 @@
   "app": {
     "home": "Home",
     "about": "About",
-    "menu": "Menu",
+    "recipe-list": "Recipe List",
     "history": "History",
-    "menu-management": "Menu Management",
+    "recipe-management": "Recipe Management",
     "stock-management": "Stock Management",
     "cart": "Cart",
     "login": "login",
@@ -14,8 +14,8 @@
     "id": "Indonesian"
   },
   "home": {
-    "title": "Feel the taste of Japanese foods",
-    "subtitle": "Feel the taste of most popular Japanese foods from anywhere and anytime",
+    "title": "Feel the taste of Indonesian foods",
+    "subtitle": "Feel the taste of most popular Indonesian foods from anywhere and anytime",
     "btn-menu": "View Menu",
     "btn-order": "Order Now"
   },

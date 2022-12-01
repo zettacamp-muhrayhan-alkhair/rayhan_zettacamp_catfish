@@ -2,9 +2,9 @@
   "app": {
     "home": "Beranda",
     "about": "Tentang",
-    "menu": "Menu",
+    "recipe-list": "List Resep",
     "history": "Riwayat",
-    "menu-management": "Manajemen Menu",
+    "recipe-management": "Manajemen Resep",
     "stock-management": "Manajemen Stok",
     "cart": "Keranjang",
     "login": "Masuk",
@@ -14,8 +14,8 @@
     "id": "Bahasa Indonesia"
   },
   "home": {
-    "title": "Rasakan cita rasa makanan Jepang",
-    "subtitle": "Rasakan cita rasa makanan Jepang terpopuler dari mana saja dan kapan saja",
+    "title": "Rasakan cita rasa masakan Indonesia",
+    "subtitle": "Rasakan cita rasa masakan Indonesia terpopuler dari mana saja dan kapan saja",
     "btn-menu": "Lihat Menu",
     "btn-order": "Pesan Sekarang"
   },

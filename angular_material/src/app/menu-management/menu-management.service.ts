@@ -9,10 +9,10 @@ export class MenuManagementService {
   constructor(private apollo: Apollo) {}
 
   getAllIngredients() {
-    return this.apollo.watchQuery({
+    return this.apollo.query({
       query: gql`
         query GetAllIngredients {
-          GetAllIngredients(data: {}) {
+          GetAllIngredients(data: { name_sort: 1 }) {
             message
             data {
               ingredient_data {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 import Swal from 'sweetalert2';
+import { AppService } from './app.service';
 import { openHistoryTransactionDialog } from './cart/history-transaction/history-transaction.component';
 
 @Component({
@@ -18,21 +19,29 @@ export class AppComponent implements OnInit {
   public isAdmin: boolean = false;
   public isCustomer: boolean = false;
   public isToken: boolean = false;
+  public isCredit: number;
+  public isID: string;
   public isName = '';
   constructor(
     private router: Router,
     private translateService: TranslateService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private appService: AppService
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('_id')) {
+      this.getOneUser(localStorage.getItem('_id'));
+    }
     if (localStorage.getItem('role')) {
       if (JSON.parse(localStorage.getItem('role')) === 'Admin') {
         this.isToken = true;
         this.isAdmin = true;
+        this.isName = localStorage.getItem('name');
       } else {
         this.isToken = true;
         this.isCustomer = true;
+        this.isName = localStorage.getItem('name');
       }
     } else {
       this.isToken = false;
@@ -52,8 +61,7 @@ export class AppComponent implements OnInit {
     openHistoryTransactionDialog(this.matDialog)
       .pipe(filter((val) => !!val))
       .subscribe(
-        (data: any) => {
-        },
+        (data: any) => {},
         (err) => {
           Swal.fire({
             title: 'No History',
@@ -69,6 +77,12 @@ export class AppComponent implements OnInit {
     this.router.navigate(['home']).then(() => {
       this.isAdmin = false;
       this.isCustomer = false;
+    });
+  }
+
+  getOneUser(data: any) {
+    this.appService.getOneUser(data).subscribe((value: any) => {
+      this.isCredit = value?.data?.getOneUser?.data?.credite;
     });
   }
 }

@@ -28,9 +28,26 @@ mat-paginator {
 }
 
 .table-wrapper {
-  width: 60%;
+  width: 90%;
 }
 
 table {
   width: 100%;
+}
+
+.mat-cell {
+  padding: 0.5rem;
+  width: 300px;
+  color: black;
+  font-size: 1rem;
+}
+
+.mat-header-cell {
+  width: 250px;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.actions button {
+  margin: 0 0.5rem;
 }

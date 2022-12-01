@@ -6,7 +6,6 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { Recipe } from 'src/app/model/recipe.model';
 
 import { MenuManagementService } from '../../menu-management.service';
@@ -69,7 +68,7 @@ export class MenuEditComponent implements OnInit {
 
     this.menuManagementService
       .getAllIngredients()
-      .valueChanges.subscribe(
+      .subscribe(
         (data: any) =>
           (this.allIngredients =
             data?.data?.GetAllIngredients?.data?.ingredient_data)

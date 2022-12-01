@@ -34,13 +34,9 @@ export class MenuFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.addIngredient();
-    this.menuManagementService
-      .getAllIngredients()
-      .valueChanges.subscribe(
-        (data: any) =>
-          (this.allIngredients =
-            data.data.GetAllIngredients.data.ingredient_data)
-      );
+    this.menuManagementService.getAllIngredients().subscribe((data: any) => {
+      this.allIngredients = data.data.GetAllIngredients.data.ingredient_data;
+    });
     this.manageNameControl(this.ingredients.length - 1);
   }
 

@@ -1,10 +1,7 @@
 .mat-header-cell {
-  color: red;
-  text-align: center;
+  width: 250px;
 }
 
 .mat-cell {
-  color: blue;
-  width: 50px;
-  text-align: center;
+  width: 250px;
 }

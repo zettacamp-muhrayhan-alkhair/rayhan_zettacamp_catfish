@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
+import { AppComponent } from '../app.component';
+import { AppService } from '../app.service';
 import { openEditRecipeCartDialog } from './cart-edit/cart-edit.component';
 import { CartService } from './cart.service';
 
@@ -16,7 +18,12 @@ export class CartComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   cart: any = [];
 
-  constructor(private cartService: CartService, private matDialog: MatDialog) {}
+  constructor(
+    private cartService: CartService,
+    private matDialog: MatDialog,
+    private appService: AppService,
+    private appComponent: AppComponent
+  ) {}
 
   ngOnInit(): void {
     this.getAllTransactions();
@@ -64,6 +71,10 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartService.checkOut(data).subscribe(
       (data: any) => {
         this.isLoading = data;
+        const _id = this.appComponent.isID;
+        this.appService.getOneUser(_id).subscribe((data: any) => {
+          this.appComponent.isCredit = data.data.getOneUser.data.credite;
+        });
         Swal.fire({
           title: 'Transaction is Success',
           text: data.data.UpdateTransaction.message,

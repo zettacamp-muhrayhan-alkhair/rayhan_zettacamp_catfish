@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs';
-import { MenuManagementService } from 'src/app/menu-management/menu-management.service';
-import { StockManagementService } from 'src/app/stock-management/stock-management.service';
 import Swal from 'sweetalert2';
 import { openAddMenuUserDialog } from '../../menu-form/menu-form.component';
 import { MenuService } from '../../menu.service';
@@ -17,6 +15,8 @@ export class CardMenuComponent implements OnInit {
   isNotAvailableStock = false;
   ingredients: string[] = [];
   isToken: boolean = false;
+  isStockUsed = false;
+  isAvailibility: number;
 
   constructor(private matDialog: MatDialog, private menuService: MenuService) {}
 
@@ -37,6 +37,12 @@ export class CardMenuComponent implements OnInit {
     } else {
       this.isNotAvailableStock = false;
     }
+
+    this.recipe.ingredients.map((data) => {
+      if (data.stock_used > data.ingredient_id.stock) {
+        this.isStockUsed = true;
+      }
+    });
 
     const data = {
       ...this.recipe,

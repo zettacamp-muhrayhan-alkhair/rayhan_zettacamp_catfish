@@ -60,8 +60,17 @@
         *ngFor="let ingredient of ingredients.controls; let i = index"
         [formGroupName]="i"
       >
+        <!-- <ng-select formControlName="ingredient_id">
+          <ng-option
+            *ngFor="let ingredient of allIngredients"
+            [value]="ingredient._id"
+          >
+            {{ ingredient.name }}</ng-option
+          >
+        </ng-select> -->
         <mat-form-field appearance="fill">
           <mat-label>Ingredient name</mat-label>
+
           <input
             type="text"
             placeholder="Ingredient"

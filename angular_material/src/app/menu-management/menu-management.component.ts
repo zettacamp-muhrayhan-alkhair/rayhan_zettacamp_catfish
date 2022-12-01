@@ -8,6 +8,7 @@ import { MenuManagementService } from './menu-management.service';
 import { filter } from 'rxjs';
 import { openEditMenuDialog } from './menu-form/menu-edit/menu-edit.component';
 import { FormControl } from '@angular/forms';
+import { openDetailMenuDialog } from './menu-detail/menu-detail.component';
 
 @Component({
   selector: 'app-menu-management',
@@ -23,7 +24,13 @@ export class MenuManagementComponent implements OnInit {
 
   published = 'all';
   private subs = new SubSink();
-  displayedColumns: string[] = ['name', 'ingredients', 'publisher', 'actions'];
+  displayedColumns: string[] = [
+    'name',
+    'price',
+    'discount',
+    'publisher',
+    'actions',
+  ];
   recipes: any[] = [];
   dataSource = new MatTableDataSource();
 
@@ -101,6 +108,12 @@ export class MenuManagementComponent implements OnInit {
           }
         );
       });
+  }
+
+  onDetail(recipe: any) {
+    openDetailMenuDialog(this.matDialog, recipe)
+      .pipe(filter((val) => !!val))
+      .subscribe((val) => {});
   }
 
   onPublish(event: any, element: any) {

@@ -6,16 +6,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuEditComponent } from './menu-form/menu-edit/menu-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuDetailComponent } from './menu-detail/menu-detail.component';
+// import { NgSelectModule } from '@ng-select/ng-select';
 
 const routes: Routes = [
   { path: '', component: MenuManagementComponent, title: 'Menu Management' },
 ];
 
 @NgModule({
-  declarations: [MenuManagementComponent, MenuFormComponent, MenuEditComponent],
+  declarations: [
+    MenuManagementComponent,
+    MenuFormComponent,
+    MenuEditComponent,
+    MenuDetailComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
+    // NgSelectModule,
     AngularMaterialModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,

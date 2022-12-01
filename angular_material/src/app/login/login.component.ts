@@ -11,6 +11,7 @@ import { filter } from 'rxjs';
 import { SubSink } from 'subsink/dist/subsink';
 import Swal from 'sweetalert2';
 import { AppComponent } from '../app.component';
+import { openForgetPasswordDialog } from './forget-password/forget-password.component';
 import { LoginService } from './login.service';
 import { openCreateUserDialog } from './register/register.component';
 
@@ -34,11 +35,7 @@ export class LoginComponent implements OnInit {
     private matDialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    // localStorage.setItem('token', '');
-    // localStorage.setItem('data', '');
-    // localStorage.setItem('role', '');
-  }
+  ngOnInit(): void {}
 
   onShowPassword(event: any) {
     let password = document.getElementById('password') as HTMLInputElement;
@@ -49,6 +46,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  onForgetPassword() {
+    openForgetPasswordDialog(this.matDialog)
+      .pipe(filter((val) => !!val))
+      .subscribe((val) => {
+        this.loginService.forgetPassword(val).subscribe(
+          (data: any) => {},
+          (err) => {}
+        );
+      });
+  }
+
   onSubmit(value: any) {
     this.loginService.getAuthorization(value).subscribe(
       (val: any) => {
@@ -56,18 +64,20 @@ export class LoginComponent implements OnInit {
         let data: any;
         let role: any;
         let name: any;
-        // this.loginService
-        //   .getAuthorization(this.loginForm.value)
-        //   .subscribe((val: any) => {
-        //   });
+        let credit: any;
+        let _id: string;
         token = val?.data?.Login?.token;
         data = val?.data?.Login?.user?.usertype;
         role = val?.data?.Login?.user?.role;
         name = val?.data?.Login?.user?.last_name;
+        credit = val?.data?.Login?.user?.credite;
+        _id = val?.data?.Login?.user?._id;
         localStorage.setItem('token', token);
         localStorage.setItem('data', JSON.stringify(data));
         localStorage.setItem('role', JSON.stringify(role));
         localStorage.setItem('name', name);
+        localStorage.setItem('credit', credit);
+        localStorage.setItem('_id', _id);
         Swal.fire({
           title: 'You have logged in',
           text: val?.data?.Login?.message,
@@ -77,9 +87,13 @@ export class LoginComponent implements OnInit {
             if (role === 'Admin') {
               this.appComponent.isAdmin = true;
               this.appComponent.isName = name;
+              this.appComponent.isCredit = credit;
+              this.appComponent.isID = _id;
             } else {
               this.appComponent.isCustomer = true;
               this.appComponent.isName = name;
+              this.appComponent.isCredit = credit;
+              this.appComponent.isID = _id;
             }
           });
         });

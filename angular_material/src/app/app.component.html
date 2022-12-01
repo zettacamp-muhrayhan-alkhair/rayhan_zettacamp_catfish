@@ -9,7 +9,7 @@
         {{ "app.home" | translate | uppercase }}
       </a>
       <a mat-button [routerLink]="['menu']">
-        {{ "app.menu" | translate | uppercase }}
+        {{ "app.recipe-list" | translate | uppercase }}
       </a>
     </div>
     <div class="wrapper parent-wrapper">
@@ -20,7 +20,7 @@
         <mat-menu class="mat-menu" #management="matMenu" xPosition="before">
           <div class="management">
             <a mat-button [routerLink]="['menu-management']" *ngIf="isAdmin">
-              {{ "app.menu-management" | translate | uppercase }}
+              {{ "app.recipe-management" | translate | uppercase }}
             </a>
             <a mat-button [routerLink]="['stock-management']" *ngIf="isAdmin">
               {{ "app.stock-management" | translate | uppercase }}
@@ -33,20 +33,12 @@
         >
         <mat-menu class="mat-menu" #cart="matMenu" xPosition="before">
           <div class="cart">
-            <button
-              mat-button
-              (click)="onHistory()"
-              *ngIf="isAdmin || isCustomer"
-            >
+            <a mat-button (click)="onHistory()" *ngIf="isAdmin || isCustomer">
               {{ "app.history" | translate | uppercase }}
-            </button>
-            <button
-              mat-button
-              [routerLink]="['cart']"
-              *ngIf="isAdmin || isCustomer"
-            >
+            </a>
+            <a mat-button [routerLink]="['cart']" *ngIf="isAdmin || isCustomer">
               {{ "app.cart" | translate | uppercase }}
-            </button>
+            </a>
           </div>
         </mat-menu>
 
@@ -55,34 +47,33 @@
         >
         <mat-menu class="mat-menu" #profile="matMenu" xPosition="before">
           <div class="profile">
-            <button
-              mat-button
-              [disabled]="true"
-              *ngIf="!isAdmin && !isCustomer"
-            >
+            <a mat-button [disabled]="true" *ngIf="!isAdmin && !isCustomer">
               {{ "Non User" | uppercase }}
-            </button>
-            <button mat-button [disabled]="true" *ngIf="isAdmin">
+            </a>
+            <a mat-button [disabled]="true" *ngIf="isAdmin">
               {{ isName | uppercase }}
-            </button>
-            <button mat-button [disabled]="true" *ngIf="isCustomer">
+            </a>
+            <a mat-button [disabled]="true" *ngIf="isCustomer">
               {{ isName | uppercase }}
-            </button>
-            <button
+            </a>
+            <a mat-button [disabled]="true" *ngIf="isCustomer || isAdmin">
+              {{ isCredit | currency : "Rp. " }}
+            </a>
+            <a
               mat-button
               [routerLink]="['login']"
               *ngIf="!isAdmin && !isCustomer"
             >
               {{ "app.login" | translate | uppercase }}
-            </button>
-            <button
+            </a>
+            <a
               mat-button
               [routerLink]="['home']"
               (click)="onLogout()"
               *ngIf="isAdmin || isCustomer"
             >
               {{ "app.logout" | translate | uppercase }}
-            </button>
+            </a>
           </div>
         </mat-menu>
       </div>

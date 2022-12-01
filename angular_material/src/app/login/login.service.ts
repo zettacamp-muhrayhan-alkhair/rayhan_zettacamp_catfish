@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { map } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -16,6 +17,8 @@ export class LoginService {
             message
             token
             user {
+              _id
+              credite
               last_name
               role
               usertype {
@@ -28,6 +31,55 @@ export class LoginService {
         }
       `,
       variables: { value },
+    });
+  }
+
+  getVerificationCode(data: any) {
+    return this.apollo
+      .mutate({
+        mutation: gql`
+          mutation SaveVerification($data: userParams) {
+            saveVerification(data: $data) {
+              message
+              data {
+                email
+                first_name
+                last_name
+                role
+                credite
+              }
+            }
+          }
+        `,
+        variables: { data },
+      })
+      .pipe(
+        map((data: any) => {
+          return data.data.saveVerification;
+        })
+      );
+  }
+
+  forgetPassword(data: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation ForgetPassword($data: userParams) {
+          ForgetPassword(data: $data) {
+            message
+            data {
+              first_name
+              last_name
+              credite
+              password
+              role
+              email
+              status
+            }
+          }
+        }
+      `,
+      variables: { data },
+      fetchPolicy: 'network-only',
     });
   }
 
