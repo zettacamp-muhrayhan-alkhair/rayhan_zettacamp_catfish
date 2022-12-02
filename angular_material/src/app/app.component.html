@@ -56,9 +56,19 @@
             <a mat-button [disabled]="true" *ngIf="isCustomer">
               {{ isName | uppercase }}
             </a>
-            <a mat-button [disabled]="true" *ngIf="isCustomer || isAdmin">
-              {{ isCredit | currency : "Rp. " }}
-            </a>
+            <div class="credit">
+              <a
+                mat-button
+                class="icon"
+                *ngIf="isCustomer || isAdmin"
+                (click)="onTopupCredit()"
+              >
+                <mat-icon>credit_card</mat-icon>
+              </a>
+              <a mat-button [disabled]="true" *ngIf="isCustomer || isAdmin">
+                {{ isCredit | currency : "Rp. " }}
+              </a>
+            </div>
             <a
               mat-button
               [routerLink]="['login']"

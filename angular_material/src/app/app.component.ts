@@ -6,6 +6,7 @@ import { filter } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AppService } from './app.service';
 import { openHistoryTransactionDialog } from './cart/history-transaction/history-transaction.component';
+import { openTopupCreditDialog } from './login/topup/topup.component';
 
 @Component({
   selector: 'app-root',
@@ -72,11 +73,48 @@ export class AppComponent implements OnInit {
       );
   }
 
+  onTopupCredit() {
+    openTopupCreditDialog(this.matDialog)
+      .pipe(filter((val) => !!val))
+      .subscribe((val) => {
+        this.appService.topupCredit(val).subscribe(
+          (data: any) => {
+            Swal.fire({
+              title: 'Top up is success',
+              icon: 'success',
+            }).then(() => {
+              this.isCredit = data.data.TopUp.data.credite;
+            });
+          },
+          (err) => {
+            Swal.fire({
+              icon: 'error',
+              text: err.message,
+            });
+          }
+        );
+      });
+  }
+
   onLogout() {
-    localStorage.clear();
-    this.router.navigate(['home']).then(() => {
-      this.isAdmin = false;
-      this.isCustomer = false;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You can login again after logging out!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, logout!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Logged out!', 'You have logged out.', 'success').then(() => {
+          localStorage.clear();
+          this.router.navigate(['home']).then(() => {
+            this.isAdmin = false;
+            this.isCustomer = false;
+          });
+        });
+      }
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu.service';
 import { SubSink } from 'subsink/dist/subsink';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-menu',
@@ -38,11 +39,17 @@ export class ListMenuComponent implements OnInit {
   }
 
   getAllRecipesOnMenu() {
-    this.subs.sink = this.menuService
-      .getPublishRecipes(this.page)
-      .subscribe((data: any) => {
+    this.subs.sink = this.menuService.getPublishRecipes(this.page).subscribe(
+      (data: any) => {
         this.menu = data?.data?.recipe_data;
         this.menuLength = data?.data?.info_page[0]?.count;
-      });
+      },
+      (err) => {
+        Swal.fire({
+          title: err.message,
+          icon: 'error',
+        });
+      }
+    );
   }
 }

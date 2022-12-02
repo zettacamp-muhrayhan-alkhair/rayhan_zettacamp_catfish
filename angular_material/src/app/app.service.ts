@@ -40,4 +40,26 @@ export class AppService {
       fetchPolicy: 'network-only',
     });
   }
+
+  topupCredit(credite: number) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation TopUp($credite: Int) {
+          TopUp(data: { credite: $credite }) {
+            message
+            data {
+              email
+              credite
+              password
+              last_name
+              first_name
+              role
+              status
+            }
+          }
+        }
+      `,
+      variables: { credite },
+    });
+  }
 }

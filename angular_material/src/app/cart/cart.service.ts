@@ -44,6 +44,18 @@ export class CartService {
       );
   }
 
+  getFinanceManagement() {
+    return this.apollo.query({
+      query: gql`
+        query FinanceManagement {
+          FinanceManagement {
+            balance
+          }
+        }
+      `,
+    });
+  }
+
   getHistoryTransaction(inputPage: number, inputLimit: number) {
     let page: number;
     let limit: number;

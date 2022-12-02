@@ -72,3 +72,17 @@ mat-toolbar {
   display: flex;
   flex-direction: column;
 }
+
+.credit {
+  display: flex;
+  align-items: center;
+}
+
+.credit a {
+  padding: 0 1rem;
+  padding-left: 0 !important;
+}
+
+.credit a.icon {
+  padding-left: 1rem !important;
+}

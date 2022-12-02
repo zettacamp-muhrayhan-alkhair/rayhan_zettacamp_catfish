@@ -6,6 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { AppComponent } from 'src/app/app.component';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -24,6 +25,9 @@ export class HistoryTransactionComponent implements OnInit {
     'total_price',
   ];
 
+  financeBalance: number;
+  isAdmin: boolean = false;
+
   pageEvent: any;
   pageSize: number = 3;
   pageIndex: number = 0;
@@ -38,10 +42,22 @@ export class HistoryTransactionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTransactions();
+    if (JSON.parse(localStorage.getItem('role')) === 'Admin') {
+      this.isAdmin = true;
+      this.getFinanceManagement();
+    } else {
+      this.isAdmin = false;
+    }
   }
 
   onClose() {
     this.dialogRef.close();
+  }
+
+  getFinanceManagement() {
+    this.cartService.getFinanceManagement().subscribe((data: any) => {
+      this.financeBalance = data?.data?.FinanceManagement?.balance;
+    });
   }
 
   getAllTransactions() {

@@ -25,7 +25,10 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
   });
 
   constructor(
@@ -49,12 +52,7 @@ export class LoginComponent implements OnInit {
   onForgetPassword() {
     openForgetPasswordDialog(this.matDialog)
       .pipe(filter((val) => !!val))
-      .subscribe((val) => {
-        this.loginService.forgetPassword(val).subscribe(
-          (data: any) => {},
-          (err) => {}
-        );
-      });
+      .subscribe();
   }
 
   onSubmit(value: any) {

@@ -5,6 +5,7 @@ import {
   MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { LoginService } from '../login.service';
 
 @Component({
@@ -21,8 +22,15 @@ export class ForgetPasswordComponent implements OnInit {
     ]),
   });
   passwordForm = this.fb.group({
-    code: this.fb.control('', [Validators.required, Validators.min(4)]),
-    password: this.fb.control('', [Validators.required, Validators.min(8)]),
+    code: this.fb.control('', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(4),
+    ]),
+    password: this.fb.control('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
   });
   constructor(
     private fb: FormBuilder,
@@ -33,7 +41,22 @@ export class ForgetPasswordComponent implements OnInit {
   ngOnInit(): void {}
 
   onGetCode(data: any) {
-    this.loginService.getVerificationCode(data).subscribe((value: any) => {});
+    this.loginService.getVerificationCode(data).subscribe(
+      (value: any) => {
+        Swal.fire({
+          title: 'The Code has been sent',
+          text: value.message,
+          icon: 'success',
+        });
+      },
+      (err) => {
+        Swal.fire({
+          title: 'Email not Found',
+          text: err.message,
+          icon: 'error',
+        });
+      }
+    );
   }
 
   onClose() {
@@ -51,7 +74,24 @@ export class ForgetPasswordComponent implements OnInit {
 
   onSubmit(data: any) {
     const value = { ...data, email: this.emailForm.value.email };
-    this.dialogRef.close(value);
+    this.loginService.forgetPassword(value).subscribe(
+      (data: any) => {
+        Swal.fire({
+          title: 'Password has changed',
+          text: data.message,
+          icon: 'success',
+        }).then(() => {
+          this.dialogRef.close(value);
+        });
+      },
+      (err) => {
+        Swal.fire({
+          title: 'Verification code is wrong',
+          text: err.message,
+          icon: 'error',
+        });
+      }
+    );
   }
 }
 
