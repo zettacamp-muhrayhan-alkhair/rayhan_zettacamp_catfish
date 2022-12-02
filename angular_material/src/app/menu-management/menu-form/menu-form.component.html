@@ -68,7 +68,7 @@
             {{ ingredient.name }}</ng-option
           >
         </ng-select> -->
-        <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill">
           <mat-label>Ingredient name</mat-label>
 
           <input
@@ -86,6 +86,22 @@
               {{ ingredient.name }}
             </mat-option>
           </mat-autocomplete>
+          <mat-error
+            *ngIf="ingredients.controls[i].get('ingredient_id').invalid"
+            >Please select correct ingredient!</mat-error
+          >
+        </mat-form-field> -->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ingredient name</mat-label>
+          <mat-select formControlName="ingredient_id">
+            <mat-option
+              *ngFor="let ingredient of allIngredients"
+              [value]="ingredient._id"
+            >
+              {{ ingredient.name }}
+            </mat-option>
+          </mat-select>
           <mat-error
             *ngIf="ingredients.controls[i].get('ingredient_id').invalid"
             >Please select correct ingredient!</mat-error
