@@ -8,25 +8,79 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 8rem;
 }
 
 .first-container {
+  margin-top: 100px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 5rem;
+}
+
+.first-container > .wrapper {
+  width: calc(50% - 2rem);
+}
+
+.first-container .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.first-container .wrapper .btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.first-container .wrapper .btn-wrapper button {
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.first-container .wrapper .title-wrapper,
+.first-container .wrapper .btn-wrapper {
+  padding-left: 200px;
+}
+
+.first-container .wrapper .title-wrapper .title {
+  font-size: 3rem;
+  line-height: normal;
+}
+
+.first-container .wrapper .title-wrapper .subtitle {
+  font-size: 2rem;
+  line-height: normal;
+}
+
+.first-container .wrapper .img-wrapper {
+  margin: auto;
 }
 
 .first-container .wrapper .img-wrapper img {
-  width: 480px;
+  margin-right: 100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 .second-container .wrapper {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 5rem;
   justify-content: center;
   align-items: center;
 }
@@ -35,19 +89,18 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .second-container .wrapper .offer-wrapper .card {
   display: flex;
   flex-direction: column;
-  gap: -1rem;
   justify-content: center;
   width: 200px;
   background-color: #eee9e9;
   border-radius: 10%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  height: 210px;
+  height: 220px;
   -webkit-border-radius: 10%;
   -moz-border-radius: 10%;
   -ms-border-radius: 10%;
@@ -56,14 +109,31 @@
 
 .second-container .wrapper .offer-wrapper .card .img-wrapper {
   position: relative;
+  height: fit-content;
   bottom: 50px;
-  width: 175px;
+  width: 150px;
   margin: auto;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+
+.second-container .wrapper .offer-wrapper .card .img-wrapper .icon-wrapper {
+  background-color: #000;
+  cursor: pointer;
+  position: relative;
+  top: 50px;
+  left: 110px;
+  color: #fff;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 50px 50px 100px 50px;
+  -webkit-border-radius: 50px 50px 100px 50px;
+  -moz-border-radius: 50px 50px 100px 50px;
+  -ms-border-radius: 50px 50px 100px 50px;
+  -o-border-radius: 50px 50px 100px 50px;
 }
 
 .offer-wrapper .card .img-wrapper img {
@@ -92,6 +162,17 @@
 }
 .second-container .wrapper .offer-wrapper .card .main-wrapper .desc-wrapper {
   margin-bottom: 20px;
+}
+
+.second-container .wrapper .button-wrapper {
+  margin-bottom: 20px;
+  text-decoration: underline;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.second-container .wrapper .button-wrapper:active {
+  color: #f44336;
 }
 
 /* ASLINYAAAA */

@@ -12,7 +12,7 @@
     </div>
     <div class="wrapper">
       <div class="img-wrapper">
-        <!-- <img [src]="oneMenuHighligth.link_recipe" alt="Menu highligth" /> -->
+        <img [src]="oneMenuHighligth.link_recipe" alt="Menu highligth" />
       </div>
     </div>
   </div>
@@ -21,7 +21,9 @@
       <div class="offer-wrapper">
         <div class="card" *ngFor="let recipe of specialOffer">
           <div class="img-wrapper">
-            <i class="fa-solid fa-cart-plus"></i>
+            <div class="icon-wrapper">
+              <a (click)="onAddToCart()"><mat-icon>shopping_cart</mat-icon></a>
+            </div>
             <img
               [src]="recipe.link_recipe"
               alt="menu {{ recipe.recipe_name }}"

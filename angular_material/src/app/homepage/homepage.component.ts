@@ -45,6 +45,10 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+  onAddToCart() {
+    console.log('cart');
+  }
+
   onMenu() {
     this.router.navigate(['menu']);
   }
