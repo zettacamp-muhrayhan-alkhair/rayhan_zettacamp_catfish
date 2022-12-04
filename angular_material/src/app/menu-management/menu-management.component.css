@@ -2,15 +2,7 @@
   position: absolute;
   z-index: 0;
   top: 0;
-  background: url(https://images.pexels.com/photos/276147/pexels-photo-276147.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
-    no-repeat;
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-}
-
-.wrapper {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #e0d9d9;
   height: 100%;
   width: 100%;
   display: flex;
@@ -27,8 +19,27 @@ mat-paginator {
   width: 100%;
 }
 
+table,
+.mat-table {
+  background: transparent !important;
+  border: none !important;
+  padding: none !important;
+  border-spacing: 10px;
+}
+
 .table-wrapper {
   width: 90%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #000;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 table {
