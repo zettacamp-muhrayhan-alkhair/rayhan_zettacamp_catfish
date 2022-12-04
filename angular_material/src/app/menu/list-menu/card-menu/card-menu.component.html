@@ -1,5 +1,28 @@
 <div class="container">
   <div class="img-wrapper">
+    <div class="icon-wrapper">
+      <a (click)="onAddToCart(recipe)"><mat-icon>shopping_cart</mat-icon></a>
+    </div>
+    <img [src]="recipe.link_recipe" alt="menu {{ recipe.recipe_name }}" />
+  </div>
+  <div class="main-wrapper">
+    <div class="desc-wrapper">
+      <div class="first-desc">
+        {{ recipe.recipe_name }}
+      </div>
+      <div class="second-desc line-through">
+        {{ recipe.price | currency : "Rp. " }}
+      </div>
+    </div>
+    <div class="subdesc-wrapper">
+      {{ recipe.discount_price | currency : "Rp. " }}
+    </div>
+  </div>
+</div>
+
+<!-- ASLINYAAAA -->
+<!-- <div class="container">
+  <div class="img-wrapper">
     <img [src]="recipe.link_recipe" alt="" />
   </div>
   <div class="content-wrapper">
@@ -33,4 +56,4 @@
       {{ "menu.btn" | translate }}
     </button>
   </div>
-</div>
+</div> -->
