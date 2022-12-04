@@ -44,12 +44,23 @@ export class CardMenuComponent implements OnInit {
       }
     });
 
+    const arrIngredient = this.recipe.ingredients.map((data) => {
+      const availIngredient = Math.floor(
+        data.ingredient_id.stock / data.stock_used
+      );
+      return availIngredient;
+    });
+
+    const remain_stock = Math.min(...arrIngredient);
+
     const data = {
       ...this.recipe,
       discount_price:
         this.recipe.price - this.recipe.price * (this.recipe.discount / 100),
+      remain_stock: remain_stock,
     };
     this.recipe = data;
+    console.log(this.recipe);
   }
 
   onAddToCart(recipe: any) {
