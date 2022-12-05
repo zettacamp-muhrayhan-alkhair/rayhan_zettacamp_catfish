@@ -204,6 +204,7 @@
 .second-container .wrapper .button-wrapper {
   margin-bottom: 20px;
   text-decoration: underline;
+  line-height: normal;
   font-size: 1rem;
   cursor: pointer;
 }

@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="wrapper" *ngIf="dataSource">
+  <div *ngIf="historyLength === 0">You don't have any transaction history</div>
+  <div class="wrapper" *ngIf="historyLength > 0">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- role Column -->
       <ng-container matColumnDef="role">

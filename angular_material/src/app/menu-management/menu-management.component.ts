@@ -119,6 +119,7 @@ export class MenuManagementComponent implements OnInit {
   onPublish(event: any, element: any) {
     Swal.fire({
       title: 'Are you sure?',
+      text: 'You can publish or unpublish recipe',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
