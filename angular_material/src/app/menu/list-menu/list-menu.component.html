@@ -1,5 +1,10 @@
 <div class="container">
-  <app-card-menu *ngFor="let recipe of menu" [recipe]="recipe"></app-card-menu>
+  <div class="cards">
+    <app-card-menu
+      *ngFor="let recipe of menu"
+      [recipe]="recipe"
+    ></app-card-menu>
+  </div>
   <div class="btn-actions">
     <a (click)="onPrevious()">&larr; {{ "menu.prev" | translate }}</a>
     <a (click)="onNext()">{{ "menu.next" | translate }} &rarr;</a>

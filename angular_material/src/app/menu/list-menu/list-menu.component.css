@@ -1,26 +1,44 @@
 .container {
-  display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.cards {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 2rem 3rem;
+  justify-content: center;
+  gap: 7rem 3rem;
 }
 
 .btn-actions {
-  width: 100%;
-  position: absolute;
+  width: fit-content;
+  margin: auto;
   display: flex;
-  padding: 0 4rem;
-  bottom: 5rem;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .btn-actions a {
-  color: white;
-  text-decoration: underline;
-  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
   font-size: 1.5rem;
+}
+
+.btn-actions a:hover {
+  scale: 1.1;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
 }
 
 .btn-actions a:active {

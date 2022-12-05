@@ -6,8 +6,10 @@
         <p class="subtitle">it's not just Food, It's an Experience</p>
       </div>
       <div class="btn-wrapper">
-        <button mat-raised-button color="warn">View Menu</button>
-        <button mat-raised-button>Order Now</button>
+        <button mat-raised-button color="warn" (click)="onMenu()">
+          View Menu
+        </button>
+        <button mat-raised-button (click)="onOrder()">Order Now</button>
       </div>
     </div>
     <div class="wrapper">
@@ -21,8 +23,17 @@
       <div class="offer-wrapper">
         <div class="card" *ngFor="let recipe of specialOffer">
           <div class="img-wrapper">
-            <div class="icon-wrapper">
-              <a (click)="onAddToCart()"><mat-icon>shopping_cart</mat-icon></a>
+            <div class="cart-wrapper">
+              <button
+                [disabled]="!isToken"
+                (click)="onAddToCart(recipe)"
+                matTooltip="Add to cart"
+              >
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            </div>
+            <div class="disc-wrapper">
+              <p>{{ recipe.discount }}%</p>
             </div>
             <img
               [src]="recipe.link_recipe"
@@ -45,7 +56,7 @@
         </div>
       </div>
       <div class="button-wrapper">
-        <a (click)="onMenu()">View more menu &rarr;</a>
+        <a (click)="onMenu()">See other menu discounts &rarr;</a>
       </div>
     </div>
   </div>

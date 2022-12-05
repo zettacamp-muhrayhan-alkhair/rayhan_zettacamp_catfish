@@ -36,7 +36,7 @@ export class MenuManagementComponent implements OnInit {
 
   recipesLength: number;
   pageEvent: any;
-  pageSize: number = 5;
+  pageSize: number = 10;
   pageIndex: number = 0;
 
   filtername: any = new FormControl('');

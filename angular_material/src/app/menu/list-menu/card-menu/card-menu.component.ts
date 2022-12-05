@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { filter } from 'rxjs';
 import Swal from 'sweetalert2';
 import { openAddMenuUserDialog } from '../../menu-form/menu-form.component';
@@ -18,7 +19,11 @@ export class CardMenuComponent implements OnInit {
   isStockUsed = false;
   isAvailibility: number;
 
-  constructor(private matDialog: MatDialog, private menuService: MenuService) {}
+  constructor(
+    private matDialog: MatDialog,
+    private menuService: MenuService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
@@ -63,25 +68,41 @@ export class CardMenuComponent implements OnInit {
   }
 
   onAddToCart(recipe: any) {
-    openAddMenuUserDialog(this.matDialog, recipe)
-      .pipe(filter((val) => !!val))
-      .subscribe((val: any) => {
-        this.menuService.createTransaction(val).subscribe(
-          (data: any) => {
-            Swal.fire({
-              title: 'Recipe added to cart',
-              text: data.data.CreateTransaction.message,
-              icon: 'success',
-            });
-          },
-          (err: any) => {
-            Swal.fire({
-              title: 'Recipe not added to cart',
-              text: err.message,
-              icon: 'error',
-            });
-          }
-        );
+    if (localStorage.getItem('token')) {
+      openAddMenuUserDialog(this.matDialog, recipe)
+        .pipe(filter((val) => !!val))
+        .subscribe((val: any) => {
+          this.menuService.createTransaction(val).subscribe(
+            (data: any) => {
+              Swal.fire({
+                title: 'Recipe added to cart',
+                text: data.data.CreateTransaction.message,
+                icon: 'success',
+              });
+            },
+            (err: any) => {
+              Swal.fire({
+                title: 'Recipe not added to cart',
+                text: err.message,
+                icon: 'error',
+              });
+            }
+          );
+        });
+    } else {
+      Swal.fire({
+        title: 'Do you have an account?',
+        text: 'Try to log in before add recipe to cart!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, log in!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['login']);
+        }
       });
+    }
   }
 }

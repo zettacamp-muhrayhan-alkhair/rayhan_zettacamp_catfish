@@ -8,7 +8,7 @@ export class StockManagementService {
   constructor(private apollo: Apollo) {}
 
   getAllIngredients() {
-    return this.apollo.watchQuery({
+    return this.apollo.query({
       query: gql`
         query GetAllIngredients {
           GetAllIngredients(data: {}) {
@@ -63,7 +63,7 @@ export class StockManagementService {
       limit = inputLimit;
       page = inputPage + 1;
     }
-    return this.apollo.watchQuery({
+    return this.apollo.query({
       query: gql`
         query GetAllIngredients(
           $limit: Int

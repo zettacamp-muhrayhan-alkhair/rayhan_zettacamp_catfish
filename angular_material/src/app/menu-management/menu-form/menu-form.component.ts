@@ -18,6 +18,7 @@ import { MenuManagementService } from '../menu-management.service';
 export class MenuFormComponent implements OnInit {
   filteredOptions: Observable<any[]>[] = [];
   allIngredients: any = [];
+  choosenIngredient: any = [];
   menuForm = this.fb.group({
     recipe_name: this.fb.control('', Validators.required),
     link_recipe: this.fb.control('', Validators.required),
@@ -37,33 +38,6 @@ export class MenuFormComponent implements OnInit {
     this.menuManagementService.getAllIngredients().subscribe((data: any) => {
       this.allIngredients = data.data.GetAllIngredients.data.ingredient_data;
     });
-    this.manageNameControl(this.ingredients.length - 1);
-  }
-
-  manageNameControl(index: number) {
-    this.filteredOptions[index] = this.ingredients
-      .at(index)
-      .get('ingredient_id')
-      .valueChanges.pipe(
-        startWith<string>(''),
-        map((value: any) => (typeof value === 'string' ? value : value.name)),
-        map((name: string) =>
-          name ? this._filter(name) : this.allIngredients.slice()
-        )
-      );
-  }
-
-  displayFn(ingredient?: any): string | undefined {
-    return ingredient ? ingredient.name : undefined;
-  }
-
-  private _filter(name: string): any[] {
-    const filterValue = name.toLowerCase();
-
-    return this.allIngredients.filter(
-      (ingredient: any) =>
-        ingredient.name.toLowerCase().indexOf(filterValue) === 0
-    );
   }
 
   // Dialog

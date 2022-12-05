@@ -131,7 +131,7 @@ export class MenuManagementService {
       publishing = '';
     }
 
-    return this.apollo.watchQuery({
+    return this.apollo.query({
       query: gql`
         query GetAllrecipes($publishing: String, $filtername: String) {
           GetAllrecipes(
@@ -173,7 +173,7 @@ export class MenuManagementService {
   }
 
   getPublishRecipes() {
-    return this.apollo.watchQuery({
+    return this.apollo.query({
       query: gql`
         query GetAllrecipes {
           GetAllrecipes(data: { published: "Publish" }) {
@@ -276,7 +276,6 @@ export class MenuManagementService {
     for (let ingredient of ingredients) {
       ingredient.stock_used = Number(ingredient.stock_used);
     }
-    const ingredient_id = element.ingredients.ingredient_id;
     return this.apollo.mutate({
       mutation: gql`
         mutation CreateRecipe(

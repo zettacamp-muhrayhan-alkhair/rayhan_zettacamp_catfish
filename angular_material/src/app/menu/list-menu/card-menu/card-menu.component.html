@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" matTooltip="Remain stock: {{ recipe.remain_stock }}">
   <div class="img-wrapper">
     <div class="icon-wrapper">
       <button
         (click)="onAddToCart(recipe)"
-        [disabled]="isNotAvailableStock || !isToken || isStockUsed"
+        [disabled]="isNotAvailableStock || isStockUsed"
       >
         <mat-icon matTooltip="Add to cart">add_shopping_cart</mat-icon>
       </button>
@@ -15,8 +15,14 @@
       <div class="first-desc">
         {{ recipe.recipe_name }}
       </div>
-      <div class="second-desc line-through">
-        {{ recipe.price | currency : "Rp. " }}
+      <div class="second-desc" *ngIf="recipe.discount > 0">
+        <span class="line-through">
+          {{ recipe.price | currency : "Rp. " }}
+        </span>
+        <span class="small-size"> &minus; {{ recipe.discount }}%</span>
+      </div>
+      <div class="sold-out" *ngIf="isNotAvailableStock || isStockUsed">
+        <h3>{{ "menu.sold" | translate }}</h3>
       </div>
     </div>
     <div class="subdesc-wrapper">

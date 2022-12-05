@@ -22,7 +22,7 @@ export class StockManagementComponent implements OnInit {
   dataSource = new MatTableDataSource();
 
   pageEvent: any;
-  pageSize = 5;
+  pageSize = 10;
   pageIndex = 0;
 
   filtername: any = new FormControl('');
@@ -61,7 +61,7 @@ export class StockManagementComponent implements OnInit {
         this.availability,
         this.name_sort
       )
-      .valueChanges.subscribe(
+      .subscribe(
         (data: any) => {
           this.ingredients =
             data?.data?.GetAllIngredients?.data?.ingredient_data;

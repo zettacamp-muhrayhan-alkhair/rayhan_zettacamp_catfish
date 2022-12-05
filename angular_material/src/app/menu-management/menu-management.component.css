@@ -5,7 +5,6 @@
   z-index: 0;
   top: 0;
   background-color: #e0d9d9;
-  padding-top: 6rem;
 }
 
 .wrapper {
@@ -14,14 +13,9 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
 }
-
-/* .btn-container {
-  position: relative;
-  z-index: 0;
-  top: 20px;
-  cursor: pointer;
-} */
 
 .btn-container mat-icon {
   scale: 2;
@@ -55,68 +49,3 @@ mat-paginator {
   width: 100%;
   background-color: #e0d9d9;
 }
-
-/* .container {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  background-color: #e0d9d9;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 5rem;
-  align-items: center;
-}
-
-.btn-container {
-  margin-bottom: 1rem;
-}
-
-mat-paginator {
-  width: 100%;
-}
-
-table,
-.mat-table {
-  background: transparent !important;
-  border: none !important;
-  padding: none !important;
-  border-spacing: 10px;
-}
-
-.table-wrapper {
-  width: 90%;
-}
-
-table,
-th,
-td {
-  border: 1px solid #000;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-}
-
-table {
-  width: 100%;
-}
-
-.mat-cell {
-  padding: 0.5rem;
-  width: 300px;
-  color: black;
-  font-size: 1rem;
-}
-
-.mat-header-cell {
-  width: 250px;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.actions button {
-  margin: 0 0.5rem;
-} */
