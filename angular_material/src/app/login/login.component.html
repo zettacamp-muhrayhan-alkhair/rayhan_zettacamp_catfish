@@ -30,9 +30,14 @@
         <div class="form-field">
           <mat-form-field appearance="fill">
             <mat-label>{{ "login.email" | translate }}</mat-label>
-            <input type="email" matInput formControlName="email" />
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="Ex: user@user.com"
+            />
             <mat-error *ngIf="loginForm.controls['email'].invalid"
-              >Please input correct email!</mat-error
+              >Please input the field with correct email!</mat-error
             >
           </mat-form-field>
         </div>
@@ -46,7 +51,7 @@
               formControlName="password"
             />
             <mat-error *ngIf="loginForm.controls['password'].invalid"
-              >Please input correct password!</mat-error
+              >Please input the field with correct password!</mat-error
             >
           </mat-form-field>
         </div>

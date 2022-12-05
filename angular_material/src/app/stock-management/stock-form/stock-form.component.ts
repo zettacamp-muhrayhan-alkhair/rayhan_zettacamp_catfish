@@ -16,6 +16,7 @@ export class StockFormComponent implements OnInit {
     name: this.fb.control('', Validators.required),
     stock: this.fb.control('', [
       Validators.required,
+      Validators.min(0),
       Validators.pattern(/^-?(0|[1-9]\d*)?$/),
     ]),
   });

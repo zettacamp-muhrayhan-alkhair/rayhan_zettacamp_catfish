@@ -1,15 +1,20 @@
 <div class="container">
   <mat-dialog-content [formGroup]="menuForm">
     <div class="header">
-      <h1>Menu Edit Form</h1>
+      <h1>Menu Add Form</h1>
       <a (click)="onClose()"><mat-icon>close</mat-icon></a>
     </div>
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" formControlName="recipe_name" />
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="recipe_name"
+          placeholder="Ex: Fried Rice"
+        />
         <mat-error *ngIf="menuForm.controls['recipe_name'].invalid"
-          >Please input correct name!</mat-error
+          >Please input the field with correct name!</mat-error
         >
       </mat-form-field>
     </div>
@@ -19,11 +24,11 @@
         <input
           type="number"
           matInput
-          placeholder="Stock"
+          placeholder="Ex: 20000"
           formControlName="price"
         />
         <mat-error *ngIf="menuForm.controls['price'].invalid"
-          >Please input correct price!</mat-error
+          >Please input the field with correct price!</mat-error
         >
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -31,11 +36,11 @@
         <input
           type="number"
           matInput
-          placeholder="Discount in percentage"
+          placeholder="Ex: 10"
           formControlName="discount"
         />
         <mat-error *ngIf="menuForm.controls['discount'].invalid"
-          >Please input correct discount!</mat-error
+          >Please input the field with correct discount!</mat-error
         >
       </mat-form-field>
     </div>
@@ -45,11 +50,11 @@
         <input
           type="url"
           matInput
-          placeholder="Image Link"
+          placeholder="Ex: https://www.instagram.com/logo.png"
           formControlName="link_recipe"
         />
         <mat-error *ngIf="menuForm.controls['link_recipe'].invalid"
-          >Please input correct image link!</mat-error
+          >Please input the field with correct image link!</mat-error
         >
       </mat-form-field>
     </div>
@@ -62,7 +67,7 @@
       >
         <mat-form-field appearance="fill">
           <mat-label>Ingredient name</mat-label>
-          <mat-select formControlName="ingredient_id">
+          <mat-select formControlName="ingredient_id" placeholder="Ex: Salmon">
             <mat-option
               *ngFor="let ingredient of allIngredients"
               [value]="ingredient._id"
@@ -77,9 +82,14 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Stock used</mat-label>
-          <input type="number" matInput formControlName="stock_used" />
+          <input
+            type="number"
+            matInput
+            formControlName="stock_used"
+            placeholder="Ex: 2"
+          />
           <mat-error *ngIf="ingredients.controls[i].get('stock_used').invalid"
-            >Please input correct amount!</mat-error
+            >Please input the field with correct amount!</mat-error
           >
         </mat-form-field>
         <div class="btn-wrapper">

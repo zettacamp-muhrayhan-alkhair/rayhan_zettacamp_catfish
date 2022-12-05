@@ -42,6 +42,12 @@
   -o-border-radius: 50px 50px 100px 50px;
 }
 
+.container .img-wrapper .icon-wrapper button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
 .container .img-wrapper img {
   width: 100%;
 }
@@ -57,28 +63,8 @@
   bottom: 50px;
 }
 
-.second-container
-  .wrapper
-  .offer-wrapper
-  .card
-  .main-wrapper
-  .desc-wrapper
-  .first-desc {
-  font-size: 1rem;
-}
 .container .main-wrapper .desc-wrapper {
   margin-bottom: 20px;
-}
-
-.second-container .wrapper .button-wrapper {
-  margin-bottom: 20px;
-  text-decoration: underline;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.second-container .wrapper .button-wrapper:active {
-  color: #f44336;
 }
 
 /* ASLINYAAA */

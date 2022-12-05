@@ -3,7 +3,12 @@
     <div class="form-field">
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
-        <input type="text" matInput formControlName="first_name" />
+        <input
+          type="text"
+          matInput
+          formControlName="first_name"
+          placeholder="Ex: User"
+        />
         <mat-error *ngIf="registerForm.controls['first_name'].invalid"
           >Please input correct first name!</mat-error
         >
@@ -12,7 +17,12 @@
     <div class="form-field">
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
-        <input type="text" matInput formControlName="last_name" />
+        <input
+          type="text"
+          matInput
+          formControlName="last_name"
+          placeholder="Ex: Test"
+        />
         <mat-error *ngIf="registerForm.controls['last_name'].invalid"
           >Please input correct last name!</mat-error
         >
@@ -21,7 +31,12 @@
     <div class="form-field">
       <mat-form-field appearance="fill">
         <mat-label>{{ "login.email" | translate }}</mat-label>
-        <input type="email" matInput formControlName="email" />
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex: user@user.com"
+        />
         <mat-error *ngIf="registerForm.controls['email'].invalid"
           >Please input correct email!</mat-error
         >

@@ -10,7 +10,7 @@
         <input
           type="number"
           matInput
-          placeholder="Amount"
+          placeholder="Ex: 2"
           formControlName="amount"
         />
         <mat-error *ngIf="cartForm.controls['amount'].invalid"
@@ -21,7 +21,12 @@
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
         <mat-label>Note</mat-label>
-        <textarea matInput placeholder="Note" formControlName="note"></textarea>
+        <textarea
+          matInput
+          placeholder="Note"
+          formControlName="note"
+          placeholder="Ex: Little bit spicy..."
+        ></textarea>
       </mat-form-field>
     </div>
   </mat-dialog-content>

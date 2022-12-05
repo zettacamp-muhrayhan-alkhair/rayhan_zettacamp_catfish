@@ -1,9 +1,12 @@
 <div class="container">
   <div class="img-wrapper">
     <div class="icon-wrapper">
-      <a (click)="onAddToCart(recipe)"
-        ><mat-icon matTooltip="Add to cart">add_shopping_cart</mat-icon></a
+      <button
+        (click)="onAddToCart(recipe)"
+        [disabled]="isNotAvailableStock || !isToken || isStockUsed"
       >
+        <mat-icon matTooltip="Add to cart">add_shopping_cart</mat-icon>
+      </button>
     </div>
     <img [src]="recipe.link_recipe" alt="menu {{ recipe.recipe_name }}" />
   </div>

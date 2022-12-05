@@ -20,6 +20,7 @@ export class StockEditComponent implements OnInit {
     stock: this.fb.control(this.ingredient.stock, [
       Validators.required,
       Validators.min(0),
+      Validators.pattern(/^-?(0|[1-9]\d*)?$/),
     ]),
   });
   constructor(
