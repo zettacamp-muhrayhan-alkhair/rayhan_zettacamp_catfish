@@ -60,7 +60,6 @@ export class CardMenuComponent implements OnInit {
       remain_stock: remain_stock,
     };
     this.recipe = data;
-    console.log(this.recipe);
   }
 
   onAddToCart(recipe: any) {

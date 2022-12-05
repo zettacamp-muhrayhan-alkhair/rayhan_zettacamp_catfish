@@ -18,7 +18,7 @@ export class ForgetPasswordComponent implements OnInit {
     email: this.fb.control('', [
       Validators.email,
       Validators.required,
-      Validators.min(5),
+      Validators.minLength(5),
     ]),
   });
   passwordForm = this.fb.group({

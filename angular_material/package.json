@@ -30,6 +30,7 @@
     "apollo-angular": "^4.1.0",
     "chart.js": "^3.1.1",
     "dotenv": "^16.0.3",
+    "font-awesome": "^4.7.0",
     "graphql": "^16",
     "primeflex": "^1.0.0",
     "rxjs": "~7.5.0",
