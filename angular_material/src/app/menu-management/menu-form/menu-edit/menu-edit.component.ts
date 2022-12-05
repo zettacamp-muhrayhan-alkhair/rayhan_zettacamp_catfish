@@ -86,7 +86,7 @@ export class MenuEditComponent implements OnInit {
         Validators.required
       ),
       price: this.fb.control(this.recipe.price, Validators.required),
-      discount: this.fb.control(this.recipe.price, Validators.required),
+      discount: this.fb.control(this.recipe.price),
       ingredients: this.fb.array([]),
     });
   }

@@ -22,7 +22,7 @@ export class MenuFormComponent implements OnInit {
     recipe_name: this.fb.control('', Validators.required),
     link_recipe: this.fb.control('', Validators.required),
     price: this.fb.control('', Validators.required),
-    discount: this.fb.control('', Validators.required),
+    discount: this.fb.control(''),
     ingredients: this.fb.array([]),
   });
   constructor(
