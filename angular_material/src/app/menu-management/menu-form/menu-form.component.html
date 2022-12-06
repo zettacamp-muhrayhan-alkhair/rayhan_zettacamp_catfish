@@ -1,12 +1,12 @@
 <div class="container">
   <mat-dialog-content [formGroup]="menuForm">
     <div class="header">
-      <h1>Menu Add Form</h1>
+      <h1>{{ "menu-management.dialog-title" | translate }}</h1>
       <a (click)="onClose()"><mat-icon>close</mat-icon></a>
     </div>
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
+        <mat-label>{{ "menu-management.dialog-name" | translate }}</mat-label>
         <input
           matInput
           placeholder="Name"
@@ -20,7 +20,7 @@
     </div>
     <div class="input-wrapper price-wrapper">
       <mat-form-field appearance="fill">
-        <mat-label>Price</mat-label>
+        <mat-label>{{ "menu-management.dialog-price" | translate }}</mat-label>
         <input
           type="number"
           matInput
@@ -32,7 +32,9 @@
         >
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>Discount</mat-label>
+        <mat-label>{{
+          "menu-management.dialog-discount" | translate
+        }}</mat-label>
         <input
           type="number"
           matInput
@@ -46,7 +48,7 @@
     </div>
     <div class="input-wrapper">
       <mat-form-field appearance="fill">
-        <mat-label>Image Link</mat-label>
+        <mat-label>{{ "menu-management.dialog-img" | translate }}</mat-label>
         <input
           type="url"
           matInput
@@ -66,7 +68,9 @@
         [formGroupName]="i"
       >
         <mat-form-field appearance="fill">
-          <mat-label>Ingredient name</mat-label>
+          <mat-label>{{
+            "menu-management.dialog-ingredient" | translate
+          }}</mat-label>
           <mat-select formControlName="ingredient_id" placeholder="Ex: Salmon">
             <mat-option
               *ngFor="let ingredient of allIngredients"
@@ -81,7 +85,9 @@
           >
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Stock used</mat-label>
+          <mat-label>{{
+            "menu-management.dialog-stock" | translate
+          }}</mat-label>
           <input
             type="number"
             matInput
@@ -110,20 +116,22 @@
         type="button"
         (click)="addIngredient()"
       >
-        Add More ingredient
+        {{ "menu-management.dialog-add" | translate }}
       </button>
     </div>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button mat-raised-button color="warn" (click)="onClose()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="onClose()">
+      {{ "menu-management.btn-cancel" | translate }}
+    </button>
     <button
       mat-raised-button
       color="primary"
       [disabled]="!menuForm.valid"
       (click)="onSubmit()"
     >
-      Submit
+      {{ "menu-management.btn-submit" | translate }}
     </button>
   </mat-dialog-actions>
 </div>

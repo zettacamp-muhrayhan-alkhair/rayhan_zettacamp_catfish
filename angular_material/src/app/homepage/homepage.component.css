@@ -62,11 +62,7 @@
 
 .first-container .wrapper .title-wrapper .title {
   font-size: 3rem;
-  line-height: normal;
-}
-
-.first-container .wrapper .title-wrapper .subtitle {
-  font-size: 2rem;
+  font-weight: 500;
   line-height: normal;
 }
 

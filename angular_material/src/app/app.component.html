@@ -18,7 +18,7 @@
           mat-button
           [matMenuTriggerFor]="management"
           *ngIf="isAdmin"
-          matTooltip="Restaurant management"
+          matTooltip="{{ 'app.restaurant-management' | translate }}"
         >
           <mat-icon>apps</mat-icon></a
         >
@@ -37,7 +37,7 @@
           mat-button
           [matMenuTriggerFor]="cart"
           *ngIf="isAdmin || isCustomer"
-          matTooltip="Transaction management"
+          matTooltip="{{ 'app.transaction-management' | translate }}"
         >
           <mat-icon>shopping_cart</mat-icon></a
         >
@@ -55,7 +55,7 @@
         <a
           mat-button
           [matMenuTriggerFor]="profile"
-          matTooltip="User management"
+          matTooltip="{{ 'app.user-management' | translate }}"
         >
           <mat-icon>account_circle</mat-icon></a
         >
@@ -74,7 +74,7 @@
               <a
                 mat-button
                 class="icon"
-                matTooltip="Topup Credit"
+                matTooltip="{{ 'app.topup' | translate }}"
                 *ngIf="isCustomer || isAdmin"
                 (click)="onTopupCredit()"
               >
@@ -100,12 +100,22 @@
       <div class="wrapper lang-container">
         <div class="lang-wrapper">{{ "app.lang" | translate }}</div>
         <div class="lang-wrapper">
-          <div><span class="fi fi-us"></span></div>
+          <div>
+            <span
+              class="fi fi-us"
+              matTooltip="{{ 'app.en' | translate }}"
+            ></span>
+          </div>
           <mat-slide-toggle
             (change)="setLanguage($event)"
-            matTooltip="Switch language"
+            matTooltip="{{ 'app.switch' | translate }}"
           ></mat-slide-toggle>
-          <div><span class="fi fi-id"></span></div>
+          <div>
+            <span
+              class="fi fi-id"
+              matTooltip="{{ 'app.id' | translate }}"
+            ></span>
+          </div>
         </div>
       </div>
     </div>

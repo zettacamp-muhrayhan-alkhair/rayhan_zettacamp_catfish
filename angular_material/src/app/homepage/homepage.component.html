@@ -2,14 +2,15 @@
   <div class="first-container">
     <div class="wrapper">
       <div class="title-wrapper">
-        <p class="title">it's not just Food, It's an Experience</p>
-        <p class="subtitle">it's not just Food, It's an Experience</p>
+        <p class="title">{{ "home.title" | translate }}</p>
       </div>
       <div class="btn-wrapper">
         <button mat-raised-button color="warn" (click)="onMenu()">
-          View Menu
+          {{ "home.btn-menu" | translate }}
         </button>
-        <button mat-raised-button (click)="onOrder()">Order Now</button>
+        <button mat-raised-button (click)="onOrder()">
+          {{ "home.btn-order" | translate }}
+        </button>
       </div>
     </div>
     <div class="wrapper">
@@ -24,7 +25,10 @@
         <div class="card" *ngFor="let recipe of specialOffer">
           <div class="img-wrapper">
             <div class="cart-wrapper">
-              <button (click)="onAddToCart(recipe)" matTooltip="Add to cart">
+              <button
+                (click)="onAddToCart(recipe)"
+                matTooltip="{{ 'home.btn-add' | translate }}"
+              >
                 <mat-icon>add_shopping_cart</mat-icon>
               </button>
             </div>
@@ -52,7 +56,7 @@
         </div>
       </div>
       <div class="button-wrapper">
-        <a (click)="onMenu()">See other menu discounts &rarr;</a>
+        <a (click)="onMenu()">{{ "home.btn-see" | translate }} &rarr;</a>
       </div>
     </div>
   </div>

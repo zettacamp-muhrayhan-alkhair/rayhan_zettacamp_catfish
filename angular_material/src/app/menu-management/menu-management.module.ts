@@ -7,6 +7,13 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuEditComponent } from './menu-form/menu-edit/menu-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 const routes: Routes = [
   { path: '', component: MenuManagementComponent, title: 'Menu Management' },
@@ -25,6 +32,14 @@ const routes: Routes = [
     AngularMaterialModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
+    TranslateModule.forChild({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [MenuManagementComponent, MenuEditComponent],
 })

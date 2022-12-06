@@ -11,13 +11,20 @@
     "logout": "logout",
     "lang": "Language",
     "en": "English",
-    "id": "Indonesian"
+    "id": "Indonesian",
+    "switch": "Switch language",
+    "restaurant-management": "Restaurant Management",
+    "transaction-management": "Transaction Management",
+    "user-management": "User Management",
+    "topup": "Topup credit"
   },
   "home": {
-    "title": "Feel the taste of Indonesian foods",
+    "title": "it's not just Food, It's an Experience",
     "subtitle": "Feel the taste of most popular Indonesian foods from anywhere and anytime",
     "btn-menu": "View Menu",
-    "btn-order": "Order Now"
+    "btn-order": "Order Now",
+    "btn-see": "See other menu discounts",
+    "btn-add": "Add to cart"
   },
   "menu": {
     "sold": "Out of stock",
@@ -26,24 +33,35 @@
     "next": "Next",
     "title-dialog": "Add to cart",
     "amount": "Amount",
+    "err-amount": "Please input the field with correct amount!",
     "note": "Notes",
     "btn-cancel": "Cancel",
-    "btn-submit": "Submit"
+    "btn-submit": "Submit",
+    "remain": "Remain stock"
   },
   "login": {
     "email": "Email",
     "password": "Password",
-    "social": "Social media:",
-    "btn-submit": "Submit"
+    "btn-submit": "Submit",
+    "title": "it's not just Food, It's an Experience",
+    "err-email": "Please input the field with correct email!",
+    "err-password": "Please input the field with correct password!",
+    "btn-show": "Show Password",
+    "btn-forget": "Forget Password?",
+    "text-register": "Don't have an account?",
+    "btn-register": "Register"
   },
   "menu-management": {
     "add-new": "Add new Recipe",
     "table-name": "Name",
     "table-price": "Price",
+    "table-disc": "Discount",
+    "table-actions": "Actions",
     "publisher": "Publisher",
-    "all": "All",
-    "publish": "Publish",
-    "unpublish": "Unpublish",
+    "All": "All",
+    "Publish": "Publish",
+    "Unpublish": "Unpublish",
+    "slide": "Slide for publish or unpublish",
     "item-per-page": "Items per page",
     "dialog-title": "Menu Add Form",
     "dialog-name": "Name",
