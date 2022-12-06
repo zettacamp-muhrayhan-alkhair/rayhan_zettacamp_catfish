@@ -68,8 +68,8 @@
     >
     </mat-paginator>
   </div>
-
-  <div *ngIf="isAdmin">Balance: {{ financeBalance | currency : "Rp. " }}</div>
+  <div class="btn-container">
+    <div *ngIf="isAdmin">Income: {{ financeBalance | currency : "Rp. " }}</div>
+    <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+  </div>
 </div>
-
-<button mat-raised-button color="warn" (click)="onClose()">Close</button>
