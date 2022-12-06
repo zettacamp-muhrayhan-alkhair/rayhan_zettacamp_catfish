@@ -72,7 +72,8 @@ export class MenuManagementComponent implements OnInit {
         },
         (err) => {
           Swal.fire({
-            title: err.message,
+            title: 'No recipe!',
+            text: err.message,
             icon: 'error',
           });
         }

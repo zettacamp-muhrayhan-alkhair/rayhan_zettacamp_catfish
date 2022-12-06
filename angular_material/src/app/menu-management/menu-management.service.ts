@@ -272,7 +272,7 @@ export class MenuManagementService {
     const link_recipe = element.link_recipe;
     const price = Number(element.price);
     const ingredients = element.ingredients;
-    const discount = element.discount;
+    const discount = element.discount ? element.discount : 0;
     for (let ingredient of ingredients) {
       ingredient.stock_used = Number(ingredient.stock_used);
     }

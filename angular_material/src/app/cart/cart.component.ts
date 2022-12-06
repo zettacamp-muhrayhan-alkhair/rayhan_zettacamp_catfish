@@ -7,6 +7,7 @@ import { AppComponent } from '../app.component';
 import { AppService } from '../app.service';
 import { openEditRecipeCartDialog } from './cart-edit/cart-edit.component';
 import { CartService } from './cart.service';
+import { HistoryTransactionComponent } from './history-transaction/history-transaction.component';
 
 @Component({
   selector: 'app-cart',
@@ -67,69 +68,93 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onCheckOut(data: any) {
-    this.isLoading = null;
-    this.cartService.checkOut(data).subscribe(
-      (data: any) => {
-        this.isLoading = data;
-        const _id = this.appComponent.isID;
-        this.appService.getOneUser(_id).subscribe((data: any) => {
-          this.appComponent.isCredit = data.data.getOneUser.data.credite;
-        });
-        Swal.fire({
-          title: 'Transaction is Success',
-          text: data.data.UpdateTransaction.message,
-          icon: 'success',
-        }).then(() => {
-          this.getAllTransactions();
-        });
-      },
-      (err) => {
-        this.isLoading = err;
-        if (err.message.includes('Transaction is Failed')) {
-          let message = err.message
-            .replaceAll('"', '')
-            .replaceAll('[', '')
-            .replaceAll(']', '')
-            .replaceAll(',', ', ');
-          Swal.fire({
-            title: 'Transaction is failed',
-            text: message,
-            icon: 'error',
-          }).then(() => {
-            this.getAllTransactions();
-          });
-        } else {
-          Swal.fire({
-            title: err,
-            text: err.message,
-            icon: 'error',
-          }).then(() => {
-            this.getAllTransactions();
-          });
-        }
+    Swal.fire({
+      title: 'Are you sure want to checkout?',
+      text: 'Your foods and beverages will ready in 30 minutes!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, check it out!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isLoading = null;
+        this.cartService.checkOut(data).subscribe(
+          (data: any) => {
+            this.isLoading = data;
+            const _id = this.appComponent.isID;
+            this.appService.getOneUser(_id).subscribe((data: any) => {
+              this.appComponent.isCredit = data.data.getOneUser.data.credite;
+            });
+            Swal.fire({
+              title: 'Transaction is Success',
+              text: data.data.UpdateTransaction.message,
+              icon: 'success',
+            }).then(() => {
+              this.getAllTransactions();
+            });
+          },
+          (err) => {
+            this.isLoading = err;
+            if (err.message.includes('Transaction is Failed')) {
+              let message = err.message
+                .replaceAll('"', '')
+                .replaceAll('[', '')
+                .replaceAll(']', '')
+                .replaceAll(',', ', ');
+              Swal.fire({
+                title: 'Transaction is failed',
+                text: message,
+                icon: 'error',
+              }).then(() => {
+                this.getAllTransactions();
+              });
+            } else {
+              Swal.fire({
+                title: err,
+                text: err.message,
+                icon: 'error',
+              }).then(() => {
+                this.getAllTransactions();
+              });
+            }
+          }
+        );
       }
-    );
+    });
   }
 
   onCancel(data: any) {
-    this.cartService.cancelTransaction(data).subscribe(
-      (data: any) => {
-        Swal.fire({
-          title: 'Transaction is Deleted',
-          text: data.data.DeleteTransaction.message,
-          icon: 'success',
-        }).then(() => {
-          this.getAllTransactions();
-        });
-      },
-      (err) => {
-        Swal.fire({
-          title: 'Transaction is not Deleted',
-          text: err.message,
-          icon: 'error',
-        });
+    Swal.fire({
+      title: 'Are you want to cancel transaction?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cartService.cancelTransaction(data).subscribe(
+          (data: any) => {
+            Swal.fire({
+              title: 'Transaction is Deleted',
+              text: data.data.DeleteTransaction.message,
+              icon: 'success',
+            }).then(() => {
+              this.getAllTransactions();
+            });
+          },
+          (err) => {
+            Swal.fire({
+              title: 'Transaction is not Deleted',
+              text: err.message,
+              icon: 'error',
+            });
+          }
+        );
       }
-    );
+    });
   }
 
   onEdit(data: any) {
@@ -159,43 +184,67 @@ export class CartComponent implements OnInit, OnDestroy {
 
   onRemove(data: any) {
     if (this.cart[0].menu.length === 1) {
-      this.cartService.cancelTransaction(this.cart[0]._id).subscribe(
-        (data: any) => {
-          Swal.fire({
-            title: 'Transaction is Updated',
-            text: data.data.DeleteTransaction.message,
-            icon: 'success',
-          }).then(() => {
-            this.getAllTransactions();
-          });
-        },
-        (err) => {
-          Swal.fire({
-            title: 'Transaction is not updated',
-            text: err.message,
-            icon: 'success',
-          });
+      Swal.fire({
+        title: 'Are you sure want to remove recipe?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.cartService.cancelTransaction(this.cart[0]._id).subscribe(
+            (data: any) => {
+              Swal.fire({
+                title: 'Transaction is Updated',
+                text: data.data.DeleteTransaction.message,
+                icon: 'success',
+              }).then(() => {
+                this.getAllTransactions();
+              });
+            },
+            (err) => {
+              Swal.fire({
+                title: 'Transaction is not updated',
+                text: err.message,
+                icon: 'success',
+              });
+            }
+          );
         }
-      );
+      });
     } else {
-      this.cartService.removeItem(data).subscribe(
-        (data: any) => {
-          Swal.fire({
-            title: 'Transaction is Updated',
-            text: 'Recipe is deleted from cart',
-            icon: 'success',
-          }).then(() => {
-            this.getAllTransactions();
-          });
-        },
-        (err) => {
-          Swal.fire({
-            title: 'Transaction is not Updated',
-            text: err.message,
-            icon: 'error',
-          });
+      Swal.fire({
+        title: 'Are you sure want to remove recipe?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.cartService.removeItem(data).subscribe(
+            (data: any) => {
+              Swal.fire({
+                title: 'Transaction is Updated',
+                text: 'Recipe is deleted from cart',
+                icon: 'success',
+              }).then(() => {
+                this.getAllTransactions();
+              });
+            },
+            (err) => {
+              Swal.fire({
+                title: 'Transaction is not Updated',
+                text: err.message,
+                icon: 'error',
+              });
+            }
+          );
         }
-      );
+      });
     }
   }
 

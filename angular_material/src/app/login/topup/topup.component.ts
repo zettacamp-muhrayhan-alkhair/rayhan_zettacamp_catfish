@@ -22,7 +22,6 @@ export class TopupComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    console.log(this.credite.value);
     this.dialogRef.close(this.credite.value);
   }
   onClose() {

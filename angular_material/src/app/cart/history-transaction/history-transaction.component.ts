@@ -6,7 +6,6 @@ import {
 } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { AppComponent } from 'src/app/app.component';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -65,7 +64,7 @@ export class HistoryTransactionComponent implements OnInit {
       .getHistoryTransaction(this.pageIndex, this.pageSize)
       .subscribe((data: any) => {
         this.transactions = data?.data?.transaction_data;
-        this.historyLength = data?.data?.info_page[0]?.count;
+        this.historyLength = this.transactions.length;
         this.dataSource = new MatTableDataSource(this.transactions);
       });
   }
