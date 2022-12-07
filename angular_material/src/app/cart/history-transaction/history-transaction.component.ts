@@ -64,7 +64,7 @@ export class HistoryTransactionComponent implements OnInit {
       .getHistoryTransaction(this.pageIndex, this.pageSize)
       .subscribe((data: any) => {
         this.transactions = data?.data?.transaction_data;
-        this.historyLength = data.data.info_page[0].count;
+        this.historyLength = data?.data?.info_page[0]?.count;
         this.dataSource = new MatTableDataSource(this.transactions);
       });
   }
@@ -81,6 +81,8 @@ export function openHistoryTransactionDialog(matDialog: MatDialog) {
 
   config.disableClose = true;
   config.autoFocus = true;
+  config.width = 'fit-content';
+  config.height = 'fit-content';
 
   const dialogRef = matDialog.open(HistoryTransactionComponent, config);
 

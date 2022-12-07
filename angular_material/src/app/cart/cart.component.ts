@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private matDialog: MatDialog,
     private appService: AppService,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +67,10 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       }
     );
+  }
+
+  onMenu() {
+    this.router.navigate(['menu']);
   }
 
   onCheckOut(data: any) {

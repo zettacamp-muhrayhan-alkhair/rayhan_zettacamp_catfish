@@ -1,6 +1,5 @@
-<div class="container">
-  <div *ngIf="historyLength === 0">You don't have any transaction history</div>
-  <div class="wrapper" *ngIf="historyLength > 0">
+<div class="container" *ngIf="historyLength > 0">
+  <div class="wrapper">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- role Column -->
       <ng-container matColumnDef="role">
@@ -72,4 +71,12 @@
     <div *ngIf="isAdmin">Income: {{ financeBalance | currency : "Rp. " }}</div>
     <button mat-raised-button color="warn" (click)="onClose()">Close</button>
   </div>
+</div>
+
+<div class="no-cart-container" *ngIf="!historyLength">
+  <div class="main-container">
+    <mat-icon><mat-icon>history</mat-icon></mat-icon>
+    <div class="title">No transaction history</div>
+  </div>
+  <button mat-raised-button color="warn" (click)="onClose()">Close</button>
 </div>

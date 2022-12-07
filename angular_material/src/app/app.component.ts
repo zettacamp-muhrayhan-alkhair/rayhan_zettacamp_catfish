@@ -39,10 +39,12 @@ export class AppComponent implements OnInit {
         this.isToken = true;
         this.isAdmin = true;
         this.isName = localStorage.getItem('name');
+        this.isID = localStorage.getItem('_id');
       } else {
         this.isToken = true;
         this.isCustomer = true;
         this.isName = localStorage.getItem('name');
+        this.isID = localStorage.getItem('_id');
       }
     } else {
       this.isToken = false;
