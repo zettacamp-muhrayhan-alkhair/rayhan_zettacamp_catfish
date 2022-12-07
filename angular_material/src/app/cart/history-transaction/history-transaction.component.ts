@@ -64,7 +64,7 @@ export class HistoryTransactionComponent implements OnInit {
       .getHistoryTransaction(this.pageIndex, this.pageSize)
       .subscribe((data: any) => {
         this.transactions = data?.data?.transaction_data;
-        this.historyLength = this.transactions.length;
+        this.historyLength = data.data.info_page[0].count;
         this.dataSource = new MatTableDataSource(this.transactions);
       });
   }

@@ -10,7 +10,7 @@ export class MenuService {
   constructor(private httpClient: HttpClient, private apollo: Apollo) {}
 
   getPublishRecipes(inputPage: number) {
-    const limit = 8;
+    const limit = 10;
     const page = inputPage;
     return this.apollo
       .query({

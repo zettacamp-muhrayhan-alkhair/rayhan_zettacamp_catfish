@@ -7,7 +7,6 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Ingredient } from 'src/app/model/ingredient.model';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stock-edit',

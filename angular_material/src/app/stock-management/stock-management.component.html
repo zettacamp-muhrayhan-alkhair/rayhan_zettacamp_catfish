@@ -1,7 +1,11 @@
 <div class="container">
   <div class="wrapper">
     <div class="btn-container">
-      <mat-icon matTooltip="Add new recipe" (click)="onAdd()">add_box</mat-icon>
+      <mat-icon
+        matTooltip="{{ 'stock-management.add-new' | translate }}"
+        (click)="onAdd()"
+        >add_box</mat-icon
+      >
     </div>
     <table
       mat-table
@@ -13,7 +17,7 @@
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef class="name-field">
           <div class="title">
-            Name
+            {{ "stock-management.table-name" | translate }}
             <input
               matInput
               [formControl]="filtername"
@@ -22,7 +26,10 @@
             />
           </div>
           <div class="btn-sort">
-            <button (click)="onSort()">
+            <button
+              (click)="onSort()"
+              matTooltip="{{ 'stock-management.sort' | translate }}"
+            >
               <mat-icon>sort_by_alpha</mat-icon>
             </button>
           </div>
@@ -31,7 +38,9 @@
       </ng-container>
       <!-- Stock Column -->
       <ng-container matColumnDef="stock">
-        <th mat-header-cell *matHeaderCellDef>Stock</th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "stock-management.table-stock" | translate }}
+        </th>
         <td mat-cell *matCellDef="let element">{{ element.stock }}</td>
       </ng-container>
 
@@ -39,7 +48,9 @@
       <ng-container matColumnDef="available">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
-            <mat-label>Availability</mat-label>
+            <mat-label>{{
+              "stock-management.availability" | translate
+            }}</mat-label>
             <mat-select
               (valueChange)="onFilterAvailability($event)"
               name="food"
@@ -55,14 +66,14 @@
         </th>
         <td mat-cell *matCellDef="let element">
           <mat-icon
-            matTooltip="Available"
+            matTooltip="{{ 'stock-management.available' | translate }}"
             [ngStyle]="{ color: 'green' }"
             *ngIf="element.available === true"
           >
             done
           </mat-icon>
           <mat-icon
-            matTooltip="Unavailable"
+            matTooltip="{{ 'stock-management.unavailable' | translate }}"
             [ngStyle]="{ color: 'red' }"
             *ngIf="element.available === false"
           >
@@ -71,18 +82,22 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "stock-management.table-actions" | translate }}
+        </th>
         <td mat-cell *matCellDef="let element" class="actions">
           <button
-            matTooltip="Edit the ingredient"
+            matTooltip="{{ 'stock-management.edit' | translate }}"
             mat-raised-button
+            color="primary"
             (click)="onUpdate(element)"
           >
             <mat-icon>edit</mat-icon>
           </button>
           <button
-            matTooltip="Delete the ingredient"
+            matTooltip="{{ 'stock-management.delete' | translate }}"
             mat-raised-button
+            color="warn"
             (click)="onDelete(element)"
           >
             <mat-icon>delete</mat-icon>

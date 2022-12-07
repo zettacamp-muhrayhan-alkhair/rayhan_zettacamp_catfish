@@ -20,7 +20,7 @@ export class ListMenuComponent implements OnInit {
   }
 
   onNext() {
-    const maxPage = Math.ceil(this.menuLength / 8);
+    const maxPage = Math.ceil(this.menuLength / 10);
     if (this.page === maxPage) {
       this.page = maxPage;
     } else {

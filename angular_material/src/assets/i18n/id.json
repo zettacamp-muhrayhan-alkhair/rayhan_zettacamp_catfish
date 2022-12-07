@@ -53,6 +53,9 @@
   },
   "menu-management": {
     "add-new": "Tambah Resep Baru",
+    "edit": "Sunting resep",
+    "delete": "Hapus resep",
+    "details": "Lihat rincian resep",
     "table-name": "Nama",
     "table-price": "Harga",
     "table-disc": "Diskon",
@@ -76,8 +79,12 @@
   },
   "stock-management": {
     "add-new": "Tambah Bahan Baru",
+    "edit": "Sunting bahan",
+    "sort": "Urut berdasarkan nama",
+    "delete": "Hapus bahan",
     "table-name": "Nama",
     "table-stock": "Stok",
+    "table-actions": "Tombol Aksi",
     "availability": "Ketersediaan",
     "all": "Semua",
     "available": "Tersedia",
@@ -85,8 +92,11 @@
     "item-per-page": "Item per halaman",
     "btn-cancel": "Batal",
     "btn-submit": "Kirim",
+    "dialog-title": "Form Tambah Bahan",
     "dialog-name": "Nama",
-    "dialog-stock": "Stok"
+    "dialog-stock": "Stok",
+    "err-name": "Mohon isi dengan nama yang benar!",
+    "err-stock": "Mohon isi dengan jumlah yang benar!"
   },
   "history": {
     "item-per-page": "Item per halaman",

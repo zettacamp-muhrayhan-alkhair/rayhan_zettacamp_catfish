@@ -1,7 +1,11 @@
 <div class="container">
   <div class="wrapper">
     <div class="btn-container">
-      <mat-icon matTooltip="Add new recipe" (click)="onAdd()">add_box</mat-icon>
+      <mat-icon
+        matTooltip="{{ 'menu-management.add-new' | translate }}"
+        (click)="onAdd()"
+        >add_box</mat-icon
+      >
     </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Name Column -->
@@ -70,23 +74,25 @@
         </th>
         <td mat-cell *matCellDef="let element" class="actions">
           <button
-            matTooltip="Edit the recipe"
+            matTooltip="{{ 'menu-management.edit' | translate }}"
             mat-raised-button
+            color="primary"
             [disabled]="element.published"
             (click)="onUpdate(element)"
           >
             <mat-icon>edit</mat-icon>
           </button>
           <button
-            matTooltip="Delete the recipe"
+            matTooltip="{{ 'menu-management.delete' | translate }}"
             mat-raised-button
+            color="warn"
             [disabled]="element.published"
             (click)="onDelete(element)"
           >
             <mat-icon>delete</mat-icon>
           </button>
           <button
-            matTooltip="See recipe details"
+            matTooltip="{{ 'menu-management.details' | translate }}"
             mat-raised-button
             (click)="onDetail(element)"
           >

@@ -83,6 +83,10 @@ mat-toolbar {
   padding-left: 0 !important;
 }
 
+.credit span {
+  margin-right: 1rem;
+}
+
 .credit a.icon {
   padding-left: 1rem !important;
 }

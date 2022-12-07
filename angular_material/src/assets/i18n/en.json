@@ -53,6 +53,9 @@
   },
   "menu-management": {
     "add-new": "Add new Recipe",
+    "edit": "Edit the recipe",
+    "delete": "Delete the recipe",
+    "details": "See recipe details",
     "table-name": "Name",
     "table-price": "Price",
     "table-disc": "Discount",
@@ -76,8 +79,12 @@
   },
   "stock-management": {
     "add-new": "Add new Ingredient",
+    "edit": "Edit the recipe",
+    "sort": "Sort by name",
+    "delete": "Delete the recipe",
     "table-name": "Name",
     "table-stock": "Stock",
+    "table-actions": "Actions",
     "availability": "Availability",
     "all": "All",
     "available": "Available",
@@ -85,8 +92,11 @@
     "item-per-page": "Items per page",
     "btn-cancel": "Cancel",
     "btn-submit": "Submit",
+    "dialog-title": "Ingredient Add Form",
     "dialog-name": "Name",
-    "dialog-stock": "Stock"
+    "dialog-stock": "Stock",
+    "err-name": "Please input the field with correct name!",
+    "err-stock": "Please input the field with correct stock!"
   },
   "history": {
     "item-per-page": "Items per page",

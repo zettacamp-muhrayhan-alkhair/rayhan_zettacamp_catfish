@@ -44,6 +44,7 @@ export function openAddMenuUserDialog(matDialog: MatDialog, recipe: Recipe) {
   config.data = {
     ...recipe,
   };
+  config.width = '300px';
 
   const dialogRef = matDialog.open(MenuFormComponent, config);
 

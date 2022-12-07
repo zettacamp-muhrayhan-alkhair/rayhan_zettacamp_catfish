@@ -80,9 +80,9 @@
               >
                 <mat-icon>credit_card</mat-icon>
               </a>
-              <a mat-button [disabled]="true" *ngIf="isCustomer || isAdmin">
+              <span *ngIf="isCustomer || isAdmin">
                 {{ isCredit | currency : "Rp. " }}
-              </a>
+              </span>
             </div>
             <a
               mat-button
