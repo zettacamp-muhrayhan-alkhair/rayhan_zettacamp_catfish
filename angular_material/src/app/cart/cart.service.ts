@@ -53,6 +53,7 @@ export class CartService {
           }
         }
       `,
+      fetchPolicy: 'network-only',
     });
   }
 
