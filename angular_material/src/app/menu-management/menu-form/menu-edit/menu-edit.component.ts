@@ -66,13 +66,12 @@ export class MenuEditComponent implements OnInit {
       this.menuForm.patchValue(temp);
     }
 
-    this.menuManagementService
-      .getAllIngredients()
-      .subscribe(
-        (data: any) =>
-          (this.allIngredients =
-            data?.data?.GetAllIngredients?.data?.ingredient_data)
+    this.menuManagementService.getAllIngredients().subscribe((data: any) => {
+      let ingredientData = data.data.GetAllIngredients.data.ingredient_data;
+      this.allIngredients = ingredientData.filter(
+        (val) => val.available === true
       );
+    });
   }
 
   initForm() {

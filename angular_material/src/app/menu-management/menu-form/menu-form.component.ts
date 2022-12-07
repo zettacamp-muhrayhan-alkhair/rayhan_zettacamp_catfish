@@ -6,7 +6,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { map, Observable, startWith } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Recipe } from 'src/app/model/recipe.model';
 import { MenuManagementService } from '../menu-management.service';
 
@@ -18,7 +18,6 @@ import { MenuManagementService } from '../menu-management.service';
 export class MenuFormComponent implements OnInit {
   filteredOptions: Observable<any[]>[] = [];
   allIngredients: any = [];
-  choosenIngredient: any = [];
   menuForm = this.fb.group({
     recipe_name: this.fb.control('', Validators.required),
     link_recipe: this.fb.control('', Validators.required),
@@ -36,7 +35,10 @@ export class MenuFormComponent implements OnInit {
   ngOnInit(): void {
     this.addIngredient();
     this.menuManagementService.getAllIngredients().subscribe((data: any) => {
-      this.allIngredients = data.data.GetAllIngredients.data.ingredient_data;
+      let ingredientData = data.data.GetAllIngredients.data.ingredient_data;
+      this.allIngredients = ingredientData.filter(
+        (val) => val.available === true
+      );
     });
   }
 
