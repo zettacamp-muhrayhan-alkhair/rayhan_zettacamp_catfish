@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl : 'https://api.team-2.zettacamp-upn.zetta-demo.space/graphql'
 };
 
 /*
